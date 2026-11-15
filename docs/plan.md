@@ -1,6 +1,6 @@
 # Plan
 
-Stand: 2026-11-15. Brief bestätigt (`dbe1e9f`); erste Aufgaben angelegt (#376–#380). Schätzung M1: 9 Aufgaben.
+Stand: 2026-11-15. Brief bestätigt (`dbe1e9f`), Claims-Register abgezeichnet; Aufgaben #376–#379, #381. Schätzung M1: 9 Aufgaben.
 Lead-Budget: 5 Mio. Tokens/Tag (nur Lead-Dienst).
 
 ## Meilenstein 1: Hypothesis-Grundgerüst (parser, tz)

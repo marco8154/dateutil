@@ -1,6 +1,6 @@
 # Claims-Register
 
-Stand: 2026-11-15 · Entwurf des Leads · **abgezeichnet: noch nicht** (Visionär:in, einmalig)
+Stand: 2026-11-15 · Entwurf des Leads · **abgezeichnet: 2026-11-15 durch die Visionärin / den Visionär (im Lead-Gespräch, Stand `5500c57`)**
 
 Quelle aller Claims: `dateutil/dateutil` @ `a78cbd8`; Zeilen beziehen sich auf diesen Stand. Ein Claim gilt nur für den getesteten Eingaberaum (Säule 5). „Vertrag“ = dokumentiert; „Erwartung“ = nicht dokumentiert, ein Verstoß ist ein Fund, aber kein Vertragsbruch, und so wird er auch berichtet.
 

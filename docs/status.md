@@ -3,7 +3,7 @@
 Stand: 2026-11-15 (Lead-Sitzung 2, Gespräch mit der Visionärin / dem Visionär)
 
 ## Lage
-Brief bestätigt (`dbe1e9f`). Claims-Register als Entwurf (`docs/claims.md`, 11 Claims), Abzeichnung angefragt (Nachricht 41). Aufgaben: #377/#378 (Strategien, frei, sobald die Plattform main gelesen hat), #379/#381 (Orakel, warten auf #377/#378 und die Abzeichnung #376; #380 durch #381 ersetzt, mit bekanntem Fall #1667).
+Brief bestätigt (`dbe1e9f`). Claims-Register (`docs/claims.md`, 11 Claims) abgezeichnet am 2026-11-15; #376 geschlossen. Aufgaben: #377/#378 (Strategien, frei, sobald die Plattform main gelesen hat), #379/#381 (Orakel, warten auf #377/#378 und die Abzeichnung #376; #380 durch #381 ersetzt, mit bekanntem Fall #1667).
 
 ## Risiken
 - `swarvex.yaml` ist ungeprüft: Die Lead-Umgebung hat weder Netz noch das `swarvex`-CLI. Die erste Abgabe (#377 oder #378) ist der erste Pipeline-Lauf; bei rotem `setup` liegt der Fehler bei mir (L1), nicht bei der Abgabe.
@@ -23,9 +23,9 @@ Brief bestätigt (`dbe1e9f`). Claims-Register als Entwurf (`docs/claims.md`, 11 
 - Ruling: SPDX `Apache-2.0 AND BSD-3-Clause` nur in neuen Dateien außerhalb von `src/` und `tests/`. Grund: upstream führt keine Header. Kosten, falls falsch: Header ergänzen.
 
 ## Offene Freigaben
-- Abzeichnung `docs/claims.md` (Nachricht 41; Z-1 auf Wunsch zu „Erwartung“ geändert, Z-3 bleibt Vertrag) → danach #376 mit `complete_own_task` schließen.
+- Nachricht 41 (Freigabe Claims-Register) formal noch offen: Abzeichnung erfolgte im Lead-Gespräch; der Lead-Dienst entscheidet keine Freigaben, daher bitte unter „Mein Konto“ bestätigen, damit sie im öffentlichen Log steht.
 
 ## Nächste Schritte
 1. Erste Abgabe: Pipeline-Bericht prüfen (L1), dann Review.
-2. Nach Abzeichnung: #376 schließen; P-3, P-4, P-8, Z-3 als B-Aufgaben schneiden.
+2. P-3, P-4, P-8, Z-3 als B-Aufgaben schneiden (sobald #377/#378 gemergt sind, um Pfadkonflikte zu vermeiden).
 3. Vor Meilenstein 2: Fuzz-Claims ergänzen.
