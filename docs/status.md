@@ -1,9 +1,11 @@
 # Status
 
-Stand: 2026-11-15 (Lead-Zyklus 3, Lead-Dienst)
+Stand: 2026-11-15 (Lead-Zyklus 4, Lead-Dienst)
 
 ## Lage
-Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis: `setup` installierte als Nicht-root-Nutzer nach `~/.local`, das der Test-Schritt nicht sieht (`ModuleNotFoundError: hypothesis`). Behoben in `swarvex.yaml` (L1): `.venv` im Projekt, `TZ=America/New_York` wie upstream-CI, zwei `[tzpath]`-Tests abgewählt (Debian-tzdata im Image). Lokal mit dem neuen Vertrag: Basis 5059 grün, mit Abgabe 438 5105 grün. #377 (Abgabe 438) und #378 (Abgabe 439, lokal 5077 grün) angenommen; der Merge-Zug prüft sie mit dem neuen Vertrag. Nach dem Merge frei: #379, #381, #387, #388, #389. Sofort frei: #386 (P-8).
+Zyklus 4: #377 und #378 sind gemergt (Merge-Zug grün mit dem neuen Vertrag, L1 bestätigt). Frei: #379, #381, #387, #388, #389; keine aktiven Agenten. Abgabe 440 (#386, P-8, eigene Person) lief auf Basis `c12d244`, also mit dem alten Vertrag: Pipeline-Bericht rot auch ohne Beitrag, der Test lief nie. Lokal auf `master` mit `.venv` grün (TZ=America/New_York und UTC, je 200 Beispiele × 2 Separatoren). Eigene Abgabe: nicht annehmbar, Review-Fragen gesetzt, wartet auf Peer-Review. Funde 70 (Sandbox ohne Abhängigkeiten, alter Vertrag) und 71 (`parse` → `tzlocal` bei lokaler Zone UTC, eingefrorenes Verhalten, Offset korrekt) verworfen. Nachricht 43 (P-9, Docstring) weiter offen.
+
+Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis: `setup` installierte als Nicht-root-Nutzer nach `~/.local`, das der Test-Schritt nicht sieht (`ModuleNotFoundError: hypothesis`). Behoben in `swarvex.yaml` (L1): `.venv` im Projekt, `TZ=America/New_York` wie upstream-CI, zwei `[tzpath]`-Tests abgewählt (Debian-tzdata im Image). Lokal mit dem neuen Vertrag: Basis 5059 grün, mit Abgabe 438 5105 grün. #377 (Abgabe 438) und #378 (Abgabe 439, lokal 5077 grün) angenommen; der Merge-Zug prüft sie mit dem neuen Vertrag. Nach dem Merge frei: #379, #381, #387, #388, #389. Sofort frei: #386 (P-8).
 
 ## Risiken
 - `swarvex.yaml` ist ungeprüft: Die Lead-Umgebung hat weder Netz noch das `swarvex`-CLI. Die erste Abgabe (#377 oder #378) ist der erste Pipeline-Lauf; bei rotem `setup` liegt der Fehler bei mir (L1), nicht bei der Abgabe.
@@ -30,7 +32,7 @@ Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis: `setup` i
 - Nachricht 41 (Freigabe Claims-Register) formal noch offen: Abzeichnung erfolgte im Lead-Gespräch; der Lead-Dienst entscheidet keine Freigaben, daher bitte unter „Mein Konto“ bestätigen, damit sie im öffentlichen Log steht.
 
 ## Nächste Schritte
-1. Merge-Zug von #377 und nächsten Pipeline-Bericht prüfen: Ist L1 dort grün? Wenn `.venv` fehlt, Installationsort ändern.
-2. Abgaben zu #379, #381, #386–#389 reviewen.
+1. Peer-Review von Abgabe 440 (#386) abwarten; bei Nacharbeit Begründung lesen.
+2. Abgaben zu #379, #381, #387–#389 reviewen; Pipeline-Berichte auf Basis vor `31653b4` sind wertlos, dann lokal prüfen.
 3. Nach Antwort auf die Freigabe: Claim P-9 und Docstring-Fix (Funde 67, 68) als Aufgaben schneiden, sonst Funde verwerfen.
 4. Vor Meilenstein 2: Fuzz-Claims ergänzen.

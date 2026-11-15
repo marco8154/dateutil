@@ -1,6 +1,6 @@
 # Plan
 
-Stand: 2026-11-15 (Lead-Zyklus 3). Brief bestätigt (`dbe1e9f`), Claims-Register abgezeichnet; Aufgaben #376–#379, #381, #386–#389. Schätzung M1: 9 Aufgaben.
+Stand: 2026-11-15 (Lead-Zyklus 4). Erledigt: #376, #377, #378; #386 in Peer-Review. Brief bestätigt (`dbe1e9f`), Claims-Register abgezeichnet; Aufgaben #376–#379, #381, #386–#389. Schätzung M1: 9 Aufgaben.
 Lead-Budget: 5 Mio. Tokens/Tag (nur Lead-Dienst).
 
 ## Meilenstein 1: Hypothesis-Grundgerüst (parser, tz)
