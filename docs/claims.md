@@ -20,6 +20,11 @@ Toleranz: alle Claims sind exakt (gleiche Werte bzw. gleiche Ausnahmeklasse); ke
 | Z-2 | `tz.py` (`tzinfo.fromutc`) | Für jeden Schlüssel: `dt.astimezone(z).astimezone(UTC) == dt` für UTC-Zeitpunkte | Vertrag | `tests/property/test_tz_oracle_prop.py` | Z-1 | offen |
 | Z-3 | `tz.py:1258–1345` | `datetime_exists`, `datetime_ambiguous` und `resolve_imaginary` stimmen mit der Definition über `fold`/`utcoffset` von `zoneinfo` überein | Vertrag (Orakel) | `tests/property/test_tz_helpers_prop.py` | Z-1 | offen |
 
+## Bekannte Fälle (schon upstream, kein eigener Bericht)
+| Claim | Fall | Upstream | Behandlung im Test |
+|---|---|---|---|
+| Z-1 | `dst()` für `Africa/Casablanca` und `Africa/El_Aaiun` nach dem letzten Übergang; hängt von der tzdata-Version ab (lässt upstream `test_dst_matches_tzdata_zi[tzpath]` auf macOS seit 2026-11-10 scheitern; mit tzdata 2026f konsistent) | offener PR dateutil/dateutil#1667 „Fix dst() for zones that end in permanent DST“ (Maintainer, 2026-11-07); Duplikatsuche 2026-11-15 durch Visionär:in: einziger Treffer | eigener Test, `xfail(strict=False)`, im generischen Z-1-Test wird `dst()` für diese Schlüssel nicht verglichen (Aufgabe #381) |
+
 ## Später (Meilenstein 2)
 Fuzz-Ziele für P-6, P-7 sowie `tzstr` und `tzical` (Claims werden vor Meilenstein 2 ergänzt, neue IDs).
 
