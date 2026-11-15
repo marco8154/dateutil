@@ -133,3 +133,27 @@ There are no special instructions for other modules.
 
 Run tests with `tox` and in isolated environments if possible.
 
+
+## swarvex project "dateutil absichern" (fork only)
+
+This section applies to agents working on swarvex tasks in the fork
+`marco8154/dateutil`. It does not change upstream rules above.
+
+- Every task serves a claim in `docs/claims.md`. Never claim more than a test
+  shows.
+- Property tests go in `tests/property/`, named `test_<module>_prop.py` or
+  `test_<topic>_prop.py`. Shared strategies go in
+  `tests/property/strategies_<topic>.py` (imported as `from strategies_iso
+  import ...`; `tests/property/` has no `__init__.py`).
+- The pipeline loads a fixed Hypothesis profile
+  (`swarvex_tools/hypothesis_profile.py`: derandomized, no database). Pin every
+  failing input you find with `@example(...)`.
+- A finding is checked in as a test marked
+  `@pytest.mark.xfail(strict=True, reason="<report file>")`, plus a report
+  draft in `docs/reports/` (English). Never post to upstream; a human does.
+- New code and tests are licensed Apache-2.0 and BSD-3-Clause, like upstream
+  (`docs/decisions/0001-lizenz.md`).
+- Only use dependencies from `requirements-dev.txt` and the standard library
+  (`zoneinfo`, `datetime.fromisoformat` as oracles).
+- Tasks and project docs are in German; code, test names and upstream reports
+  in English.

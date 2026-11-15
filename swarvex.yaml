@@ -1,0 +1,28 @@
+# Test contract of the swarvex pipeline (protected: only lead and visionary change it).
+# setup runs with network, build and test run offline.
+# hatch-vcs (setuptools-scm) finds no version in the sandbox clone, hence the pretend version.
+setup: |
+  export SETUPTOOLS_SCM_PRETEND_VERSION=4.0.0
+  python -m pip install --quiet -r requirements-dev.txt
+  python -m pip install --quiet -e .
+test: |
+  export SETUPTOOLS_SCM_PRETEND_VERSION=4.0.0
+  python -c "import dateutil, hypothesis, tzdata"
+  python -m pytest -p no:cacheprovider -p swarvex_tools.hypothesis_profile -n auto tests docs
+note: Property tests live in tests/property/ (upstream convention). Hypothesis runs with the fixed profile in swarvex_tools/hypothesis_profile.py; pin every finding with @example.
+protected: |
+  - swarvex.yaml
+  - swarvex_tools/**
+  - AGENTS.md
+  - CONTRIBUTING.md
+  - LICENSE
+  - pyproject.toml
+  - tox.ini
+  - requirements-dev.txt
+  - .github/**
+  - ci_tools/**
+  - tests/conftest.py
+  - tests/_common.py
+  - docs/project-brief.md
+  - docs/claims.md
+  - docs/decisions/**

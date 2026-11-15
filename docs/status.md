@@ -1,22 +1,24 @@
 # Status
 
-Stand: 2026-11-15 (Lead-Zyklus 1)
+Stand: 2026-11-15 (Lead-Sitzung 2, im Gespräch mit der Visionärin / dem Visionär)
 
 ## Lage
-Projekt neu angelegt. Phase 0 (Projektinterview) läuft: Entwurf `docs/project-brief.md` steht, Runde 1 (10 Fragen) ist als Nachricht an die Visionärin / den Visionär gegangen. Noch keine Aufgaben: ohne bestätigten Brief geht keine raus (LEAD.md Regel 2).
+Vorgaben zu Lizenz, Umgebung, Reihenfolge und Budget sind im Brief eingetragen. Grundlage gelegt: `swarvex.yaml`, festes Hypothesis-Profil, Projektabschnitt in `AGENTS.md`, `docs/plan.md`. Q1–Q10 aus Runde 1 sind noch offen; ohne Bestätigung des Briefs gehen keine Aufgaben raus.
 
-## Fakten aus der Recherche
-- Fork = upstream master `a78cbd8`; upstream hat schon `tests/property/` (isoparse, parser, tz, rrule).
-- Es gibt kein `swarvex.yaml`; die lokale `.venv` enthält weder pytest noch hypothesis noch dateutil. Die Pipeline braucht also ein eigenes `setup` (Installation von `requirements-dev.txt` und dem Paket), bevor Code-Aufgaben rausgehen.
-- Upstream verlangt menschliche Prüfung vor jedem Issue/PR/Kommentar und hält `parser.parse` eingefroren (`AGENTS.md`).
+## Risiken
+- `swarvex.yaml` ist ungeprüft: Die Lead-Umgebung hat weder Netz noch das `swarvex`-CLI, und pip findet dort keine Pakete. Der erste Pipeline-Lauf auf `master` ist die Prüfung (Plan L1).
+- `deadline=None` im Profil verhindert Flakiness durch langsame Sandboxes; dafür fallen Zeitprobleme nicht auf (gewollt, kein Claim betrifft Laufzeit).
+- Token-Budget 5 Mio./Tag, geteilt mit dem Lead-Runner: wenige offene Aufgaben, knappe Zyklen.
 
 ## Rulings
-- Ruling: Projektdokumente als `.md` unter `docs/` — Sphinx liest nur `.rst`, pytest sammelt nur `test_*.py`, also stören sie den upstream-Build nicht — Kosten falls falsch: Dateien verschieben.
+- Ruling: Projektdokumente als `.md` unter `docs/`. Grund: Sphinx liest nur `.rst`, pytest sammelt nur `test_*.py`. Kosten, falls falsch: Dateien verschieben.
+- Ruling: Hypothesis-Profil als pytest-Plugin `swarvex_tools/hypothesis_profile.py` (per `-p` geladen) statt Änderung an upstream `tests/conftest.py`. Grund: Upstream-Dateien bleiben gleich. Kosten, falls falsch: Profil in conftest verschieben.
+- Ruling: Gemeinsame Strategien als `tests/property/strategies_<thema>.py`. Grund: `tests/property/` hat kein `__init__.py`, Import ohne Paketumbau. Kosten, falls falsch: umbenennen.
+- Ruling: SPDX `Apache-2.0 AND BSD-3-Clause` nur in neuen Dateien außerhalb von `src/` und `tests/`. Grund: upstream führt keine Header. Kosten, falls falsch: Header ergänzen.
 
 ## Offene Freigaben
-- Runde 1 des Interviews (Nachricht „Projektinterview Runde 1“).
+- Q1–Q10 (Nachricht 40) und danach die Bestätigung des Briefs.
 
 ## Nächste Schritte
-1. Antworten in den Brief eintragen, ggf. Runde 2, dann Bestätigung einholen.
-2. Phase 1: `swarvex.yaml` (setup, deterministisches Hypothesis-Profil), Projektabschnitt in `AGENTS.md`, `docs/claims.md`, `docs/plan.md`.
-3. Erste Aufgaben (Level A/B): Claims je Modul, Orakel tz↔zoneinfo, isoparse↔fromisoformat.
+1. Nach dem Ja: L1 (Pipeline-Lauf prüfen), L2 (`docs/claims.md`), dann T1/T2 als B-Aufgaben.
+2. Danach T3/T4 (Orakel), dann Meilenstein 2 (Fuzz-Ziele).
