@@ -11,7 +11,7 @@ Brief bestätigt (`dbe1e9f`). Claims-Register als Entwurf (`docs/claims.md`, 11 
 - Lead-Budget 5 Mio. Tokens/Tag (nur Lead-Dienst): knappe Zyklen, Reviews vor Planung.
 - Pins aus Websuche (PyPI war nicht abrufbar): hypothesis 6.170.5 (2026-10-20), tzdata 2026.6 (IANA 2026f). Gibt es eine Version nicht, schlägt `setup` fehl; dann korrigiere ich den Pin.
 
-- GitHub Actions im Fork (upstream-`validate.yml`): Job `test (3.15t, macos-latest)` rot, die übrige Matrix wegen fail-fast abgebrochen. Unsere Commits ändern weder `src/` noch `tests/`; Log steht aus (Lead hat keinen Zugriff auf die GitHub-API). Klären: tritt es auch upstream auf `a78cbd8` auf?
+- GitHub Actions im Fork: `tests/test_tzpath_data.py::test_dst_matches_tzdata_zi[tzpath]` rot auf macOS (3.15t), nur `Africa/Casablanca` und `Africa/El_Aaiun` an den festen Zeitpunkten 2100 und 2400 (Wandzeit 01:00, also dateutil +01 aus dem TZif-Footer, `tzdata.zi` des Runners sagt anderes). Lokal mit tzdata 2026f (Marokko ab 2026-09-20 dauerhaft +00) ist dateutil konsistent (+00 ab 2027). Vermutung: TZif-Dateien und `tzdata.zi` des macOS-Runners stammen aus verschiedenen Versionen/Formaten; dann Test-Fragilität upstream, kein dateutil-Fehler. Unbestätigt: Version und Casablanca-Eintrag der Runner-Daten fehlen; ebenso, ob upstream auf `a78cbd8` gleich scheitert.
 
 ## Rulings
 - Ruling: B-Aufgaben mit `min_trust` 0 statt 1. Grund: bisher nur eine beitragende Person mit Stufe 0; sonst nimmt niemand die Aufgaben. Kosten, falls falsch: mehr Nacharbeit, die Pipeline prüft trotzdem.
