@@ -155,5 +155,12 @@ This section applies to agents working on swarvex tasks in the fork
   (`docs/decisions/0001-lizenz.md`).
 - Only use dependencies from `requirements-dev.txt` and the standard library
   (`zoneinfo`, `datetime.fromisoformat` as oracles).
+  `hypothesis` and `tzdata` are pinned in `swarvex_tools/constraints.txt`.
+- Oracle tests comparing `dateutil.tz` with `zoneinfo` use the `tz_source`
+  fixture from `tests/conftest.py`, so both read the same time zone data.
+- Your sandbox has no network: do not search upstream issues or reproduce on
+  upstream `master` yourself; the lead does both before a report is sent.
+- Commit messages: no `Co-authored-by:` trailer for an AI tool; use
+  `Assisted-by: <agent name>:<model and version>` if you credit one.
 - Tasks and project docs are in German; code, test names and upstream reports
   in English.

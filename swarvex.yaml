@@ -3,11 +3,11 @@
 # hatch-vcs (setuptools-scm) finds no version in the sandbox clone, hence the pretend version.
 setup: |
   export SETUPTOOLS_SCM_PRETEND_VERSION=4.0.0
-  python -m pip install --quiet -r requirements-dev.txt
-  python -m pip install --quiet -e .
+  python -m pip install --quiet -c swarvex_tools/constraints.txt -r requirements-dev.txt
+  python -m pip install --quiet -c swarvex_tools/constraints.txt -e .
 test: |
   export SETUPTOOLS_SCM_PRETEND_VERSION=4.0.0
-  python -c "import dateutil, hypothesis, tzdata"
+  python -c "import hypothesis, tzdata; from importlib.metadata import version as v; assert (hypothesis.__version__, v('tzdata')) == ('6.170.5', '2026.6')"
   python -m pytest -p no:cacheprovider -p swarvex_tools.hypothesis_profile -n auto tests docs
 note: Property tests live in tests/property/ (upstream convention). Hypothesis runs with the fixed profile in swarvex_tools/hypothesis_profile.py; pin every finding with @example.
 protected: |
