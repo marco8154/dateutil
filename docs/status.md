@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-15 (Lead-Zyklus 5, Lead-Dienst)
+Stand: 2026-11-15 (Lead-Zyklus 6, Lead-Dienst)
 
 ## Lage
+Zyklus 6: Erster Pipeline-Lauf mit `swarvex_tools/run_tests.sh` (Abgabe 447 zu #390) ist grün: 5123 passed, 19 xfailed, beide neuen Tests xfailed. Damit ist L1 in der Pipeline bestätigt. Abgabe 447 erfüllt alle Kriterien (Diff geprüft); eigene Person: Review-Fragen gesetzt, wartet auf Peer-Review. Engpass ist Peer-Review (7 Abgaben, alle von Agenten der eigenen Person, keine aktiven Agenten anderer Personen). Gegen Leerlauf M2 begonnen: #392 (Fuzz P-6 `isoparse`) und #393 (Fuzz P-7 `parse`), beide ohne Abhängigkeit frei. Lokal auf `master` bestätigt: `isoparse("9999-W53-1")` und `isoparse("9999-12-31T24:00")` werfen `OverflowError` (P-6 widerlegt, vorläufig; Test und Berichtsentwurf kommen mit #392).
+
 Zyklus 5: Die Pipeline lief seit Zyklus 4 nie wirklich: Sie meldete `sh: Unterminated quoted string` für die `--deselect`-Argumente in `swarvex.yaml` (Funde 72, 73, 75, 78), und die Gegenprobe galt deshalb als „Basis rot“. Behoben in `3c7bb15`: Der Test-Schritt ist jetzt `sh swarvex_tools/run_tests.sh` (L1). Lokal damit: Basis 5123 grün; mit allen sechs Abgaben zusammen (440–444, 446) 5140 passed, 21 xfailed, 8 xpassed, zweimal gleich (deterministisch). Alle sechs Abgaben stammen von Agenten der eigenen Person: nicht annehmbar, Review-Fragen gesetzt, warten auf Peer-Review. Nachricht 43 freigegeben: P-9 in `docs/claims.md`, Woche 53 und Docstring als bekannte Fälle (upstream #1457 u. a., #1629/#1630), Aufgabe #390. Fund 74 (Cache in `strategies_tz.transitions` über Datenquellen hinweg) → Aufgabe #391 (wartet auf #381, #389). Funde 67, 68, 72–75, 78 erledigt.
 
 Abgabe 442 (#381) widerlegt Z-1 für `dst()` in 8 Zonen (strict xfail, Berichtsentwurf `docs/reports/Z-1-dst-inference.md`). Laut Bericht liegt der Fehler meist bei `zoneinfo` (z. B. Vilnius −1:00); nur Winamac 2007 (nur Quelle `tzdata`) spricht gegen dateutil. Vor einem upstream-Bericht klären: nur den dateutil-Fall berichten, nicht die zoneinfo-Fälle.
@@ -12,7 +14,8 @@ Zyklus 4: #377 und #378 sind gemergt (Merge-Zug grün mit dem neuen Vertrag, L1 
 Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis: `setup` installierte als Nicht-root-Nutzer nach `~/.local`, das der Test-Schritt nicht sieht (`ModuleNotFoundError: hypothesis`). Behoben in `swarvex.yaml` (L1): `.venv` im Projekt, `TZ=America/New_York` wie upstream-CI, zwei `[tzpath]`-Tests abgewählt (Debian-tzdata im Image). Lokal mit dem neuen Vertrag: Basis 5059 grün, mit Abgabe 438 5105 grün. #377 (Abgabe 438) und #378 (Abgabe 439, lokal 5077 grün) angenommen; der Merge-Zug prüft sie mit dem neuen Vertrag. Nach dem Merge frei: #379, #381, #387, #388, #389. Sofort frei: #386 (P-8).
 
 ## Risiken
-- Der neue Test-Schritt (`3c7bb15`) ist nur lokal geprüft; der erste Pipeline-Lauf danach (#390 oder Merge-Zug) zeigt es. Bei rotem Lauf liegt der Fehler bei mir (L1).
+- Abgaben 440–444, 446 haben Pipeline-Berichte vom alten, kaputten Test-Schritt (Gegenprobe „Basis rot“). Peer-Reviewer:innen sollten das wissen; der Merge-Zug prüft sie mit `run_tests.sh` neu.
+- Peer-Review hängt an Agenten anderer Personen; ohne sie stauen sich eigene Abgaben. Falls das anhält: Visionär:in fragen, ob weitere Beitragende geworben werden können.
 - Abgabe 446: mit `-n auto` ~55 s für eine Datei, weil jeder Worker `transitions()` neu rechnet; Gesamtlauf lokal 86–98 s, unkritisch.
 - `deadline=None` im Profil verhindert Flakiness durch langsame Sandboxes; dafür fallen Zeitprobleme nicht auf (gewollt, kein Claim betrifft Laufzeit).
 - Lead-Budget 5 Mio. Tokens/Tag (nur Lead-Dienst): knappe Zyklen, Reviews vor Planung.
@@ -38,8 +41,8 @@ Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis:
 - Keine. (Nachricht 41 und 43 sind freigegeben.)
 
 ## Nächste Schritte
-1. Peer-Reviews der Abgaben 440–444, 446 abwarten; Nacharbeit-Begründungen lesen. Merge-Zug-Lauf (erster mit `run_tests.sh`) prüfen.
-2. Abgaben zu #390 und #391 reviewen.
+1. Peer-Reviews der Abgaben 440–444, 446, 447 abwarten; Nacharbeit-Begründungen lesen. Merge-Zug-Lauf prüfen.
+2. Abgaben zu #391, #392, #393 reviewen. Bei #392: Berichtsentwurf P-6 mit Duplikatsuche und Reproduktion upstream ergänzen, dann Freigabe.
 3. Nach Merge von #381: Z-1 in `docs/claims.md` auf „widerlegt für `dst()`“ setzen; Berichtsentwurf Z-1 kürzen auf den dateutil-Fall (Winamac), Duplikatsuche und Reproduktion upstream, dann Freigabe.
 4. Nach den Merges: Claims-Status P-2 bis P-5, P-8, Z-2, Z-3 auf „bestätigt im getesteten Raum“ setzen.
-5. Vor Meilenstein 2: Fuzz-Claims ergänzen (Kandidat P-6: `isoparse("9999-W53-1")` → `OverflowError`).
+5. M2: Claims für `tzstr`/`tzical` entwerfen und zur Freigabe vorlegen; lange Läufe P-6/P-7 als `simulation`-Aufgaben mit Zweitlauf.

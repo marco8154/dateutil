@@ -1,6 +1,6 @@
 # Plan
 
-Stand: 2026-11-15 (Lead-Zyklus 5). Erledigt: #376, #377, #378; in Peer-Review: #379, #381, #386, #387, #388, #389. Neu: #390 (frei), #391 (wartet auf #381, #389). Brief bestätigt (`dbe1e9f`), Claims-Register abgezeichnet, P-9 freigegeben (Nachricht 43). Schätzung M1: 11 Aufgaben.
+Stand: 2026-11-15 (Lead-Zyklus 6). Erledigt: #376, #377, #378; in Peer-Review: #379, #381, #386, #387, #388, #389, #390. #391 wartet auf #381, #389. M2 begonnen: #392, #393 frei. Brief bestätigt (`dbe1e9f`), Claims-Register abgezeichnet, P-9 freigegeben (Nachricht 43). Schätzung M1: 11 Aufgaben.
 Lead-Budget: 5 Mio. Tokens/Tag (nur Lead-Dienst).
 
 ## Meilenstein 1: Hypothesis-Grundgerüst (parser, tz)
@@ -26,8 +26,13 @@ Ziel: gemeinsame Strategien, mit denen jeder Claim als kleine B-Aufgabe testbar 
 P-9 und der Docstring-Fall sind freigegeben und upstream bekannt (Nachricht 43): kein Bericht, nur bekannte Fälle (#390).
 
 ## Meilenstein 2: Fuzz-Ziele
-Nach M1: Fuzz-Ziele (Hypothesis, keine nativen Fuzzer) für `parse` (wirft nur ParserError/OverflowError), `isoparse` und `tzstr`/`tzical`; lange Läufe als `simulation`-Aufgaben mit Zweitlauf.
-Kandidat P-6 (aus Zyklus 5): `isoparse("9999-W53-1")` wirft `OverflowError` statt `ValueError`.
+Fuzz-Ziele (Hypothesis, keine nativen Fuzzer) für `parse` (wirft nur ParserError/OverflowError), `isoparse` und `tzstr`/`tzical`; lange Läufe als `simulation`-Aufgaben mit Zweitlauf. Schätzung: 7 Aufgaben.
+
+| # | Aufgabe | Level | Pfade | hängt ab von |
+|---|---|---|---|---|
+| #392 | Fuzz-Ziel P-6: `isoparse` wirft nur `ValueError`; bekannter Fund `OverflowError` bei Jahr 9999 (`9999-W53-1`, `9999-12-31T24:00`) als xfail + Berichtsentwurf | B | `tests/property/test_isoparse_fuzz_prop.py`, `docs/reports/p6-*.md` | – (nutzt `strategies_iso`, gemergt) |
+| #393 | Fuzz-Ziel P-7: `parse` wirft nur `ParserError`/`OverflowError` | B | `tests/property/test_parser_fuzz_prop.py`, `docs/reports/p7-*.md` | – |
+| später | Claims für `tzstr`/`tzical` (Lead, Freigabe Visionär:in), dann je ein Fuzz-Ziel; lange Läufe P-6/P-7 als `simulation` mit Zweitlauf | B/A | – | #392, #393 |
 
 ## Meilenstein 3 (später): rrule und relativedelta
 `rrule` gegen RFC 5545, `relativedelta`. Vor dem Start ein kleines Interview (Umfang, Orakel).
