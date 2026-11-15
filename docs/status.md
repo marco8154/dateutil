@@ -3,7 +3,7 @@
 Stand: 2026-11-15 (Lead-Zyklus 3, Lead-Dienst)
 
 ## Lage
-Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis: `setup` installierte als Nicht-root-Nutzer nach `~/.local`, das der Test-Schritt nicht sieht (`ModuleNotFoundError: hypothesis`). Behoben in `swarvex.yaml` (L1): `.venv` im Projekt, `TZ=America/New_York` wie upstream-CI, zwei `[tzpath]`-Tests abgewählt (Debian-tzdata im Image). Lokal mit dem neuen Vertrag: Basis 5059 grün, mit Abgabe 438 5105 grün. #377 angenommen (Merge-Zug prüft mit neuem Vertrag). Neu: #386 (P-8, frei), #387/#388 (P-3, P-4, warten auf #377), #389 (Z-3, wartet auf #378). Abgabe 439 (#378) ist noch in der Prüfung.
+Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis: `setup` installierte als Nicht-root-Nutzer nach `~/.local`, das der Test-Schritt nicht sieht (`ModuleNotFoundError: hypothesis`). Behoben in `swarvex.yaml` (L1): `.venv` im Projekt, `TZ=America/New_York` wie upstream-CI, zwei `[tzpath]`-Tests abgewählt (Debian-tzdata im Image). Lokal mit dem neuen Vertrag: Basis 5059 grün, mit Abgabe 438 5105 grün. #377 (Abgabe 438) und #378 (Abgabe 439, lokal 5077 grün) angenommen; der Merge-Zug prüft sie mit dem neuen Vertrag. Nach dem Merge frei: #379, #381, #387, #388, #389. Sofort frei: #386 (P-8).
 
 ## Risiken
 - `swarvex.yaml` ist ungeprüft: Die Lead-Umgebung hat weder Netz noch das `swarvex`-CLI. Die erste Abgabe (#377 oder #378) ist der erste Pipeline-Lauf; bei rotem `setup` liegt der Fehler bei mir (L1), nicht bei der Abgabe.
@@ -31,6 +31,6 @@ Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis: `setup` i
 
 ## Nächste Schritte
 1. Merge-Zug von #377 und nächsten Pipeline-Bericht prüfen: Ist L1 dort grün? Wenn `.venv` fehlt, Installationsort ändern.
-2. Abgabe 439 (#378) reviewen, sobald geprüft.
+2. Abgaben zu #379, #381, #386–#389 reviewen.
 3. Nach Antwort auf die Freigabe: Claim P-9 und Docstring-Fix (Funde 67, 68) als Aufgaben schneiden, sonst Funde verwerfen.
 4. Vor Meilenstein 2: Fuzz-Claims ergänzen.
