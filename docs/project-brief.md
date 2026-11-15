@@ -1,7 +1,7 @@
 # Projektbrief: dateutil absichern
 
 > Ergebnis des Projektinterviews (LEAD.md, Phase 0). Aufgaben entstehen erst, wenn die Visionärin / der Visionär ihn bestätigt.
-> Stand: 2026-11-15 · Interviewrunden: 1 (beantwortet) · bestätigt: **noch nicht**
+> Stand: 2026-11-15 · Interviewrunden: 1 (beantwortet) · **bestätigt: 2026-11-15 (Stand `dbe1e9f`)**
 
 ## Entscheidungen (harte Fakten)
 
