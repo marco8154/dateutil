@@ -16,7 +16,7 @@ Toleranz: alle Claims sind exakt (gleiche Werte bzw. gleiche Ausnahmeklasse); ke
 | P-6 | Rückgabe/Fehler von `isoparse` | Für beliebige Strings wirft `isoparse` nur `ValueError` (oder liefert ein `datetime`) | Erwartung | Fuzz-Ziel, Meilenstein 2 | – | offen |
 | P-7 | `_parser.py:1350–1357` | `parse(s)` wirft für beliebige Strings nur `ParserError` oder `OverflowError` (oder liefert ein `datetime`) | Vertrag | Fuzz-Ziel, Meilenstein 2 | – | offen |
 | P-8 | `_parser.py` (Vertrag mit `isoformat`, Brief F2b) | `parse(dt.isoformat())` liefert `dt` (Wandzeit und Offset) | Erwartung | `tests/property/test_parser_roundtrip_prop.py` | – | offen |
-| Z-1 | `tz.py:890 ff.` (`gettz`), PEP 615 | Für jeden IANA-Schlüssel und jeden Zeitpunkt liefern `tz.gettz(k)` und `zoneinfo.ZoneInfo(k)` aus derselben Datenquelle gleiche `utcoffset()`, `dst()` und `tzname()`, für `fold=0` und `fold=1` | Vertrag (Orakel) | `tests/property/test_tz_oracle_prop.py` | – | offen |
+| Z-1 | `tz.py:890 ff.` (`gettz`), PEP 615 | Für jeden IANA-Schlüssel und jeden Zeitpunkt liefern `tz.gettz(k)` und `zoneinfo.ZoneInfo(k)` aus derselben Datenquelle gleiche `utcoffset()`, `dst()` und `tzname()`, für `fold=0` und `fold=1` | Erwartung (Orakel; dateutil dokumentiert die Gleichheit mit zoneinfo nicht) | `tests/property/test_tz_oracle_prop.py` | – | offen |
 | Z-2 | `tz.py` (`tzinfo.fromutc`) | Für jeden Schlüssel: `dt.astimezone(z).astimezone(UTC) == dt` für UTC-Zeitpunkte | Vertrag | `tests/property/test_tz_oracle_prop.py` | Z-1 | offen |
 | Z-3 | `tz.py:1258–1345` | `datetime_exists`, `datetime_ambiguous` und `resolve_imaginary` stimmen mit der Definition über `fold`/`utcoffset` von `zoneinfo` überein | Vertrag (Orakel) | `tests/property/test_tz_helpers_prop.py` | Z-1 | offen |
 

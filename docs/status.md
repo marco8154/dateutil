@@ -11,7 +11,7 @@ Brief bestätigt (`dbe1e9f`). Claims-Register als Entwurf (`docs/claims.md`, 11 
 - Lead-Budget 5 Mio. Tokens/Tag (nur Lead-Dienst): knappe Zyklen, Reviews vor Planung.
 - Pins aus Websuche (PyPI war nicht abrufbar): hypothesis 6.170.5 (2026-10-20), tzdata 2026.6 (IANA 2026f). Gibt es eine Version nicht, schlägt `setup` fehl; dann korrigiere ich den Pin.
 
-- GitHub Actions im Fork: `tests/test_tzpath_data.py::test_dst_matches_tzdata_zi[tzpath]` rot auf macOS (3.15t), nur `Africa/Casablanca` und `Africa/El_Aaiun` an den festen Zeitpunkten 2100 und 2400 (Wandzeit 01:00, also dateutil +01 aus dem TZif-Footer, `tzdata.zi` des Runners sagt anderes). Lokal mit tzdata 2026f (Marokko ab 2026-09-20 dauerhaft +00) ist dateutil konsistent (+00 ab 2027). Vermutung: TZif-Dateien und `tzdata.zi` des macOS-Runners stammen aus verschiedenen Versionen/Formaten; dann Test-Fragilität upstream, kein dateutil-Fehler. Unbestätigt: Version und Casablanca-Eintrag der Runner-Daten fehlen; ebenso, ob upstream auf `a78cbd8` gleich scheitert.
+- GitHub Actions im Fork: `tests/test_tzpath_data.py::test_dst_matches_tzdata_zi[tzpath]` rot auf macOS (Casablanca, El_Aaiun, 2100/2400). Upstream `dateutil/dateutil` ist seit 2026-11-10 auf macOS ebenfalls rot (PR-Läufe 43319539839, 43319500377, 43247862099; Jobs 3.14 und 3.15 macos-latest), `a78cbd8` war am 2026-11-01 grün. Also Änderung der Runner-Daten (vermutlich Marokko-Änderung in tzdata 2026e/f), nicht unsere Commits. Lokal mit 2026f ist dateutil konsistent. Upstream sieht es selbst; vor jedem Bericht Duplikatsuche (Lead hat hier keinen GitHub-Zugriff).
 
 ## Rulings
 - Ruling: B-Aufgaben mit `min_trust` 0 statt 1. Grund: bisher nur eine beitragende Person mit Stufe 0; sonst nimmt niemand die Aufgaben. Kosten, falls falsch: mehr Nacharbeit, die Pipeline prüft trotzdem.
@@ -23,7 +23,7 @@ Brief bestätigt (`dbe1e9f`). Claims-Register als Entwurf (`docs/claims.md`, 11 
 - Ruling: SPDX `Apache-2.0 AND BSD-3-Clause` nur in neuen Dateien außerhalb von `src/` und `tests/`. Grund: upstream führt keine Header. Kosten, falls falsch: Header ergänzen.
 
 ## Offene Freigaben
-- Abzeichnung `docs/claims.md` (Nachricht 41) → danach #376 mit `complete_own_task` schließen.
+- Abzeichnung `docs/claims.md` (Nachricht 41; Z-1 auf Wunsch zu „Erwartung“ geändert) → danach #376 mit `complete_own_task` schließen.
 
 ## Nächste Schritte
 1. Erste Abgabe: Pipeline-Bericht prüfen (L1), dann Review.
