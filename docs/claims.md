@@ -1,6 +1,6 @@
 # Claims-Register
 
-Stand: 2026-11-15 · Entwurf des Leads · **abgezeichnet: 2026-11-15 durch die Visionärin / den Visionär (im Lead-Gespräch, Stand `5500c57`)**
+Stand: 2026-11-15 · Entwurf des Leads · **abgezeichnet: 2026-11-15 durch die Visionärin / den Visionär (im Lead-Gespräch, Stand `5500c57`); P-9 freigegeben 2026-11-15 (Nachricht 43)**
 
 Quelle aller Claims: `dateutil/dateutil` @ `a78cbd8`; Zeilen beziehen sich auf diesen Stand. Ein Claim gilt nur für den getesteten Eingaberaum (Säule 5). „Vertrag“ = dokumentiert; „Erwartung“ = nicht dokumentiert, ein Verstoß ist ein Fund, aber kein Vertragsbruch, und so wird er auch berichtet.
 
@@ -16,6 +16,7 @@ Toleranz: alle Claims sind exakt (gleiche Werte bzw. gleiche Ausnahmeklasse); ke
 | P-6 | Rückgabe/Fehler von `isoparse` | Für beliebige Strings wirft `isoparse` nur `ValueError` (oder liefert ein `datetime`) | Erwartung | Fuzz-Ziel, Meilenstein 2 | – | offen |
 | P-7 | `_parser.py:1350–1357` | `parse(s)` wirft für beliebige Strings nur `ParserError` oder `OverflowError` (oder liefert ein `datetime`) | Vertrag | Fuzz-Ziel, Meilenstein 2 | – | offen |
 | P-8 | `_parser.py` (Vertrag mit `isoformat`, Brief F2b) | `parse(dt.isoformat())` liefert `dt` (Wandzeit und Offset) | Erwartung | `tests/property/test_parser_roundtrip_prop.py` | – | offen |
+| P-9 | `isoparser.py` (`_calculate_weekdate`), ISO 8601 | `isoparse` wirft `ValueError` für eine Woche, die es im ISO-Jahr nicht gibt (Woche 53 in einem Jahr mit 52 ISO-Wochen), wie `date.fromisocalendar` | Erwartung (der Docstring garantiert die Strenge ausdrücklich nicht) | `tests/property/test_isoparse_week53_prop.py` | – | bekannt upstream, siehe unten |
 | Z-1 | `tz.py:890 ff.` (`gettz`), PEP 615 | Für jeden IANA-Schlüssel und jeden Zeitpunkt liefern `tz.gettz(k)` und `zoneinfo.ZoneInfo(k)` aus derselben Datenquelle gleiche `utcoffset()`, `dst()` und `tzname()`, für `fold=0` und `fold=1` | Erwartung (Orakel; dateutil dokumentiert die Gleichheit mit zoneinfo nicht) | `tests/property/test_tz_oracle_prop.py` | – | offen |
 | Z-2 | `tz.py` (`tzinfo.fromutc`) | Für jeden Schlüssel: `dt.astimezone(z).astimezone(UTC) == dt` für UTC-Zeitpunkte | Vertrag | `tests/property/test_tz_oracle_prop.py` | Z-1 | offen |
 | Z-3 | `tz.py:1258–1345` | `datetime_exists`, `datetime_ambiguous` und `resolve_imaginary` stimmen mit der Definition über `fold`/`utcoffset` von `zoneinfo` überein | Vertrag (Orakel) | `tests/property/test_tz_helpers_prop.py` | Z-1 | offen |
@@ -24,6 +25,8 @@ Toleranz: alle Claims sind exakt (gleiche Werte bzw. gleiche Ausnahmeklasse); ke
 | Claim | Fall | Upstream | Behandlung im Test |
 |---|---|---|---|
 | Z-1 | `dst()` für `Africa/Casablanca` und `Africa/El_Aaiun` nach dem letzten Übergang; hängt von der tzdata-Version ab (lässt upstream `test_dst_matches_tzdata_zi[tzpath]` auf macOS seit 2026-11-10 scheitern; mit tzdata 2026f konsistent) | offener PR dateutil/dateutil#1667 „Fix dst() for zones that end in permanent DST“ (Maintainer, 2026-11-07); Duplikatsuche 2026-11-15 durch Visionär:in: einziger Treffer | eigener Test, `xfail(strict=False)`, im generischen Z-1-Test wird `dst()` für diese Schlüssel nicht verglichen (Aufgabe #381) |
+| P-9 | `isoparse("2017-W53-1")` liefert 2018-01-01, obwohl 2017 nur 52 ISO-Wochen hat (`_calculate_weekdate` prüft nur 0 < Woche < 54); Fund 68 | offene PRs dateutil/dateutil#1457, #1506, #1551, #1582, #1659 (Duplikatsuche 2026-11-15 durch Visionär:in) | `xfail(strict=True)` mit Verweis auf die PRs, kein Berichtsentwurf |
+| P-5 (Doku) | Docstring von `isoparse`: bei `YYYY-Www` „day defaults to 0“; tatsächlich und laut ISO Montag (1); Fund 67 | Issue dateutil/dateutil#1629, PR #1630 | `xfail(strict=True)` auf den Docstring-Text, kein Berichtsentwurf; das Verhalten (Montag) prüft schon der P-5-Test |
 
 ## Später (Meilenstein 2)
 Fuzz-Ziele für P-6, P-7 sowie `tzstr` und `tzical` (Claims werden vor Meilenstein 2 ergänzt, neue IDs).
