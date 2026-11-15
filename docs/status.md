@@ -11,6 +11,8 @@ Brief bestätigt (`dbe1e9f`). Claims-Register als Entwurf (`docs/claims.md`, 11 
 - Lead-Budget 5 Mio. Tokens/Tag (nur Lead-Dienst): knappe Zyklen, Reviews vor Planung.
 - Pins aus Websuche (PyPI war nicht abrufbar): hypothesis 6.170.5 (2026-10-20), tzdata 2026.6 (IANA 2026f). Gibt es eine Version nicht, schlägt `setup` fehl; dann korrigiere ich den Pin.
 
+- GitHub Actions im Fork (upstream-`validate.yml`): Job `test (3.15t, macos-latest)` rot, die übrige Matrix wegen fail-fast abgebrochen. Unsere Commits ändern weder `src/` noch `tests/`; Log steht aus (Lead hat keinen Zugriff auf die GitHub-API). Klären: tritt es auch upstream auf `a78cbd8` auf?
+
 ## Rulings
 - Ruling: B-Aufgaben mit `min_trust` 0 statt 1. Grund: bisher nur eine beitragende Person mit Stufe 0; sonst nimmt niemand die Aufgaben. Kosten, falls falsch: mehr Nacharbeit, die Pipeline prüft trotzdem.
 - Ruling: Strategien importieren kein dateutil, erwartete Werte nur mit `datetime.timezone`/`zoneinfo`. Grund: sonst prüft das Orakel dateutil gegen sich selbst. Kosten, falls falsch: keine.
