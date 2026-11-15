@@ -3,6 +3,8 @@
 # hatch-vcs (setuptools-scm) finds no version in the sandbox clone, hence the pretend version.
 # The sandbox user is not root: a plain pip install lands in ~/.local, which the
 # test step does not see. Dependencies therefore live in .venv inside the project.
+# The test step lives in swarvex_tools/run_tests.sh: the pipeline broke the
+# quoted --deselect arguments when they stood inline here.
 # TZ as in upstream CI (.github/workflows/validate.yml).
 # Deselected: two [tzpath] tests that read the image's system zoneinfo (Debian
 # tzdata 2026f-0+deb13u1 has Europe/Monaco and Europe/Guernsey as zones of their
@@ -13,10 +15,7 @@ setup: |
   .venv/bin/python -m pip install --quiet -c swarvex_tools/constraints.txt -r requirements-dev.txt
   .venv/bin/python -m pip install --quiet -c swarvex_tools/constraints.txt -e .
 test: |
-  export SETUPTOOLS_SCM_PRETEND_VERSION=4.0.0
-  export TZ=America/New_York
-  .venv/bin/python -c "import hypothesis, tzdata; from importlib.metadata import version as v; assert (hypothesis.__version__, v('tzdata')) == ('6.170.5', '2026.6')"
-  .venv/bin/python -m pytest -p no:cacheprovider -p swarvex_tools.hypothesis_profile -n auto tests docs --deselect "tests/test_tz.py::test_gettz_link[tzpath-Europe/Monaco-Europe/Paris]" --deselect "tests/test_tzpath_data.py::test_dst_matches_tzdata_zi[tzpath]"
+  sh swarvex_tools/run_tests.sh
 note: Property tests live in tests/property/ (upstream convention). Hypothesis runs with the fixed profile in swarvex_tools/hypothesis_profile.py; pin every finding with @example.
 protected: |
   - swarvex.yaml
