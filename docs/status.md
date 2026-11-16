@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-16 (Lead-Zyklus 20, Lead-Dienst)
+Stand: 2026-11-16 (Lead-Zyklus 21, Lead-Dienst)
 
 ## Lage
+Zyklus 21: Abgabe 477 (#408, langer Lauf T-3, Seed 1) von der zweiten Person angenommen (Peer-Review hctib-tech: approve): Pipeline grün (5127 passed, 33 xfailed), `1 passed` in 126 s, keine Funde; sha256 der Testdatei stimmt mit `master`, Lauf lokal wiederholt: `1 passed` (303 s). Inzwischen gemergt: #386 (P-8), #388 (P-4), #389 (Z-3), #390 (P-9), #392 (P-6), #393 (P-7). Claims P-4, P-7, P-8, Z-3 in `docs/claims.md` auf „bestätigt im getesteten Raum“, P-6 auf „widerlegt“ (Test gemergt), T-3 mit Laufzahl Seed 1. Nur noch Abgabe 443 (#387, P-3, eigene Person) wartet auf Peer-Review (15,7 h). Frei: 7 Aufgaben (u. a. #394–#397, #409), keine aktiven Agenten; Angebot reicht, keine neuen Aufgaben. T-2-Duplikatsuche weiter offen (Nächster Schritt 00).
+
 Zyklus 20: Abgabe 475 (#407, langer Lauf T-1, Seed 2) von der zweiten Person angenommen: Pipeline grün (5126 passed, 21 xfailed), `1 passed` in 123 s, keine Funde; sha256 der Testdatei stimmt, Lauf lokal wiederholt: `1 passed` (344 s). T-1-Laufzahlen in `docs/claims.md` ergänzt (2 × 200 000, Seed 1/2). Fund 96 (Sandbox ohne `git`, `git rev-parse HEAD` nicht ausführbar) verworfen mit Ruling unten. Offen: 11 eigene Abgaben ohne Peer-Review (älteste 13,6 h), keine aktiven Agenten; frei #408/#409 nach Merge von #404. T-2-Duplikatsuche weiter offen (Nächster Schritt 00).
 
 Zyklus 19: Abgabe 474 (#406, langer Lauf T-1, Seed 1) von der zweiten Person angenommen: Pipeline grün (5126 passed, 21 xfailed), `1 passed` in 124 s, keine Funde. sha256 der Testdatei stimmt mit `792675b`; Lauf mit gleichem Befehl und Seed lokal wiederholt: `1 passed` (337 s). #405 ist gemergt (`b88e6f8`): Nächster Schritt 00 erledigt. Gaza/Hebron im T-2-Test und -Bericht auf 2090-03-25 00:00 UTC (nach dem letzten expliziten Übergang 2086; dort gilt der Fuß, Abweichung +3:00 vs. +2:00 bestätigt), Kommentar auf `KEYS` eingeschränkt, „Regressed by“ → „Covered by“. Lokal: Datei 1 passed, 12 xfailed; Gesamt 5127 passed, 33 xfailed. Offen bei T-2: Duplikatsuche und Reproduktion upstream (Lead-Pflicht, Sandbox des Lead-Dienstes hat dafür keinen `gh`-Zugang zu upstream geprüft; nächster Zyklus). Weiter 11 eigene Abgaben ohne Peer-Review (älteste 13,5 h), keine aktiven Agenten; frei #407.
@@ -71,9 +73,9 @@ Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis:
 
 ## Nächste Schritte
 00. T-2-Berichte: Duplikatsuche upstream („tzstr angle brackets“, „tzstr transition time hours“, „tzstr negative DST Dublin“) und Reproduktion auf upstream-master.
-0. Abgaben zu #408, #409 reviewen. Vor dem T-1-Bericht (nach dem Merge von #402): beide Pfade im Bericht; Docstring-Name (Fund 93) als Randnotiz oder eigener Doku-Fix, die Visionärin / der Visionär entscheidet. Vor jedem T-Bericht: Duplikatsuche upstream (z. B. „tzstr angle brackets“, „tzstr UTC TypeError“, „tzical OverflowError“) und Reproduktion auf upstream-master. Vor dem T-3-Bericht: Abgrenzung zu P-7 (Parser darf laut Claim `OverflowError` werfen; `rrulestr`/`tzical` dokumentieren `ValueError`).
+0. Abgabe zu #409 reviewen; danach T-3 mit 2 × 200 000 in `docs/claims.md`. Vor dem T-1-Bericht (nach dem Merge von #402): beide Pfade im Bericht; Docstring-Name (Fund 93) als Randnotiz oder eigener Doku-Fix, die Visionärin / der Visionär entscheidet. Vor jedem T-Bericht: Duplikatsuche upstream (z. B. „tzstr angle brackets“, „tzstr UTC TypeError“, „tzical OverflowError“) und Reproduktion auf upstream-master. Vor dem T-3-Bericht: Abgrenzung zu P-7 (Parser darf laut Claim `OverflowError` werfen; `rrulestr`/`tzical` dokumentieren `ValueError`).
 1. Peer-Reviews der Abgaben 440–444, 446, 447, 449, 450 abwarten; Nacharbeit-Begründungen lesen. Merge-Zug-Lauf prüfen.
 2. Abgaben zu #391, #394–#397 reviewen. Nach Merge von #398/#399 (Abgaben 464/468): P-1 „bestätigt im getesteten Raum“ (2 × bis 200 000 Beispiele, Seed 1/2). Nach Merge von #392: Berichtsentwurf P-6 mit Duplikatsuche und Reproduktion upstream ergänzen, dann Freigabe.
 3. Nach Merge von #381: Z-1 in `docs/claims.md` auf „widerlegt für `dst()`“ setzen; Berichtsentwurf Z-1 kürzen auf den dateutil-Fall (Winamac), Duplikatsuche und Reproduktion upstream, dann Freigabe.
-4. Nach den Merges: Claims-Status P-2 bis P-5, P-8, Z-2, Z-3 auf „bestätigt im getesteten Raum“ setzen.
-5. Nach Merge von #393: P-7 auf „bestätigt im getesteten Raum“ (200 Beispiele), nach #396/#397 mit Laufzahlen ergänzen.
+4. Nach den Merges: Claims-Status P-2, P-3, P-5, Z-2 auf „bestätigt im getesteten Raum“ setzen (P-4, P-8, Z-3 erledigt in Zyklus 21). P-6-Berichtsentwurf: Duplikatsuche und Reproduktion upstream (Lead-Pflicht), dann Freigabe.
+5. P-7 nach #396/#397, P-6 nach #394/#395 mit Laufzahlen ergänzen.
