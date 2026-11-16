@@ -28,8 +28,14 @@ Toleranz: alle Claims sind exakt (gleiche Werte bzw. gleiche Ausnahmeklasse); ke
 | P-9 | `isoparse("2017-W53-1")` liefert 2018-01-01, obwohl 2017 nur 52 ISO-Wochen hat (`_calculate_weekdate` prüft nur 0 < Woche < 54); Fund 68 | offene PRs dateutil/dateutil#1457, #1506, #1551, #1582, #1659 (Duplikatsuche 2026-11-15 durch Visionär:in) | `xfail(strict=True)` mit Verweis auf die PRs, kein Berichtsentwurf |
 | P-5 (Doku) | Docstring von `isoparse`: bei `YYYY-Www` „day defaults to 0“; tatsächlich und laut ISO Montag (1); Fund 67 | Issue dateutil/dateutil#1629, PR #1630 | `xfail(strict=True)` auf den Docstring-Text, kein Berichtsentwurf; das Verhalten (Montag) prüft schon der P-5-Test |
 
-## Später (Meilenstein 2)
-Fuzz-Ziele für P-6, P-7 sowie `tzstr` und `tzical` (Claims werden vor Meilenstein 2 ergänzt, neue IDs).
+## Entwurf Meilenstein 2: `tzstr` und `tzical` (Freigabe ausstehend, Zyklus 7)
+Quelle: `dateutil/dateutil` @ `a78cbd8`, Docstrings von `tzstr` (`tz.py:467–506`) und `tzical` (`tz.py:680–730`). Datenquelle für T-2: `tzdata` 2026.6 (gepinnt).
+
+| ID | Quelle | Claim in unseren Worten | Art | Abnahme (Test) | Hängt ab von | Status |
+|---|---|---|---|---|---|---|
+| T-1 | `tz.py:508–516` | `tzstr(s)` liefert für beliebige Strings ein `tzinfo` oder wirft `ValueError`, nie eine andere Ausnahme (`DeprecatedTZFormatWarning` erlaubt) | Erwartung | `tests/property/test_tzstr_fuzz_prop.py` | – | Entwurf |
+| T-2 | `tz.py:469–471` (Verweis auf das TZ-Format der GNU C Library) | Für den POSIX-TZ-String im Fuß jeder TZif-Datei aus `tzdata` liefert `tzstr(s, posix_offset=True)` für UTC-Zeitpunkte nach dem letzten Übergang denselben `utcoffset()` wie `zoneinfo.ZoneInfo(k)` | Erwartung (Orakel) | `tests/property/test_tzstr_oracle_prop.py` | – | Entwurf; lokale Probe (Zyklus 7, 2040–2041): 231 Fuß-Strings mit `<…>`-Abkürzungen (z. B. `<-03>3`) abgelehnt (`ValueError`), 6 Zonen mit Übergangszeiten `/0`, `/26`, `/50` (Beirut, Gaza, Hebron, Jerusalem) mit anderem Offset |
+| T-3 | `tz.py:680–688`, `_parse_rfc` | `tzical(StringIO(s))` liefert für beliebige Strings ein Objekt oder wirft `ValueError`, nie eine andere Ausnahme | Erwartung | `tests/property/test_tzical_fuzz_prop.py` | – | Entwurf |
 
 ## Regeln
 - IDs werden nie wiederverwendet; ein geänderter Claim bekommt eine neue Version (`Z-1.2`).
