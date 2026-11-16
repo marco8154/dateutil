@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta, timezone
+from unittest import mock
 from zoneinfo import ZoneInfo, available_timezones
 
 import pytest
@@ -135,6 +136,29 @@ def test_wall_times_are_naive_with_fold(dt):
         for t in transitions("Europe/Berlin")
     ]
     assert any(abs(dt - w) <= timedelta(days=2) for w in near)
+
+
+@pytest.mark.gettz
+def test_wall_times_use_zone_of_active_source():
+    for source in ("tzpath", "tzdata"):
+        reason = tz_source_skip_reason(source)
+        if reason:
+            pytest.skip(reason)
+
+    with tz_source_context("tzpath"):
+        ZoneInfo("Europe/Berlin")
+    with tz_source_context("tzdata"):
+        # Warm the transitions cache so that only wall_times_near_transitions
+        # itself can load the zone below.
+        transitions("Europe/Berlin")
+        # ZoneInfo is immutable, so the name in strategies_tz is wrapped.
+        with mock.patch.object(strategies_tz, "ZoneInfo", wraps=ZoneInfo) as zi:
+            strategy = wall_times_near_transitions("Europe/Berlin")
+            zi.no_cache.assert_called_once_with("Europe/Berlin")
+            wall = find(strategy, lambda dt: True)
+            zi.no_cache.assert_called_once_with("Europe/Berlin")
+            zi.assert_not_called()
+    assert wall.tzinfo is None
 
 
 @pytest.mark.gettz

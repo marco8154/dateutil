@@ -122,8 +122,12 @@ def wall_times_near_transitions(key: str) -> st.SearchStrategy[datetime]:
     if not instants:
         return utc_datetimes().map(lambda dt: dt.replace(tzinfo=None))
 
+    # Loaded now, from the source that also gave the instants; ZoneInfo's
+    # cache is keyed by key alone.
+    tzi = ZoneInfo.no_cache(key)
+
     def near_wall(instant):
-        local = instant.astimezone(ZoneInfo(key))
+        local = instant.astimezone(tzi)
         return _offset_deltas().map(
             lambda delta: (local + delta).replace(tzinfo=None)
         )
