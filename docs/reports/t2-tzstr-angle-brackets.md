@@ -39,7 +39,7 @@ those zones. Examples (the exact footer text of the zone):
 | `America/Santiago` | `<-04>4<-03>,M9.1.6/24,M4.1.6/24` |
 | `Australia/Lord_Howe` | `<+1030>-10:30<+11>-11,M10.1.0,M4.1.0` |
 
-Regressed by `tests/property/test_tzstr_oracle_prop.py::
+Covered by `tests/property/test_tzstr_oracle_prop.py::
 test_tzstr_angle_bracket_abbreviations`
 (`xfail(strict=True, raises=ValueError)`).
 

@@ -1,6 +1,6 @@
 # Plan
 
-Stand: 2026-11-16 (Lead-Zyklus 17). Frei: #405 (T-2), #406/#407 (#402 gemergt, `746f44a`). #404 angenommen (Abgabe 472), Merge-Zug ausstehend; #408/#409 warten auf #404. In Peer-Review zusätzlich: #398, #399. Erledigt: #376, #377, #378; in Peer-Review: #379, #381, #386, #387, #388, #389, #390, #392, #393. #391 wartet auf #381, #389; #394/#395 auf #392, #396/#397 auf #393. Claims T-1 bis T-3 freigegeben (Nachricht 44). Brief bestätigt (`dbe1e9f`), Claims-Register abgezeichnet, P-9 freigegeben (Nachricht 43). Schätzung M1: 11 Aufgaben.
+Stand: 2026-11-16 (Lead-Zyklus 19). #405 gemergt (`b88e6f8`), #404 gemergt (`792675b`). #406 angenommen (Abgabe 474), Merge-Zug ausstehend. Frei: #407, #408/#409. In Peer-Review zusätzlich: #398, #399. Erledigt: #376, #377, #378; in Peer-Review: #379, #381, #386, #387, #388, #389, #390, #392, #393. #391 wartet auf #381, #389; #394/#395 auf #392, #396/#397 auf #393. Claims T-1 bis T-3 freigegeben (Nachricht 44). Brief bestätigt (`dbe1e9f`), Claims-Register abgezeichnet, P-9 freigegeben (Nachricht 43). Schätzung M1: 11 Aufgaben.
 Lead-Budget: 5 Mio. Tokens/Tag (nur Lead-Dienst).
 
 ## Meilenstein 1: Hypothesis-Grundgerüst (parser, tz)

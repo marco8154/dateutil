@@ -17,14 +17,13 @@ GNU TZ format prescribes.
 | Zone | Footer | UTC instant | `utcoffset` zoneinfo | `utcoffset` tzstr |
 |---|---|---|---|---|
 | `Asia/Beirut` | `EET-2EEST,M3.5.0/0,M10.5.0/0` | 2040-10-27 21:00 | +2:00 | +3:00 |
-| `Asia/Gaza`, `Asia/Hebron` | `EET-2EEST,M3.4.4/50,M10.4.4/50` | 2040-03-24 00:00 | +3:00 | +2:00 |
+| `Asia/Gaza`, `Asia/Hebron` | `EET-2EEST,M3.4.4/50,M10.4.4/50` | 2090-03-25 00:00 | +3:00 | +2:00 |
 | `Asia/Jerusalem`, `Asia/Tel_Aviv`, `Israel` | `IST-2IDT,M3.4.4/26,M10.5.0` | 2040-03-23 00:00 | +3:00 | +2:00 |
 | `Europe/Dublin`, `Eire` | `IST-1GMT0,M10.5.0,M3.5.0/1` | 2040-10-28 01:00 | +0:00 | +1:00 |
 
 The expected value is the one `zoneinfo` (and glibc `localtime`) give, since
-the footer is a GNU TZ variable string. Scanning 2040 half-hourly, `tzstr`
-applied the spring transition 5 days late (Gaza/Hebron) and 6 days late
-(Jerusalem), and the autumn transition 24 h late (Beirut) and 1 h late
+the footer is a GNU TZ variable string. Scanning half-hourly, `tzstr`
+applied the spring transition days late (Gaza/Hebron, Jerusalem), and the autumn transition 24 h late (Beirut) and 1 h late
 (Dublin); the wrong offsets persist well after each instant in the table.
 
 ### `/0`: transition at midnight
@@ -44,12 +43,13 @@ assert u.astimezone(tzn).utcoffset() == timedelta(hours=2)  # actual: 3:00
 ### `/50` and `/26`: transition times at or beyond 24 h
 
 The GNU format allows the time to reach 167 h; `M3.4.4/50` (Gaza) is 02:00 on
-the day after the fourth Thursday of March, i.e. DST starts 2040-03-24 00:00
-UTC; `M3.4.4/26` (Jerusalem) starts 2040-03-23 00:00 UTC. In 2040 `tzstr`
-applied the transitions 5 and 6 days later.
+the second day after the fourth Thursday of March, i.e. DST starts 2090-03-25
+00:00 UTC (Gaza's TZif file has explicit transitions until 2086, so the footer
+governs from then on); `M3.4.4/26` (Jerusalem) starts 2040-03-23 00:00 UTC.
+`tzstr` applied the transitions days later.
 
 ```python
-u = datetime(2040, 3, 24, 0, 0, tzinfo=timezone.utc)
+u = datetime(2090, 3, 25, 0, 0, tzinfo=timezone.utc)
 tzn = tz.tzstr("EET-2EEST,M3.4.4/50,M10.4.4/50", posix_offset=True)
 assert u.astimezone(tzn).utcoffset() == timedelta(hours=3)  # actual: 2:00
 
@@ -70,7 +70,7 @@ tzn = tz.tzstr("IST-1GMT0,M10.5.0,M3.5.0/1", posix_offset=True)
 assert u.astimezone(tzn).utcoffset() == timedelta(0)  # actual: 1:00
 ```
 
-Regressed by `tests/property/test_tzstr_oracle_prop.py::
+Covered by `tests/property/test_tzstr_oracle_prop.py::
 test_tzstr_known_offset_differences`
 (`xfail(strict=True)`, one pinned instant per key).
 

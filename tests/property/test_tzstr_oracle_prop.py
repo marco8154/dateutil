@@ -47,11 +47,12 @@ def _oracle_zone(key):
 
 
 # Footers with a transition time or a negative DST that tzstr misapplies;
-# see docs/reports/t2-tzstr-transition-times.md.
+# see docs/reports/t2-tzstr-transition-times.md. Gaza and Hebron have
+# explicit transitions until 2086, so their instant lies after those.
 KNOWN_DIFFERENCES = [
     ("Asia/Beirut", datetime(2040, 10, 27, 21, 0, tzinfo=_UTC)),
-    ("Asia/Gaza", datetime(2040, 3, 24, 0, 0, tzinfo=_UTC)),
-    ("Asia/Hebron", datetime(2040, 3, 24, 0, 0, tzinfo=_UTC)),
+    ("Asia/Gaza", datetime(2090, 3, 25, 0, 0, tzinfo=_UTC)),
+    ("Asia/Hebron", datetime(2090, 3, 25, 0, 0, tzinfo=_UTC)),
     ("Asia/Jerusalem", datetime(2040, 3, 23, 0, 0, tzinfo=_UTC)),
     ("Asia/Tel_Aviv", datetime(2040, 3, 23, 0, 0, tzinfo=_UTC)),
     ("Israel", datetime(2040, 3, 23, 0, 0, tzinfo=_UTC)),
@@ -94,8 +95,8 @@ ANGLE_KEYS = [
 @example(key="Australia/Sydney", u=datetime(2040, 10, 6, 15, 59, tzinfo=_UTC))
 @example(key="Australia/Sydney", u=datetime(2040, 10, 6, 16, 1, tzinfo=_UTC))
 def test_tzstr_matches_zoneinfo_after_last_transition(key, u):
-    # All TZif files in tzdata 2026.6 end their transitions before 2040, so
-    # every instant in the range is governed by the footer rule alone.
+    # In tzdata 2026.6 every zone in KEYS ends its transitions before 2040,
+    # so every instant in the range is governed by the footer rule alone.
     tzn = tz.tzstr(footer(key), posix_offset=True)
     assert u.astimezone(tzn).utcoffset() == u.astimezone(_oracle_zone(key)).utcoffset()
 
