@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-15 (Lead-Zyklus 6, Lead-Dienst)
+Stand: 2026-11-16 (Lead-Zyklus 7, Lead-Dienst)
 
 ## Lage
+Zyklus 7: Abgaben 449 (#392, P-6) und 450 (#393, P-7) sind in der Pipeline grün (je 5124 passed; 449: 19 xfailed inkl. der zwei 9999-Fälle) und erfüllen laut Diff alle Kriterien. Eigene Person: Review-Fragen gesetzt, warten auf Peer-Review (jetzt 9 Abgaben). P-7: keine Funde. Gegen Leerlauf: `swarvex_tools/hypothesis_profile.py` kann lange Läufe (`SWARVEX_MAX_EXAMPLES`, dann `--hypothesis-seed` statt derandomisiert; lokal geprüft: gleicher Seed gleiche Eingaben, Standard 200 unverändert), Commit `030ba69`. Damit #394–#397 (lange Läufe P-6/P-7, je Erst- und Zweitlauf mit Seed 1/2, Level A `simulation`), freigeschaltet nach Merge von #392/#393. Claims T-1 bis T-3 (`tzstr`, `tzical`) als Entwurf in `docs/claims.md`, Freigabe angefragt (Nachricht 44). Lokale Probe zu T-2 (vorläufig): `tzstr` lehnt 231 tzdata-Fuß-Strings mit `<…>`-Abkürzungen ab; 6 Zonen (Beirut, Gaza, Hebron, Jerusalem u. a.) mit Übergangszeiten `/0`, `/26`, `/50` weichen von zoneinfo ab.
+
 Zyklus 6: Erster Pipeline-Lauf mit `swarvex_tools/run_tests.sh` (Abgabe 447 zu #390) ist grün: 5123 passed, 19 xfailed, beide neuen Tests xfailed. Damit ist L1 in der Pipeline bestätigt. Abgabe 447 erfüllt alle Kriterien (Diff geprüft); eigene Person: Review-Fragen gesetzt, wartet auf Peer-Review. Engpass ist Peer-Review (7 Abgaben, alle von Agenten der eigenen Person, keine aktiven Agenten anderer Personen). Gegen Leerlauf M2 begonnen: #392 (Fuzz P-6 `isoparse`) und #393 (Fuzz P-7 `parse`), beide ohne Abhängigkeit frei. Lokal auf `master` bestätigt: `isoparse("9999-W53-1")` und `isoparse("9999-12-31T24:00")` werfen `OverflowError` (P-6 widerlegt, vorläufig; Test und Berichtsentwurf kommen mit #392).
 
 Zyklus 5: Die Pipeline lief seit Zyklus 4 nie wirklich: Sie meldete `sh: Unterminated quoted string` für die `--deselect`-Argumente in `swarvex.yaml` (Funde 72, 73, 75, 78), und die Gegenprobe galt deshalb als „Basis rot“. Behoben in `3c7bb15`: Der Test-Schritt ist jetzt `sh swarvex_tools/run_tests.sh` (L1). Lokal damit: Basis 5123 grün; mit allen sechs Abgaben zusammen (440–444, 446) 5140 passed, 21 xfailed, 8 xpassed, zweimal gleich (deterministisch). Alle sechs Abgaben stammen von Agenten der eigenen Person: nicht annehmbar, Review-Fragen gesetzt, warten auf Peer-Review. Nachricht 43 freigegeben: P-9 in `docs/claims.md`, Woche 53 und Docstring als bekannte Fälle (upstream #1457 u. a., #1629/#1630), Aufgabe #390. Fund 74 (Cache in `strategies_tz.transitions` über Datenquellen hinweg) → Aufgabe #391 (wartet auf #381, #389). Funde 67, 68, 72–75, 78 erledigt.
@@ -38,11 +40,12 @@ Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis:
 - Ruling: SPDX `Apache-2.0 AND BSD-3-Clause` nur in neuen Dateien außerhalb von `src/` und `tests/`. Grund: upstream führt keine Header. Kosten, falls falsch: Header ergänzen.
 
 ## Offene Freigaben
-- Keine. (Nachricht 41 und 43 sind freigegeben.)
+- Nachricht 44: Claims T-1 bis T-3 (`tzstr`, `tzical`) freigeben. Danach drei B-Aufgaben (siehe Plan).
 
 ## Nächste Schritte
-1. Peer-Reviews der Abgaben 440–444, 446, 447 abwarten; Nacharbeit-Begründungen lesen. Merge-Zug-Lauf prüfen.
-2. Abgaben zu #391, #392, #393 reviewen. Bei #392: Berichtsentwurf P-6 mit Duplikatsuche und Reproduktion upstream ergänzen, dann Freigabe.
+0. Bei Freigabe von Nachricht 44: T-1, T-2, T-3 als B-Aufgaben schneiden (T-2: Funde `<…>`-Ablehnung und Übergangszeiten außerhalb 0–24 h je als eigener xfail mit Bericht; vor Bericht Duplikatsuche, z. B. upstream-Issues zu „tzstr angle brackets“).
+1. Peer-Reviews der Abgaben 440–444, 446, 447, 449, 450 abwarten; Nacharbeit-Begründungen lesen. Merge-Zug-Lauf prüfen.
+2. Abgaben zu #391 und #394–#397 reviewen. Nach Merge von #392: Berichtsentwurf P-6 mit Duplikatsuche und Reproduktion upstream ergänzen, dann Freigabe.
 3. Nach Merge von #381: Z-1 in `docs/claims.md` auf „widerlegt für `dst()`“ setzen; Berichtsentwurf Z-1 kürzen auf den dateutil-Fall (Winamac), Duplikatsuche und Reproduktion upstream, dann Freigabe.
 4. Nach den Merges: Claims-Status P-2 bis P-5, P-8, Z-2, Z-3 auf „bestätigt im getesteten Raum“ setzen.
-5. M2: Claims für `tzstr`/`tzical` entwerfen und zur Freigabe vorlegen; lange Läufe P-6/P-7 als `simulation`-Aufgaben mit Zweitlauf.
+5. Nach Merge von #393: P-7 auf „bestätigt im getesteten Raum“ (200 Beispiele), nach #396/#397 mit Laufzahlen ergänzen.
