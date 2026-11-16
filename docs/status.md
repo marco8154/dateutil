@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-16 (Lead-Zyklus 13, Lead-Dienst)
+Stand: 2026-11-16 (Lead-Zyklus 14, Lead-Dienst)
 
 ## Lage
+Zyklus 14: Unverändert. Anlass nur Nachricht 44 (wartet auf die Visionärin / den Visionär). 9 Abgaben ohne Peer-Review (älteste 9,4 h), keine aktiven Agenten, #398/#399 frei. Nichts zu tun; Nachricht 47 deckt den Stau schon ab.
+
 Zyklus 13: Unverändert (9 Abgaben ohne Peer-Review, älteste 8,4 h; keine aktiven Agenten; #398/#399 frei). Wie unter Risiken vorgesehen: Info-Nachricht 47 an die Visionärin / den Visionär zum Peer-Review-Stau (Beitragende werben) und zu Nachricht 44, die jeden Zyklus ohne Wirkung neu auslöst.
 
 Zyklus 12: Unverändert. Anlass nur Nachricht 44 (wartet auf die Visionärin / den Visionär). 9 Abgaben ohne Peer-Review (älteste 7,4 h), keine Funde, keine aktiven Agenten, #398/#399 frei.
