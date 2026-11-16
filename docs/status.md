@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-16 (Lead-Zyklus 21, Lead-Dienst)
+Stand: 2026-11-16 (Lead-Zyklus 22, Lead-Dienst)
 
 ## Lage
+Zyklus 22: Anlass: 0 freie Aufgaben, 1 aktiver Agent (#409). Neue eigene Abgaben 494 (#391, Cache je Datenquelle; Pipeline grün 5143 passed) und 496 (#397, P-7 Seed 2, `1 passed` in 381 s, keine Funde; sha256 stimmt mit `master`): Diff geprüft, Review-Fragen gesetzt, warten auf Peer-Review wie 443 (#387, 19,7 h). Aus den Funden 99–101 geschnitten: #410 (P-6-Ausnahme auf bekannte Formen einschränken; lokal geprüft: auch `9999-W52-6/7`, `9999-365T24:00`, `9999-12-31 24:00` werfen `OverflowError`, gleiche Ursache), #411/#412 (lange Läufe P-6 Seed 3/4 danach), #413 (`wall_times_near_transitions` mit `ZoneInfo.no_cache`, nach #391), #414 (Z-1/Z-2 für 1850–2100, nach #413). Sofort frei: #410. Schätzungen M1 13, M2 19.
+
 Zyklus 21: Abgabe 477 (#408, langer Lauf T-3, Seed 1) von der zweiten Person angenommen (Peer-Review hctib-tech: approve): Pipeline grün (5127 passed, 33 xfailed), `1 passed` in 126 s, keine Funde; sha256 der Testdatei stimmt mit `master`, Lauf lokal wiederholt: `1 passed` (303 s). Inzwischen gemergt: #386 (P-8), #388 (P-4), #389 (Z-3), #390 (P-9), #392 (P-6), #393 (P-7). Claims P-4, P-7, P-8, Z-3 in `docs/claims.md` auf „bestätigt im getesteten Raum“, P-6 auf „widerlegt“ (Test gemergt), T-3 mit Laufzahl Seed 1. Nur noch Abgabe 443 (#387, P-3, eigene Person) wartet auf Peer-Review (15,7 h). Frei: 7 Aufgaben (u. a. #394–#397, #409), keine aktiven Agenten; Angebot reicht, keine neuen Aufgaben. T-2-Duplikatsuche weiter offen (Nächster Schritt 00).
 
 Zyklus 20: Abgabe 475 (#407, langer Lauf T-1, Seed 2) von der zweiten Person angenommen: Pipeline grün (5126 passed, 21 xfailed), `1 passed` in 123 s, keine Funde; sha256 der Testdatei stimmt, Lauf lokal wiederholt: `1 passed` (344 s). T-1-Laufzahlen in `docs/claims.md` ergänzt (2 × 200 000, Seed 1/2). Fund 96 (Sandbox ohne `git`, `git rev-parse HEAD` nicht ausführbar) verworfen mit Ruling unten. Offen: 11 eigene Abgaben ohne Peer-Review (älteste 13,6 h), keine aktiven Agenten; frei #408/#409 nach Merge von #404. T-2-Duplikatsuche weiter offen (Nächster Schritt 00).
@@ -72,6 +74,7 @@ Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis:
 - keine
 
 ## Nächste Schritte
+000. Abgaben zu #410–#414 reviewen. Nach #411/#412: P-6-Laufzahlen in `docs/claims.md` (Einschränkung nennen; die Läufe #394/#395 konnten Überläufe mit Präfix `9999` nicht finden). Nach #414: Zeitraum 1850–2100 bei Z-1/Z-2 in `docs/claims.md`. Nach Merge von #396/#397: P-7 mit 2 × 200 000.
 00. T-2-Berichte: Duplikatsuche upstream („tzstr angle brackets“, „tzstr transition time hours“, „tzstr negative DST Dublin“) und Reproduktion auf upstream-master.
 0. Abgabe zu #409 reviewen; danach T-3 mit 2 × 200 000 in `docs/claims.md`. Vor dem T-1-Bericht (nach dem Merge von #402): beide Pfade im Bericht; Docstring-Name (Fund 93) als Randnotiz oder eigener Doku-Fix, die Visionärin / der Visionär entscheidet. Vor jedem T-Bericht: Duplikatsuche upstream (z. B. „tzstr angle brackets“, „tzstr UTC TypeError“, „tzical OverflowError“) und Reproduktion auf upstream-master. Vor dem T-3-Bericht: Abgrenzung zu P-7 (Parser darf laut Claim `OverflowError` werfen; `rrulestr`/`tzical` dokumentieren `ValueError`).
 1. Peer-Reviews der Abgaben 440–444, 446, 447, 449, 450 abwarten; Nacharbeit-Begründungen lesen. Merge-Zug-Lauf prüfen.

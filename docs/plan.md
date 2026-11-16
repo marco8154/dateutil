@@ -1,6 +1,6 @@
 # Plan
 
-Stand: 2026-11-16 (Lead-Zyklus 21). Gemergt: #376–#378, #386, #388, #389, #390, #392, #393, #402, #404, #405, #406, #407. #408 angenommen (Abgabe 477), Merge-Zug ausstehend. In Peer-Review: #387 (Abgabe 443). Frei: #394–#397, #409 u. a. #391 wartet auf #381. Claims T-1 bis T-3 freigegeben (Nachricht 44), P-9 freigegeben (Nachricht 43). Schätzung M1: 11 Aufgaben.
+Stand: 2026-11-16 (Lead-Zyklus 22). Neu: #410–#414 (aus Funden 99–101). Gemergt: #376–#378, #386, #388, #389, #390, #392, #393, #402, #404, #405, #406, #407. #408 angenommen (Abgabe 477), Merge-Zug ausstehend. In Peer-Review: #387 (Abgabe 443). Frei: #394–#397, #409 u. a. #391 wartet auf #381. Claims T-1 bis T-3 freigegeben (Nachricht 44), P-9 freigegeben (Nachricht 43). Schätzung M1: 13 Aufgaben.
 Lead-Budget: 5 Mio. Tokens/Tag (nur Lead-Dienst).
 
 ## Meilenstein 1: Hypothesis-Grundgerüst (parser, tz)
@@ -20,13 +20,15 @@ Ziel: gemeinsame Strategien, mit denen jeder Claim als kleine B-Aufgabe testbar 
 | #389 | Z-3: `datetime_exists`/`datetime_ambiguous`/`resolve_imaginary` gegen zoneinfo | B | `tests/property/test_tz_helpers_prop.py`, `docs/reports/z3-*.md` | #378 |
 | #390 | Bekannte Fälle P-9 (Woche 53, upstream #1457 u. a.) und Docstring (#1629/#1630) als `xfail(strict=True)` | B | `tests/property/test_isoparse_week53_prop.py` | – |
 | #391 | `strategies_tz.transitions`: Cache je Datenquelle (Fund 74) | B | `tests/property/strategies_tz.py`, `tests/property/test_strategies_tz.py` | #381, #389 |
+| #413 | `wall_times_near_transitions`: Zone je Datenquelle (`ZoneInfo.no_cache`, Fund 101) | B | `tests/property/strategies_tz.py`, `tests/property/test_strategies_tz.py` | #391 |
+| #414 | Z-1/Z-2-Orakel 1850–2100: Zeitraum-Parameter in den Strategien, neues Modul `test_tz_oracle_wide_prop.py` (Fund 99) | B | `tests/property/strategies_tz.py`, `tests/property/test_strategies_tz.py`, `tests/property/test_tz_oracle_wide_prop.py`, `docs/reports/z1w-*.md` | #413 |
 
 (#382–#385 geschlossen: gleiche Aufgaben ohne Berichtspfad, ersetzt durch #386–#389.)
 
 P-9 und der Docstring-Fall sind freigegeben und upstream bekannt (Nachricht 43): kein Bericht, nur bekannte Fälle (#390).
 
 ## Meilenstein 2: Fuzz-Ziele
-Fuzz-Ziele (Hypothesis, keine nativen Fuzzer) für `parse` (wirft nur ParserError/OverflowError), `isoparse` und `tzstr`/`tzical`; lange Läufe als `simulation`-Aufgaben mit Zweitlauf. Schätzung: 16 Aufgaben (inkl. langer Läufe für T-1/T-3).
+Fuzz-Ziele (Hypothesis, keine nativen Fuzzer) für `parse` (wirft nur ParserError/OverflowError), `isoparse` und `tzstr`/`tzical`; lange Läufe als `simulation`-Aufgaben mit Zweitlauf. Schätzung: 19 Aufgaben (inkl. langer Läufe für T-1/T-3).
 
 | # | Aufgabe | Level | Pfade | hängt ab von |
 |---|---|---|---|---|
@@ -40,6 +42,8 @@ Fuzz-Ziele (Hypothesis, keine nativen Fuzzer) für `parse` (wirft nur ParserErro
 | #404 | Fuzz-Ziel T-3 `tzical`; bekannter Fund `OverflowError` bei kaputtem `DTSTART` als xfail + Bericht | B | `tests/property/test_tzical_fuzz_prop.py`, `docs/reports/t3-*.md` | – |
 | #406 / #407 | Langer Lauf T-1, 200 000 Beispiele, Seed 1 / Seed 2 (lokal: 5000 Beispiele 8 s) | A (`simulation`) | `docs/runs/t1-seed1.md` / `docs/runs/t1-seed2.md` | #402 |
 | #408 / #409 | Langer Lauf T-3, 200 000 Beispiele, Seed 1 / Seed 2 (lokal: 5000 Beispiele 10 s) | A (`simulation`) | `docs/runs/t3-seed1.md` / `docs/runs/t3-seed2.md` | #404 |
+| #410 | P-6-Fuzz-Ziel: `OverflowError`-Ausnahme von `startswith("9999")` auf `KNOWN_OVERFLOW` (Wochendatum nach 31.12.9999, Stunde 24 am letzten Tag) einschränken (Fund 100) | B | `tests/property/test_isoparse_fuzz_prop.py`, `docs/reports/p6-*.md` | – |
+| #411 / #412 | Langer Lauf P-6 mit eingeschränkter Ausnahme, Seed 3 / Seed 4 | A (`simulation`) | `docs/runs/p6-seed3.md` / `docs/runs/p6-seed4.md` | #410 |
 
 ## Meilenstein 3 (später): rrule und relativedelta
 `rrule` gegen RFC 5545, `relativedelta`. Vor dem Start ein kleines Interview (Umfang, Orakel).
