@@ -1,6 +1,6 @@
 # Plan
 
-Stand: 2026-11-16 (Lead-Zyklus 15). Frei: #402, #404, #405 (T-1, T-3, T-2). In Peer-Review zusätzlich: #398, #399. Erledigt: #376, #377, #378; in Peer-Review: #379, #381, #386, #387, #388, #389, #390, #392, #393. #391 wartet auf #381, #389; #394/#395 auf #392, #396/#397 auf #393. Claims T-1 bis T-3 freigegeben (Nachricht 44). Brief bestätigt (`dbe1e9f`), Claims-Register abgezeichnet, P-9 freigegeben (Nachricht 43). Schätzung M1: 11 Aufgaben.
+Stand: 2026-11-16 (Lead-Zyklus 16). Frei: #404, #405 (T-3, T-2). #402 angenommen (Abgabe 470), Merge-Zug ausstehend; #406/#407 warten auf #402. In Peer-Review zusätzlich: #398, #399. Erledigt: #376, #377, #378; in Peer-Review: #379, #381, #386, #387, #388, #389, #390, #392, #393. #391 wartet auf #381, #389; #394/#395 auf #392, #396/#397 auf #393. Claims T-1 bis T-3 freigegeben (Nachricht 44). Brief bestätigt (`dbe1e9f`), Claims-Register abgezeichnet, P-9 freigegeben (Nachricht 43). Schätzung M1: 11 Aufgaben.
 Lead-Budget: 5 Mio. Tokens/Tag (nur Lead-Dienst).
 
 ## Meilenstein 1: Hypothesis-Grundgerüst (parser, tz)
@@ -38,7 +38,8 @@ Fuzz-Ziele (Hypothesis, keine nativen Fuzzer) für `parse` (wirft nur ParserErro
 | #402 | Fuzz-Ziel T-1 `tzstr`; bekannter Fund `TypeError` für `UTC`/`GMT` als xfail + Bericht | B | `tests/property/test_tzstr_fuzz_prop.py`, `docs/reports/t1-*.md` | – |
 | #405 (ersetzt #403) | Orakel T-2 `tzstr` (Fuß-Strings aus tzdata) ↔ zoneinfo; `<…>`-Ablehnung und Übergangszeiten als xfail + zwei Berichte | B | `tests/property/test_tzstr_oracle_prop.py`, `docs/reports/t2-*.md` | – |
 | #404 | Fuzz-Ziel T-3 `tzical`; bekannter Fund `OverflowError` bei kaputtem `DTSTART` als xfail + Bericht | B | `tests/property/test_tzical_fuzz_prop.py`, `docs/reports/t3-*.md` | – |
-| später | Lange Läufe T-1/T-3 (Seed 1/2) | A (`simulation`) | `docs/runs/t1-*`, `t3-*` | #402, #404 |
+| #406 / #407 | Langer Lauf T-1, 200 000 Beispiele, Seed 1 / Seed 2 (lokal: 5000 Beispiele 8 s) | A (`simulation`) | `docs/runs/t1-seed1.md` / `docs/runs/t1-seed2.md` | #402 |
+| später | Lange Läufe T-3 (Seed 1/2) | A (`simulation`) | `docs/runs/t3-*` | #404 |
 
 ## Meilenstein 3 (später): rrule und relativedelta
 `rrule` gegen RFC 5545, `relativedelta`. Vor dem Start ein kleines Interview (Umfang, Orakel).
