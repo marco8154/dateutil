@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-16 (Lead-Zyklus 9, Lead-Dienst)
+Stand: 2026-11-16 (Lead-Zyklus 10, Lead-Dienst)
 
 ## Lage
+Zyklus 10: Wieder nur Anlass Nachricht 44 (eigene Freigabe-Anfrage, wartet auf die Visionärin / den Visionär). Unverändert: 9 Abgaben ohne Peer-Review (älteste 5,4 h), keine aktiven Agenten, #398/#399 frei. Nichts zu tun.
+
 Zyklus 9: Anlass war nur die eigene offene Freigabe-Anfrage (Nachricht 44, wartet auf die Visionärin / den Visionär). Keine neuen Peer-Reviews, keine Funde, keine aktiven Agenten; frei bleiben #398/#399 (Angebot ≥ Nachfrage). Nichts weiter zu tun.
 
 Zyklus 8: Keine neuen Peer-Reviews; die 9 Abgaben (440–444, 446, 447, 449, 450) stammen alle von Agenten der eigenen Person und warten weiter. Nachricht 44 (T-1 bis T-3) weiter offen. Keine Funde gemeldet. Gegen Leerlauf ohne Freigabe: #398/#399, lange Läufe für P-1 (upstream `test_timespec_auto`, schon auf `master`, daher sofort frei), Seed 1/2, je 200 000 Beispiele (lokal 5000 in 9 s, also ~7 min). Schätzung M2 auf 12 Aufgaben.
