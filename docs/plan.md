@@ -1,6 +1,6 @@
 # Plan
 
-Stand: 2026-11-16 (Lead-Zyklus 7). Erledigt: #376, #377, #378; in Peer-Review: #379, #381, #386, #387, #388, #389, #390, #392, #393. #391 wartet auf #381, #389; #394/#395 auf #392, #396/#397 auf #393. Claims T-1 bis T-3 zur Freigabe (Nachricht 44). Brief bestätigt (`dbe1e9f`), Claims-Register abgezeichnet, P-9 freigegeben (Nachricht 43). Schätzung M1: 11 Aufgaben.
+Stand: 2026-11-16 (Lead-Zyklus 8). Frei: #398, #399 (lange Läufe P-1). Erledigt: #376, #377, #378; in Peer-Review: #379, #381, #386, #387, #388, #389, #390, #392, #393. #391 wartet auf #381, #389; #394/#395 auf #392, #396/#397 auf #393. Claims T-1 bis T-3 zur Freigabe (Nachricht 44). Brief bestätigt (`dbe1e9f`), Claims-Register abgezeichnet, P-9 freigegeben (Nachricht 43). Schätzung M1: 11 Aufgaben.
 Lead-Budget: 5 Mio. Tokens/Tag (nur Lead-Dienst).
 
 ## Meilenstein 1: Hypothesis-Grundgerüst (parser, tz)
@@ -26,7 +26,7 @@ Ziel: gemeinsame Strategien, mit denen jeder Claim als kleine B-Aufgabe testbar 
 P-9 und der Docstring-Fall sind freigegeben und upstream bekannt (Nachricht 43): kein Bericht, nur bekannte Fälle (#390).
 
 ## Meilenstein 2: Fuzz-Ziele
-Fuzz-Ziele (Hypothesis, keine nativen Fuzzer) für `parse` (wirft nur ParserError/OverflowError), `isoparse` und `tzstr`/`tzical`; lange Läufe als `simulation`-Aufgaben mit Zweitlauf. Schätzung: 10 Aufgaben.
+Fuzz-Ziele (Hypothesis, keine nativen Fuzzer) für `parse` (wirft nur ParserError/OverflowError), `isoparse` und `tzstr`/`tzical`; lange Läufe als `simulation`-Aufgaben mit Zweitlauf. Schätzung: 12 Aufgaben.
 
 | # | Aufgabe | Level | Pfade | hängt ab von |
 |---|---|---|---|---|
@@ -34,6 +34,7 @@ Fuzz-Ziele (Hypothesis, keine nativen Fuzzer) für `parse` (wirft nur ParserErro
 | #393 | Fuzz-Ziel P-7: `parse` wirft nur `ParserError`/`OverflowError` | B | `tests/property/test_parser_fuzz_prop.py`, `docs/reports/p7-*.md` | – |
 | #394 / #395 | Langer Lauf P-6, 200 000 Beispiele, Seed 1 / Seed 2 (Zweitlauf), Protokoll | A (`simulation`) | `docs/runs/p6-seed1.md` / `docs/runs/p6-seed2.md` | #392 |
 | #396 / #397 | Langer Lauf P-7, 200 000 Beispiele, Seed 1 / Seed 2 (Zweitlauf), Protokoll | A (`simulation`) | `docs/runs/p7-seed1.md` / `docs/runs/p7-seed2.md` | #393 |
+| #398 / #399 | Langer Lauf P-1 (upstream `test_timespec_auto`), 200 000 Beispiele, Seed 1 / Seed 2, Protokoll (lokal: 5000 Beispiele 9 s) | A (`simulation`) | `docs/runs/p1-seed1.md` / `docs/runs/p1-seed2.md` | – |
 | nach Freigabe (Nachricht 44) | T-1 Fuzz-Ziel `tzstr`; T-2 Orakel `tzstr` (Fuß-Strings) ↔ zoneinfo; T-3 Fuzz-Ziel `tzical` | B | `tests/property/test_tzstr_fuzz_prop.py`, `test_tzstr_oracle_prop.py`, `test_tzical_fuzz_prop.py`, `docs/reports/t1-*`, `t2-*`, `t3-*` | Freigabe T-1–T-3 |
 
 ## Meilenstein 3 (später): rrule und relativedelta

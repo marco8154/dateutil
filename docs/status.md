@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-16 (Lead-Zyklus 7, Lead-Dienst)
+Stand: 2026-11-16 (Lead-Zyklus 8, Lead-Dienst)
 
 ## Lage
+Zyklus 8: Keine neuen Peer-Reviews; die 9 Abgaben (440–444, 446, 447, 449, 450) stammen alle von Agenten der eigenen Person und warten weiter. Nachricht 44 (T-1 bis T-3) weiter offen. Keine Funde gemeldet. Gegen Leerlauf ohne Freigabe: #398/#399, lange Läufe für P-1 (upstream `test_timespec_auto`, schon auf `master`, daher sofort frei), Seed 1/2, je 200 000 Beispiele (lokal 5000 in 9 s, also ~7 min). Schätzung M2 auf 12 Aufgaben.
+
 Zyklus 7: Abgaben 449 (#392, P-6) und 450 (#393, P-7) sind in der Pipeline grün (je 5124 passed; 449: 19 xfailed inkl. der zwei 9999-Fälle) und erfüllen laut Diff alle Kriterien. Eigene Person: Review-Fragen gesetzt, warten auf Peer-Review (jetzt 9 Abgaben). P-7: keine Funde. Gegen Leerlauf: `swarvex_tools/hypothesis_profile.py` kann lange Läufe (`SWARVEX_MAX_EXAMPLES`, dann `--hypothesis-seed` statt derandomisiert; lokal geprüft: gleicher Seed gleiche Eingaben, Standard 200 unverändert), Commit `030ba69`. Damit #394–#397 (lange Läufe P-6/P-7, je Erst- und Zweitlauf mit Seed 1/2, Level A `simulation`), freigeschaltet nach Merge von #392/#393. Claims T-1 bis T-3 (`tzstr`, `tzical`) als Entwurf in `docs/claims.md`, Freigabe angefragt (Nachricht 44). Lokale Probe zu T-2 (vorläufig): `tzstr` lehnt 231 tzdata-Fuß-Strings mit `<…>`-Abkürzungen ab; 6 Zonen (Beirut, Gaza, Hebron, Jerusalem u. a.) mit Übergangszeiten `/0`, `/26`, `/50` weichen von zoneinfo ab.
 
 Zyklus 6: Erster Pipeline-Lauf mit `swarvex_tools/run_tests.sh` (Abgabe 447 zu #390) ist grün: 5123 passed, 19 xfailed, beide neuen Tests xfailed. Damit ist L1 in der Pipeline bestätigt. Abgabe 447 erfüllt alle Kriterien (Diff geprüft); eigene Person: Review-Fragen gesetzt, wartet auf Peer-Review. Engpass ist Peer-Review (7 Abgaben, alle von Agenten der eigenen Person, keine aktiven Agenten anderer Personen). Gegen Leerlauf M2 begonnen: #392 (Fuzz P-6 `isoparse`) und #393 (Fuzz P-7 `parse`), beide ohne Abhängigkeit frei. Lokal auf `master` bestätigt: `isoparse("9999-W53-1")` und `isoparse("9999-12-31T24:00")` werfen `OverflowError` (P-6 widerlegt, vorläufig; Test und Berichtsentwurf kommen mit #392).
@@ -45,7 +47,7 @@ Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis:
 ## Nächste Schritte
 0. Bei Freigabe von Nachricht 44: T-1, T-2, T-3 als B-Aufgaben schneiden (T-2: Funde `<…>`-Ablehnung und Übergangszeiten außerhalb 0–24 h je als eigener xfail mit Bericht; vor Bericht Duplikatsuche, z. B. upstream-Issues zu „tzstr angle brackets“).
 1. Peer-Reviews der Abgaben 440–444, 446, 447, 449, 450 abwarten; Nacharbeit-Begründungen lesen. Merge-Zug-Lauf prüfen.
-2. Abgaben zu #391 und #394–#397 reviewen. Nach Merge von #392: Berichtsentwurf P-6 mit Duplikatsuche und Reproduktion upstream ergänzen, dann Freigabe.
+2. Abgaben zu #391, #394–#397 und #398/#399 reviewen (P-1 nach beiden Läufen ohne Fund: „bestätigt im getesteten Raum“ mit Laufzahlen). Nach Merge von #392: Berichtsentwurf P-6 mit Duplikatsuche und Reproduktion upstream ergänzen, dann Freigabe.
 3. Nach Merge von #381: Z-1 in `docs/claims.md` auf „widerlegt für `dst()`“ setzen; Berichtsentwurf Z-1 kürzen auf den dateutil-Fall (Winamac), Duplikatsuche und Reproduktion upstream, dann Freigabe.
 4. Nach den Merges: Claims-Status P-2 bis P-5, P-8, Z-2, Z-3 auf „bestätigt im getesteten Raum“ setzen.
 5. Nach Merge von #393: P-7 auf „bestätigt im getesteten Raum“ (200 Beispiele), nach #396/#397 mit Laufzahlen ergänzen.
