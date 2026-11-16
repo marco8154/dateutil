@@ -1,6 +1,6 @@
 # Plan
 
-Stand: 2026-11-16 (Lead-Zyklus 22). Neu: #410–#414 (aus Funden 99–101). Gemergt: #376–#378, #386, #388, #389, #390, #392, #393, #402, #404, #405, #406, #407. #408 angenommen (Abgabe 477), Merge-Zug ausstehend. In Peer-Review: #387 (Abgabe 443). Frei: #394–#397, #409 u. a. #391 wartet auf #381. Claims T-1 bis T-3 freigegeben (Nachricht 44), P-9 freigegeben (Nachricht 43). Schätzung M1: 13 Aufgaben.
+Stand: 2026-11-16 (Lead-Zyklus 23). Neu: #415/#416 (lange Läufe P-2/P-5). Zusätzlich gemergt: #379, #381, #391, #394–#396, #397, #398, #399, #408. In Peer-Review: #387, #409, #410, #413. Zyklus 22: #410–#414 (aus Funden 99–101). Gemergt: #376–#378, #386, #388, #389, #390, #392, #393, #402, #404, #405, #406, #407. #408 angenommen (Abgabe 477), Merge-Zug ausstehend. In Peer-Review: #387 (Abgabe 443). Frei: #394–#397, #409 u. a. #391 wartet auf #381. Claims T-1 bis T-3 freigegeben (Nachricht 44), P-9 freigegeben (Nachricht 43). Schätzung M1: 13 Aufgaben.
 Lead-Budget: 5 Mio. Tokens/Tag (nur Lead-Dienst).
 
 ## Meilenstein 1: Hypothesis-Grundgerüst (parser, tz)
@@ -28,7 +28,7 @@ Ziel: gemeinsame Strategien, mit denen jeder Claim als kleine B-Aufgabe testbar 
 P-9 und der Docstring-Fall sind freigegeben und upstream bekannt (Nachricht 43): kein Bericht, nur bekannte Fälle (#390).
 
 ## Meilenstein 2: Fuzz-Ziele
-Fuzz-Ziele (Hypothesis, keine nativen Fuzzer) für `parse` (wirft nur ParserError/OverflowError), `isoparse` und `tzstr`/`tzical`; lange Läufe als `simulation`-Aufgaben mit Zweitlauf. Schätzung: 19 Aufgaben (inkl. langer Läufe für T-1/T-3).
+Fuzz-Ziele (Hypothesis, keine nativen Fuzzer) für `parse` (wirft nur ParserError/OverflowError), `isoparse` und `tzstr`/`tzical`; lange Läufe als `simulation`-Aufgaben mit Zweitlauf. Schätzung: 20 Aufgaben (inkl. langer Läufe für T-1/T-3).
 
 | # | Aufgabe | Level | Pfade | hängt ab von |
 |---|---|---|---|---|
@@ -44,6 +44,7 @@ Fuzz-Ziele (Hypothesis, keine nativen Fuzzer) für `parse` (wirft nur ParserErro
 | #408 / #409 | Langer Lauf T-3, 200 000 Beispiele, Seed 1 / Seed 2 (lokal: 5000 Beispiele 10 s) | A (`simulation`) | `docs/runs/t3-seed1.md` / `docs/runs/t3-seed2.md` | #404 |
 | #410 | P-6-Fuzz-Ziel: `OverflowError`-Ausnahme von `startswith("9999")` auf `KNOWN_OVERFLOW` (Wochendatum nach 31.12.9999, Stunde 24 am letzten Tag) einschränken (Fund 100) | B | `tests/property/test_isoparse_fuzz_prop.py`, `docs/reports/p6-*.md` | – |
 | #411 / #412 | Langer Lauf P-6 mit eingeschränkter Ausnahme, Seed 3 / Seed 4 | A (`simulation`) | `docs/runs/p6-seed3.md` / `docs/runs/p6-seed4.md` | #410 |
+| #415 / #416 | Langer Lauf P-2/P-5 (`test_isoparse_oracle_prop.py`, beide Tests), 200 000 Beispiele, Seed 1 / Seed 2 (lokal: 5000 Beispiele je Test 20 s) | A (`simulation`) | `docs/runs/p2p5-seed1.md` / `docs/runs/p2p5-seed2.md` | – (#379 gemergt) |
 
 ## Meilenstein 3 (später): rrule und relativedelta
 `rrule` gegen RFC 5545, `relativedelta`. Vor dem Start ein kleines Interview (Umfang, Orakel).
