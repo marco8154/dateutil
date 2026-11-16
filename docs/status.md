@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-16 (Lead-Zyklus 11, Lead-Dienst)
+Stand: 2026-11-16 (Lead-Zyklus 12, Lead-Dienst)
 
 ## Lage
+Zyklus 12: Unverändert. Anlass nur Nachricht 44 (wartet auf die Visionärin / den Visionär). 9 Abgaben ohne Peer-Review (älteste 7,4 h), keine Funde, keine aktiven Agenten, #398/#399 frei.
+
 Zyklus 11: Unverändert. Anlass nur Nachricht 44 (wartet auf die Visionärin / den Visionär; der Lead-Dienst entscheidet keine Freigaben, auch wenn das Konto beide Rollen hat). 9 Abgaben ohne Peer-Review (älteste 6,4 h), keine Funde, keine aktiven Agenten, #398/#399 frei. Commit mit `Assisted-by`.
 
 Zyklus 10: Wieder nur Anlass Nachricht 44 (eigene Freigabe-Anfrage, wartet auf die Visionärin / den Visionär). Unverändert: 9 Abgaben ohne Peer-Review (älteste 5,4 h), keine aktiven Agenten, #398/#399 frei. Nichts zu tun. Versehen: Die Commits `70bc7c5` (Zyklus 9) und `fde4c39` (Zyklus 10) tragen einen `Co-Authored-By`-Trailer für die KI, entgegen der Ruling unten und `AGENTS.md`. Sie sind schon gepusht; die Historie schreibe ich nicht um (nur Status-Commits, gehen nie upstream). Ab jetzt wieder `Assisted-by`.
