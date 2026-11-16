@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: Apache-2.0 AND BSD-3-Clause
 """Fuzz target for claim P-6: ``isoparse`` only ever raises ``ValueError``."""
+import re
 from datetime import datetime
 
 import pytest
@@ -13,6 +14,13 @@ from strategies_iso import iso_dates, iso_datetimes
 ISO_ALPHABET = "0123456789-:T.,+Z W"
 
 OVERFLOW_REPORT = "docs/reports/p6-isoparse-overflowerror.md"
+
+# The two forms of the known finding: a week date after 9999-12-31, and hour
+# 24 on 9999-12-31 in any of its calendar, ordinal or week date spellings.
+KNOWN_OVERFLOW = re.compile(
+    r"9999(-?W53(-?[1-7])?|-?W52-?[67]"
+    r"|(-12-31|1231|-?365|-?W52-?5)[T ]24)"
+)
 
 
 @st.composite
@@ -47,7 +55,7 @@ def test_isoparse_raises_only_valueerror(s):
         return
     except OverflowError:
         # Known finding, see OVERFLOW_REPORT; any other overflow is new.
-        if s.startswith("9999"):
+        if KNOWN_OVERFLOW.match(s):
             return
         raise
     assert isinstance(result, datetime)
@@ -55,7 +63,35 @@ def test_isoparse_raises_only_valueerror(s):
 
 @pytest.mark.isoparser
 @pytest.mark.xfail(strict=True, raises=OverflowError, reason=OVERFLOW_REPORT)
-@pytest.mark.parametrize("s", ["9999-W53-1", "9999-12-31T24:00"])
+@pytest.mark.parametrize("s", [
+    "9999-W53-1",
+    "9999-W52-6",
+    "9999-12-31T24:00",
+    "9999-12-31 24:00",
+    "9999-365T24:00",
+])
 def test_isoparse_overflow_year_9999(s):
     with pytest.raises(ValueError):
         isoparse(s)
+
+
+@pytest.mark.parametrize("s, known", [
+    ("9999-W53-1", True),
+    ("9999W537", True),
+    ("9999-W53", True),
+    ("9999-W52-6", True),
+    ("9999-W52-7", True),
+    ("9999-12-31T24", True),
+    ("99991231T2400", True),
+    ("9999-12-31 24:00", True),
+    ("9999-12-31T24:00:00.000+05:00", True),
+    ("9999-365T24:00", True),
+    ("9999365T24", True),
+    ("9999-W52-5T24", True),
+    ("9999-W52-5", False),
+    ("9999-12-31T23:59", False),
+    ("9999-12-30T24:00", False),
+    ("9998-W53-1", False),
+])
+def test_known_overflow_pattern(s, known):
+    assert bool(KNOWN_OVERFLOW.match(s)) is known
