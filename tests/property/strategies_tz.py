@@ -6,6 +6,7 @@ They use whichever time zone data zoneinfo currently sees.
 """
 
 import functools
+import zoneinfo
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo, available_timezones
 
@@ -35,7 +36,6 @@ def utc_datetimes(min_year: int = 1900, max_year: int = 2100) -> st.SearchStrate
     )
 
 
-@functools.lru_cache(maxsize=None)
 def transitions(key: str, first_year: int = 1970, last_year: int = 2040) -> tuple[datetime, ...]:
     """Ascending UTC instants at which utcoffset, dst or tzname of *key* change.
 
@@ -43,7 +43,16 @@ def transitions(key: str, first_year: int = 1970, last_year: int = 2040) -> tupl
     steps one day at a time across [first_year, last_year] and bisects each
     change down to the microsecond.
     """
-    tzi = ZoneInfo(key)
+    # Tests switch the data source by resetting TZPATH, so it is part of the
+    # cache key; it must be read here, at call time.
+    return _transitions_for_tzpath(key, first_year, last_year, tuple(zoneinfo.TZPATH))
+
+
+@functools.lru_cache(maxsize=None)
+def _transitions_for_tzpath(key, first_year, last_year, tzpath):
+    # ZoneInfo's own cache is keyed by key alone and would hand back a zone
+    # loaded from another source.
+    tzi = ZoneInfo.no_cache(key)
 
     def attrs(instant):
         local = instant.astimezone(tzi)

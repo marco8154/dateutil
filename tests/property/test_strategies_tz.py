@@ -4,6 +4,7 @@ from zoneinfo import ZoneInfo, available_timezones
 import pytest
 from hypothesis import find, given
 
+import strategies_tz
 from strategies_tz import (
     iana_keys,
     instants_near_transitions,
@@ -11,6 +12,7 @@ from strategies_tz import (
     utc_datetimes,
     wall_times_near_transitions,
 )
+from tests._common import tz_source_context, tz_source_skip_reason
 
 UTC = timezone.utc
 
@@ -55,6 +57,25 @@ def test_transitions_berlin_2021():
         datetime(2021, 3, 28, 1, 0, tzinfo=UTC),
         datetime(2021, 10, 31, 1, 0, tzinfo=UTC),
     )
+
+
+@pytest.mark.gettz
+def test_transitions_are_cached_per_data_source():
+    for source in ("tzpath", "tzdata"):
+        reason = tz_source_skip_reason(source)
+        if reason:
+            pytest.skip(reason)
+
+    helper = strategies_tz._transitions_for_tzpath
+    helper.cache_clear()
+    results = []
+    for source in ("tzpath", "tzdata"):
+        with tz_source_context(source):
+            results.append(transitions("Europe/Berlin"))
+            transitions("Europe/Berlin")
+    info = helper.cache_info()
+    assert (info.misses, info.hits, info.currsize) == (2, 2, 2)
+    assert all(results)
 
 
 @pytest.mark.gettz
