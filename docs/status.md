@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-16 (Lead-Zyklus 14, Lead-Dienst)
+Stand: 2026-11-16 (Lead-Zyklus 15, Lead-Dienst)
 
 ## Lage
+Zyklus 15: Nachricht 44 freigegeben (09:23): T-1 bis T-3 in `docs/claims.md` freigegeben (`0669bf9`), Aufgaben #402 (T-1), #404 (T-3), #405 (T-2; ersetzt #403, die einen unklaren Halbsatz hatte) frei. Lokale Proben vorab: `tzstr("UTC")`/`tzstr("GMT")` werfen `TypeError` (T-1 widerlegt, vorläufig); `tzical` wirft `OverflowError` bei `DTSTART:1970102503000` (T-3 widerlegt, vorläufig); T-2: 231 `<…>`-Füße abgelehnt, abweichende Offsets bei Beirut, Gaza/Hebron, Jerusalem, Dublin (+ Links). Alle als bekannte Fälle mit xfail + Berichtsentwurf in den Aufgaben. Neue Abgaben 464 (#398) und 468 (#399): P-1 lange Läufe Seed 1/2, je `1 passed` (714 s / 678 s), keine Funde; eigene Person, Review-Fragen gesetzt. Jetzt 11 Abgaben ohne Peer-Review (älteste ~12 h). Schätzung M2 auf 14.
+
 Zyklus 14: Unverändert. Anlass nur Nachricht 44 (wartet auf die Visionärin / den Visionär). 9 Abgaben ohne Peer-Review (älteste 9,4 h), keine aktiven Agenten, #398/#399 frei. Nichts zu tun; Nachricht 47 deckt den Stau schon ab.
 
 Zyklus 13: Unverändert (9 Abgaben ohne Peer-Review, älteste 8,4 h; keine aktiven Agenten; #398/#399 frei). Wie unter Risiken vorgesehen: Info-Nachricht 47 an die Visionärin / den Visionär zum Peer-Review-Stau (Beitragende werben) und zu Nachricht 44, die jeden Zyklus ohne Wirkung neu auslöst.
@@ -54,12 +56,12 @@ Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis:
 - Ruling: SPDX `Apache-2.0 AND BSD-3-Clause` nur in neuen Dateien außerhalb von `src/` und `tests/`. Grund: upstream führt keine Header. Kosten, falls falsch: Header ergänzen.
 
 ## Offene Freigaben
-- Nachricht 44: Claims T-1 bis T-3 (`tzstr`, `tzical`) freigeben. Danach drei B-Aufgaben (siehe Plan).
+- keine
 
 ## Nächste Schritte
-0. Bei Freigabe von Nachricht 44: T-1, T-2, T-3 als B-Aufgaben schneiden (T-2: Funde `<…>`-Ablehnung und Übergangszeiten außerhalb 0–24 h je als eigener xfail mit Bericht; vor Bericht Duplikatsuche, z. B. upstream-Issues zu „tzstr angle brackets“).
+0. Abgaben zu #402, #404, #405 reviewen. Vor jedem T-Bericht: Duplikatsuche upstream (z. B. „tzstr angle brackets“, „tzstr UTC TypeError“, „tzical OverflowError“) und Reproduktion auf upstream-master. Danach lange Läufe T-1/T-3 schneiden (Plan).
 1. Peer-Reviews der Abgaben 440–444, 446, 447, 449, 450 abwarten; Nacharbeit-Begründungen lesen. Merge-Zug-Lauf prüfen.
-2. Abgaben zu #391, #394–#397 und #398/#399 reviewen (P-1 nach beiden Läufen ohne Fund: „bestätigt im getesteten Raum“ mit Laufzahlen). Nach Merge von #392: Berichtsentwurf P-6 mit Duplikatsuche und Reproduktion upstream ergänzen, dann Freigabe.
+2. Abgaben zu #391, #394–#397 reviewen. Nach Merge von #398/#399 (Abgaben 464/468): P-1 „bestätigt im getesteten Raum“ (2 × bis 200 000 Beispiele, Seed 1/2). Nach Merge von #392: Berichtsentwurf P-6 mit Duplikatsuche und Reproduktion upstream ergänzen, dann Freigabe.
 3. Nach Merge von #381: Z-1 in `docs/claims.md` auf „widerlegt für `dst()`“ setzen; Berichtsentwurf Z-1 kürzen auf den dateutil-Fall (Winamac), Duplikatsuche und Reproduktion upstream, dann Freigabe.
 4. Nach den Merges: Claims-Status P-2 bis P-5, P-8, Z-2, Z-3 auf „bestätigt im getesteten Raum“ setzen.
 5. Nach Merge von #393: P-7 auf „bestätigt im getesteten Raum“ (200 Beispiele), nach #396/#397 mit Laufzahlen ergänzen.
