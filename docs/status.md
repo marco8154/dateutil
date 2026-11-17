@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-17 (Lead-Zyklus 40, Lead-Dienst)
+Stand: 2026-11-17 (Lead-Zyklus 41, Lead-Dienst)
 
 ## Lage
+Zyklus 41 (Anlass: Nachricht 52, Angebot 0 für 2 aktive Agenten): Keine neuen Abgaben zum Review; die beiden aktiven Agenten arbeiten an #452 und #453. Nachricht 52 ist meine eigene M3-Frage an die Visionärin / den Visionär (seit 08:35 offen); Ruling aus Zyklus 36 gilt weiter, keine M3-Aufgaben vor der Abzeichnung. Damit nach #452 Arbeit da ist, neu (M2, unabhängig von M3): #454/#455, lange Läufe P-7 mit Rückgabeprüfung (Seed 3/4, je 200 000, `depends_on` #452; vor dem Lauf Prüfung, dass die Testdatei nicht mehr die alte ist, sha256 ≠ `994160f4…`; Hypothesis-Statistik im Protokoll). Schätzung M2: 36. Peer-Review bleibt der Engpass: 443, 531, 533, 538 (ältester ~40 h). Keine Funde.
+
 Zyklus 40 (Anlass: Abgaben 553, 554, Nachricht 52, Angebot 0): Abgabe 554 (#438, Z-1/Z-2 weit 1850–2100, Seed 1) **angenommen**: sha256 `2af57c2f…` = Testdatei am Basis-Commit `fe346b4` (ohne Deckel), Profilzeile `max_examples=20000`, 19:35 min, `4 passed, 74 deselected`, keine Funde. Damit Z-1/Z-2 weit 2 × 20 000 je Test. Abgabe 553 (#451, Meilenstein-Review M1/M2, Qwen3.8 Flash Next) **angenommen**; Fundstellen stichprobenartig bestätigt. Umsetzung: F1 (T-2-Zahlen aus einmaliger Durchsicht als solche gekennzeichnet), F3/F4/F5 (Laufzahlen in `docs/claims.md` verweisen jetzt auf `docs/runs/*.md` statt auf Hashes; P-4 Seed 1 zitiert, P-8/P-4-Zweitlauf als „im Peer-Review“), F6 (Z-1-Bericht: Durchsicht als einmaliges Skript benannt), T-2-Bericht „every such string“ abgeschwächt, Fund 110 (R-2/R-3/R-5 auf neue Datei `test_rrule_claims_prop.py`) selbst erledigt. Neue Aufgaben: #452 (F2, P-7 prüft Rückgabe `datetime`, B, M2) und #453 (F7, Form-Tupel exportieren, B, M1). Funde 111/112 abgewiesen (schon verfolgt bzw. Lead-Pflicht). Nachricht 52 (M3) weiter offen. Peer-Review bleibt der Engpass: 443, 531, 533, 538 (ältester ~39 h).
 
 Zyklus 39 (Anlass: Nachricht 52, Angebot 0 für 1 aktiven Agenten): Keine neuen Abgaben; der aktive Agent arbeitet an #438 (Nacharbeit, Seed 1). Nachricht 52 (M3) weiter offen, Ruling aus Zyklus 36 gilt für M3-Aufgaben. Neu, unabhängig von M3: #451, Meilenstein-Review M1/M2 (Stufe A, `review`, Rolle scientific-review, nur `docs/reviews/m1-m2-review.md`): prüft Claims gegen Tests, Überbehauptung, Selbstorakel, zahnlose Tests, Laufzahlen, doppelte Strategien (LEAD.md 7.1). Schätzung M2 auf 33. Peer-Review bleibt der Engpass: 443, 531, 533, 538 (ältester 38,5 h). Keine Funde.
@@ -111,7 +113,7 @@ Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis:
 - keine
 
 ## Nächste Schritte
-1. Abgaben zu #452/#453 reviewen. Nach Merge #452: P-7-Status „bestätigt im getesteten Raum“ ohne Einschränkung (falls kein Fund).
+1. Abgaben zu #452/#453 reviewen. Nach Merge #452 und den Läufen #454/#455: P-7-Status „bestätigt im getesteten Raum“ ohne Einschränkung (falls kein Fund).
 2. Antwort auf Nachricht 52 (M3): nach Abzeichnung sofort Aufgaben schneiden (Strategien B, Golden-Test R-1 B, Property-Tests B in `test_rrule_claims_prop.py`/`test_relativedelta_prop.py` mit `depends_on`, lange Läufe A).
 3. Peer-Reviews 443 (#387, P-3), 531/533 (#417/#418, P-8), 538 (#420, P-4 Seed 2) abwarten; danach Laufzahlen in `docs/claims.md` (P-3 nach #425/#426).
 4. Vor der M1/M2-Abzeichnung (Lead-Pflicht, Fund 112): in allen Berichtsentwürfen `docs/reports/` die Abschnitte Duplikatsuche upstream und Reproduktion auf upstream-master füllen (P-6, Z-1/Z-1w zusammenführen oder abgrenzen, T-1 beide Pfade, T-2 zwei Berichte, T-3 mit Abgrenzung zu P-7); dann Freigabe durch die Visionärin / den Visionär, höchstens 2 offene Berichte.
