@@ -50,6 +50,7 @@ _WEEK_DAY_FORMS = frozenset(("YYYY-Www-D", "YYYYWwwD"))
 _SECOND_FORMS = frozenset(("hh:mm:ss", "hhmmss", "hh:mm:ss.f", "hhmmss.f"))
 _FRACTION_FORMS = frozenset(("hh:mm:ss.f", "hhmmss.f"))
 
+# ``YYYY`` and ``YYYY-MM`` must not be combined with a time portion.
 FULL_DATE_FORMS = ("YYYY-MM-DD", "YYYYMMDD", "YYYY-Www-D", "YYYYWwwD")
 WEEK_DATE_FORMS = ("YYYY-Www", "YYYYWww", "YYYY-Www-D", "YYYYWwwD")
 
