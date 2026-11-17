@@ -46,13 +46,12 @@ ISO_TIME_FORMS: tuple[str, ...] = (
 # "" means "no offset"; the sign of the ± forms is drawn per value.
 ISO_OFFSET_FORMS: tuple[str, ...] = ("", "Z", "+HH:MM", "+HHMM", "+HH")
 
-_WEEK_FORMS = frozenset(("YYYY-Www", "YYYYWww", "YYYY-Www-D", "YYYYWwwD"))
 _WEEK_DAY_FORMS = frozenset(("YYYY-Www-D", "YYYYWwwD"))
 _SECOND_FORMS = frozenset(("hh:mm:ss", "hhmmss", "hh:mm:ss.f", "hhmmss.f"))
 _FRACTION_FORMS = frozenset(("hh:mm:ss.f", "hhmmss.f"))
 
-# ``YYYY`` and ``YYYY-MM`` must not be combined with a time portion.
-_FULL_DATE_FORMS = ("YYYY-MM-DD", "YYYYMMDD", "YYYY-Www-D", "YYYYWwwD")
+FULL_DATE_FORMS = ("YYYY-MM-DD", "YYYYMMDD", "YYYY-Www-D", "YYYYWwwD")
+WEEK_DATE_FORMS = ("YYYY-Www", "YYYYWww", "YYYY-Www-D", "YYYYWwwD")
 
 
 def _weeks_in_year(year: int) -> int:
@@ -77,7 +76,7 @@ def iso_dates(
     form = draw(st.sampled_from(tuple(forms)))
     year = draw(st.integers(1, 9999))
 
-    if form in _WEEK_FORMS:
+    if form in WEEK_DATE_FORMS:
         week = draw(st.integers(1, _weeks_in_year(year)))
         if form in _WEEK_DAY_FORMS:
             day = draw(st.integers(1, _max_iso_day(year, week)))
@@ -171,7 +170,7 @@ def iso_datetimes(draw, sep: str = "T") -> tuple[str, datetime]:
     Only complete date forms are used; the compact and the extended style are
     mixed freely because the documented grammar does not forbid it.
     """
-    date_str, expected_date, _ = draw(iso_dates(forms=_FULL_DATE_FORMS))
+    date_str, expected_date, _ = draw(iso_dates(forms=FULL_DATE_FORMS))
     time_str, expected_time, _ = draw(iso_times())
     offset_str, offset, _ = draw(iso_offsets())
 

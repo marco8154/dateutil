@@ -12,8 +12,7 @@ from hypothesis import example, given
 from hypothesis import strategies as st
 
 from dateutil.parser import isoparse, isoparser
-
-WEEK_53_FORMS = ("YYYY-Www", "YYYYWww", "YYYY-Www-D", "YYYYWwwD")
+from strategies_iso import WEEK_DATE_FORMS
 
 
 def _has_52_weeks(year):
@@ -25,7 +24,7 @@ def week_53_strings(draw):
     # Year 9999 is excluded: isoparse("9999-W53-1") raises OverflowError,
     # which belongs to claim P-6 (milestone 2), not to this test.
     year = draw(st.integers(1, 9998).filter(_has_52_weeks))
-    form = draw(st.sampled_from(WEEK_53_FORMS))
+    form = draw(st.sampled_from(WEEK_DATE_FORMS))
     day = draw(st.integers(1, 7))
     return (
         form.replace("YYYY", "%04d" % year)

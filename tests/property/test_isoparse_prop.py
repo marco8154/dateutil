@@ -6,7 +6,7 @@ from hypothesis import strategies as st
 
 from dateutil import tz
 from dateutil.parser import isoparse
-from strategies_iso import iso_dates, iso_offsets
+from strategies_iso import FULL_DATE_FORMS, iso_dates, iso_offsets
 
 # Strategies
 ZONES = [
@@ -65,7 +65,6 @@ MIDNIGHT_24_FORMS = ["24", "24:00", "2400", "24:00:00", "240000"] + [
     for dec_sep in ".,"
     for n in range(1, 7)
 ]
-FULL_DATE_FORMS = ("YYYY-MM-DD", "YYYYMMDD", "YYYY-Www-D", "YYYYWwwD")
 
 
 @pytest.mark.isoparser
