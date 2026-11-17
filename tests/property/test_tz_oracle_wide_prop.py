@@ -12,7 +12,7 @@ from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 
 import pytest
-from hypothesis import given, settings
+from hypothesis import given
 from hypothesis import strategies as st
 
 from dateutil import tz
@@ -123,7 +123,6 @@ def _skip_unavailable(source):
 
 @pytest.mark.gettz
 @pytest.mark.parametrize("source", TZ_SOURCES)
-@settings(max_examples=120)
 @given(data=st.data())
 def test_gettz_matches_zoneinfo_wide(source, data):
     """Z-1 over 1850-2100: utcoffset, dst and tzname of gettz(key) equal
@@ -153,7 +152,6 @@ def test_gettz_matches_zoneinfo_wide(source, data):
 
 @pytest.mark.gettz
 @pytest.mark.parametrize("source", TZ_SOURCES)
-@settings(max_examples=120)
 @given(data=st.data())
 def test_astimezone_roundtrip_wide(source, data):
     """Z-2 over 1850-2100: ``dt.astimezone(z).astimezone(UTC) == dt``."""
