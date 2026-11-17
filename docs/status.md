@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-17 (Lead-Zyklus 32, Lead-Dienst)
+Stand: 2026-11-17 (Lead-Zyklus 33, Lead-Dienst)
 
 ## Lage
+Zyklus 33: Angenommen: 542 (#423, Z-3 Seed 1, Prüfung aus Zyklus 32) und 544 (#424, Z-3 Seed 2, andere Person): Pipeline grün, `Findings: none`, sha256 der Testdatei = `master` (`1239b015…`), Lauf lokal wiederholt: `6 passed` in 817 s. Z-3 in `docs/claims.md` mit 2 × 20 000 (Merge ausstehend). #414 ist gemergt (`b845c37`): „Merge ausstehend“ bei Z-1/Z-2 entfernt. Nachricht 52 (M3) weiter offen (an die Visionärin / den Visionär; der Lead-Dienst beantwortet sie nicht). Peer-Review bleibt der Engpass: 443, 531, 533, 538 (ältester 37 h). 1 aktiver Agent, 1 freie Aufgabe, 2 blockiert; keine Funde.
+
 Zyklus 32: Abgabe 542 (#423, langer Lauf Z-3 Seed 1, andere Person) geprüft: alle drei Kriterien erfüllt, sha256 der Testdatei stimmt mit `master` (`1239b015…`), Versionen wie lokal, Lauf lokal wiederholt: `6 passed` in 832 s. Entscheidung **annehmen** steht, konnte aber nicht abgeschickt werden: der swarvex-MCP-Server lehnte nach dem langen Lauf das Token ab (Authorization header rejected). Nächster Zyklus: `review_submission` 542 accept zuerst. 544 (#424, Seed 2) wartet noch auf die Prüfung (Pipeline). Nachricht 52 (M3) weiter offen; ohne Abzeichnung keine neuen Aufgaben (Umfangsfrage gehört der Visionärin / dem Visionär). 0 aktive Agenten, 0 freie Aufgaben, 4 blockiert (#425/#426 auf #387, #438/#439 auf #414-Merge).
 
 Zyklus 31: Angenommen: 539 (#414, Z-1/Z-2 über 1850–2100, dritter Versuch, andere Person): alle vier Punkte aus Zyklus 26 behoben. Lokal: neues Modul `25 passed, 74 xfailed` (62 s); Berichtstabelle = `WIDE_DST_CASES` Zeile für Zeile (74 Fälle, 46 Schlüssel, per Skript); alle 74 `dst()`-Werte unter der genannten Quelle nachgerechnet, `utcoffset()`/`tzname()` jeweils gleich; `W-SU` unter `tzpath` nicht vorhanden, nur unter `tzdata` gepinnt. Eigene Abgabe 538 (#420, P-4 Seed 2): `1 passed` in 373 s, sha256 stimmt mit `master`, Review-Fragen gesetzt. Z-1/Z-2: Laufzahlen 2 × 20 000 in `docs/claims.md`. Neu (gegen Leerlauf, mit `depends_on` #414): #438/#439, lange Läufe des weiten Orakels mit Seed 1/2 (lokal 1000 Beispiele in 55 s). Schätzung M2 auf 32. Peer-Review bleibt der Engpass (443, 531, 533, 538; ältester 37 h). Nachricht 52 (M3) wartet weiter. 1 aktiver Agent.
@@ -94,9 +96,9 @@ Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis:
 - keine
 
 ## Nächste Schritte
-00000. Abgabe 542 (#423) annehmen (geprüft in Zyklus 32, Begründung: alle Kriterien erfüllt, sha256 = master, lokal `6 passed` in 832 s); 544 (#424) reviewen; danach Z-3 in `docs/claims.md` mit 2 × 20 000 Beispielen (Seed 1/2).
+00000. Nach Merge #423/#424: bei Z-3 „Merge ausstehend“ durch die Merge-Commits ersetzen. Abgaben zu #438/#439 reviewen, danach Laufzahlen Z-1/Z-2 weit.
 0000. Antwort auf Nachricht 52 (M3): Entwurf R-1…R-5, D-1…D-4 steht in `docs/claims.md`; nach Abzeichnung sofort Aufgaben schneiden (Strategien B, Golden-Test R-1 B, Property-Tests B mit `depends_on`, lange Läufe A). Abgaben zu #423–#426, #438/#439 reviewen, danach Laufzahlen bei P-3, P-4, P-8, Z-3 und Z-1/Z-2 weit. Nach Merge #411/#412: P-6-Status ohne „Merge ausstehend“.
-000. Abgabe 443 (#387) nach Peer-Review mergen lassen. Nach Merge #414: „Merge ausstehend“ bei Z-1/Z-2 entfernen. Bericht `docs/reports/z1w-dst-inference.md` vor Freigabe: Duplikatsuche upstream und Reproduktion auf upstream-master (Abschnitte TODO), mit dem Z-1-Bericht zusammenführen oder abgrenzen (beide nur `dst()`-Heuristik, Erwartung, kein Vertragsbruch).
+000. Abgabe 443 (#387) nach Peer-Review mergen lassen. Bericht `docs/reports/z1w-dst-inference.md` vor Freigabe: Duplikatsuche upstream und Reproduktion auf upstream-master (Abschnitte TODO), mit dem Z-1-Bericht zusammenführen oder abgrenzen (beide nur `dst()`-Heuristik, Erwartung, kein Vertragsbruch).
 00. T-2-Berichte: Duplikatsuche upstream („tzstr angle brackets“, „tzstr transition time hours“, „tzstr negative DST Dublin“) und Reproduktion auf upstream-master.
 0. Abgabe zu #409 reviewen; danach T-3 mit 2 × 200 000 in `docs/claims.md`. Vor dem T-1-Bericht (nach dem Merge von #402): beide Pfade im Bericht; Docstring-Name (Fund 93) als Randnotiz oder eigener Doku-Fix, die Visionärin / der Visionär entscheidet. Vor jedem T-Bericht: Duplikatsuche upstream (z. B. „tzstr angle brackets“, „tzstr UTC TypeError“, „tzical OverflowError“) und Reproduktion auf upstream-master. Vor dem T-3-Bericht: Abgrenzung zu P-7 (Parser darf laut Claim `OverflowError` werfen; `rrulestr`/`tzical` dokumentieren `ValueError`).
 1. Peer-Reviews der Abgaben 440–444, 446, 447, 449, 450 abwarten; Nacharbeit-Begründungen lesen. Merge-Zug-Lauf prüfen.
