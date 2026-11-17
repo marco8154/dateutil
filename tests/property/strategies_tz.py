@@ -97,13 +97,15 @@ def _offset_deltas():
     )
 
 
-def instants_near_transitions(key: str) -> st.SearchStrategy[datetime]:
+def instants_near_transitions(
+    key: str, first_year: int = 1970, last_year: int = 2040
+) -> st.SearchStrategy[datetime]:
     """A UTC instant within two days of a transition of *key*.
 
     Keys with no transitions in the default range fall back to plain
     utc_datetimes().
     """
-    instants = transitions(key)
+    instants = transitions(key, first_year, last_year)
     if not instants:
         return utc_datetimes()
     return st.sampled_from(instants).flatmap(
@@ -111,14 +113,16 @@ def instants_near_transitions(key: str) -> st.SearchStrategy[datetime]:
     )
 
 
-def wall_times_near_transitions(key: str) -> st.SearchStrategy[datetime]:
+def wall_times_near_transitions(
+    key: str, first_year: int = 1970, last_year: int = 2040
+) -> st.SearchStrategy[datetime]:
     """A naive wall time within two days of a transition of *key*, fold 0 or 1.
 
     The delta is applied to the wall time, so values inside a gap (imaginary)
     or a fold (ambiguous) are reachable. Keys with no transitions in the
     default range fall back to plain utc_datetimes().
     """
-    instants = transitions(key)
+    instants = transitions(key, first_year, last_year)
     if not instants:
         return utc_datetimes().map(lambda dt: dt.replace(tzinfo=None))
 

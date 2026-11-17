@@ -111,6 +111,15 @@ def test_instants_reach_one_microsecond_around_transitions():
 
 
 @pytest.mark.gettz
+def test_instants_span_1850_to_2100():
+    strategy = instants_near_transitions("Europe/Berlin", 1850, 2100)
+    before_1900 = find(strategy, lambda dt: dt.year < 1900)
+    after_2090 = find(strategy, lambda dt: dt.year > 2090)
+    assert before_1900.year < 1900
+    assert after_2090.year > 2090
+
+
+@pytest.mark.gettz
 @given(dt=instants_near_transitions("Europe/Berlin"))
 def test_instants_near_transitions_are_within_window(dt):
     assert dt.tzinfo is UTC
