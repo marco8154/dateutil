@@ -37,6 +37,23 @@ Quelle: `dateutil/dateutil` @ `a78cbd8`, Docstrings von `tzstr` (`tz.py:467–50
 | T-2 | `tz.py:469–471` (Verweis auf das TZ-Format der GNU C Library) | Für den POSIX-TZ-String im Fuß jeder TZif-Datei aus `tzdata` liefert `tzstr(s, posix_offset=True)` für UTC-Zeitpunkte nach dem letzten Übergang denselben `utcoffset()` wie `zoneinfo.ZoneInfo(k)` | Erwartung (Orakel) | `tests/property/test_tzstr_oracle_prop.py` | – | widerlegt (Abgabe 473, #405, Zyklus 18): 231 von 598 Fuß-Strings mit `<…>`-Abkürzungen (z. B. `<-03>3`) abgelehnt (`ValueError`); abweichender Offset bei Beirut (`/0`), Gaza/Hebron (`/50`), Jerusalem (`/26`), Dublin (negative Sommerzeit) und ihren Links; übrige 359 Schlüssel ohne Abweichung (2040 halbstündlich, 200 Beispiele 2040–2099). Gaza/Hebron haben explizite Übergänge bis 2086-10-25; die Abweichung besteht auch danach (2090-03-25 00:00 UTC: zoneinfo +3:00, tzstr +2:00). Berichte `docs/reports/t2-tzstr-angle-brackets.md`, `docs/reports/t2-tzstr-transition-times.md` |
 | T-3 | `tz.py:680–688`, `_parse_rfc` | `tzical(StringIO(s))` liefert für beliebige Strings ein Objekt oder wirft `ValueError`, nie eine andere Ausnahme | Erwartung | `tests/property/test_tzical_fuzz_prop.py` | – | widerlegt (#404, gemergt `792675b`; lange Läufe 2 × 200 000 Beispiele, Seed 1 #408, Seed 2 #409 `b3fa04a`, keine weiteren Funde): `DTSTART:1970102503000` (ohne `T`) wirft `OverflowError`. Ursache im Parser: Der Schutz um `_build_naive` (`_parser.py:643–644`) fängt nur `ValueError`, `datetime.replace(year=1970102503000)` wirft `OverflowError`. Bericht `docs/reports/t3-tzical-overflowerror.md` |
 
+## Meilenstein 3: `rrule` und `relativedelta` (Entwurf, **nicht abgezeichnet**; wartet auf Nachricht 52)
+Quelle: `dateutil/dateutil` @ `a78cbd8` (`rrule.py`, `relativedelta.py` seitdem unverändert), RFC 5545 Abschnitt 3.3.10 und 3.8.5.3. Golden-Tests schreiben die RFC-Beispiele als Fakten nach (Regel, DTSTART, erwartete Termine) und zitieren den Abschnitt; kein RFC-Fließtext. Für diese Claims gibt es keine Aufgaben, bis die Visionärin / der Visionär abzeichnet.
+
+| ID | Quelle | Claim in unseren Worten | Art | Abnahme (Test) | Hängt ab von | Status |
+|---|---|---|---|---|---|---|
+| R-1 | RFC 5545 3.8.5.3 | Für jedes RRULE-Beispiel der RFC (soweit in `rrule` ausdrückbar) liefert `rrulestr(regel, dtstart=…)` genau die dort genannten Termine | Vertrag (Golden) | `tests/property/test_rrule_rfc_golden.py` | – | Entwurf |
+| R-2 | `rrule.py:320 ff.`, RFC 5545 3.3.10 | Termine einer Regel sind streng aufsteigend und ≥ `dtstart`; mit `count=n` genau `n` Termine (sofern die Regel so viele hat), mit `until` keiner danach | Vertrag | `tests/property/test_rrule_prop.py` | – | Entwurf |
+| R-3 | `rrule.py:198–318` | `count()`, `before`, `after`, `between` (mit `inc` beidseitig) stimmen mit der aufgezählten Terminliste überein | Vertrag | `tests/property/test_rrule_prop.py` | R-2 | Entwurf |
+| R-4 | `rrule.py:715 ff.`, `rrule.py:1430 ff.` | `rrulestr(str(r))` ergibt dieselben Termine wie `r` | Erwartung | `tests/property/test_rrule_roundtrip_prop.py` | R-2 | Entwurf |
+| R-5 | RFC 5545 3.3.10 (BYxxx) | Jeder Termin erfüllt alle gesetzten `byxxx`-Filter (Monat, Monatstag, Wochentag, Stunde, Minute, Sekunde) | Vertrag | `tests/property/test_rrule_prop.py` | R-2 | Entwurf |
+| D-1 | `relativedelta.py:319 ff.` | Mit nur relativen Tagen/Wochen/Stunden/Minuten/Sekunden/Mikrosekunden gilt `dt + rd == dt + timedelta(…)` | Vertrag (Orakel) | `tests/property/test_relativedelta_prop.py` | – | Entwurf |
+| D-2 | `relativedelta.py:319 ff.`, `:459` | `dt + rd - rd == dt`, wenn beim Addieren kein Monatsende geklemmt wird | Erwartung | `tests/property/test_relativedelta_prop.py` | – | Entwurf |
+| D-3 | `relativedelta.py:16 ff.` (Docstring, absolute Felder) | Absolute Felder (`year=`, `month=`, `day=`, `hour=` …) setzen genau diesen Wert (`day` geklemmt aufs Monatsende) | Vertrag | `tests/property/test_relativedelta_prop.py` | – | Entwurf |
+| D-4 | `relativedelta.py:284` | `dt + rd.normalized() == dt + rd` | Erwartung (der Docstring sagt nur „ganzzahlige Darstellung“) | `tests/property/test_relativedelta_prop.py` | – | Entwurf |
+
+Später (nicht M3): unabhängiger Brute-Force-Referenzgenerator für kleine Regeln (C-Aufgabe).
+
 ## Regeln
 - IDs werden nie wiederverwendet; ein geänderter Claim bekommt eine neue Version (`Z-1.2`).
 - Ein widerlegter Claim ist ein Ergebnis: Test mit `xfail(strict=True)` und Berichtsentwurf in `docs/reports/`.

@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-17 (Lead-Zyklus 29, Lead-Dienst)
+Stand: 2026-11-17 (Lead-Zyklus 30, Lead-Dienst)
 
 ## Lage
+Zyklus 30: Angenommen: 537 (#422, langer Lauf Z-1/Z-2 Seed 2, andere Person): Pipeline grün, `4 passed, 2 xfailed, 8 xpassed` in 236 s, keine Funde; sha256 der Testdatei stimmt mit `master`, Lauf lokal wiederholt: gleiches Ergebnis (804 s); angenommen. Damit hat Z-1/Z-2 Erst- und Zweitlauf mit 20 000 Beispielen. 443 (#387), 531 (#417) und 533 (#418) warten weiter auf Peer-Review (Engpass; ältester 36 h); deswegen hält die Plattform #424 für Agenten dieser Person zurück, #425/#426 warten auf #387. Neue Aufgaben gibt es erst mit M3: Claims-Entwurf R-1…R-5, D-1…D-4 steht jetzt in `docs/claims.md` (nicht abgezeichnet), Nachricht 52 wartet auf die Visionärin / den Visionär. 3 aktive Agenten, 0 freie Aufgaben.
+
 Zyklus 29: Angenommen: 536 (#421, langer Lauf Z-1/Z-2 Seed 1, andere Person): Pipeline grün, `4 passed, 2 xfailed, 8 xpassed` in 231 s, keine Funde; sha256 der Testdatei stimmt mit `master`, Lauf lokal wiederholt: gleiches Ergebnis (684 s). Z-1/Z-2 bekommen Laufzahlen in `docs/claims.md` erst nach dem Zweitlauf (Seed 2). 443 (#387, 35,7 h), 531 (#417) und 533 (#418) warten weiter auf Peer-Review (Engpass laut `metrics`). Nachricht 52 (M3) wartet weiter auf die Visionärin / den Visionär. 3 aktive Agenten, 1 freie Aufgabe, 2 blockiert; Angebot knapp, aber ohne M3-Antwort keine neuen Aufgaben.
 
 Zyklus 28: Angenommen: 535 (#419, langer Lauf P-4 Seed 1, andere Person): Pipeline grün, `1 passed` in 426 s, keine Funde; sha256 der Testdatei stimmt mit `master`, Lauf lokal wiederholt: `1 passed` (368 s). Neue eigene Abgabe 533 (#418, P-8 Seed 2): `2 passed` in 685 s, keine Funde, sha256 stimmt; Review-Fragen gesetzt, wartet auf Peer-Review wie 443 (#387, 35 h) und 531 (#417). P-4/P-8 bekommen Laufzahlen in `docs/claims.md` erst nach Erst- und Zweitlauf. Nachricht 52 (M3) wartet weiter auf die Visionärin / den Visionär. 2 aktive Agenten, 4 freie Aufgaben, Angebot reicht.
@@ -88,7 +90,7 @@ Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis:
 - keine
 
 ## Nächste Schritte
-0000. Antwort auf Nachricht 52 (M3): Claims-Entwurf R-…/D-… in `docs/claims.md`, Abzeichnung, dann Aufgaben. Nacharbeit zu #414 reviewen (Pins nicht gefiltert, Quellenspalte). Abgaben zu #417–#426 reviewen, danach Laufzahlen bei P-3, P-4, P-8, Z-1/Z-2, Z-3. Nach Merge #411/#412: P-6-Status ohne „Merge ausstehend“.
+0000. Antwort auf Nachricht 52 (M3): Entwurf R-1…R-5, D-1…D-4 steht in `docs/claims.md`; nach Abzeichnung sofort Aufgaben schneiden (Strategien B, Golden-Test R-1 B, Property-Tests B mit `depends_on`, lange Läufe A). Z-1/Z-2: Laufzahlen 2 × 20 000 (Seed 1 #421, Seed 2 #422) in `docs/claims.md` eintragen, sobald #422 gemergt ist. Nacharbeit zu #414 reviewen (Pins nicht gefiltert, Quellenspalte). Abgaben zu #417–#426 reviewen, danach Laufzahlen bei P-3, P-4, P-8, Z-1/Z-2, Z-3. Nach Merge #411/#412: P-6-Status ohne „Merge ausstehend“.
 000. Abgabe 443 (#387) nach Peer-Review mergen lassen. Nach #414: Zeitraum 1850–2100 bei Z-1/Z-2; z1w-Bericht vor Freigabe kürzen (zoneinfo-Fälle abgrenzen wie bei Z-1).
 00. T-2-Berichte: Duplikatsuche upstream („tzstr angle brackets“, „tzstr transition time hours“, „tzstr negative DST Dublin“) und Reproduktion auf upstream-master.
 0. Abgabe zu #409 reviewen; danach T-3 mit 2 × 200 000 in `docs/claims.md`. Vor dem T-1-Bericht (nach dem Merge von #402): beide Pfade im Bericht; Docstring-Name (Fund 93) als Randnotiz oder eigener Doku-Fix, die Visionärin / der Visionär entscheidet. Vor jedem T-Bericht: Duplikatsuche upstream (z. B. „tzstr angle brackets“, „tzstr UTC TypeError“, „tzical OverflowError“) und Reproduktion auf upstream-master. Vor dem T-3-Bericht: Abgrenzung zu P-7 (Parser darf laut Claim `OverflowError` werfen; `rrulestr`/`tzical` dokumentieren `ValueError`).
