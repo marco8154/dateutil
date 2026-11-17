@@ -46,7 +46,7 @@ test_tzstr_angle_bracket_abbreviations`
 
 ## Duplicate search
 
-TODO (lead)
+Searched dateutil/dateutil issues and pull requests (all states, title and body) on 2026-11-17 for `tzstr angle brackets`, `tzstr <-03>`, `POSIX TZ quoted abbreviation`: no match. Related but different: #1653 and PR #1654 (seconds in the offset), #1081.
 
 ## Reproduced on upstream master
 

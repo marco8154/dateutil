@@ -49,7 +49,7 @@ mutations of valid ISO strings) found no other exception class than
 
 ## Duplicate search
 
-TODO (lead)
+Searched dateutil/dateutil issues and pull requests (all states, title and body) on 2026-11-17 for `isoparse OverflowError`, `isoparse 9999`, `isoparse W53 9999`, `24:00 9999-12-31`: no match. Related but different: #1617 (closed PR, non-digit characters in `isoparse`/`tzical` fields).
 
 ## Reproduced on upstream master
 

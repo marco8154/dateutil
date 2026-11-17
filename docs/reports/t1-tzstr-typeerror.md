@@ -62,7 +62,9 @@ intent is to report parse failures as `None` → `ValueError`.
 
 ## Duplicate search
 
-TODO (lead)
+Searched dateutil/dateutil issues and pull requests (all states, title and body) on 2026-11-17 for `tzstr UTC TypeError`, `tzstr GMT`, `tzstr NoneType`, `tzstr comma format`. Bug 1 is already reported: #1432 and #1402 (both open; #1402 reaches it through `gettz`), with open PRs #1453, #1530, #1563 and closed PR #1554. Bug 2 (comma format): no match.
+
+**Not a new issue.** Bug 2 goes to #1432 as a comment, noting that a fix for Bug 1 alone leaves `tzstr` raising `TypeError`.
 
 ## Reproduced on upstream master
 

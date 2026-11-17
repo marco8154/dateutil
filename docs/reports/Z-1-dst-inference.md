@@ -57,7 +57,7 @@ compare `dst()` for these keys.
 
 ## Duplicate search
 
-TODO (lead)
+Searched dateutil/dateutil issues and pull requests (all states, title and body) on 2026-11-17 for `gettz dst() zoneinfo`, `tzfile dst inference`, `dst isdst` and every zone name in this report: no match. Same class of bug, other zones: #1049 (Colombo), #1050 (Iqaluit). Related, different symptom: #1048 (Dublin), #1413 (EET `utcoffset`), #1227 (Chile/Continental, `utcoffset` in the gap). Open PR #1667 covers only `Africa/Casablanca` and `Africa/El_Aaiun` (permanent DST), which are excluded here.
 
 ## Reproduced on upstream master
 

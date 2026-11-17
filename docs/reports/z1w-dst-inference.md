@@ -143,7 +143,7 @@ The generic test `test_gettz_matches_zoneinfo_wide` does not compare
 
 ## Duplicate search
 
-TODO (lead)
+Searched dateutil/dateutil issues and pull requests (all states, title and body) on 2026-11-17 for `gettz dst() zoneinfo`, `tzfile dst inference`, `Hong_Kong 1941`, `dst isdst` and the zones in this report (including Lisbon, Moscow, Montevideo, Hong Kong, Azores, London): no match. Same class of bug, other zones: #1049 (Colombo), #1050 (Iqaluit). Related: #1048 (Dublin), #1413, #1227, #128 (Portugal, closed 2015). Known separately: PR #1667 (Casablanca, El_Aaiun).
 
 ## Reproduced on upstream master
 

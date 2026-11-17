@@ -2,7 +2,7 @@
 
 Comparing `tzstr(footer, posix_offset=True)` with `zoneinfo` built from the
 same TZif file (`tzdata` 2026.6) at UTC instants after the zone's last
-transition, four footer patterns give a different `utcoffset()` than the
+transition, three footer patterns give a different `utcoffset()` than the
 GNU TZ format prescribes.
 
 ## Versions
@@ -16,29 +16,14 @@ GNU TZ format prescribes.
 
 | Zone | Footer | UTC instant | `utcoffset` zoneinfo | `utcoffset` tzstr |
 |---|---|---|---|---|
-| `Asia/Beirut` | `EET-2EEST,M3.5.0/0,M10.5.0/0` | 2040-10-27 21:00 | +2:00 | +3:00 |
 | `Asia/Gaza`, `Asia/Hebron` | `EET-2EEST,M3.4.4/50,M10.4.4/50` | 2090-03-25 00:00 | +3:00 | +2:00 |
 | `Asia/Jerusalem`, `Asia/Tel_Aviv`, `Israel` | `IST-2IDT,M3.4.4/26,M10.5.0` | 2040-03-23 00:00 | +3:00 | +2:00 |
 | `Europe/Dublin`, `Eire` | `IST-1GMT0,M10.5.0,M3.5.0/1` | 2040-10-28 01:00 | +0:00 | +1:00 |
 
 The expected value is the one `zoneinfo` (and glibc `localtime`) give, since
 the footer is a GNU TZ variable string. Scanning half-hourly, `tzstr`
-applied the spring transition days late (Gaza/Hebron, Jerusalem), and the autumn transition 24 h late (Beirut) and 1 h late
-(Dublin); the wrong offsets persist well after each instant in the table.
-
-### `/0`: transition at midnight
-
-`M10.5.0/0` is the last Sunday of October at 00:00 local time, i.e. DST ends
-2040-10-27 21:00 UTC for Beirut; `tzstr` ends it only 24 h later.
-
-```python
-from datetime import datetime, timedelta, timezone
-from dateutil import tz
-
-u = datetime(2040, 10, 27, 21, 0, tzinfo=timezone.utc)
-tzn = tz.tzstr("EET-2EEST,M3.5.0/0,M10.5.0/0", posix_offset=True)
-assert u.astimezone(tzn).utcoffset() == timedelta(hours=2)  # actual: 3:00
-```
+applied the spring transition days late (Gaza/Hebron, Jerusalem) and the autumn
+transition 1 h late (Dublin); the wrong offsets persist well after each instant in the table.
 
 ### `/50` and `/26`: transition times at or beyond 24 h
 
@@ -49,6 +34,9 @@ governs from then on); `M3.4.4/26` (Jerusalem) starts 2040-03-23 00:00 UTC.
 `tzstr` applied the transitions days later.
 
 ```python
+from datetime import datetime, timedelta, timezone
+from dateutil import tz
+
 u = datetime(2090, 3, 25, 0, 0, tzinfo=timezone.utc)
 tzn = tz.tzstr("EET-2EEST,M3.4.4/50,M10.4.4/50", posix_offset=True)
 assert u.astimezone(tzn).utcoffset() == timedelta(hours=3)  # actual: 2:00
@@ -72,12 +60,17 @@ assert u.astimezone(tzn).utcoffset() == timedelta(0)  # actual: 1:00
 
 Covered by `tests/property/test_tzstr_oracle_prop.py::
 test_tzstr_known_offset_differences`
-(`xfail(strict=True)`, one pinned instant per key).
+(`xfail(strict=True)`, one pinned instant per key). The same test also pins
+`Asia/Beirut` (`M10.5.0/0`), which is #1289 (see below).
 
 ## Duplicate search
 
-TODO (lead)
+Searched dateutil/dateutil issues and pull requests (all states, title and body) on 2026-11-17 for `tzstr transition time`, `tzstr M3.5.0/0`, `M10.5.0/0`, `posix_offset Gaza`, `tzstr Beirut`, `tzstr Jerusalem`, `tzstr hours 24`, `tzstr Dublin negative DST`, `tzstr negative DST`.
+
+- `/0` (Beirut): already reported as #1289 (open); open PR #1596 ("Closes #1289") fixes it. Checked on 2026-11-17: with the `src/` change of PR #1596 (commit `bc9609a`) applied to `a78cbd8`, the Beirut assertion above passes and the other three still fail. **Not part of this report;** linked for context.
+- `/50`, `/26` (Gaza/Hebron, Jerusalem): no match. #594 is about offsets beyond 24 h, not transition times.
+- Negative DST in `tzstr` (Dublin): no match. Related: #1048 (Dublin, ambiguity through `gettz`).
 
 ## Reproduced on upstream master
 
-Reproduced on 2026-11-17 against upstream `master` at commit `a78cbd81d5d03b5f126eb36edb92bca78972c804` (2026-11-01, the current head), Python 3.13.18: all four assertions fail with the offsets noted as "actual" (3:00, 2:00, 2:00, 1:00).
+Reproduced on 2026-11-17 against upstream `master` at commit `a78cbd81d5d03b5f126eb36edb92bca78972c804` (2026-11-01, the current head), Python 3.13.18: the three assertions above fail with the offsets noted as "actual" (2:00, 2:00, 1:00).

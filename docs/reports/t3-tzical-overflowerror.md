@@ -61,7 +61,7 @@ reported as `ValueError` ("invalid offset", "unknown component",
 
 ## Duplicate search
 
-TODO (lead)
+Searched dateutil/dateutil issues and pull requests (all states, title and body) on 2026-11-17 for `tzical OverflowError`, `tzical DTSTART`, `tzical OverflowError DTSTART`, `_parse_rfc OverflowError`: no match. Related but different: #1368 (`tzical` and X- properties), #1617 (closed PR, non-digit characters).
 
 ## Reproduced on upstream master
 
