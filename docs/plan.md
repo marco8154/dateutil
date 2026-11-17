@@ -1,6 +1,6 @@
 # Plan
 
-Stand: 2026-11-16 (Lead-Zyklus 23). Neu: #415/#416 (lange Läufe P-2/P-5). Zusätzlich gemergt: #379, #381, #391, #394–#396, #397, #398, #399, #408. In Peer-Review: #387, #409, #410, #413. Zyklus 22: #410–#414 (aus Funden 99–101). Gemergt: #376–#378, #386, #388, #389, #390, #392, #393, #402, #404, #405, #406, #407. #408 angenommen (Abgabe 477), Merge-Zug ausstehend. In Peer-Review: #387 (Abgabe 443). Frei: #394–#397, #409 u. a. #391 wartet auf #381. Claims T-1 bis T-3 freigegeben (Nachricht 44), P-9 freigegeben (Nachricht 43). Schätzung M1: 13 Aufgaben.
+Stand: 2026-11-17 (Lead-Zyklus 24). Neu: #417–#426 (lange Läufe P-3, P-4, P-8, Z-1/Z-2, Z-3; #425/#426 nach #387). Angenommen: #411, #412, #416; #414 in Nacharbeit. Schätzung M2: 30. M3-Interview angefragt (Nachricht 52). Zyklus 23: #415/#416 (lange Läufe P-2/P-5). Zusätzlich gemergt: #379, #381, #391, #394–#396, #397, #398, #399, #408. In Peer-Review: #387, #409, #410, #413. Zyklus 22: #410–#414 (aus Funden 99–101). Gemergt: #376–#378, #386, #388, #389, #390, #392, #393, #402, #404, #405, #406, #407. #408 angenommen (Abgabe 477), Merge-Zug ausstehend. In Peer-Review: #387 (Abgabe 443). Frei: #394–#397, #409 u. a. #391 wartet auf #381. Claims T-1 bis T-3 freigegeben (Nachricht 44), P-9 freigegeben (Nachricht 43). Schätzung M1: 13 Aufgaben.
 Lead-Budget: 5 Mio. Tokens/Tag (nur Lead-Dienst).
 
 ## Meilenstein 1: Hypothesis-Grundgerüst (parser, tz)
@@ -45,9 +45,14 @@ Fuzz-Ziele (Hypothesis, keine nativen Fuzzer) für `parse` (wirft nur ParserErro
 | #410 | P-6-Fuzz-Ziel: `OverflowError`-Ausnahme von `startswith("9999")` auf `KNOWN_OVERFLOW` (Wochendatum nach 31.12.9999, Stunde 24 am letzten Tag) einschränken (Fund 100) | B | `tests/property/test_isoparse_fuzz_prop.py`, `docs/reports/p6-*.md` | – |
 | #411 / #412 | Langer Lauf P-6 mit eingeschränkter Ausnahme, Seed 3 / Seed 4 | A (`simulation`) | `docs/runs/p6-seed3.md` / `docs/runs/p6-seed4.md` | #410 |
 | #415 / #416 | Langer Lauf P-2/P-5 (`test_isoparse_oracle_prop.py`, beide Tests), 200 000 Beispiele, Seed 1 / Seed 2 (lokal: 5000 Beispiele je Test 20 s) | A (`simulation`) | `docs/runs/p2p5-seed1.md` / `docs/runs/p2p5-seed2.md` | – (#379 gemergt) |
+| #417 / #418 | Langer Lauf P-8 (`test_parser_roundtrip_prop.py`), 200 000 Beispiele, Seed 1 / Seed 2 | A (`simulation`) | `docs/runs/p8-seed1.md` / `docs/runs/p8-seed2.md` | – |
+| #419 / #420 | Langer Lauf P-4 (`test_midnight_24_is_next_day`), 200 000 Beispiele, Seed 1 / Seed 2 | A (`simulation`) | `docs/runs/p4-seed1.md` / `docs/runs/p4-seed2.md` | – |
+| #421 / #422 | Langer Lauf Z-1/Z-2 (`test_tz_oracle_prop.py`), 20 000 Beispiele (lokal 2000 in 125 s), Seed 1 / Seed 2 | A (`simulation`) | `docs/runs/z1z2-seed1.md` / `docs/runs/z1z2-seed2.md` | – |
+| #423 / #424 | Langer Lauf Z-3 (`test_tz_helpers_prop.py`), 20 000 Beispiele (lokal 2000 in 170 s), Seed 1 / Seed 2 | A (`simulation`) | `docs/runs/z3-seed1.md` / `docs/runs/z3-seed2.md` | – |
+| #425 / #426 | Langer Lauf P-3 (`test_isoparse_tz_prop.py`), 200 000 Beispiele, Seed 1 / Seed 2 | A (`simulation`) | `docs/runs/p3-seed1.md` / `docs/runs/p3-seed2.md` | #387 |
 
 ## Meilenstein 3 (später): rrule und relativedelta
-`rrule` gegen RFC 5545, `relativedelta`. Vor dem Start ein kleines Interview (Umfang, Orakel).
+`rrule` gegen RFC 5545, `relativedelta`. Vor dem Start ein kleines Interview (Umfang, Orakel): angefragt 2026-11-17 (Nachricht 52, Q1–Q4 mit Empfehlungen). Danach Claims-Entwurf R-…/D-…, Abzeichnung, Aufgaben. Schätzung etwa 20 Aufgaben.
 
 ## Lead-Pflichten pro Fund (vor dem Einreichen)
 1. Duplikatsuche upstream (Issues und PRs, alle Zustände, mehrere Formulierungen; Befehle in `AGENTS.md` oben), Ergebnis im Berichtsentwurf.
