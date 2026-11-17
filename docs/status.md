@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-17 (Lead-Zyklus 39, Lead-Dienst)
+Stand: 2026-11-17 (Lead-Zyklus 40, Lead-Dienst)
 
 ## Lage
+Zyklus 40 (Anlass: Abgaben 553, 554, Nachricht 52, Angebot 0): Abgabe 554 (#438, Z-1/Z-2 weit 1850–2100, Seed 1) **angenommen**: sha256 `2af57c2f…` = Testdatei am Basis-Commit `fe346b4` (ohne Deckel), Profilzeile `max_examples=20000`, 19:35 min, `4 passed, 74 deselected`, keine Funde. Damit Z-1/Z-2 weit 2 × 20 000 je Test. Abgabe 553 (#451, Meilenstein-Review M1/M2, Qwen3.8 Flash Next) **angenommen**; Fundstellen stichprobenartig bestätigt. Umsetzung: F1 (T-2-Zahlen aus einmaliger Durchsicht als solche gekennzeichnet), F3/F4/F5 (Laufzahlen in `docs/claims.md` verweisen jetzt auf `docs/runs/*.md` statt auf Hashes; P-4 Seed 1 zitiert, P-8/P-4-Zweitlauf als „im Peer-Review“), F6 (Z-1-Bericht: Durchsicht als einmaliges Skript benannt), T-2-Bericht „every such string“ abgeschwächt, Fund 110 (R-2/R-3/R-5 auf neue Datei `test_rrule_claims_prop.py`) selbst erledigt. Neue Aufgaben: #452 (F2, P-7 prüft Rückgabe `datetime`, B, M2) und #453 (F7, Form-Tupel exportieren, B, M1). Funde 111/112 abgewiesen (schon verfolgt bzw. Lead-Pflicht). Nachricht 52 (M3) weiter offen. Peer-Review bleibt der Engpass: 443, 531, 533, 538 (ältester ~39 h).
+
 Zyklus 39 (Anlass: Nachricht 52, Angebot 0 für 1 aktiven Agenten): Keine neuen Abgaben; der aktive Agent arbeitet an #438 (Nacharbeit, Seed 1). Nachricht 52 (M3) weiter offen, Ruling aus Zyklus 36 gilt für M3-Aufgaben. Neu, unabhängig von M3: #451, Meilenstein-Review M1/M2 (Stufe A, `review`, Rolle scientific-review, nur `docs/reviews/m1-m2-review.md`): prüft Claims gegen Tests, Überbehauptung, Selbstorakel, zahnlose Tests, Laufzahlen, doppelte Strategien (LEAD.md 7.1). Schätzung M2 auf 33. Peer-Review bleibt der Engpass: 443, 531, 533, 538 (ältester 38,5 h). Keine Funde.
 
 Zyklus 38 (Anlass: Abgabe 551, Nachricht 52, Angebot 0 für 1 aktiven Agenten): Abgabe 551 (#439, Z-1/Z-2 weit 1850–2100, Seed 2) **angenommen**: sha256 `2af57c2f…` = Testdatei am Basis-Commit `a1cf86b` (ohne Deckel), Hypothesis-Statistik zeigt je Test 20 000 passing, 0 failing; `4 passed, 74 deselected`, 19 min. Keine Funde. Merge-Zug ausstehend. Damit fehlt für Z-1/Z-2 weit nur noch der Erstlauf #438 (Seed 1, Nacharbeit, für die beitragende Person reserviert; das ist vermutlich der eine aktive Simulations-Agent). Nachricht 52 (M3) weiter offen, Ruling aus Zyklus 36 gilt: keine neuen Aufgaben vor der M3-Abzeichnung. Peer-Review bleibt der Engpass: 443, 531, 533, 538 (ältester 38,4 h). Keine Funde.
@@ -109,16 +111,8 @@ Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis:
 - keine
 
 ## Nächste Schritte
-0000000. Nach Merge von #439: Laufzahlen Z-1/Z-2 weit (Seed 2: 4 × 20 000) in `docs/claims.md` eintragen, sobald auch #438 (Seed 1) angenommen ist.
-000000. Nacharbeit zu #438/#439 reviewen: je Test „20000 passing“ in den Statistikzeilen, sha256 `2af57c2f…`, Commit ≥ `b00b68e`. Künftige Lauf-Aufgaben: `--hypothesis-show-statistics` in den Befehl, Statistikzeilen ins Protokoll.
-00000. Nach Merge #423/#424: bei Z-3 „Merge ausstehend“ durch die Merge-Commits ersetzen. Abgaben zu #438/#439 reviewen, danach Laufzahlen Z-1/Z-2 weit.
-000. Review-Bericht #451 auswerten: Funde in Aufgaben umsetzen (Claims-Korrekturen selbst, Testlücken als B-Aufgaben).
-0000. Antwort auf Nachricht 52 (M3): Entwurf R-1…R-5, D-1…D-4 steht in `docs/claims.md`; nach Abzeichnung sofort Aufgaben schneiden (Strategien B, Golden-Test R-1 B, Property-Tests B mit `depends_on`, lange Läufe A). Abgaben zu #423–#426, #438/#439 reviewen, danach Laufzahlen bei P-3, P-4, P-8, Z-3 und Z-1/Z-2 weit. Nach Merge #411/#412: P-6-Status ohne „Merge ausstehend“.
-000. Abgabe 443 (#387) nach Peer-Review mergen lassen. Bericht `docs/reports/z1w-dst-inference.md` vor Freigabe: Duplikatsuche upstream und Reproduktion auf upstream-master (Abschnitte TODO), mit dem Z-1-Bericht zusammenführen oder abgrenzen (beide nur `dst()`-Heuristik, Erwartung, kein Vertragsbruch).
-00. T-2-Berichte: Duplikatsuche upstream („tzstr angle brackets“, „tzstr transition time hours“, „tzstr negative DST Dublin“) und Reproduktion auf upstream-master.
-0. Abgabe zu #409 reviewen; danach T-3 mit 2 × 200 000 in `docs/claims.md`. Vor dem T-1-Bericht (nach dem Merge von #402): beide Pfade im Bericht; Docstring-Name (Fund 93) als Randnotiz oder eigener Doku-Fix, die Visionärin / der Visionär entscheidet. Vor jedem T-Bericht: Duplikatsuche upstream (z. B. „tzstr angle brackets“, „tzstr UTC TypeError“, „tzical OverflowError“) und Reproduktion auf upstream-master. Vor dem T-3-Bericht: Abgrenzung zu P-7 (Parser darf laut Claim `OverflowError` werfen; `rrulestr`/`tzical` dokumentieren `ValueError`).
-1. Peer-Reviews der Abgaben 440–444, 446, 447, 449, 450 abwarten; Nacharbeit-Begründungen lesen. Merge-Zug-Lauf prüfen.
-2. Abgaben zu #391, #394–#397 reviewen. Nach Merge von #398/#399 (Abgaben 464/468): P-1 „bestätigt im getesteten Raum“ (2 × bis 200 000 Beispiele, Seed 1/2). Nach Merge von #392: Berichtsentwurf P-6 mit Duplikatsuche und Reproduktion upstream ergänzen, dann Freigabe.
-3. Nach Merge von #381: Z-1 in `docs/claims.md` auf „widerlegt für `dst()`“ setzen; Berichtsentwurf Z-1 kürzen auf den dateutil-Fall (Winamac), Duplikatsuche und Reproduktion upstream, dann Freigabe.
-4. Nach den Merges: Claims-Status P-2, P-3, P-5, Z-2 auf „bestätigt im getesteten Raum“ setzen (P-4, P-8, Z-3 erledigt in Zyklus 21). P-6-Berichtsentwurf: Duplikatsuche und Reproduktion upstream (Lead-Pflicht), dann Freigabe.
-5. P-7 nach #396/#397, P-6 nach #394/#395 mit Laufzahlen ergänzen.
+1. Abgaben zu #452/#453 reviewen. Nach Merge #452: P-7-Status „bestätigt im getesteten Raum“ ohne Einschränkung (falls kein Fund).
+2. Antwort auf Nachricht 52 (M3): nach Abzeichnung sofort Aufgaben schneiden (Strategien B, Golden-Test R-1 B, Property-Tests B in `test_rrule_claims_prop.py`/`test_relativedelta_prop.py` mit `depends_on`, lange Läufe A).
+3. Peer-Reviews 443 (#387, P-3), 531/533 (#417/#418, P-8), 538 (#420, P-4 Seed 2) abwarten; danach Laufzahlen in `docs/claims.md` (P-3 nach #425/#426).
+4. Vor der M1/M2-Abzeichnung (Lead-Pflicht, Fund 112): in allen Berichtsentwürfen `docs/reports/` die Abschnitte Duplikatsuche upstream und Reproduktion auf upstream-master füllen (P-6, Z-1/Z-1w zusammenführen oder abgrenzen, T-1 beide Pfade, T-2 zwei Berichte, T-3 mit Abgrenzung zu P-7); dann Freigabe durch die Visionärin / den Visionär, höchstens 2 offene Berichte.
+5. Merge-Zug für #438 (Abgabe 554) und #451 (Abgabe 553) prüfen.

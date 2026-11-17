@@ -1,6 +1,6 @@
 # Plan
 
-Stand: 2026-11-17 (Lead-Zyklus 39). Zyklus 39: Neu #451 (Meilenstein-Review M1/M2, Stufe A, unabhängig von M3). Schätzung M2: 33. Zyklus 38: #439 angenommen (Abgabe 551, Z-1/Z-2 weit Seed 2), #438 weiter in Nacharbeit. Zyklus 34: #438/#439 in Nacharbeit (Test hatte `max_examples=120`, behoben `b00b68e`; Lauf ≈ 100 min). Zyklus 33: #423/#424 angenommen (Z-3 lange Läufe), #414 gemergt (`b845c37`). Zyklus 24: Neu: #417–#426 (lange Läufe P-3, P-4, P-8, Z-1/Z-2, Z-3; #425/#426 nach #387). Angenommen: #411, #412, #416; #414 in Nacharbeit. Schätzung M2: 30. M3-Interview angefragt (Nachricht 52). Zyklus 23: #415/#416 (lange Läufe P-2/P-5). Zusätzlich gemergt: #379, #381, #391, #394–#396, #397, #398, #399, #408. In Peer-Review: #387, #409, #410, #413. Zyklus 22: #410–#414 (aus Funden 99–101). Gemergt: #376–#378, #386, #388, #389, #390, #392, #393, #402, #404, #405, #406, #407. #408 angenommen (Abgabe 477), Merge-Zug ausstehend. In Peer-Review: #387 (Abgabe 443). Frei: #394–#397, #409 u. a. #391 wartet auf #381. Claims T-1 bis T-3 freigegeben (Nachricht 44), P-9 freigegeben (Nachricht 43). Schätzung M1: 13 Aufgaben.
+Stand: 2026-11-17 (Lead-Zyklus 40). Zyklus 40: #438 und #451 angenommen; aus dem Review neu #453 (M1, Form-Tupel) und #452 (M2, P-7-Rückgabe). Schätzung M1: 14, M2: 34. Zyklus 39: Neu #451 (Meilenstein-Review M1/M2, Stufe A, unabhängig von M3). Schätzung M2: 33. Zyklus 38: #439 angenommen (Abgabe 551, Z-1/Z-2 weit Seed 2), #438 weiter in Nacharbeit. Zyklus 34: #438/#439 in Nacharbeit (Test hatte `max_examples=120`, behoben `b00b68e`; Lauf ≈ 100 min). Zyklus 33: #423/#424 angenommen (Z-3 lange Läufe), #414 gemergt (`b845c37`). Zyklus 24: Neu: #417–#426 (lange Läufe P-3, P-4, P-8, Z-1/Z-2, Z-3; #425/#426 nach #387). Angenommen: #411, #412, #416; #414 in Nacharbeit. Schätzung M2: 30. M3-Interview angefragt (Nachricht 52). Zyklus 23: #415/#416 (lange Läufe P-2/P-5). Zusätzlich gemergt: #379, #381, #391, #394–#396, #397, #398, #399, #408. In Peer-Review: #387, #409, #410, #413. Zyklus 22: #410–#414 (aus Funden 99–101). Gemergt: #376–#378, #386, #388, #389, #390, #392, #393, #402, #404, #405, #406, #407. #408 angenommen (Abgabe 477), Merge-Zug ausstehend. In Peer-Review: #387 (Abgabe 443). Frei: #394–#397, #409 u. a. #391 wartet auf #381. Claims T-1 bis T-3 freigegeben (Nachricht 44), P-9 freigegeben (Nachricht 43). Schätzung M1: 13 Aufgaben.
 Lead-Budget: 5 Mio. Tokens/Tag (nur Lead-Dienst).
 
 ## Meilenstein 1: Hypothesis-Grundgerüst (parser, tz)
@@ -22,6 +22,7 @@ Ziel: gemeinsame Strategien, mit denen jeder Claim als kleine B-Aufgabe testbar 
 | #391 | `strategies_tz.transitions`: Cache je Datenquelle (Fund 74) | B | `tests/property/strategies_tz.py`, `tests/property/test_strategies_tz.py` | #381, #389 |
 | #413 | `wall_times_near_transitions`: Zone je Datenquelle (`ZoneInfo.no_cache`, Fund 101) | B | `tests/property/strategies_tz.py`, `tests/property/test_strategies_tz.py` | #391 |
 | #414 | Z-1/Z-2-Orakel 1850–2100: Zeitraum-Parameter in den Strategien, neues Modul `test_tz_oracle_wide_prop.py` (Fund 99) | B | `tests/property/strategies_tz.py`, `tests/property/test_strategies_tz.py`, `tests/property/test_tz_oracle_wide_prop.py`, `docs/reports/z1w-*.md` | #413 |
+| #453 | Form-Tupel `FULL_DATE_FORMS`/`WEEK_DATE_FORMS` aus `strategies_iso` exportieren, in zwei Tests importieren (Review M1/M2, F7) | B | `tests/property/strategies_iso.py`, `tests/property/test_isoparse_prop.py`, `tests/property/test_isoparse_week53_prop.py` | – |
 
 (#382–#385 geschlossen: gleiche Aufgaben ohne Berichtspfad, ersetzt durch #386–#389.)
 
@@ -50,6 +51,8 @@ Fuzz-Ziele (Hypothesis, keine nativen Fuzzer) für `parse` (wirft nur ParserErro
 | #421 / #422 | Langer Lauf Z-1/Z-2 (`test_tz_oracle_prop.py`), 20 000 Beispiele (lokal 2000 in 125 s), Seed 1 / Seed 2 | A (`simulation`) | `docs/runs/z1z2-seed1.md` / `docs/runs/z1z2-seed2.md` | – |
 | #423 / #424 | Langer Lauf Z-3 (`test_tz_helpers_prop.py`), 20 000 Beispiele (lokal 2000 in 170 s), Seed 1 / Seed 2 | A (`simulation`) | `docs/runs/z3-seed1.md` / `docs/runs/z3-seed2.md` | – |
 | #425 / #426 | Langer Lauf P-3 (`test_isoparse_tz_prop.py`), 200 000 Beispiele, Seed 1 / Seed 2 | A (`simulation`) | `docs/runs/p3-seed1.md` / `docs/runs/p3-seed2.md` | #387 |
+| #451 | Meilenstein-Review M1/M2 (nur lesen), Bericht `docs/reviews/m1-m2-review.md` | A (`review`) | `docs/reviews/m1-m2-review.md` | – |
+| #452 | P-7-Fuzz-Ziel: Rückgabe von `parse` ist ein `datetime` (Review M1/M2, F2) | B | `tests/property/test_parser_fuzz_prop.py`, `docs/reports/p7-*.md` | – |
 
 ## Meilenstein 3 (später): rrule und relativedelta
 `rrule` gegen RFC 5545, `relativedelta`. Vor dem Start ein kleines Interview (Umfang, Orakel): angefragt 2026-11-17 (Nachricht 52, Q1–Q4 mit Empfehlungen). Danach Claims-Entwurf R-…/D-…, Abzeichnung, Aufgaben. Schätzung etwa 20 Aufgaben.

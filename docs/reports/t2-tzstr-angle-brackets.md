@@ -4,7 +4,8 @@
 [GNU C Library: TZ Variable](https://www.gnu.org/software/libc/manual/html_node/TZ-Variable.html).
 That format allows a time zone abbreviation to be wrapped in `<…>` so that it
 may contain digits, `+` and `-` (e.g. `<-03>`, `<+1030>`). `tzstr` rejects
-every such string with `ValueError: unknown string format`.
+such strings with `ValueError: unknown string format` (all four footer
+strings of this kind pinned in the test fail this way).
 
 ## Versions
 

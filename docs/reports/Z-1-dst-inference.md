@@ -32,9 +32,11 @@ Wall times are naive with `fold=0`.
 | `Europe/Vilnius` | 1998-03-29 03:00 | +2:00 | 1:00 | -1:00 | `tzdata` only |
 | `Pacific/Rarotonga` | 1978-11-12 01:00 | -9:30 | 0:30 | 1:00 | both |
 
-A sweep over all keys and all transitions 1970–2040 (exact transition, ±1 µs,
-±1 h, +1 day, both folds) found no other key with a different `dst()`, and no
-key with a different `utcoffset()` or `tzname()`. Neither value is obviously
+A one-off investigation script (not part of the test suite) over all keys and
+all transitions 1970–2040 (exact transition, ±1 µs, ±1 h, +1 day, both folds)
+found no other key with a different `dst()`, and no key with a different
+`utcoffset()` or `tzname()`; the property tests sample these transitions and
+agree. Neither value is obviously
 right in every row (e.g. `zoneinfo`'s -1:00 for Vilnius while on CEST).
 
 ```python
