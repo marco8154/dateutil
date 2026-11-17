@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-17 (Lead-Zyklus 26, Lead-Dienst)
+Stand: 2026-11-17 (Lead-Zyklus 27, Lead-Dienst)
 
 ## Lage
+Zyklus 27: Unverändert. Anlass nur die eigene Nachricht 52 (M3-Interview, wartet auf die Visionärin / den Visionär). Abgaben 443 (#387, 35 h) und 531 (#417) warten auf Peer-Review, Review-Fragen gesetzt. 2 aktive Agenten (lange Läufe), 6 freie Aufgaben, Angebot reicht. Keine Funde, nichts zu tun.
+
 Zyklus 26: Abgabe 531 (#417, langer Lauf P-8 Seed 1, eigene Person): `2 passed` in 698 s, keine Funde; sha256 der Testdatei stimmt mit `3a6b501`. Review-Fragen gesetzt, wartet auf Peer-Review. Abgabe 532 (#414, Nacharbeit, andere Person) erneut zurück: 57 von 59 Fällen lokal einzeln nachgerechnet (Werte stimmen), aber (1) `W-SU`/`tzpath` ist kein Fund, der Schlüssel fehlt in den Systemdaten (`gettz` None, `ZoneInfoNotFoundError`); (2) ein einziger strict-xfail-Test über alle Fälle verbirgt Teil-Fixes, verlangt: je Fall `pytest.param` mit strict xfail (deckt auch den ungepinnten letzten Fall `WET`); (3) Berichtstabelle ≠ Fallliste (Gibraltar fehlt, Guernsey-Quellen vertauscht, W-SU); (4) Hongkong-Notiz falsch („Soviet zones“), auf Datenaussage kürzen. Nachricht 52 (M3) wartet weiter auf die Visionärin / den Visionär. 2 aktive Agenten, 6 freie Aufgaben, Angebot reicht. 443 (#387) wartet 35 h auf Peer-Review.
 
 Zyklus 25: Unverändert. Anlass nur die eigene Nachricht 52 (M3-Interview, wartet auf die Visionärin / den Visionär; der Lead-Dienst beantwortet sie nicht selbst). 2 aktive Agenten (#417 begonnen), 7 freie Aufgaben, Angebot reicht. Abgabe 443 (#387) wartet weiter auf Peer-Review (34,8 h). Keine neuen Abgaben, keine Funde.
