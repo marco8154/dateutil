@@ -1,5 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0 AND BSD-3-Clause
 """Fuzz target for claim P-7: ``parse(s)`` only raises the documented errors."""
+from datetime import datetime
+
 from hypothesis import example, given
 from hypothesis import strategies as st
 
@@ -38,6 +40,7 @@ fuzz_strings = st.one_of(
 @example("9999-12-31 23:59 -2359")
 def test_parse_raises_only_documented_errors(s):
     try:
-        parse(s)
+        result = parse(s)
     except (ParserError, OverflowError):
-        pass
+        return
+    assert isinstance(result, datetime)
