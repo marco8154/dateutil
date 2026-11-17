@@ -50,4 +50,4 @@ TODO (lead)
 
 ## Reproduced on upstream master
 
-TODO (lead)
+Reproduced on 2026-11-17 against upstream `master` at commit `a78cbd81d5d03b5f126eb36edb92bca78972c804` (2026-11-01, the current head), Python 3.13.18: both calls raise `ValueError: unknown string format`.
