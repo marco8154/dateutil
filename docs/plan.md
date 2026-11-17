@@ -1,6 +1,6 @@
 # Plan
 
-Stand: 2026-11-17 (Lead-Zyklus 43). Zyklus 43: #452 angenommen (Abgabe 555); #454/#455 folgen nach dem Merge automatisch. Zyklus 42: #453 angenommen (Abgabe 556); Reproduktion aller Berichtsentwürfe auf upstream `a78cbd8`; Duplikatsuche angefragt (Nachricht 53). Zyklus 41: Neu #454/#455 (lange Läufe P-7 mit Rückgabeprüfung, nach #452). Schätzung M2: 36. Zyklus 40: #438 und #451 angenommen; aus dem Review neu #453 (M1, Form-Tupel) und #452 (M2, P-7-Rückgabe). Schätzung M1: 14, M2: 34. Zyklus 39: Neu #451 (Meilenstein-Review M1/M2, Stufe A, unabhängig von M3). Schätzung M2: 33. Zyklus 38: #439 angenommen (Abgabe 551, Z-1/Z-2 weit Seed 2), #438 weiter in Nacharbeit. Zyklus 34: #438/#439 in Nacharbeit (Test hatte `max_examples=120`, behoben `b00b68e`; Lauf ≈ 100 min). Zyklus 33: #423/#424 angenommen (Z-3 lange Läufe), #414 gemergt (`b845c37`). Zyklus 24: Neu: #417–#426 (lange Läufe P-3, P-4, P-8, Z-1/Z-2, Z-3; #425/#426 nach #387). Angenommen: #411, #412, #416; #414 in Nacharbeit. Schätzung M2: 30. M3-Interview angefragt (Nachricht 52). Zyklus 23: #415/#416 (lange Läufe P-2/P-5). Zusätzlich gemergt: #379, #381, #391, #394–#396, #397, #398, #399, #408. In Peer-Review: #387, #409, #410, #413. Zyklus 22: #410–#414 (aus Funden 99–101). Gemergt: #376–#378, #386, #388, #389, #390, #392, #393, #402, #404, #405, #406, #407. #408 angenommen (Abgabe 477), Merge-Zug ausstehend. In Peer-Review: #387 (Abgabe 443). Frei: #394–#397, #409 u. a. #391 wartet auf #381. Claims T-1 bis T-3 freigegeben (Nachricht 44), P-9 freigegeben (Nachricht 43). Schätzung M1: 13 Aufgaben.
+Stand: 2026-11-17 (Lead-Zyklus 47). Zyklus 47: M3 geschnitten (#456–#474, Schätzung 22); #455 gemergt (`cb51322`). Zyklus 43: #452 angenommen (Abgabe 555); #454/#455 folgen nach dem Merge automatisch. Zyklus 42: #453 angenommen (Abgabe 556); Reproduktion aller Berichtsentwürfe auf upstream `a78cbd8`; Duplikatsuche angefragt (Nachricht 53). Zyklus 41: Neu #454/#455 (lange Läufe P-7 mit Rückgabeprüfung, nach #452). Schätzung M2: 36. Zyklus 40: #438 und #451 angenommen; aus dem Review neu #453 (M1, Form-Tupel) und #452 (M2, P-7-Rückgabe). Schätzung M1: 14, M2: 34. Zyklus 39: Neu #451 (Meilenstein-Review M1/M2, Stufe A, unabhängig von M3). Schätzung M2: 33. Zyklus 38: #439 angenommen (Abgabe 551, Z-1/Z-2 weit Seed 2), #438 weiter in Nacharbeit. Zyklus 34: #438/#439 in Nacharbeit (Test hatte `max_examples=120`, behoben `b00b68e`; Lauf ≈ 100 min). Zyklus 33: #423/#424 angenommen (Z-3 lange Läufe), #414 gemergt (`b845c37`). Zyklus 24: Neu: #417–#426 (lange Läufe P-3, P-4, P-8, Z-1/Z-2, Z-3; #425/#426 nach #387). Angenommen: #411, #412, #416; #414 in Nacharbeit. Schätzung M2: 30. M3-Interview angefragt (Nachricht 52). Zyklus 23: #415/#416 (lange Läufe P-2/P-5). Zusätzlich gemergt: #379, #381, #391, #394–#396, #397, #398, #399, #408. In Peer-Review: #387, #409, #410, #413. Zyklus 22: #410–#414 (aus Funden 99–101). Gemergt: #376–#378, #386, #388, #389, #390, #392, #393, #402, #404, #405, #406, #407. #408 angenommen (Abgabe 477), Merge-Zug ausstehend. In Peer-Review: #387 (Abgabe 443). Frei: #394–#397, #409 u. a. #391 wartet auf #381. Claims T-1 bis T-3 freigegeben (Nachricht 44), P-9 freigegeben (Nachricht 43). Schätzung M1: 13 Aufgaben.
 Lead-Budget: 5 Mio. Tokens/Tag (nur Lead-Dienst).
 
 ## Meilenstein 1: Hypothesis-Grundgerüst (parser, tz)
@@ -55,8 +55,27 @@ Fuzz-Ziele (Hypothesis, keine nativen Fuzzer) für `parse` (wirft nur ParserErro
 | #452 | P-7-Fuzz-Ziel: Rückgabe von `parse` ist ein `datetime` (Review M1/M2, F2) | B | `tests/property/test_parser_fuzz_prop.py`, `docs/reports/p7-*.md` | – |
 | #454 / #455 | Langer Lauf P-7 mit Rückgabeprüfung (`test_parser_fuzz_prop.py`), 200 000 Beispiele, Seed 3 / Seed 4 | A (`simulation`) | `docs/runs/p7-seed3.md` / `docs/runs/p7-seed4.md` | #452 |
 
-## Meilenstein 3 (später): rrule und relativedelta
-`rrule` gegen RFC 5545, `relativedelta`. Vor dem Start ein kleines Interview (Umfang, Orakel): angefragt 2026-11-17 (Nachricht 52, Q1–Q4 mit Empfehlungen). Danach Claims-Entwurf R-…/D-…, Abzeichnung, Aufgaben. Schätzung etwa 20 Aufgaben.
+## Meilenstein 3: rrule und relativedelta
+Freigegeben 2026-11-17 (Nachricht 52: Q1–Q4 ja, Claims R-1 bis R-5, D-1 bis D-3 abgezeichnet; D-4 über Q3). Schätzung 22 Aufgaben (19 geschnitten, Rest: Meilenstein-Review und Puffer). Jede Testdatei gehört genau einer Aufgabe; die langen Läufe folgen automatisch nach dem Merge ihres Tests.
+
+| Aufgabe | Inhalt | Stufe | Pfade | Hängt ab von |
+|---|---|---|---|---|
+| #456 | Strategie `rrule_kwargs()` (endliche Regeln, verankerte `byxxx`-Filter, `until`-Fenster je Frequenz) | B | `tests/property/strategies_rrule.py`, `test_strategies_rrule.py` | – |
+| #457 | Strategien für `relativedelta` (`base_datetimes`, `relative_time_kwargs`, `relative_kwargs`, `absolute_kwargs`) | B | `tests/property/strategies_relativedelta.py`, `test_strategies_relativedelta.py` | – |
+| #458 | RFC 5545 3.8.5.3: RRULE-Beispiele als JSON (`daten`, Rolle literature) | A | `tests/property/data/rfc5545_rrule_examples.json` | – |
+| #459 | Golden-Test R-1 | B | `tests/property/test_rrule_rfc_golden.py`, `docs/reports/r1-*.md` | #458 |
+| #460 | R-2 und R-5 | B | `tests/property/test_rrule_claims_prop.py`, `docs/reports/r2-*.md`, `r5-*.md` | #456 |
+| #461 | R-3 (`count`, `before`, `after`, `between`, mit/ohne Cache) | B | `tests/property/test_rrule_query_prop.py`, `docs/reports/r3-*.md` | #456 |
+| #462 | R-4 (`rrulestr(str(r))`) | B | `tests/property/test_rrule_roundtrip_prop.py`, `docs/reports/r4-*.md` | #456 |
+| #463 | D-1 und D-2 | B | `tests/property/test_relativedelta_prop.py`, `docs/reports/d1-*.md`, `d2-*.md` | #457 |
+| #464 | D-3 und D-4 | B | `tests/property/test_relativedelta_fields_prop.py`, `docs/reports/d3-*.md`, `d4-*.md` | #457 |
+| #465 / #466 | Lange Läufe R-2/R-5, 20 000 Beispiele, Seed 1 / 2 | A (`simulation`) | `docs/runs/r2r5-seed1.md` / `-seed2.md` | #460 |
+| #467 / #468 | Lange Läufe R-3, 20 000, Seed 1 / 2 | A | `docs/runs/r3-seed*.md` | #461 |
+| #469 / #470 | Lange Läufe R-4, 20 000, Seed 1 / 2 | A | `docs/runs/r4-seed*.md` | #462 |
+| #471 / #472 | Lange Läufe D-1/D-2, 200 000, Seed 1 / 2 | A | `docs/runs/d1d2-seed*.md` | #463 |
+| #473 / #474 | Lange Läufe D-3/D-4, 200 000, Seed 1 / 2 | A | `docs/runs/d3d4-seed*.md` | #464 |
+| später | Meilenstein-Review M3 (Stufe A, `review`, anderes Modell) | A | `docs/reviews/m3-review.md` | #459–#464 |
+| später (nicht M3) | Brute-Force-Referenzgenerator für kleine Regeln | C | – | – |
 
 ## Lead-Pflichten pro Fund (vor dem Einreichen)
 1. Duplikatsuche upstream (Issues und PRs, alle Zustände, mehrere Formulierungen; Befehle in `AGENTS.md` oben), Ergebnis im Berichtsentwurf.

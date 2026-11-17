@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-17 (Lead-Zyklus 46, Lead-Dienst)
+Stand: 2026-11-17 (Lead-Zyklus 47, Lead-Dienst)
 
 ## Lage
+Zyklus 47 (Anlass: Antworten auf Nachrichten 52/53, Angebot 0 bei 0 aktiven Agenten): Die Visionärin / der Visionär hat beide Fragen beantwortet. **M3 freigegeben** (Q1–Q4 ja, R-1 bis R-5 und D-1 bis D-3 abgezeichnet, D-4 über Q3) und geschnitten: #456–#474 (19 Aufgaben, Schätzung 22); frei sofort #456, #457 (Strategien, B) und #458 (RFC-Daten, A `daten`), alles andere folgt über `depends_on`. **Duplikatsuche** in alle 7 Berichtsentwürfe eingetragen; Beirut selbst geprüft: der `src/`-Teil von upstream-PR #1596 behebt genau Beirut (der gepinnte Test wird XPASS), Gaza/Hebron, Jerusalem, Dublin nicht. Beirut daher aus dem T-2b-Bericht genommen, bekannter Fall #1289/#1596; T-1 wird nur Kommentar an #1432. Freigabe der ersten zwei Berichte (T-3, P-6) angefragt (Nachricht 57). P-7 vollständig (#455 gemergt `cb51322`). 443, 531, 533, 538 warten weiter auf Peer-Review.
+
 Zyklus 46 (Anlass: Nachrichten 52/53, Angebot 0 bei 0 aktiven Agenten): unverändert. Keine neuen Abgaben; 443, 531, 533, 538 warten weiter auf Peer-Review (eigene Abgaben, Prüffragen gesetzt). #455 (P-7 Seed 4) noch nicht gemergt, Nächster Schritt 1 bleibt offen. Nachrichten 52/53 sind eigene Fragen an die Visionärin / den Visionär, keine Antwort; Ruling Zyklus 36 gilt, keine neuen Aufgaben. Keine Funde.
 
 Zyklus 45 (Anlass: Abgabe 561, Nachrichten 52/53, Angebot 0 bei 0 aktiven Agenten): Abgabe 561 (#455, langer Lauf P-7 mit Rückgabeprüfung, Seed 4) **angenommen**: 200 000 passing, 0 failing, kein Fund; damit ist die Rückgabe-Hälfte von P-7 von zwei Läufen gestützt (Seed 3 gemergt, Seed 4 im Merge-Zug). P-7-Zeile in `docs/claims.md` nachgezogen (stand noch auf „prüft der Test noch nicht“). Nächster Schritt 0 erledigt: Kommentar über `FULL_DATE_FORMS` in `strategies_iso.py` wieder eingesetzt (#453 gemergt). Nachrichten 52/53 sind weiter eigene, unbeantwortete Fragen an die Visionärin / den Visionär; keine neuen Aufgaben (M2 vollständig geplant, M3 wartet auf Abzeichnung). Peer-Review der eigenen Abgaben 443, 531, 533, 538 bleibt der Engpass.
@@ -104,6 +106,9 @@ Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis:
 - GitHub Actions im Fork: `tests/test_tzpath_data.py::test_dst_matches_tzdata_zi[tzpath]` rot auf macOS (Casablanca, El_Aaiun, 2100/2400). Upstream `dateutil/dateutil` ist seit 2026-11-10 auf macOS ebenfalls rot (PR-Läufe 43319539839, 43319500377, 43247862099; Jobs 3.14 und 3.15 macos-latest), `a78cbd8` war am 2026-11-01 grün. Also Änderung der Runner-Daten (vermutlich Marokko-Änderung in tzdata 2026e/f), nicht unsere Commits. Lokal mit 2026f ist dateutil konsistent. Duplikatsuche (2026-11-15, Visionär:in): offener PR dateutil/dateutil#1667 „Fix dst() for zones that end in permanent DST“ (Maintainer, 2026-11-07), einziger Treffer für Africa/Casablanca und Africa/El_Aaiun. **Kein Bericht von uns.** Als bekannter Fall bei Z-1 in `docs/claims.md` und in Aufgabe #381 vermerkt. Der rote macOS-Job im Fork verschwindet, sobald #1667 upstream gemergt und von uns übernommen ist.
 
 ## Rulings
+- Ruling: M3-Testdateien je Claim-Gruppe getrennt (R-3 → `test_rrule_query_prop.py`, D-3/D-4 → `test_relativedelta_fields_prop.py`), Register angepasst. Grund: parallele Aufgaben schreiben nie in dieselbe Datei. Kosten, falls falsch: zwei Dateien mehr.
+- Ruling: `strategies_rrule.py` darf die Frequenz-Konstanten aus `dateutil.rrule` importieren (reine `int`-Namen), sonst nichts aus dateutil. Grund: lesbarer, kein Erwartungswert hängt daran. Kosten, falls falsch: Konstanten als Zahlen nachschreiben.
+- Ruling: R-1-Daten als Aufgabe für direkt verbundene Agenten (`daten`), weil Sandboxes und Lead-Dienst die RFC nicht abrufen können; Prüfung durch Peer-Review und Stichprobe. Kosten, falls falsch: ein falsch abgeschriebenes Beispiel erscheint als Scheinfund; der Golden-Test darf die Daten nicht ändern, meldet Zweifel aber.
 - Ruling: Property-Tests in `tests/property/` setzen kein `max_examples`; Prüfung in `run_tests.sh`, lange Läufe protokollieren die Hypothesis-Statistik. Grund: Ein Deckel im Test überschrieb `SWARVEX_MAX_EXAMPLES` unbemerkt (#438/#439). Kosten, falls falsch: Ein Test, der wirklich weniger Beispiele braucht, muss das anders lösen (z. B. schnellere Strategie).
 - Ruling: In Lauf-Protokollen gilt der Basis-Commit der Aufgabe (`task_details` → `base_commit`) als Commit; künftige Lauf-Aufgaben nennen ihn statt `git rev-parse HEAD`. Grund: Die Sandbox der Beitragenden hat kein `git` (Fund 96). Kosten, falls falsch: keine, die sha256 der Testdatei sichert den Stand zusätzlich.
 - Ruling: Test-Schritt in `swarvex_tools/run_tests.sh` statt inline in `swarvex.yaml`. Grund: Die Pipeline zerlegte die zitierten `--deselect`-Argumente. Kosten, falls falsch: Pfad oder Shell des Skripts anpassen.
@@ -120,11 +125,10 @@ Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis:
 - Ruling: SPDX `Apache-2.0 AND BSD-3-Clause` nur in neuen Dateien außerhalb von `src/` und `tests/`. Grund: upstream führt keine Header. Kosten, falls falsch: Header ergänzen.
 
 ## Offene Freigaben
-- keine
+- Nachricht 57 (2026-11-17): Upstream-Berichte T-3 und P-6 einreichen (höchstens 2 offen); danach Reihenfolge T-2a, T-2b, Z-1+Z-1w als ein Issue, T-1 als Kommentar an #1432.
 
 ## Nächste Schritte
-1. Nach Merge von `docs/runs/p7-seed4.md` (#455): P-7-Zeile in `docs/claims.md` auf „bestätigt im getesteten Raum“ ohne Einschränkung setzen, beide Protokolle (Seed 3, Seed 4) nennen.
-2. Antwort auf Nachricht 52 (M3): nach Abzeichnung sofort Aufgaben schneiden (Strategien B, Golden-Test R-1 B, Property-Tests B in `test_rrule_claims_prop.py`/`test_relativedelta_prop.py` mit `depends_on`, lange Läufe A).
+1. M3-Abgaben prüfen, sobald sie kommen (#456, #457, #458 zuerst). Bei #458 fünf Einträge stichprobenartig gegen die RFC prüfen lassen (Prüffragen setzen, falls eigene Person), bei #456 die `until`-Fenster und die Verankerung der Filter.
+2. Nachricht 57: Issue-Nummern von T-3 und P-6 in die xfail-Gründe und `docs/claims.md` eintragen (Lead, geschützte Datei); dann nächste zwei Berichte vorschlagen. Danach M1/M2-Abzeichnung.
 3. Peer-Reviews 443 (#387, P-3), 531/533 (#417/#418, P-8), 538 (#420, P-4 Seed 2) abwarten; danach Laufzahlen in `docs/claims.md` (P-3 nach #425/#426).
-4. Vor der M1/M2-Abzeichnung (Lead-Pflicht, Fund 112): Reproduktion auf upstream-master erledigt (Zyklus 42, `a78cbd8`); Duplikatsuche wartet auf Nachricht 53, dann in den Entwürfen eintragen (P-6, Z-1/Z-1w zusammenführen oder abgrenzen, T-1 beide Pfade, T-2 zwei Berichte, T-3 mit Abgrenzung zu P-7); dann Freigabe durch die Visionärin / den Visionär, höchstens 2 offene Berichte.
-5. Merge-Zug für #438 (Abgabe 554) und #451 (Abgabe 553) prüfen.
+4. Nach dem Merge von #459–#464: Meilenstein-Review M3 als Aufgabe (A, `review`, anderes Modell).
