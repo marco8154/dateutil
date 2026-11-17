@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-17 (Lead-Zyklus 47, Lead-Dienst)
+Stand: 2026-11-17 (Lead-Zyklus 48, Lead-Dienst)
 
 ## Lage
+Zyklus 48 (Anlass: Abgabe 571, Nachricht 57): Abgabe 571 (#456, Strategie `rrule_kwargs()`) **angenommen**: Pipeline grün, lokal `7 passed`, Fenster, Schlüssel und Verankerung (auch negative `bymonthday`-Form) wie verlangt. Die Aufgabe widersprach sich (1–4 Werte je Filter bei jeder Frequenz vs. ≤ 1000 Termine; YEARLY+BYWEEKDAY ≈ 10 400); die Abgabe löst das mit Obergrenzen je Frequenz (`_FILTER_MAX_SIZE`), wodurch YEARLY×BYMONTHDAY, YEARLY×BYWEEKDAY und MONTHLY×BYWEEKDAY nie erzeugt werden und feinere Filter bei groben Frequenzen nur den Anker tragen. Folgeaufgabe **#475** (B, nach #456): die drei Kombinationen budgetiert wieder erzeugbar, deterministischer Worst-Case-Test, Kommentar auf Englisch. M3-Schätzung 23. Nachricht 57 ist meine eigene Freigabeanfrage an die Visionärin / den Visionär, noch offen; der Lead-Dienst entscheidet sie nicht. 443, 531, 533, 538 warten weiter auf Peer-Review (Engpass `peer_review`, ältester 46 h). `area_lead_recommendation` nennt `reproduction`; das läuft über die Plattform, außer mir hat niemand Stufe 2.
+
 Zyklus 47 (Anlass: Antworten auf Nachrichten 52/53, Angebot 0 bei 0 aktiven Agenten): Die Visionärin / der Visionär hat beide Fragen beantwortet. **M3 freigegeben** (Q1–Q4 ja, R-1 bis R-5 und D-1 bis D-3 abgezeichnet, D-4 über Q3) und geschnitten: #456–#474 (19 Aufgaben, Schätzung 22); frei sofort #456, #457 (Strategien, B) und #458 (RFC-Daten, A `daten`), alles andere folgt über `depends_on`. **Duplikatsuche** in alle 7 Berichtsentwürfe eingetragen; Beirut selbst geprüft: der `src/`-Teil von upstream-PR #1596 behebt genau Beirut (der gepinnte Test wird XPASS), Gaza/Hebron, Jerusalem, Dublin nicht. Beirut daher aus dem T-2b-Bericht genommen, bekannter Fall #1289/#1596; T-1 wird nur Kommentar an #1432. Freigabe der ersten zwei Berichte (T-3, P-6) angefragt (Nachricht 57). P-7 vollständig (#455 gemergt `cb51322`). 443, 531, 533, 538 warten weiter auf Peer-Review.
 
 Zyklus 46 (Anlass: Nachrichten 52/53, Angebot 0 bei 0 aktiven Agenten): unverändert. Keine neuen Abgaben; 443, 531, 533, 538 warten weiter auf Peer-Review (eigene Abgaben, Prüffragen gesetzt). #455 (P-7 Seed 4) noch nicht gemergt, Nächster Schritt 1 bleibt offen. Nachrichten 52/53 sind eigene Fragen an die Visionärin / den Visionär, keine Antwort; Ruling Zyklus 36 gilt, keine neuen Aufgaben. Keine Funde.
@@ -128,7 +130,7 @@ Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis:
 - Nachricht 57 (2026-11-17): Upstream-Berichte T-3 und P-6 einreichen (höchstens 2 offen); danach Reihenfolge T-2a, T-2b, Z-1+Z-1w als ein Issue, T-1 als Kommentar an #1432.
 
 ## Nächste Schritte
-1. M3-Abgaben prüfen, sobald sie kommen (#456, #457, #458 zuerst). Bei #458 fünf Einträge stichprobenartig gegen die RFC prüfen lassen (Prüffragen setzen, falls eigene Person), bei #456 die `until`-Fenster und die Verankerung der Filter.
+1. M3-Abgaben prüfen (#457, #458, dann #460–#462, #475). Bei #458 fünf Einträge stichprobenartig gegen die RFC prüfen lassen (Prüffragen setzen, falls eigene Person). Bei #475 die Worst-Case-Regeln nachrechnen. Lange Läufe R-2 bis R-4 (#465–#470) sollten nach #475 laufen; wird eine vorher frei, in der Prüfung den Stand der Strategie notieren.
 2. Nachricht 57: Issue-Nummern von T-3 und P-6 in die xfail-Gründe und `docs/claims.md` eintragen (Lead, geschützte Datei); dann nächste zwei Berichte vorschlagen. Danach M1/M2-Abzeichnung.
 3. Peer-Reviews 443 (#387, P-3), 531/533 (#417/#418, P-8), 538 (#420, P-4 Seed 2) abwarten; danach Laufzahlen in `docs/claims.md` (P-3 nach #425/#426).
 4. Nach dem Merge von #459–#464: Meilenstein-Review M3 als Aufgabe (A, `review`, anderes Modell).
