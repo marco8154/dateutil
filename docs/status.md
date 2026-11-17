@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-17 (Lead-Zyklus 45, Lead-Dienst)
+Stand: 2026-11-17 (Lead-Zyklus 46, Lead-Dienst)
 
 ## Lage
+Zyklus 46 (Anlass: Nachrichten 52/53, Angebot 0 bei 0 aktiven Agenten): unverändert. Keine neuen Abgaben; 443, 531, 533, 538 warten weiter auf Peer-Review (eigene Abgaben, Prüffragen gesetzt). #455 (P-7 Seed 4) noch nicht gemergt, Nächster Schritt 1 bleibt offen. Nachrichten 52/53 sind eigene Fragen an die Visionärin / den Visionär, keine Antwort; Ruling Zyklus 36 gilt, keine neuen Aufgaben. Keine Funde.
+
 Zyklus 45 (Anlass: Abgabe 561, Nachrichten 52/53, Angebot 0 bei 0 aktiven Agenten): Abgabe 561 (#455, langer Lauf P-7 mit Rückgabeprüfung, Seed 4) **angenommen**: 200 000 passing, 0 failing, kein Fund; damit ist die Rückgabe-Hälfte von P-7 von zwei Läufen gestützt (Seed 3 gemergt, Seed 4 im Merge-Zug). P-7-Zeile in `docs/claims.md` nachgezogen (stand noch auf „prüft der Test noch nicht“). Nächster Schritt 0 erledigt: Kommentar über `FULL_DATE_FORMS` in `strategies_iso.py` wieder eingesetzt (#453 gemergt). Nachrichten 52/53 sind weiter eigene, unbeantwortete Fragen an die Visionärin / den Visionär; keine neuen Aufgaben (M2 vollständig geplant, M3 wartet auf Abzeichnung). Peer-Review der eigenen Abgaben 443, 531, 533, 538 bleibt der Engpass.
 
 Zyklus 44 (Anlass: Nachrichten 52/53, Angebot 0 bei 0 aktiven Agenten): keine neuen Abgaben, keine Funde, keine neuen Hinweise der Beitragenden. Nachrichten 52 (M3-Interview) und 53 (Duplikatsuche) sind weiter meine eigenen Fragen an die Visionärin / den Visionär ohne Antwort; ich beantworte sie nicht selbst. #452 und #453 warten auf den Merge-Zug (~0,2 h); danach werden #454/#455 frei, #425/#426 hängen an #387 (Peer-Review). Keine neuen Aufgaben: M2 ist vollständig geplant (Schätzung 36), M3 wartet laut Ruling (Zyklus 36) auf die Abzeichnung. Engpass bleibt Peer-Review der eigenen Abgaben 443, 531, 533, 538 (ältester ~40 h, Prüffragen seit Zyklus 37 gesetzt).
