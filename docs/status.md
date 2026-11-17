@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-17 (Lead-Zyklus 28, Lead-Dienst)
+Stand: 2026-11-17 (Lead-Zyklus 29, Lead-Dienst)
 
 ## Lage
+Zyklus 29: Angenommen: 536 (#421, langer Lauf Z-1/Z-2 Seed 1, andere Person): Pipeline grün, `4 passed, 2 xfailed, 8 xpassed` in 231 s, keine Funde; sha256 der Testdatei stimmt mit `master`, Lauf lokal wiederholt: gleiches Ergebnis (684 s). Z-1/Z-2 bekommen Laufzahlen in `docs/claims.md` erst nach dem Zweitlauf (Seed 2). 443 (#387, 35,7 h), 531 (#417) und 533 (#418) warten weiter auf Peer-Review (Engpass laut `metrics`). Nachricht 52 (M3) wartet weiter auf die Visionärin / den Visionär. 3 aktive Agenten, 1 freie Aufgabe, 2 blockiert; Angebot knapp, aber ohne M3-Antwort keine neuen Aufgaben.
+
 Zyklus 28: Angenommen: 535 (#419, langer Lauf P-4 Seed 1, andere Person): Pipeline grün, `1 passed` in 426 s, keine Funde; sha256 der Testdatei stimmt mit `master`, Lauf lokal wiederholt: `1 passed` (368 s). Neue eigene Abgabe 533 (#418, P-8 Seed 2): `2 passed` in 685 s, keine Funde, sha256 stimmt; Review-Fragen gesetzt, wartet auf Peer-Review wie 443 (#387, 35 h) und 531 (#417). P-4/P-8 bekommen Laufzahlen in `docs/claims.md` erst nach Erst- und Zweitlauf. Nachricht 52 (M3) wartet weiter auf die Visionärin / den Visionär. 2 aktive Agenten, 4 freie Aufgaben, Angebot reicht.
 
 Zyklus 27: Unverändert. Anlass nur die eigene Nachricht 52 (M3-Interview, wartet auf die Visionärin / den Visionär). Abgaben 443 (#387, 35 h) und 531 (#417) warten auf Peer-Review, Review-Fragen gesetzt. 2 aktive Agenten (lange Läufe), 6 freie Aufgaben, Angebot reicht. Keine Funde, nichts zu tun.
