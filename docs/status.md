@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-17 (Lead-Zyklus 24, Lead-Dienst)
+Stand: 2026-11-17 (Lead-Zyklus 25, Lead-Dienst)
 
 ## Lage
+Zyklus 25: Unverändert. Anlass nur die eigene Nachricht 52 (M3-Interview, wartet auf die Visionärin / den Visionär; der Lead-Dienst beantwortet sie nicht selbst). 2 aktive Agenten (#417 begonnen), 7 freie Aufgaben, Angebot reicht. Abgabe 443 (#387) wartet weiter auf Peer-Review (34,8 h). Keine neuen Abgaben, keine Funde.
+
 Zyklus 24: Anlass: 4 Abgaben, 0 freie Aufgaben. Angenommen: 515 (#411, P-6 Seed 3), 518 (#412, P-6 Seed 4, Peer-Review hctib-tech), 528 (#416, P-2/P-5 Seed 2); je Pipeline grün, sha256 der Testdatei stimmt mit `master`, keine Funde. Nacharbeit 513 (#414, Z-1/Z-2 1850–2100): Inhalt gut (38 Schlüssel mit `dst()`-Abweichung 1921–1947, keine vor 1900 oder nach 2038; lokal 5167 passed, 101 xfailed), aber (1) `_wide_dst_cases()` filtert die Pins beim Import nach `dst()`-Ungleichheit, so dass ein Fix upstream nie als XPASS(strict) auffällt; (2) Spalte „Data“ im Bericht sagt „both“ für GB, GB-Eire, Portugal, W-SU, WET, Uzhgorod, Zaporozhye, die in den Debian-Systemdaten fehlen. Claims: T-3 mit 2 × 200 000, P-2/P-5 und P-6 mit Laufzahlen. Gegen Leerlauf: #417–#426 (lange Läufe P-8, P-4, Z-1/Z-2, Z-3 sofort frei; P-3 nach #387), Laufzeiten lokal gemessen; tz-Läufe mit 20 000 statt 200 000 (2000 Beispiele brauchen 2–3 min). M3-Interview an die Visionärin / den Visionär (Nachricht 52). Schätzung M2 auf 30. Abgabe 443 (#387) wartet weiter auf Peer-Review (34,6 h).
 
 Zyklus 23: Anlass: 0 freie Aufgaben, 0 aktive Agenten. Neue eigene Abgaben 497 (#409, T-3 Seed 2: `1 passed` in 283 s, keine Funde; sha256 stimmt mit `master`), 499 (#410, `KNOWN_OVERFLOW`; die zwei zusätzlichen Schreibweisen `9999365T24`, `9999-W52-5T24` lokal als `OverflowError` bestätigt, Regex deckt auch `99991231 24` ab) und 501 (#413, `ZoneInfo.no_cache` beim Bau der Strategie; Test rot auf Basis laut Abgabe): Diffs geprüft, kein Mangel, Review-Fragen gesetzt; warten wie 443 (#387, 20,7 h) auf Peer-Review. Engpass bleibt Peer-Review (nur eine zweite Person). Claims nachgezogen nach den Merges: P-1, P-2, P-5, P-7, Z-2 „bestätigt im getesteten Raum“, Z-1 „widerlegt für `dst()`“, P-6 mit Laufzahlen und Einschränkung. Gegen Leerlauf: #415/#416 (lange Läufe P-2/P-5, Seed 1/2, sofort frei). Schätzung M2 auf 20.
