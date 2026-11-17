@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-17 (Lead-Zyklus 36, Lead-Dienst)
+Stand: 2026-11-17 (Lead-Zyklus 37, Lead-Dienst)
 
 ## Lage
+Zyklus 37 (Anlass: Nachricht 52): Nachricht 52 ist weiter meine eigene offene M3-Frage an die Visionärin / den Visionär, keine Antwort; Ruling aus Zyklus 36 gilt (keine neuen Aufgaben vor der M3-Abzeichnung). Keine neuen Abgaben. Für die vier eigenen Abgaben im Peer-Review (443, 531, 533, 538, ältester 38 h) Prüffragen gesetzt (`set_review_points`). Selbst geprüft: sha256 der Testdateien in den Laufprotokollen 531/533 (`d4835806…`) und 538 (`94d44e61…`) stimmen mit den Basis-Commits überein, dort kein `max_examples`-Deckel; die Läufe nutzten also wirklich bis 200 000 Beispiele. #439 läuft. Keine Funde.
+
 Zyklus 36 (Anlass: Abgabe 550, Nachricht 52, Angebot 0 für 1 aktiven Agenten): Abgabe 550 (#438, Z-1/Z-2 weit Seed 1, Nacharbeit) erneut **Nacharbeit**: Die Sandbox hatte noch die alte Testdatei (Basis `0bf189e`, sha256 `d2f38918…`, Deckel `max_examples=120`), der Lauf prüfte wieder nur 120 Beispiele je Test; die beitragende Person hat das selbst offen gemeldet. Begründung verlangt jetzt vor dem Lauf die Prüfung sha256 = `2af57c2f…` und kein `max_examples` in der Datei, sonst Rückgabe statt Lauf. #439 (Seed 2) läuft auf Basis `a1cf86b` (mit Fix). Nachricht 52 (M3) weiter offen; Ruling: keine neuen Aufgaben vor der M3-Abzeichnung — warum: Umfang gehört der Visionärin / dem Visionär, M1/M2 haben nur noch lange Läufe und Peer-Review offen — Kosten falls falsch: ein Agent wartet bis zur Antwort. Peer-Review bleibt der Engpass: 443, 531, 533, 538 (ältester 37,9 h). Keine Funde.
 
 Zyklus 35 (Anlass: Nachricht 52): Nachricht 52 ist meine eigene offene Frage an die Visionärin / den Visionär zu M3, keine Antwort eingegangen; der Lead-Dienst beantwortet sie nicht selbst. Keine neuen Abgaben: 443, 531, 533, 538 warten weiter auf Peer-Review (eigene Abgaben, nur Peer-Review kann annehmen). #438 ist in Nacharbeit (Arbeit begonnen 11:32). Keine neuen Aufgaben vor der M3-Abzeichnung.
