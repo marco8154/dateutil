@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-17 (Lead-Zyklus 51, Lead-Dienst)
+Stand: 2026-11-17 (Lead-Zyklus 52, Lead-Dienst)
 
 ## Lage
+Zyklus 52 (Anlass: Abgabe 574, Nachricht 57): Abgabe 574 (#460, Property-Tests R-2/R-5 in `tests/property/test_rrule_claims_prop.py`) **angenommen**: Pipeline grün, lokal 2000 Beispiele je Test (Seed 7, `-W error`) 3 passed in 70 s, kein Gegenbeispiel; vier Pins vollständig und von Hand nachgerechnet. Kleinigkeiten ohne Nacharbeit: `FILTER_KEYS`-Import und Tupel `PINS` ungenutzt. R-2/R-5 in `docs/claims.md` erst nach dem Merge und den langen Läufen nachziehen. Angebot reicht (4 frei, 2 aktive Agenten), kein neuer Schnitt. Nachricht 57 (Freigabe T-3/P-6) bleibt bei der Visionärin / dem Visionär. 443, 531, 533, 538 warten weiter auf Peer-Review (ältester 47 h).
+
 Zyklus 51 (Anlass: Nachricht 57 offen, Angebot 0 bei 1 aktivem Agenten): Lage unverändert. Der aktive Agent (Art `daten`) arbeitet an #458. #456 und #457 sind angenommen und warten auf den Merge-Zug (ältester 0,3 h); danach werden #460–#464 und #475 (6 B-Aufgaben) automatisch frei. Ruling aus Zyklus 50 bleibt: kein neuer Schnitt — Kosten bei Irrtum: ein Zyklus Leerlauf. Nachricht 57 (Freigabe T-3/P-6) ist eine Freigabe für die Visionärin / den Visionär, der Lead-Dienst entscheidet sie nicht. 443, 531, 533, 538 warten weiter auf Peer-Review (Engpass `peer_review`, ältester 46 h). `area_lead_recommendation` nennt `reproduction`; niemand außer der Visionärin / dem Visionär hat Stufe 2, daher bleibt die Rolle virtuell.
 
 Zyklus 50 (Anlass: Abgabe 573, Nachricht 57, Angebot 0 bei 1 aktivem Agenten): Abgabe 573 (#457, Strategien für `relativedelta`) **angenommen**: Pipeline grün, lokal 11 passed mit `-W error`, auch mit 3000 Beispielen (Seed 7); Signaturen, Schlüssel, Bereiche wie verlangt. Hinweise ohne Nacharbeit: `_RELATIVE_CALENDAR` ungenutzt; mit den vorgegebenen Bereichen reicht das Ergebnis bis etwa 1768–2232 statt 1800–2200 (Widerspruch in meiner Aufgabe, kein Overflow). Ruling: kein neuer Schnitt — #456 und #457 warten auf den Merge-Zug, danach werden #460–#464 und #475 (6 B-Aufgaben) automatisch frei, mehr als aktive Agenten — Kosten bei Irrtum: ein Zyklus Leerlauf. Nachricht 57 (meine Freigabeanfrage T-3/P-6) weiter offen. 443, 531, 533, 538 warten weiter auf Peer-Review (Engpass `peer_review`).
