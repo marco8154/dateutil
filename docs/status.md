@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-17 (Lead-Zyklus 42, Lead-Dienst)
+Stand: 2026-11-17 (Lead-Zyklus 43, Lead-Dienst)
 
 ## Lage
+Zyklus 43 (Anlass: Abgabe 555, Nachrichten 52/53, Angebot 0 bei 0 aktiven Agenten): Abgabe 555 (#452, P-7-Fuzz-Ziel prüft Rückgabetyp `datetime`) **angenommen**; Kriterien erfüllt, kein Fund. Mit dem Merge von #452 werden #454/#455 (lange Läufe P-7, Seed 3/4) automatisch frei; damit ist Angebot da, sobald Agenten kommen. Nachrichten 52 (M3-Interview) und 53 (Duplikatsuche) sind meine eigenen Fragen an die Visionärin / den Visionär und warten auf deren Antwort; ich beantworte sie nicht selbst. Keine neuen Aufgaben geschnitten: M2 ist vollständig geplant, M3 wartet laut Ruling (Zyklus 36) auf die Abzeichnung. Peer-Review bleibt der Engpass: 443, 531, 533, 538 (ältester ~40 h). Keine Funde.
+
 Zyklus 42 (Anlass: Abgabe 556, Nachricht 52, Angebot 0 bei 0 aktiven Agenten): Abgabe 556 (#453, Form-Tupel `FULL_DATE_FORMS`/`WEEK_DATE_FORMS` aus `strategies_iso`) **angenommen**; alle Kriterien erfüllt, 238 Tests gesammelt wie vorher. Beim Umbenennen fiel der Warum-Kommentar über `YYYY`/`YYYY-MM` weg; ich ziehe ihn nach dem Merge selbst nach. Abgabe 555 (#452) wartet noch auf die Pipeline. Lead-Pflicht „Reproduktion auf upstream-master“ für alle 7 Berichtsentwürfe erledigt: alle reproduzieren unverändert auf `a78cbd8` (aktueller Kopf), Abschnitte gefüllt. Die Duplikatsuche geht von hier aus nicht (kein `gh`, keine GitHub-API); Suchbegriffe je Fund an die Visionärin / den Visionär (Nachricht 53). Nachricht 52 (M3) weiter offen; bis zur Antwort keine neuen Aufgaben möglich außer #454/#455 (nach #452). Peer-Review bleibt der Engpass: 443, 531, 533, 538 (ältester ~40 h). Keine Funde.
 
 Zyklus 41 (Anlass: Nachricht 52, Angebot 0 für 2 aktive Agenten): Keine neuen Abgaben zum Review; die beiden aktiven Agenten arbeiten an #452 und #453. Nachricht 52 ist meine eigene M3-Frage an die Visionärin / den Visionär (seit 08:35 offen); Ruling aus Zyklus 36 gilt weiter, keine M3-Aufgaben vor der Abzeichnung. Damit nach #452 Arbeit da ist, neu (M2, unabhängig von M3): #454/#455, lange Läufe P-7 mit Rückgabeprüfung (Seed 3/4, je 200 000, `depends_on` #452; vor dem Lauf Prüfung, dass die Testdatei nicht mehr die alte ist, sha256 ≠ `994160f4…`; Hypothesis-Statistik im Protokoll). Schätzung M2: 36. Peer-Review bleibt der Engpass: 443, 531, 533, 538 (ältester ~40 h). Keine Funde.
@@ -116,7 +118,7 @@ Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis:
 
 ## Nächste Schritte
 0. Nach Merge #453: Kommentar „``YYYY`` and ``YYYY-MM`` must not be combined with a time portion.“ über `FULL_DATE_FORMS` in `tests/property/strategies_iso.py` wieder einsetzen (selbst, D).
-1. Abgabe 555 (#452) reviewen, sobald die Pipeline durch ist. Nach Merge #452 und den Läufen #454/#455: P-7-Status „bestätigt im getesteten Raum“ ohne Einschränkung (falls kein Fund).
+1. #452 angenommen (Zyklus 43); Merge-Zug prüfen. Nach Merge #452 und den Läufen #454/#455: P-7-Status „bestätigt im getesteten Raum“ ohne Einschränkung (falls kein Fund).
 2. Antwort auf Nachricht 52 (M3): nach Abzeichnung sofort Aufgaben schneiden (Strategien B, Golden-Test R-1 B, Property-Tests B in `test_rrule_claims_prop.py`/`test_relativedelta_prop.py` mit `depends_on`, lange Läufe A).
 3. Peer-Reviews 443 (#387, P-3), 531/533 (#417/#418, P-8), 538 (#420, P-4 Seed 2) abwarten; danach Laufzahlen in `docs/claims.md` (P-3 nach #425/#426).
 4. Vor der M1/M2-Abzeichnung (Lead-Pflicht, Fund 112): Reproduktion auf upstream-master erledigt (Zyklus 42, `a78cbd8`); Duplikatsuche wartet auf Nachricht 53, dann in den Entwürfen eintragen (P-6, Z-1/Z-1w zusammenführen oder abgrenzen, T-1 beide Pfade, T-2 zwei Berichte, T-3 mit Abgrenzung zu P-7); dann Freigabe durch die Visionärin / den Visionär, höchstens 2 offene Berichte.
