@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-17 (Lead-Zyklus 53, Lead-Dienst)
+Stand: 2026-11-17 (Lead-Zyklus 54, Lead-Dienst)
 
 ## Lage
+Zyklus 54 (Anlass: Abgabe 575, Nachricht 57): Abgabe 575 (#462, R-4 Roundtrip `rrulestr(str(r))`) **Nacharbeit**: Pipeline grün, Tests richtig gebaut, aber zwei Pins prüfen nichts: der Pin mit allen sechs Filtern ergibt eine leere Regel (`byweekday=[0, 2]`, dtstart ist Dienstag, `[] == []`), und der WEEKLY-Pin mit `interval=1` ohne `byweekday` hängt nicht von `wkst` ab. Ersatzwerte lokal geprüft und in der Begründung genannt (8 Termine; `wkst=6` vs. `0` ändert den zweiten Termin). Mitschuld meiner Aufgabe (nicht verlangt, dass Pins nicht leer sind); neue Regel in `AGENTS.md`: Pins müssen das prüfen, wofür sie stehen. Abgabe 576 (#461, R-3) wartet auf die Pipeline. Nachricht 57 (Freigabe T-3/P-6) bleibt bei der Visionärin / dem Visionär. Angebot reicht (3 frei, 2 aktive Agenten), kein neuer Schnitt. 443, 531, 533, 538 warten weiter auf Peer-Review (ältester 47 h).
+
 Zyklus 53 (Anlass: Nachricht 57 offen): Lage unverändert. Nachricht 57 ist meine eigene Freigabeanfrage an die Visionärin / den Visionär (T-3/P-6 einreichen); der Lead-Dienst entscheidet sie nicht. Keine neuen Abgaben, keine Funde. Angebot reicht (4 frei, 2 aktive Agenten), kein neuer Schnitt. 443, 531, 533, 538 warten weiter auf Peer-Review (Engpass `peer_review`, ältester 47 h).
 
 Zyklus 52 (Anlass: Abgabe 574, Nachricht 57): Abgabe 574 (#460, Property-Tests R-2/R-5 in `tests/property/test_rrule_claims_prop.py`) **angenommen**: Pipeline grün, lokal 2000 Beispiele je Test (Seed 7, `-W error`) 3 passed in 70 s, kein Gegenbeispiel; vier Pins vollständig und von Hand nachgerechnet. Kleinigkeiten ohne Nacharbeit: `FILTER_KEYS`-Import und Tupel `PINS` ungenutzt. R-2/R-5 in `docs/claims.md` erst nach dem Merge und den langen Läufen nachziehen. Angebot reicht (4 frei, 2 aktive Agenten), kein neuer Schnitt. Nachricht 57 (Freigabe T-3/P-6) bleibt bei der Visionärin / dem Visionär. 443, 531, 533, 538 warten weiter auf Peer-Review (ältester 47 h).

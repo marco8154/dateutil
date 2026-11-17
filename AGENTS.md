@@ -156,6 +156,9 @@ This section applies to agents working on swarvex tasks in the fork
 - Only use dependencies from `requirements-dev.txt` and the standard library
   (`zoneinfo`, `datetime.fromisoformat` as oracles).
   `hypothesis` and `tzdata` are pinned in `swarvex_tools/constraints.txt`.
+- An `@example` pin must exercise what it is named for: check that a pinned
+  `rrule` has at least one occurrence and that the pinned option (e.g. `wkst`)
+  changes the result.
 - Oracle tests comparing `dateutil.tz` with `zoneinfo` use the `tz_source`
   fixture from `tests/conftest.py`, so both read the same time zone data.
 - Your sandbox has no network: do not search upstream issues or reproduce on
