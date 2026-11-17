@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-17 (Lead-Zyklus 49, Lead-Dienst)
+Stand: 2026-11-17 (Lead-Zyklus 50, Lead-Dienst)
 
 ## Lage
+Zyklus 50 (Anlass: Abgabe 573, Nachricht 57, Angebot 0 bei 1 aktivem Agenten): Abgabe 573 (#457, Strategien für `relativedelta`) **angenommen**: Pipeline grün, lokal 11 passed mit `-W error`, auch mit 3000 Beispielen (Seed 7); Signaturen, Schlüssel, Bereiche wie verlangt. Hinweise ohne Nacharbeit: `_RELATIVE_CALENDAR` ungenutzt; mit den vorgegebenen Bereichen reicht das Ergebnis bis etwa 1768–2232 statt 1800–2200 (Widerspruch in meiner Aufgabe, kein Overflow). Ruling: kein neuer Schnitt — #456 und #457 warten auf den Merge-Zug, danach werden #460–#464 und #475 (6 B-Aufgaben) automatisch frei, mehr als aktive Agenten — Kosten bei Irrtum: ein Zyklus Leerlauf. Nachricht 57 (meine Freigabeanfrage T-3/P-6) weiter offen. 443, 531, 533, 538 warten weiter auf Peer-Review (Engpass `peer_review`).
+
 Zyklus 49 (Anlass: Nachricht 57 offen, Angebot 0 bei 2 aktiven Agenten): Die beiden aktiven Agenten arbeiten an #457 und #458; alles andere in M3 wartet per `depends_on`. #456 ist angenommen und wartet auf den Merge-Zug; danach werden #460, #461, #462 und #475 automatisch frei (4 B-Aufgaben), das Angebot erholt sich also von selbst. Vorgezogen geschnitten: **#476** Meilenstein-Review M3 (A, `review`, nach #459–#464 und #475). M3-Schätzung bleibt 23 (21 geschnitten, Rest Puffer). Nachricht 57 ist meine eigene Freigabeanfrage an die Visionärin / den Visionär (T-3 und P-6 einreichen), weiter offen; der Lead-Dienst entscheidet sie nicht. 443, 531, 533, 538 warten weiter auf Peer-Review (Engpass `peer_review`, ältester 46 h; kein Reviewer einer anderen Person/Modellfamilie aktiv). Keine neuen Funde.
 
 Zyklus 48 (Anlass: Abgabe 571, Nachricht 57): Abgabe 571 (#456, Strategie `rrule_kwargs()`) **angenommen**: Pipeline grün, lokal `7 passed`, Fenster, Schlüssel und Verankerung (auch negative `bymonthday`-Form) wie verlangt. Die Aufgabe widersprach sich (1–4 Werte je Filter bei jeder Frequenz vs. ≤ 1000 Termine; YEARLY+BYWEEKDAY ≈ 10 400); die Abgabe löst das mit Obergrenzen je Frequenz (`_FILTER_MAX_SIZE`), wodurch YEARLY×BYMONTHDAY, YEARLY×BYWEEKDAY und MONTHLY×BYWEEKDAY nie erzeugt werden und feinere Filter bei groben Frequenzen nur den Anker tragen. Folgeaufgabe **#475** (B, nach #456): die drei Kombinationen budgetiert wieder erzeugbar, deterministischer Worst-Case-Test, Kommentar auf Englisch. M3-Schätzung 23. Nachricht 57 ist meine eigene Freigabeanfrage an die Visionärin / den Visionär, noch offen; der Lead-Dienst entscheidet sie nicht. 443, 531, 533, 538 warten weiter auf Peer-Review (Engpass `peer_review`, ältester 46 h). `area_lead_recommendation` nennt `reproduction`; das läuft über die Plattform, außer mir hat niemand Stufe 2.
@@ -132,7 +134,7 @@ Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis:
 - Nachricht 57 (2026-11-17): Upstream-Berichte T-3 und P-6 einreichen (höchstens 2 offen); danach Reihenfolge T-2a, T-2b, Z-1+Z-1w als ein Issue, T-1 als Kommentar an #1432.
 
 ## Nächste Schritte
-1. M3-Abgaben prüfen (#457, #458, dann #460–#462, #475). Bei #458 fünf Einträge stichprobenartig gegen die RFC prüfen lassen (Prüffragen setzen, falls eigene Person). Bei #475 die Worst-Case-Regeln nachrechnen. Lange Läufe R-2 bis R-4 (#465–#470) sollten nach #475 laufen; wird eine vorher frei, in der Prüfung den Stand der Strategie notieren.
+1. M3-Abgaben prüfen (#458, dann #463/#464 gegen die Strategien aus #457, #460–#462, #475). Bei #458 fünf Einträge stichprobenartig gegen die RFC prüfen lassen (Prüffragen setzen, falls eigene Person). Bei #475 die Worst-Case-Regeln nachrechnen. Lange Läufe R-2 bis R-4 (#465–#470) sollten nach #475 laufen; wird eine vorher frei, in der Prüfung den Stand der Strategie notieren.
 2. Nachricht 57: Issue-Nummern von T-3 und P-6 in die xfail-Gründe und `docs/claims.md` eintragen (Lead, geschützte Datei); dann nächste zwei Berichte vorschlagen. Danach M1/M2-Abzeichnung.
 3. Peer-Reviews 443 (#387, P-3), 531/533 (#417/#418, P-8), 538 (#420, P-4 Seed 2) abwarten; danach Laufzahlen in `docs/claims.md` (P-3 nach #425/#426).
-4. Nach dem Merge von #459–#464: Meilenstein-Review M3 als Aufgabe (A, `review`, anderes Modell).
+4. Meilenstein-Review M3 ist #476 (folgt automatisch nach #459–#464, #475).
