@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-17 (Lead-Zyklus 37, Lead-Dienst)
+Stand: 2026-11-17 (Lead-Zyklus 38, Lead-Dienst)
 
 ## Lage
+Zyklus 38 (Anlass: Abgabe 551, Nachricht 52, Angebot 0 für 1 aktiven Agenten): Abgabe 551 (#439, Z-1/Z-2 weit 1850–2100, Seed 2) **angenommen**: sha256 `2af57c2f…` = Testdatei am Basis-Commit `a1cf86b` (ohne Deckel), Hypothesis-Statistik zeigt je Test 20 000 passing, 0 failing; `4 passed, 74 deselected`, 19 min. Keine Funde. Merge-Zug ausstehend. Damit fehlt für Z-1/Z-2 weit nur noch der Erstlauf #438 (Seed 1, Nacharbeit, für die beitragende Person reserviert; das ist vermutlich der eine aktive Simulations-Agent). Nachricht 52 (M3) weiter offen, Ruling aus Zyklus 36 gilt: keine neuen Aufgaben vor der M3-Abzeichnung. Peer-Review bleibt der Engpass: 443, 531, 533, 538 (ältester 38,4 h). Keine Funde.
+
 Zyklus 37 (Anlass: Nachricht 52): Nachricht 52 ist weiter meine eigene offene M3-Frage an die Visionärin / den Visionär, keine Antwort; Ruling aus Zyklus 36 gilt (keine neuen Aufgaben vor der M3-Abzeichnung). Keine neuen Abgaben. Für die vier eigenen Abgaben im Peer-Review (443, 531, 533, 538, ältester 38 h) Prüffragen gesetzt (`set_review_points`). Selbst geprüft: sha256 der Testdateien in den Laufprotokollen 531/533 (`d4835806…`) und 538 (`94d44e61…`) stimmen mit den Basis-Commits überein, dort kein `max_examples`-Deckel; die Läufe nutzten also wirklich bis 200 000 Beispiele. #439 läuft. Keine Funde.
 
 Zyklus 36 (Anlass: Abgabe 550, Nachricht 52, Angebot 0 für 1 aktiven Agenten): Abgabe 550 (#438, Z-1/Z-2 weit Seed 1, Nacharbeit) erneut **Nacharbeit**: Die Sandbox hatte noch die alte Testdatei (Basis `0bf189e`, sha256 `d2f38918…`, Deckel `max_examples=120`), der Lauf prüfte wieder nur 120 Beispiele je Test; die beitragende Person hat das selbst offen gemeldet. Begründung verlangt jetzt vor dem Lauf die Prüfung sha256 = `2af57c2f…` und kein `max_examples` in der Datei, sonst Rückgabe statt Lauf. #439 (Seed 2) läuft auf Basis `a1cf86b` (mit Fix). Nachricht 52 (M3) weiter offen; Ruling: keine neuen Aufgaben vor der M3-Abzeichnung — warum: Umfang gehört der Visionärin / dem Visionär, M1/M2 haben nur noch lange Läufe und Peer-Review offen — Kosten falls falsch: ein Agent wartet bis zur Antwort. Peer-Review bleibt der Engpass: 443, 531, 533, 538 (ältester 37,9 h). Keine Funde.
@@ -105,6 +107,7 @@ Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis:
 - keine
 
 ## Nächste Schritte
+0000000. Nach Merge von #439: Laufzahlen Z-1/Z-2 weit (Seed 2: 4 × 20 000) in `docs/claims.md` eintragen, sobald auch #438 (Seed 1) angenommen ist.
 000000. Nacharbeit zu #438/#439 reviewen: je Test „20000 passing“ in den Statistikzeilen, sha256 `2af57c2f…`, Commit ≥ `b00b68e`. Künftige Lauf-Aufgaben: `--hypothesis-show-statistics` in den Befehl, Statistikzeilen ins Protokoll.
 00000. Nach Merge #423/#424: bei Z-3 „Merge ausstehend“ durch die Merge-Commits ersetzen. Abgaben zu #438/#439 reviewen, danach Laufzahlen Z-1/Z-2 weit.
 0000. Antwort auf Nachricht 52 (M3): Entwurf R-1…R-5, D-1…D-4 steht in `docs/claims.md`; nach Abzeichnung sofort Aufgaben schneiden (Strategien B, Golden-Test R-1 B, Property-Tests B mit `depends_on`, lange Läufe A). Abgaben zu #423–#426, #438/#439 reviewen, danach Laufzahlen bei P-3, P-4, P-8, Z-3 und Z-1/Z-2 weit. Nach Merge #411/#412: P-6-Status ohne „Merge ausstehend“.
