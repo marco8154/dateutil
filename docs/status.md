@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-18 (Lead-Zyklus 59, Lead-Dienst)
+Stand: 2026-11-18 (Lead-Zyklus 60, Lead-Dienst)
 
 ## Lage
+Zyklus 60 (Anlass: Abgabe 615, Nachricht 67). **615 (#491, R-3 Seed 1) angenommen:** sha256 `6271dd91…` = Testdatei am Basis-Commit `e44c22f`, Profilzeile `max_examples=20000`, alle 7 Testfälle (auch `test_queries_on_complete_cache`) je 20 000 passing, 0 failing, 77:55 min, `Findings: none`. Damit R-3 (naiver `dtstart`) mit 2 × 20 000 bestätigt im getesteten Raum (`docs/claims.md` nachgezogen, Merge ausstehend). Nachricht 67 (D-5/R-6) ist meine eigene Freigabeanfrage, bleibt bei der Visionärin / dem Visionär. Angebot: 1 frei, 1 aktiver Agent, 5 im Merge-Zug (danach werden #489/#490/#495/#496 frei) → kein neuer Schnitt. 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester 67 h).
+
 Zyklus 59 (Anlass: 3 Abgaben, Nachricht 67). **Angenommen:** 611 (#488, D-2.1), 612 (#493, R-2/R-5 mit Zone), 614 (#494, Fund R-4 mit Zone: `xfail(strict=True)` mit drei Pins, je 9 Termine; Normaltest `test_str_has_no_tz_marker`; Berichtsentwurf `docs/reports/r4-rrule-str-drops-tzinfo.md`, Zeilen `rrule.py:725/739` stimmen). Alle drei warten auf den Merge-Zug; danach werden #489/#490/#495/#496 frei. **R-4 mit Zone reproduziert auf upstream-master `261e291`** (2026-11-17) für `ZoneInfo`, `tz.gettz` und `tz.UTC`. 615 (#491, R-3 Seed 1) noch in der Prüfung. Nachricht 67 (D-5/R-6) wartet auf die Visionärin / den Visionär. 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester 67 h).
 
 Zyklus 58 (Anlass: 1 Abgabe, 0 freie Aufgaben für 2 Agenten). **610 (#492, R-3 Seed 2) angenommen.** 611 (#488, D-2.1) und 612 (#493, R-2/R-5 mit Zone) inhaltlich geprüft: beide genau nach Aufgabe, Pipeline grün, kein Fund, kein Bericht (richtig); Annahme vom Werkzeug abgelehnt (Zustand `submitted`, Prüfung läuft) → nächster Zyklus annehmen. Nachschub: **#497** (R-3 mit Zone, B; Lead-Vorprüfung 2 × 3000 ohne Fund), **#498/#499** (lange Läufe danach). Nach Merge von #488/#493 werden #489/#490/#495/#496 frei. Neue Claims **D-5** (`dt2 + relativedelta(dt1, dt2) == dt1`, 50 000 ohne Fund) und **R-6** (`rruleset` = sortierte Vereinigung minus `exdate`, 1000 ohne Fund) zur Freigabe (Nachricht 67). M3-Schätzung 32.
