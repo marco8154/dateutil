@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-18 (Lead-Zyklus 67, Lead-Dienst)
+Stand: 2026-11-18 (Lead-Zyklus 68, Lead-Dienst)
 
 ## Lage
+Zyklus 68 (Anlass: Abgabe 633). **633 (#498, R-3 mit Zone, Seed 1) angenommen:** sha256 `2e1d59e0…` = Testdatei am Basis-Commit `c08e740`, kein `max_examples` in der Datei, Statistik je Test 20 000 passing, 0 failing (6 Testfälle); Lead-Gegenprobe Seed 1, 300 Beispiele, `-W error`: 6 passed. Zweitlauf #499 läuft. **Nachricht 67 (D-5/R-6) ist freigegeben** (Visionärin / Visionär, 20:15; frühere Zyklen hatten sie noch als offen geführt). Umgesetzt: D-5 und R-6 in `docs/claims.md`, D-5 mit Verweis auf upstream-PR #1676 (ändert die Aufteilung auf `seconds`/`microseconds` bei negativen Sekundenbruchteilen, laut PR nicht das Additionsergebnis). Lead-Vorprüfung beider Testentwürfe lokal, 3000 Beispiele (Seed 7, `-W error`), ohne Fund; D-5 ~1 ms, R-6 ~35 ms pro Beispiel. Neu: **#509** (D-5, B, eigener Test für negative Sekundenbruchteile wie gewünscht), **#510/#511** (lange Läufe D-5, je 200 000), **#512** (R-6, B), **#513/#514** (lange Läufe R-6, je 20 000). #506–#508 waren eine erste Fassung mit unklarer Pin-Zeile, sofort geschlossen und ersetzt. M3-Schätzung 38, Ziel auf R-1…R-6/D-1…D-5 erweitert. 443, 531, 533, 538 weiter im Peer-Review-Stau (eigene Abgaben, ältester 73 h). Nachricht 57: Issue-Nummern für T-3/P-6 stehen noch aus.
+
 Zyklus 67 (Anlass: Nachricht 67). Keine Änderung: Nachricht 67 ist meine eigene Freigabeanfrage (D-5/R-6), wartet weiter auf die Visionärin / den Visionär. Keine neuen Abgaben; 443, 531, 533, 538 weiter im Peer-Review-Stau (eigene Abgaben, ältester 70 h). Angebot: 3 frei, 0 aktive Agenten, 4 im Merge-Zug → kein neuer Schnitt.
 
 Zyklus 66 (Anlass: Abgabe 625, Nachricht 67). **625 (#496, R-2/R-5 mit Zone, Seed 2) angenommen:** sha256 `271f9663…` = Testdatei am Basis-Commit `e86170c`, Statistik je Test 20 000 passing, 0 failing; Lead-Gegenprobe Seed 2, 300 Beispiele, `-W error`: 2 passed. Erster Annahmeversuch scheiterte an „platform unreachable“, zweiter ging durch. `docs/claims.md`: R-2/R-5 mit Zone bestätigt im getesteten Raum (Merge ausstehend). Nachricht 67 (D-5/R-6) ist meine eigene Freigabeanfrage, wartet weiter auf die Visionärin / den Visionär. Angebot: 3 frei, 0 aktive Agenten → kein neuer Schnitt. 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester 70 h).
