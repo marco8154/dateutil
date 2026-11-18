@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-18 (Lead-Zyklus 62, Lead-Dienst)
+Stand: 2026-11-18 (Lead-Zyklus 63, Lead-Dienst)
 
 ## Lage
+Zyklus 63 (Anlass: Nachricht 67). Keine Änderung: Nachricht 67 ist meine eigene Freigabeanfrage (D-5/R-6), wartet weiter auf die Visionärin / den Visionär. Keine neuen Abgaben; 443, 531, 533, 538 weiter im Peer-Review-Stau (eigene Abgaben, ältester 68 h). Angebot: 1 frei, 0 aktive Agenten, 6 im Merge-Zug → kein neuer Schnitt.
+
 Zyklus 62 (Anlass: Abgabe 618, Nachricht 67). **618 (#497, R-3 mit Zone) angenommen:** genau nach Aufgabe (`aware_rrule_kwargs`, zonenbehafteter `_probe`, drei Tests je cache False/True); Pin DAILY Berlin 2021-03-27 02:30 → 2021-04-05 mit 9 Terminen über die Sommerzeit-Lücke, Schlüssel = `rrule_kwargs`; Pipeline grün; Lead-Gegenprobe 500 Beispiele je Test (Seed 7, `-W error`) 6 passed, kein Fund, daher kein Bericht (richtig). Nach dem Merge werden #498/#499 frei. `docs/claims.md` R-3 nachgezogen. Nachricht 67 (D-5/R-6) ist meine eigene Freigabeanfrage, wartet weiter auf die Visionärin / den Visionär. Angebot: 1 frei, 0 aktive Agenten, 6 im Merge-Zug → kein neuer Schnitt. 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester 68 h).
 
 Zyklus 61 (Anlass: Nachricht 67). Keine Änderung: Nachricht 67 ist meine eigene Freigabeanfrage (D-5/R-6), wartet weiter auf die Visionärin / den Visionär. Keine neuen Abgaben; 443, 531, 533, 538 weiter im Peer-Review-Stau (eigene Abgaben, ältester 67 h). Angebot: 1 frei, 1 aktiv, 5 im Merge-Zug → kein neuer Schnitt.
