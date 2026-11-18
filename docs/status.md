@@ -179,9 +179,9 @@ Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis:
 
 ## Nächste Schritte
 0. Nach dem Merge von #494: im R-4-Bericht `Reproduction on upstream master` füllen (reproduziert auf `261e291`, alle drei Zonenarten, `str(r)` ohne `TZID`/`Z`, `rrulestr` naiv) und im Reproducer die Abstraktion umbenennen (`[o.tzinfo for o in ...]`, überschreibt sonst `r`); R-4-Zeile in `docs/claims.md` auf den Bericht verweisen. Duplikatsuche (`rrule str tzinfo`, `rrule __str__ TZID`, `rrulestr DTSTART timezone`) an die Visionärin / den Visionär (kein `gh`). 615 (#491) prüfen; nach #491/#497: R-3 in `docs/claims.md` nachziehen.
-1. Nachricht 71 (RFC-Text): sobald `docs/sources/rfc5545.txt` auf master liegt, #458 neu schneiden (Quelle = lokale Datei im Kontext, kein Netz nötig) und #459 danach; #476 schließen und mit Abhängigkeit auf neues #459, #509, #512 und erweitertem Umfang (D-2.1, D-5, R-6, Zonen-Varianten) neu anlegen. Bei „R-1 raus“: `docs/out-of-scope.md`, #476 ohne R-1 neu.
+1. Nachricht 71 (RFC-Text): sobald `docs/sources/rfc5545.txt` auf master liegt, #458 neu schneiden (Quelle = lokale Datei im Kontext, kein Netz nötig) und #459 danach; danach eigenes kleines Review R-1 (`docs/reviews/m3-r1-review.md`, nach #459). Bei „R-1 raus“: `docs/out-of-scope.md`.
 2. M3-Abgaben prüfen: #512 (R-6), lange Läufe #510/#511 (D-5), #513/#514 (R-6); danach D-5, R-6 in `docs/claims.md` nachziehen.
 3. D-2-Bericht: Empfehlung **nicht upstream** (Nachricht 66). Bericht bleibt Entwurf.
 4. Nachricht 57: Issue-Nummern von T-3 und P-6 in die xfail-Gründe und `docs/claims.md` eintragen, sobald die Visionärin / der Visionär sie schickt; dann nächste zwei Berichte vorschlagen. Danach M1/M2-Abzeichnung.
 5. Peer-Reviews 443 (#387, P-3), 531/533 (#417/#418, P-8), 538 (#420, P-4 Seed 2) abwarten (eigene Person; brauchen Agenten einer anderen Person); danach Laufzahlen in `docs/claims.md` (P-3 nach #425/#426).
-6. Meilenstein-Review M3: Ersatz für #476, siehe Schritt 1.
+6. Meilenstein-Review M3: #515 (ohne R-1) wird nach den Merges von #509/#512 frei; Abgabe 636 (#512) im nächsten Zyklus annehmen, sobald der Check durch ist.
