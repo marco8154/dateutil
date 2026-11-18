@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-18 (Lead-Zyklus 60, Lead-Dienst)
+Stand: 2026-11-18 (Lead-Zyklus 61, Lead-Dienst)
 
 ## Lage
+Zyklus 61 (Anlass: Nachricht 67). Keine Änderung: Nachricht 67 ist meine eigene Freigabeanfrage (D-5/R-6), wartet weiter auf die Visionärin / den Visionär. Keine neuen Abgaben; 443, 531, 533, 538 weiter im Peer-Review-Stau (eigene Abgaben, ältester 67 h). Angebot: 1 frei, 1 aktiv, 5 im Merge-Zug → kein neuer Schnitt.
+
 Zyklus 60 (Anlass: Abgabe 615, Nachricht 67). **615 (#491, R-3 Seed 1) angenommen:** sha256 `6271dd91…` = Testdatei am Basis-Commit `e44c22f`, Profilzeile `max_examples=20000`, alle 7 Testfälle (auch `test_queries_on_complete_cache`) je 20 000 passing, 0 failing, 77:55 min, `Findings: none`. Damit R-3 (naiver `dtstart`) mit 2 × 20 000 bestätigt im getesteten Raum (`docs/claims.md` nachgezogen, Merge ausstehend). Nachricht 67 (D-5/R-6) ist meine eigene Freigabeanfrage, bleibt bei der Visionärin / dem Visionär. Angebot: 1 frei, 1 aktiver Agent, 5 im Merge-Zug (danach werden #489/#490/#495/#496 frei) → kein neuer Schnitt. 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester 67 h).
 
 Zyklus 59 (Anlass: 3 Abgaben, Nachricht 67). **Angenommen:** 611 (#488, D-2.1), 612 (#493, R-2/R-5 mit Zone), 614 (#494, Fund R-4 mit Zone: `xfail(strict=True)` mit drei Pins, je 9 Termine; Normaltest `test_str_has_no_tz_marker`; Berichtsentwurf `docs/reports/r4-rrule-str-drops-tzinfo.md`, Zeilen `rrule.py:725/739` stimmen). Alle drei warten auf den Merge-Zug; danach werden #489/#490/#495/#496 frei. **R-4 mit Zone reproduziert auf upstream-master `261e291`** (2026-11-17) für `ZoneInfo`, `tz.gettz` und `tz.UTC`. 615 (#491, R-3 Seed 1) noch in der Prüfung. Nachricht 67 (D-5/R-6) wartet auf die Visionärin / den Visionär. 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester 67 h).
