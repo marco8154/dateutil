@@ -67,11 +67,12 @@ Freigegeben 2026-11-17 (Nachricht 52: Q1–Q4 ja, Claims R-1 bis R-5, D-1 bis D-
 | #459 | Golden-Test R-1 | B | `tests/property/test_rrule_rfc_golden.py`, `docs/reports/r1-*.md` | #458 |
 | #460 | R-2 und R-5 | B | `tests/property/test_rrule_claims_prop.py`, `docs/reports/r2-*.md`, `r5-*.md` | #456 |
 | #461 | R-3 (`count`, `before`, `after`, `between`, mit/ohne Cache) | B | `tests/property/test_rrule_query_prop.py`, `docs/reports/r3-*.md` | #456 |
+| #477 | R-3 ergänzen: Abfragen auf vollständig gefülltem Cache (`_cache_complete`) | B | `tests/property/test_rrule_query_prop.py`, `docs/reports/r3-*.md` | #461 |
 | #462 | R-4 (`rrulestr(str(r))`) | B | `tests/property/test_rrule_roundtrip_prop.py`, `docs/reports/r4-*.md` | #456 |
 | #463 | D-1 und D-2 | B | `tests/property/test_relativedelta_prop.py`, `docs/reports/d1-*.md`, `d2-*.md` | #457 |
 | #464 | D-3 und D-4 | B | `tests/property/test_relativedelta_fields_prop.py`, `docs/reports/d3-*.md`, `d4-*.md` | #457 |
 | #465 / #466 | Lange Läufe R-2/R-5, 20 000 Beispiele, Seed 1 / 2 | A (`simulation`) | `docs/runs/r2r5-seed1.md` / `-seed2.md` | #460 |
-| #467 / #468 | Lange Läufe R-3, 20 000, Seed 1 / 2 | A | `docs/runs/r3-seed*.md` | #461 |
+| ~~#467 / #468~~ → neu (Nummern offen, Zyklus 55) | Lange Läufe R-3, 20 000, Seed 1 / 2 (geschlossen, ersetzt, damit #477 mitläuft) | A | `docs/runs/r3-seed*.md` | #477 |
 | #469 / #470 | Lange Läufe R-4, 20 000, Seed 1 / 2 | A | `docs/runs/r4-seed*.md` | #462 |
 | #471 / #472 | Lange Läufe D-1/D-2, 200 000, Seed 1 / 2 | A | `docs/runs/d1d2-seed*.md` | #463 |
 | #473 / #474 | Lange Läufe D-3/D-4, 200 000, Seed 1 / 2 | A | `docs/runs/d3d4-seed*.md` | #464 |

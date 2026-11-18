@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-17 (Lead-Zyklus 54, Lead-Dienst)
+Stand: 2026-11-18 (Lead-Zyklus 55, Lead-Dienst)
 
 ## Lage
+Zyklus 55 (Anlass: Nachricht 57 offen; dazu Abgabe 576): Abgabe 576 (#461, R-3 Abfragen `count`/`before`/`after`/`between`) **angenommen**: Pipeline grün, lokal 1000 Beispiele (Seed 7, `-W error`) 6 passed in 131 s, kein Gegenbeispiel; Referenz nur aus Listenfiltern, je Schritt ein neues Objekt, Abfragen vor `count()`. Lücke in meiner Aufgabe: der Zweig mit vollständigem Cache (`_cache_complete`) wird nie abgefragt → neue Aufgabe **#477** (B, nach #461). Damit die langen R-3-Läufe den neuen Test enthalten, #467/#468 geschlossen; die Ersatzaufgaben (gleicher Text, `depends_on` #477, Prüfung `grep test_queries_on_complete_cache` vor dem Lauf, erwartet 50–60 min) konnten **nicht** angelegt werden: `create_tasks` meldete „platform unreachable“, danach lehnte der MCP-Server das Token ab (wie Zyklus 32). Fund 120 (`between` liest `count` nie, `rrule.py:286`) bestätigt, aber abgewiesen: kein dokumentierter Vertrag, keine Claim; mögliche Upstream-Frage für die Visionärin / den Visionär, ohne Aufgabe. M3-Schätzung 24. Nachricht 57 (Freigabe T-3/P-6) bleibt bei der Visionärin / dem Visionär. 443, 531, 533, 538 warten weiter auf Peer-Review (ältester 47 h).
+
 Zyklus 54 (Anlass: Abgabe 575, Nachricht 57): Abgabe 575 (#462, R-4 Roundtrip `rrulestr(str(r))`) **Nacharbeit**: Pipeline grün, Tests richtig gebaut, aber zwei Pins prüfen nichts: der Pin mit allen sechs Filtern ergibt eine leere Regel (`byweekday=[0, 2]`, dtstart ist Dienstag, `[] == []`), und der WEEKLY-Pin mit `interval=1` ohne `byweekday` hängt nicht von `wkst` ab. Ersatzwerte lokal geprüft und in der Begründung genannt (8 Termine; `wkst=6` vs. `0` ändert den zweiten Termin). Mitschuld meiner Aufgabe (nicht verlangt, dass Pins nicht leer sind); neue Regel in `AGENTS.md`: Pins müssen das prüfen, wofür sie stehen. Abgabe 576 (#461, R-3) wartet auf die Pipeline. Nachricht 57 (Freigabe T-3/P-6) bleibt bei der Visionärin / dem Visionär. Angebot reicht (3 frei, 2 aktive Agenten), kein neuer Schnitt. 443, 531, 533, 538 warten weiter auf Peer-Review (ältester 47 h).
 
 Zyklus 53 (Anlass: Nachricht 57 offen): Lage unverändert. Nachricht 57 ist meine eigene Freigabeanfrage an die Visionärin / den Visionär (T-3/P-6 einreichen); der Lead-Dienst entscheidet sie nicht. Keine neuen Abgaben, keine Funde. Angebot reicht (4 frei, 2 aktive Agenten), kein neuer Schnitt. 443, 531, 533, 538 warten weiter auf Peer-Review (Engpass `peer_review`, ältester 47 h).
@@ -142,6 +144,7 @@ Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis:
 - Nachricht 57 (2026-11-17): Upstream-Berichte T-3 und P-6 einreichen (höchstens 2 offen); danach Reihenfolge T-2a, T-2b, Z-1+Z-1w als ein Issue, T-1 als Kommentar an #1432.
 
 ## Nächste Schritte
+0. **Zuerst:** prüfen, ob die Ersatzaufgaben für #467/#468 (lange Läufe R-3 Seed 1/2, `depends_on` #477) existieren (`matching_tasks` mit `explain` oder Projektseite); sonst mit `create_tasks` anlegen (Text wie #467, plus Akzeptanz „Lauf umfasst `test_queries_on_complete_cache`“), Nummern in `docs/plan.md` eintragen.
 1. M3-Abgaben prüfen (#458, dann #463/#464 gegen die Strategien aus #457, #460–#462, #475). Bei #458 fünf Einträge stichprobenartig gegen die RFC prüfen lassen (Prüffragen setzen, falls eigene Person). Bei #475 die Worst-Case-Regeln nachrechnen. Lange Läufe R-2 bis R-4 (#465–#470) sollten nach #475 laufen; wird eine vorher frei, in der Prüfung den Stand der Strategie notieren.
 2. Nachricht 57: Issue-Nummern von T-3 und P-6 in die xfail-Gründe und `docs/claims.md` eintragen (Lead, geschützte Datei); dann nächste zwei Berichte vorschlagen. Danach M1/M2-Abzeichnung.
 3. Peer-Reviews 443 (#387, P-3), 531/533 (#417/#418, P-8), 538 (#420, P-4 Seed 2) abwarten; danach Laufzahlen in `docs/claims.md` (P-3 nach #425/#426).
