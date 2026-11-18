@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-18 (Lead-Zyklus 69, Lead-Dienst)
+Stand: 2026-11-18 (Lead-Zyklus 70, Lead-Dienst)
 
 ## Lage
+Zyklus 70 (Anlass: Abgabe 635). **635 (#509, D-5) angenommen:** genau nach Punkt 2–4, alle fünf Pins, kein `@settings`, kein Fund, daher kein Bericht (richtig); Pipeline grün (5226 passed); Lead-Gegenprobe 3000 Beispiele je Test (Seed 11, `-W error`) 2 passed. Nach dem Merge werden #510/#511 frei. **Fund 128:** #458 (RFC-5545-Beispiele, R-1) ist in keiner Sandbox lösbar, der RFC-Text fehlt im Repo und es gibt kein Netz (drei Rückgaben, eine Ablehnung). Ruling: #458 und #459 geschlossen — warum: jede weitere Reservierung verbrennt Agentenzeit — Kosten bei Irrtum: zwei Aufgaben neu anlegen. Frage an die Visionärin / den Visionär (Nachricht 71): `docs/sources/rfc5545.txt` und Errata-Auszug einchecken; danach Neuschnitt #458/#459 und Ersatz für #476 (Meilenstein-Review M3, hängt sonst am geschlossenen #459; Umfang dann inkl. D-5, R-6, Zonen-Varianten). Angebot: 1 frei, 1 aktiver Agent → kein neuer Schnitt. 443, 531, 533, 538 weiter im Peer-Review-Stau (eigene Abgaben, ältester 73,5 h). Nachricht 57: Issue-Nummern für T-3/P-6 stehen noch aus.
+
 Zyklus 69 (Anlass: Abgabe 634). **634 (#499, R-3 mit Zone, Seed 2) angenommen:** sha256 `2e1d59e0…` = Testdatei am Basis-Commit `c08e740` und auf master, kein `max_examples` in der Datei, je Test 20 000 passing, 0 failing (6 Testfälle), `Findings: none`; Lead-Gegenprobe Seed 2, 300 Beispiele, `-W error`: 6 passed. Damit R-3 mit Zone 2 × 20 000 bestätigt im getesteten Raum (`docs/claims.md` nachgezogen, Merge ausstehend). 635 (#509, D-5) wartet noch auf die Pipeline. Angebot: 1 frei, 1 aktiver Agent, 8 blockiert (#510/#511 nach #509, #513/#514 nach #512) → kein neuer Schnitt. 443, 531, 533, 538 weiter im Peer-Review-Stau (eigene Abgaben, ältester 73,5 h). Nachricht 57: Issue-Nummern für T-3/P-6 stehen noch aus.
 
 Zyklus 68 (Anlass: Abgabe 633). **633 (#498, R-3 mit Zone, Seed 1) angenommen:** sha256 `2e1d59e0…` = Testdatei am Basis-Commit `c08e740`, kein `max_examples` in der Datei, Statistik je Test 20 000 passing, 0 failing (6 Testfälle); Lead-Gegenprobe Seed 1, 300 Beispiele, `-W error`: 6 passed. Zweitlauf #499 läuft. **Nachricht 67 (D-5/R-6) ist freigegeben** (Visionärin / Visionär, 20:15; frühere Zyklen hatten sie noch als offen geführt). Umgesetzt: D-5 und R-6 in `docs/claims.md`, D-5 mit Verweis auf upstream-PR #1676 (ändert die Aufteilung auf `seconds`/`microseconds` bei negativen Sekundenbruchteilen, laut PR nicht das Additionsergebnis). Lead-Vorprüfung beider Testentwürfe lokal, 3000 Beispiele (Seed 7, `-W error`), ohne Fund; D-5 ~1 ms, R-6 ~35 ms pro Beispiel. Neu: **#509** (D-5, B, eigener Test für negative Sekundenbruchteile wie gewünscht), **#510/#511** (lange Läufe D-5, je 200 000), **#512** (R-6, B), **#513/#514** (lange Läufe R-6, je 20 000). #506–#508 waren eine erste Fassung mit unklarer Pin-Zeile, sofort geschlossen und ersetzt. M3-Schätzung 38, Ziel auf R-1…R-6/D-1…D-5 erweitert. 443, 531, 533, 538 weiter im Peer-Review-Stau (eigene Abgaben, ältester 73 h). Nachricht 57: Issue-Nummern für T-3/P-6 stehen noch aus.
@@ -170,13 +172,14 @@ Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis:
 - Ruling: SPDX `Apache-2.0 AND BSD-3-Clause` nur in neuen Dateien außerhalb von `src/` und `tests/`. Grund: upstream führt keine Header. Kosten, falls falsch: Header ergänzen.
 
 ## Offene Freigaben
+- Nachricht 71 (2026-11-18, Frage): RFC-5545-Text und Errata-Auszug nach `docs/sources/` einchecken (R-1).
 - Nachricht 57 (2026-11-17): Upstream-Berichte T-3 und P-6 einreichen (höchstens 2 offen); danach Reihenfolge T-2a, T-2b, Z-1+Z-1w als ein Issue, T-1 als Kommentar an #1432.
 
 ## Nächste Schritte
 0. Nach dem Merge von #494: im R-4-Bericht `Reproduction on upstream master` füllen (reproduziert auf `261e291`, alle drei Zonenarten, `str(r)` ohne `TZID`/`Z`, `rrulestr` naiv) und im Reproducer die Abstraktion umbenennen (`[o.tzinfo for o in ...]`, überschreibt sonst `r`); R-4-Zeile in `docs/claims.md` auf den Bericht verweisen. Duplikatsuche (`rrule str tzinfo`, `rrule __str__ TZID`, `rrulestr DTSTART timezone`) an die Visionärin / den Visionär (kein `gh`). 615 (#491) prüfen; nach #491/#497: R-3 in `docs/claims.md` nachziehen.
-1. Nachricht 67 (D-5, R-6): bei „ja“ Claims in `docs/claims.md` eintragen, je eine B-Aufgabe nach dem Muster von #497 (lokale Strategie, Pins mit Vorkommen) plus zwei lange Läufe; Schätzung M3 35.
-2. M3-Abgaben prüfen: #497, #458 (RFC-Daten; fünf Einträge stichprobenartig gegen die RFC, Prüffragen setzen, falls eigene Person), danach #459; lange Läufe #489–#491, #495/#496, #498/#499. Danach D-1, D-2.1, R-3 in `docs/claims.md` nachziehen.
+1. Nachricht 71 (RFC-Text): sobald `docs/sources/rfc5545.txt` auf master liegt, #458 neu schneiden (Quelle = lokale Datei im Kontext, kein Netz nötig) und #459 danach; #476 schließen und mit Abhängigkeit auf neues #459, #509, #512 und erweitertem Umfang (D-2.1, D-5, R-6, Zonen-Varianten) neu anlegen. Bei „R-1 raus“: `docs/out-of-scope.md`, #476 ohne R-1 neu.
+2. M3-Abgaben prüfen: #512 (R-6), lange Läufe #510/#511 (D-5), #513/#514 (R-6); danach D-5, R-6 in `docs/claims.md` nachziehen.
 3. D-2-Bericht: Empfehlung **nicht upstream** (Nachricht 66). Bericht bleibt Entwurf.
 4. Nachricht 57: Issue-Nummern von T-3 und P-6 in die xfail-Gründe und `docs/claims.md` eintragen, sobald die Visionärin / der Visionär sie schickt; dann nächste zwei Berichte vorschlagen. Danach M1/M2-Abzeichnung.
 5. Peer-Reviews 443 (#387, P-3), 531/533 (#417/#418, P-8), 538 (#420, P-4 Seed 2) abwarten (eigene Person; brauchen Agenten einer anderen Person); danach Laufzahlen in `docs/claims.md` (P-3 nach #425/#426).
-6. Meilenstein-Review M3 ist #476 (folgt automatisch nach #459); D-2.1, R-2/R-5/R-3 mit Zone dort mitprüfen lassen.
+6. Meilenstein-Review M3: Ersatz für #476, siehe Schritt 1.

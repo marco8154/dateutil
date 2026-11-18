@@ -63,8 +63,8 @@ Freigegeben 2026-11-17 (Nachricht 52: Q1–Q4 ja, Claims R-1 bis R-5, D-1 bis D-
 | #456 | Strategie `rrule_kwargs()` (endliche Regeln, verankerte `byxxx`-Filter, `until`-Fenster je Frequenz) | B | `tests/property/strategies_rrule.py`, `test_strategies_rrule.py` | – |
 | #475 | Strategie erweitern: YEARLY×BYMONTHDAY, YEARLY×BYWEEKDAY, MONTHLY×BYWEEKDAY budgetiert; Worst-Case-Test | B | `tests/property/strategies_rrule.py`, `test_strategies_rrule.py` | #456 |
 | #457 | Strategien für `relativedelta` (`base_datetimes`, `relative_time_kwargs`, `relative_kwargs`, `absolute_kwargs`) | B | `tests/property/strategies_relativedelta.py`, `test_strategies_relativedelta.py` | – |
-| #458 | RFC 5545 3.8.5.3: RRULE-Beispiele als JSON (`daten`, Rolle literature) | A | `tests/property/data/rfc5545_rrule_examples.json` | – |
-| #459 | Golden-Test R-1 | B | `tests/property/test_rrule_rfc_golden.py`, `docs/reports/r1-*.md` | #458 |
+| ~~#458~~ | RFC 5545 3.8.5.3: RRULE-Beispiele als JSON (`daten`, Rolle literature); geschlossen 2026-11-18 (keine Sandbox hat den RFC-Text, Fund 128), Neuschnitt nach `docs/sources/rfc5545.txt` (Nachricht 71) | A | `tests/property/data/rfc5545_rrule_examples.json` | – |
+| ~~#459~~ | Golden-Test R-1; geschlossen mit #458, Neuschnitt danach | B | `tests/property/test_rrule_rfc_golden.py`, `docs/reports/r1-*.md` | #458 |
 | #460 | R-2 und R-5 | B | `tests/property/test_rrule_claims_prop.py`, `docs/reports/r2-*.md`, `r5-*.md` | #456 |
 | #461 | R-3 (`count`, `before`, `after`, `between`, mit/ohne Cache) | B | `tests/property/test_rrule_query_prop.py`, `docs/reports/r3-*.md` | #456 |
 | #477 | R-3 ergänzen: Abfragen auf vollständig gefülltem Cache (`_cache_complete`) | B | `tests/property/test_rrule_query_prop.py`, `docs/reports/r3-*.md` | #461 |
@@ -87,7 +87,7 @@ Freigegeben 2026-11-17 (Nachricht 52: Q1–Q4 ja, Claims R-1 bis R-5, D-1 bis D-
 | #512 | R-6: `rruleset` = sortierte Vereinigung aus Regeln und `rdate` minus `exdate` | B | `tests/property/test_rruleset_prop.py`, `docs/reports/r6-*.md` | – |
 | #513 / #514 | Lange Läufe R-6, 20 000, Seed 1 / 2 | A (`simulation`) | `docs/runs/r6-seed*.md` | #512 |
 | vorgeschlagen (Nachricht 67) | D-5 `relativedelta(dt1, dt2)`, R-6 `rruleset`: je B + 2 lange Läufe, nach Freigabe | – | – | Freigabe |
-| #476 | Meilenstein-Review M3 (Stufe A, `review`, nur lesen) | A | `docs/reviews/m3-review.md` | #459–#464, #475 |
+| #476 | Meilenstein-Review M3 (Stufe A, `review`, nur lesen) | A | `docs/reviews/m3-review.md` | #459–#464, #475; hängt an geschlossenem #459, wird mit dem R-1-Neuschnitt ersetzt (Umfang dann inkl. D-5, R-6, Zonen-Varianten) |
 | später (nicht M3) | Brute-Force-Referenzgenerator für kleine Regeln | C | – | – |
 
 ## Lead-Pflichten pro Fund (vor dem Einreichen)
