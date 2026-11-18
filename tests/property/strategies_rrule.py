@@ -2,7 +2,7 @@
 
 Yields keyword argument dictionaries that can be passed straight to
 ``rrule(**kw)``. Every rule is finite (bounded by ``until``) and small
-(well below 1000 occurrences), and every set ``byxxx`` filter is anchored
+(at most 1000 occurrences), and every set ``byxxx`` filter is anchored
 on ``dtstart`` so the rule can never turn out empty.
 
 Expected values are never derived from dateutil itself; only the frequency
@@ -58,20 +58,36 @@ _DOMAINS = {
     "bysecond": st.integers(min_value=0, max_value=59),
 }
 
-# Obergrenze der Listenlaenge pro Filter-Schluessel und Frequenz.
-# Filter, die feiner gegliedert sind als die Regel-Frequenz, multiplizieren
-# die Termine (z. B. BYWEEKDAY bei YEARLY liefert jeden passenden
-# Wochentag jedes Jahres). Die Obergrenzen halten auch bei voll ausgelasteten
-# Listen jede Regel unter 1000 Terminen. Jeder Filter bleibt bei mindestens
-# einer Frequenz erzeugbar.
+# Upper bound on the length of each filter list per filter key and
+# frequency. Filters finer than the rule frequency multiply the number of
+# occurrences (e.g. BYWEEKDAY on a YEARLY rule yields every matching
+# weekday of every year). The caps keep every rule within 1000 occurrences,
+# even for fully populated lists, and every filter stays generatable for at
+# least one frequency. Three combinations expand too much to be bounded by
+# list length alone; they are only set when BYMONTH restricts the expanded
+# months (see _BYMONTH_MAX), assuming the finer time filters stay at their
+# single anchor value:
+#
+#   YEARLY   bymonthday:  1 value x 4 months x ~200 years      <= 800
+#   YEARLY   byweekday:   1 value x 1 month  x ~200 years x 5  <= 1000
+#   MONTHLY  byweekday:   1 value x 2 months x ~50 years  x 5  <= 500
 _FILTER_MAX_SIZE: dict[int, dict[str, int]] = {
-    YEARLY: {"bymonth": 4, "bymonthday": 0, "byweekday": 0, "byhour": 1, "byminute": 1, "bysecond": 1},
-    MONTHLY: {"bymonth": 4, "bymonthday": 1, "byweekday": 0, "byhour": 1, "byminute": 1, "bysecond": 1},
+    YEARLY: {"bymonth": 4, "bymonthday": 1, "byweekday": 1, "byhour": 1, "byminute": 1, "bysecond": 1},
+    MONTHLY: {"bymonth": 4, "bymonthday": 1, "byweekday": 1, "byhour": 1, "byminute": 1, "bysecond": 1},
     WEEKLY: {"bymonth": 4, "bymonthday": 4, "byweekday": 1, "byhour": 1, "byminute": 1, "bysecond": 1},
     DAILY: {"bymonth": 4, "bymonthday": 4, "byweekday": 4, "byhour": 1, "byminute": 1, "bysecond": 1},
     HOURLY: {"bymonth": 4, "bymonthday": 4, "byweekday": 4, "byhour": 4, "byminute": 1, "bysecond": 1},
     MINUTELY: {"bymonth": 4, "bymonthday": 4, "byweekday": 4, "byhour": 4, "byminute": 4, "bysecond": 1},
     SECONDLY: {"bymonth": 4, "bymonthday": 4, "byweekday": 4, "byhour": 4, "byminute": 4, "bysecond": 4},
+}
+
+# (freq, filter key) -> largest BYMONTH list for which the filter may be
+# set; with a missing or larger BYMONTH the expansion would exceed 1000
+# occurrences (RFC 5545 3.3.10 month expansion).
+_BYMONTH_MAX: dict[tuple[int, str], int] = {
+    (YEARLY, "bymonthday"): 4,
+    (YEARLY, "byweekday"): 1,
+    (MONTHLY, "byweekday"): 2,
 }
 
 
@@ -137,5 +153,13 @@ def rrule_kwargs(draw) -> dict:
         "bysecond": dtstart.second,
     }
     for key in FILTER_KEYS:
-        kwargs[key] = draw(_filter_list(anchors[key], _DOMAINS[key], limits[key]))
+        # bymonth is drawn first, so gated filters can check it here; with a
+        # missing or too large bymonth the cap drops to 0 (-> None).
+        limit = limits[key]
+        bymonth_cap = _BYMONTH_MAX.get((freq, key))
+        if bymonth_cap is not None and (
+            kwargs["bymonth"] is None or len(kwargs["bymonth"]) > bymonth_cap
+        ):
+            limit = 0
+        kwargs[key] = draw(_filter_list(anchors[key], _DOMAINS[key], limit))
     return kwargs

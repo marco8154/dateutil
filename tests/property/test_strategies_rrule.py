@@ -111,3 +111,92 @@ def test_every_filter_can_be_set():
     for key in FILTER_KEYS:
         found = find(rrule_kwargs(), lambda kw: kw[key] is not None)
         assert found[key] is not None
+
+
+@pytest.mark.rrule
+def test_yearly_bymonthday_can_be_generated():
+    found = find(
+        rrule_kwargs(),
+        lambda kw: kw["freq"] == YEARLY and kw["bymonthday"] is not None,
+    )
+    assert found["freq"] == YEARLY
+    assert found["bymonthday"] is not None
+    assert found["bymonth"] is not None
+
+
+@pytest.mark.rrule
+def test_yearly_byweekday_can_be_generated():
+    found = find(
+        rrule_kwargs(),
+        lambda kw: kw["freq"] == YEARLY and kw["byweekday"] is not None,
+    )
+    assert found["freq"] == YEARLY
+    assert found["byweekday"] is not None
+    assert found["bymonth"] is not None
+    assert len(found["bymonth"]) == 1
+
+
+@pytest.mark.rrule
+def test_monthly_byweekday_can_be_generated():
+    found = find(
+        rrule_kwargs(),
+        lambda kw: kw["freq"] == MONTHLY and kw["byweekday"] is not None,
+    )
+    assert found["freq"] == MONTHLY
+    assert found["byweekday"] is not None
+    assert found["bymonth"] is not None
+    assert len(found["bymonth"]) <= 2
+
+
+# 2000-01-01: Saturday, start of a 31-day month, midnight time anchors.
+_WORST_DTSTART = datetime(2000, 1, 1)
+
+
+def _worst_case_kwargs(freq, **filters):
+    """``interval=1`` rule with the largest anchored filter lists that
+    ``rrule_kwargs()`` can generate for *freq*."""
+    kwargs = {
+        "freq": freq,
+        "dtstart": _WORST_DTSTART,
+        "interval": 1,
+        "until": _WORST_DTSTART + UNTIL_WINDOW[freq],
+        "wkst": None,
+        "bymonth": None,
+        "bymonthday": None,
+        "byweekday": None,
+        "byhour": [0],
+        "byminute": [0],
+        "bysecond": [0],
+    }
+    kwargs.update(filters)
+    return kwargs
+
+
+@pytest.mark.rrule
+@pytest.mark.parametrize(
+    "freq,filters",
+    [
+        # The three gated combinations (R-2..R-5 need them generatable):
+        (YEARLY, {"bymonth": [1, 2, 3, 4], "bymonthday": [1]}),
+        (YEARLY, {"bymonth": [1], "byweekday": [5]}),
+        (MONTHLY, {"bymonth": [1, 2], "byweekday": [5]}),
+        # Largest unbounded lists per frequency.
+        (YEARLY, {"bymonth": [1, 2, 3, 4]}),
+        (MONTHLY, {"bymonthday": [1]}),
+        (MONTHLY, {"bymonth": [1, 2, 3, 4], "bymonthday": [1]}),
+        (WEEKLY, {"bymonth": [1, 2, 3, 4], "bymonthday": [1, 2, 3, 4],
+                  "byweekday": [5]}),
+        (DAILY, {"bymonth": [1, 2, 3, 4], "bymonthday": [1, 2, 3, 4],
+                 "byweekday": [2, 3, 4, 5]}),
+        (HOURLY, {"bymonth": [1, 2, 3, 4], "bymonthday": [1, 2, 3, 4],
+                  "byweekday": [2, 3, 4, 5], "byhour": [0, 1, 2, 3]}),
+        (MINUTELY, {"bymonth": [1, 2, 3, 4], "bymonthday": [1, 2, 3, 4],
+                    "byweekday": [2, 3, 4, 5], "byhour": [0, 1, 2, 3],
+                    "byminute": [0, 1, 2, 3]}),
+        (SECONDLY, {"bymonth": [1, 2, 3, 4], "bymonthday": [1, 2, 3, 4],
+                    "byweekday": [2, 3, 4, 5], "byhour": [0, 1, 2, 3],
+                    "byminute": [0, 1, 2, 3], "bysecond": [0, 1, 2, 3]}),
+    ],
+)
+def test_worst_case_lists_yield_at_most_1000_occurrences(freq, filters):
+    assert len(list(rrule(**_worst_case_kwargs(freq, **filters)))) <= 1000
