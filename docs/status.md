@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-18 (Lead-Zyklus 57, Lead-Dienst)
+Stand: 2026-11-18 (Lead-Zyklus 58, Lead-Dienst)
 
 ## Lage
+Zyklus 58 (Anlass: 1 Abgabe, 0 freie Aufgaben für 2 Agenten). **610 (#492, R-3 Seed 2) angenommen.** 611 (#488, D-2.1) und 612 (#493, R-2/R-5 mit Zone) inhaltlich geprüft: beide genau nach Aufgabe, Pipeline grün, kein Fund, kein Bericht (richtig); Annahme vom Werkzeug abgelehnt (Zustand `submitted`, Prüfung läuft) → nächster Zyklus annehmen. Nachschub: **#497** (R-3 mit Zone, B; Lead-Vorprüfung 2 × 3000 ohne Fund), **#498/#499** (lange Läufe danach). Nach Merge von #488/#493 werden #489/#490/#495/#496 frei. Neue Claims **D-5** (`dt2 + relativedelta(dt1, dt2) == dt1`, 50 000 ohne Fund) und **R-6** (`rruleset` = sortierte Vereinigung minus `exdate`, 1000 ohne Fund) zur Freigabe (Nachricht 67). M3-Schätzung 32.
+
 Zyklus 57 (Anlass: 0 freie Aufgaben für 2 aktive Agenten; beide arbeiten an #488 und #491). Abgabe 610 (#492, R-3 Seed 2) geprüft: alle 7 Tests je 20 000 bestanden, sha256 = Testdatei auf `417e058`; Annahme abgelehnt vom Werkzeug, weil die Prüfung noch läuft (Zustand `submitted`) → nächster Zyklus annehmen. **Neuer Fund R-4 mit Zone** (Lead-Vorprüfung, lokal `master`): `str(rrule)` schreibt `DTSTART:…` ohne `TZID`/`Z`, auch für `tz.UTC`; `rrulestr` liefert naive Termine. R-2/R-5 mit Zone lokal 3000 Beispiele ohne Fund. Neu: **#493** (R-2/R-5 mit Zone, B), **#494** (R-4-Fund, xfail + Bericht, B), **#495/#496** (lange Läufe nach #493). M3-Schätzung 29. `docs/claims.md` R-2/R-4 ergänzt.
 
 Zyklus 56 (Anlass: 5 Abgaben): alle fünf **angenommen**. 593 (#463, D-1/D-2): Pipeline grün, lokal 2000 Beispiele (Seed 7, `-W error`) D-1 passed, D-2 xfailed. **D-2 ist widerlegt**, und zwar durch meine zu weite Fassung: `datetime(2021, 1, 28) + relativedelta(months=1, days=3)` = 2021-03-03, zurück 2021-01-31, ohne jede Klemmung (von Hand nachgerechnet). Der ganze D-2-Test ist `xfail(strict=True)`, Berichtsentwurf `docs/reports/d2-relativedelta-roundtrip.md`. Engere Fassung **D-2.1** (nur `years`/`months`, `day <= 28`) als Claim eingetragen, Aufgabe **#488** (B, nach #463; lokal mit 5000 Beispielen grün vorgeprüft). Lange Läufe #471/#472 geschlossen, ersetzt durch **#489/#490** (nach #488). 596/597 (#469/#470, R-4 je 20 000) und 599/600 (#473/#474, D-3/D-4 je 200 000): vollständig, sha256 = Testdatei auf `960b86b`, keine Funde. `docs/claims.md`: R-2, R-4, R-5, D-3, D-4 bestätigt im getesteten Raum; D-1 und R-3 im Pipeline-Profil, lange Läufe offen. Ersatz für #467/#468 angelegt: **#491/#492** (R-3, #477 ist gemergt `417e058`). Funde 123 (Vorlage `p8-seed2.md` fehlt, jetzt `r2r5-seed1.md`) und 124 (claims.md) erledigt und abgewiesen. M3-Schätzung 25. 443, 531, 533, 538 warten weiter auf Peer-Review (ältester 65 h).
@@ -149,9 +151,10 @@ Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis:
 - Nachricht 57 (2026-11-17): Upstream-Berichte T-3 und P-6 einreichen (höchstens 2 offen); danach Reihenfolge T-2a, T-2b, Z-1+Z-1w als ein Issue, T-1 als Kommentar an #1432.
 
 ## Nächste Schritte
-0. Abgabe 610 (#492) annehmen, sobald die Prüfung `checked_ok` ist (inhaltlich geprüft, Zyklus 57). Nach #491/#492: R-3 in `docs/claims.md` auf „bestätigt im getesteten Raum“. #494: Duplikatsuche upstream (Visionär:in, kein `gh` im Lead-Dienst) und Reproduktion auf upstream-master vor jedem Bericht.
-1. M3-Abgaben prüfen: #488 (D-2.1), #458 (RFC-Daten; fünf Einträge stichprobenartig gegen die RFC, Prüffragen setzen, falls eigene Person), danach #459; lange Läufe #489–#492. Danach D-1, D-2.1, R-3 in `docs/claims.md` nachziehen.
-2. D-2-Bericht: Empfehlung **nicht upstream** (Verhalten folgt der dokumentierten Reihenfolge, die Erwartung war unsere). Der Visionärin / dem Visionär als Info gemeldet; Bericht bleibt Entwurf.
-3. Nachricht 57: Issue-Nummern von T-3 und P-6 in die xfail-Gründe und `docs/claims.md` eintragen (Lead, geschützte Datei); dann nächste zwei Berichte vorschlagen. Danach M1/M2-Abzeichnung.
-4. Peer-Reviews 443 (#387, P-3), 531/533 (#417/#418, P-8), 538 (#420, P-4 Seed 2) abwarten; danach Laufzahlen in `docs/claims.md` (P-3 nach #425/#426).
-5. Meilenstein-Review M3 ist #476 (folgt automatisch nach #459, #463); D-2.1 (#488) dort mitprüfen lassen.
+0. Abgaben 611 (#488) und 612 (#493) annehmen, sobald `checked_ok` (inhaltlich geprüft, Zyklus 58; Begründungen dort schon formuliert: Spezifikation erfüllt, Pins verschieben das Datum bzw. haben 9/9/7 Vorkommen). Nach #491: R-3 in `docs/claims.md` auf „bestätigt im getesteten Raum“. #494: Duplikatsuche upstream (Visionär:in, kein `gh` im Lead-Dienst) und Reproduktion auf upstream-master vor jedem Bericht.
+1. Nachricht 67 (D-5, R-6): bei „ja“ Claims in `docs/claims.md` eintragen, je eine B-Aufgabe nach dem Muster von #497 (lokale Strategie, Pins mit Vorkommen) plus zwei lange Läufe; Schätzung M3 35.
+2. M3-Abgaben prüfen: #497, #458 (RFC-Daten; fünf Einträge stichprobenartig gegen die RFC, Prüffragen setzen, falls eigene Person), danach #459; lange Läufe #489–#491, #495/#496, #498/#499. Danach D-1, D-2.1, R-3 in `docs/claims.md` nachziehen.
+3. D-2-Bericht: Empfehlung **nicht upstream** (Nachricht 66). Bericht bleibt Entwurf.
+4. Nachricht 57: Issue-Nummern von T-3 und P-6 in die xfail-Gründe und `docs/claims.md` eintragen, sobald die Visionärin / der Visionär sie schickt; dann nächste zwei Berichte vorschlagen. Danach M1/M2-Abzeichnung.
+5. Peer-Reviews 443 (#387, P-3), 531/533 (#417/#418, P-8), 538 (#420, P-4 Seed 2) abwarten (eigene Person; brauchen Agenten einer anderen Person); danach Laufzahlen in `docs/claims.md` (P-3 nach #425/#426).
+6. Meilenstein-Review M3 ist #476 (folgt automatisch nach #459); D-2.1, R-2/R-5/R-3 mit Zone dort mitprüfen lassen.
