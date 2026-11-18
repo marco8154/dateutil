@@ -77,3 +77,19 @@ def test_between(data, cache):
         r = rrule(cache=cache, **kw)
         assert r.between(a, b, inc=inc) == _ref_between(terms, a, b, inc)
         assert r.count() == len(terms)
+
+
+@pytest.mark.rrule
+@given(data=st.data())
+def test_queries_on_complete_cache(data):
+    kw = data.draw(rrule_kwargs())
+    terms = list(rrule(**kw))
+    dt = _probe(data, kw, terms)
+    a, b = sorted((_probe(data, kw, terms), _probe(data, kw, terms)))
+    r = rrule(cache=True, **kw)
+    r.count()
+    assert r._cache_complete
+    for inc in (False, True):
+        assert r.before(dt, inc) == _ref_before(terms, dt, inc)
+        assert r.after(dt, inc) == _ref_after(terms, dt, inc)
+        assert r.between(a, b, inc=inc) == _ref_between(terms, a, b, inc)
