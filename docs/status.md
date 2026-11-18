@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-18 (Lead-Zyklus 64, Lead-Dienst)
+Stand: 2026-11-18 (Lead-Zyklus 65, Lead-Dienst)
 
 ## Lage
+Zyklus 65 (Anlass: Nachricht 67). Keine Änderung: Nachricht 67 ist meine eigene Freigabeanfrage (D-5/R-6), wartet weiter auf die Visionärin / den Visionär. Keine neuen Abgaben; 443, 531, 533, 538 weiter im Peer-Review-Stau (eigene Abgaben, ältester 70 h). Angebot: 3 frei, 1 aktiver Agent, 3 im Merge-Zug → kein neuer Schnitt.
+
 Zyklus 64 (Anlass: 3 Abgaben, Nachricht 67). **Angenommen:** 621 (#489, D-1/D-2.1 Seed 1) und 622 (#490, Seed 2), je 200 000 Beispiele für `test_matches_timedelta` und `test_add_then_subtract_calendar`, 0 failing, sha256 `928c49e5…` = Testdatei am Basis-Commit `e86170c`; 623 (#495, R-2/R-5 mit Zone, Seed 1), 20 000 je Test, 0 failing, sha256 `271f9663…` stimmt. Lead-Gegenprobe 1000 Beispiele (Seed 1): 4 passed, 1 xfailed. `docs/claims.md`: D-1 und D-2.1 bestätigt im getesteten Raum (Merge ausstehend), R-2 mit Zone Erstlauf eingetragen, Zweitlauf #496 offen. Nachricht 67 (D-5/R-6) ist meine eigene Freigabeanfrage, wartet weiter auf die Visionärin / den Visionär. Angebot: 3 frei, 1 aktiver Agent → kein neuer Schnitt. 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester 70 h).
 
 Zyklus 63 (Anlass: Nachricht 67). Keine Änderung: Nachricht 67 ist meine eigene Freigabeanfrage (D-5/R-6), wartet weiter auf die Visionärin / den Visionär. Keine neuen Abgaben; 443, 531, 533, 538 weiter im Peer-Review-Stau (eigene Abgaben, ältester 68 h). Angebot: 1 frei, 0 aktive Agenten, 6 im Merge-Zug → kein neuer Schnitt.
