@@ -1,16 +1,15 @@
 # Status
 
-Stand: 2026-11-19 (Lead-Zyklus 93, Lead-Dienst)
+Stand: 2026-11-19 (Lead-Zyklus 94, Lead-Dienst)
 
 ## Lage
+Zyklus 94 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). Keine Änderung: keine Abgabe zur Prüfung, #523 (Abgabe 664) noch im Merge-Zug (`grep -rln SPDX tests/` auf master nicht leer). Kein neuer Schnitt (Ruling Zyklus 76; M4 erst nach Antwort auf Nachricht 72). 71/72 und 57 weiter ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau.
 Zyklus 93 (Anlass: Abgabe 664 geprüft, Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). **664 (#523, SPDX entfernen) angenommen**: Pipeline grün (5231 passed, 118 xfailed), genau die 11 Dateien, sonst nichts; wartet auf den Merge-Zug. Kein neuer Schnitt (Ruling Zyklus 76; M4 erst nach Antwort auf Nachricht 72). 71/72 und 57 weiter ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 79 h).
 Zyklus 92 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). Merge-Zug hat #518/#519 geliefert (`50293b4`, `d3c7b69`): R-2 count mit Zone doppelt bestätigt. **Abgabe 664 (#523, SPDX entfernen)** inhaltlich geprüft: entfernt die Zeile aus genau den 11 Dateien, die `grep -rln SPDX tests/` auf master liefert, sonst nichts; erster Pipeline-Bericht grün (5231 passed). Annahme abgelehnt, weil die Prüfung noch läuft („checking“) → nächster Zyklus annehmen. Kein neuer Schnitt (Ruling Zyklus 76). 71/72 und 57 weiter ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 79 h).
 
 Zyklus 91 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). Keine Änderung: keine Abgabe zur Prüfung, 2 Abgaben im Merge-Zug (u. a. #519), 3 Aufgaben blockiert (werden ohne Lead frei, #523 nach dem Merge). Kein neuer Schnitt (Ruling Zyklus 76; bei 0 aktiven Agenten würde ein Schnitt nur liegen). 71/72 und 57 weiter ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 78 h).
 
 Zyklus 90 (Anlass: Abgabe 657 geprüft, Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). **657 (#519, Seed 2) angenommen**: 20 000 passing, 0 failing, sha256 stimmt mit master; R-2 count mit Zone damit doppelt bestätigt, sobald der Merge-Zug beide Protokolle liefert. #523 (SPDX) wird danach von selbst frei. Kein neuer Schnitt (Ruling Zyklus 76). 71/72 und 57 weiter ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau.
-
-Zyklus 89 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). Abgabe 657 (#519, R-2 count mit Zone, Seed 2) inhaltlich geprüft: 20 000 passing, 0 failing, sha256 stimmt mit master; Annahme noch nicht möglich (Pipeline-Prüfung läuft), folgt im nächsten Zyklus. Keine Funde offen. Kein neuer Schnitt (Ruling Zyklus 76). 71/72 und 57 weiter ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau.
 
 ## Risiken
 - Abgaben 440–444, 446 haben Pipeline-Berichte vom alten, kaputten Test-Schritt (Gegenprobe „Basis rot“). Peer-Reviewer:innen sollten das wissen; der Merge-Zug prüft sie mit `run_tests.sh` neu.
