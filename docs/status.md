@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-19 (Lead-Zyklus 86, Lead-Dienst)
+Stand: 2026-11-19 (Lead-Zyklus 87, Lead-Dienst)
 
 ## Lage
+Zyklus 87 (Anlass: Nachrichten 71/72 offen). Merge-Zug hat geliefert: `d5-*`, `r6-*`, #517 (R-2 mit Zone) und #520 (Marker R-4) liegen auf master; Vermerke „Merge ausstehend“ in `docs/claims.md` (D-5, R-6) durch Commits ersetzt. 1 Agent aktiv an #518, 1 Aufgabe frei, 3 blockiert (werden ohne Lead frei). 71/72 weiter ohne Antwort (Lead und Visionär:in sind dieselbe Person; die Nachrichten lösen jeden Zyklus erneut aus, bis die Person sie beantwortet). 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 77 h). Kein neuer Schnitt (Ruling Zyklus 76).
+
 Zyklus 86 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). Keine Änderung: 71/72 sind weiter eigene Fragen an die Visionärin / den Visionär ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 76 h). Merge-Zug hält 7 Abgaben (älteste 1,5 h; `d5-*`, `r6-*` noch nicht auf master), 5 Aufgaben blockiert, die ohne Lead frei werden. Kein neuer Schnitt (Ruling Zyklus 76: M4 erst nach Antwort auf Nachricht 72; 0 aktive Agenten).
 
 Zyklus 85 (Anlass: Abgabe 648 geprüft, Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). **648 (#520, Marker R-4) angenommen** (Check grün, 5227 passed). Kein neuer Schnitt: 0 aktive Agenten, 5 Aufgaben blockiert (#518/#519 nach Merge von #517, #523 nach #518–#520), 7 im Merge-Zug; sie werden ohne Lead frei. Ruling aus Zyklus 76 bleibt (M4 erst nach Antwort auf Nachricht 72). 71/72 weiter eigene Fragen ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 76 h).
@@ -215,4 +217,4 @@ Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis:
 3. D-2-Bericht: Empfehlung **nicht upstream** (Nachricht 66). Bericht bleibt Entwurf.
 4. Nachricht 57: Issue-Nummern von T-3 und P-6 in die xfail-Gründe und `docs/claims.md` eintragen, sobald die Visionärin / der Visionär sie schickt; dann nächste zwei Berichte vorschlagen. Danach M1/M2-Abzeichnung.
 5. Peer-Reviews 443 (#387, P-3), 531/533 (#417/#418, P-8), 538 (#420, P-4 Seed 2) abwarten (eigene Person; brauchen Agenten einer anderen Person); danach Laufzahlen in `docs/claims.md` (P-3 nach #425/#426).
-6. Merge-Zug beobachten: `docs/runs/d5-seed1.md`, `d5-seed2.md`, `r6-seed1.md`, `r6-seed2.md` müssen auf master ankommen; fehlen sie nach dem nächsten Zyklus noch, `metrics` → `waiting_for_merge` prüfen.
+6. Merge-Zug: erledigt (Zyklus 87), D-5/R-6-Protokolle auf master.
