@@ -6,7 +6,8 @@ Same as ``test_rrule_claims_prop.py``, but ``dtstart`` and ``until`` carry
 the same zone (``zoneinfo.ZoneInfo``, ``tz.gettz`` or ``tz.UTC``), so the
 tested space includes rules crossing DST gaps and half-hour transitions.
 
-R-2: occurrences are strictly ascending and bounded by ``dtstart``/``until``.
+R-2: occurrences are strictly ascending and bounded by ``dtstart``/``until``,
+   and ``count=n`` yields exactly the first ``n`` occurrences.
 R-5: every occurrence satisfies all explicitly set ``byxxx`` filters.
 """
 import calendar
@@ -35,6 +36,10 @@ ZONES = (
     )
     | st.just(tz.UTC)
 )
+
+
+def _without_until(kw):
+    return {key: value for key, value in kw.items() if key != "until"}
 
 
 @st.composite
@@ -110,6 +115,25 @@ def test_aware_ascending_and_bounded(kw):
     assert all(occ[i] < occ[i + 1] for i in range(len(occ) - 1))
     assert all(kw["dtstart"] <= o <= kw["until"] for o in occ)
     assert all(o.tzinfo is kw["dtstart"].tzinfo for o in occ)
+
+
+@pytest.mark.rrule
+@given(data=st.data())
+def test_aware_count_gives_prefix(data):
+    kw = data.draw(aware_rrule_kwargs())
+    terms = list(rrule(**kw))
+    assert terms
+    n = data.draw(st.integers(min_value=1, max_value=len(terms)))
+    assert list(rrule(count=n, **_without_until(kw))) == terms[:n]
+
+
+@pytest.mark.rrule
+@pytest.mark.parametrize("kw", PINS)
+def test_aware_count_gives_prefix_pinned(kw):
+    terms = list(rrule(**kw))
+    assert terms
+    for n in (1, len(terms)):
+        assert list(rrule(count=n, **_without_until(kw))) == terms[:n]
 
 
 @pytest.mark.rrule
