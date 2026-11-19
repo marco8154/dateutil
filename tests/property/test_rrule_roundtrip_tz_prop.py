@@ -85,6 +85,8 @@ PIN_AWARE_UTC = {
 }
 
 
+@pytest.mark.rrule
+@pytest.mark.rrulestr
 @pytest.mark.xfail(strict=True, reason="docs/reports/r4-rrule-str-drops-tzinfo.md")
 @example(kw=PIN_AWARE_ZONEINFO)
 @example(kw=PIN_AWARE_GETTZ)
@@ -95,6 +97,8 @@ def test_str_roundtrip_aware(kw):
     assert list(rrulestr(str(r))) == list(r)
 
 
+@pytest.mark.rrule
+@pytest.mark.rrulestr
 @given(kw=aware_rrule_kwargs())
 def test_str_has_no_tz_marker(kw):
     """As of dateutil 4.0.0, ``str(r)`` drops the ``dtstart`` time zone.

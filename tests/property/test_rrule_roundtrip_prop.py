@@ -5,6 +5,7 @@ occurrences as ``r`` (``docs/claims.md``).
 """
 from datetime import datetime
 
+import pytest
 from hypothesis import given, example, strategies as st
 
 from dateutil.rrule import DAILY, MONTHLY, WEEKLY, rrule, rrulestr
@@ -12,6 +13,8 @@ from dateutil.rrule import DAILY, MONTHLY, WEEKLY, rrule, rrulestr
 from strategies_rrule import rrule_kwargs
 
 
+@pytest.mark.rrule
+@pytest.mark.rrulestr
 @example(
     kw={
         "freq": WEEKLY,
@@ -65,6 +68,8 @@ def test_str_roundtrip(kw):
     assert list(r2) == list(r)
 
 
+@pytest.mark.rrule
+@pytest.mark.rrulestr
 @given(data=st.data())
 def test_str_roundtrip_count(data):
     kw = data.draw(rrule_kwargs())
