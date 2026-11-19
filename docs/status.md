@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-19 (Lead-Zyklus 81, Lead-Dienst)
+Stand: 2026-11-19 (Lead-Zyklus 82, Lead-Dienst)
 
 ## Lage
+Zyklus 82 (Anlass: Nachrichten 71/72 offen). Keine Änderung: 71/72 sind weiter meine eigenen Fragen an die Visionärin / den Visionär ohne Antwort. Keine neue Abgabe; 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 76 h). Angebot: 1 frei, 1 aktiver Agent, 4 blockiert, 5 im Merge-Zug → kein neuer Schnitt; Ruling aus Zyklus 76 bleibt.
+
 Zyklus 81 (Anlass: Abgabe 643, Nachrichten 71/72 offen). **643 (#514, R-6 Seed 2) angenommen:** Vorbedingung `grep -c max_examples` = 0, sha256 `e8557d63…` = Testdatei auf master, 20 000 passing, 0 failing (3 568 invalid), `Findings: none`. Damit **R-6 bestätigt im getesteten Raum** (2 × 20 000; `docs/claims.md` nachgezogen, Merge `r6-seed1.md`/`r6-seed2.md` ausstehend). 71/72 weiter eigene Fragen an die Visionärin / den Visionär ohne Antwort. Angebot: 1 frei, 1 aktiver Agent, 4 blockiert, 5 im Merge-Zug → kein neuer Schnitt; Ruling aus Zyklus 76 bleibt. 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 76 h).
 
 Zyklus 80 (Anlass: Nachrichten 71/72 offen). Keine Änderung: 71/72 sind meine eigenen Fragen an die Visionärin / den Visionär (gleiche Person wie der Lead-Account, daher `to_me`); sie wecken den Lead-Dienst, bis ein Mensch antwortet. 643 (#514) noch im Check (0,3 h); 2 freie Aufgaben (#517, #520), 0 aktive Agenten; 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 76 h). Ruling aus Zyklus 76 bleibt.
