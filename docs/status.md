@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-19 (Lead-Zyklus 76, Lead-Dienst)
+Stand: 2026-11-19 (Lead-Zyklus 77, Lead-Dienst)
 
 ## Lage
+Zyklus 77 (Anlass: Abgabe 640, Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). **640 (#511, D-5 Seed 2) angenommen:** sha256 `f81ae964…` = Testdatei am Basis-Commit `0f2b9e6` und auf master, kein `max_examples` in der Datei, je Test 200 000 passing, 0 failing, 0 invalid, `Findings: none`; Lead-Gegenprobe Seed 2, 300 Beispiele, `-W error`: 2 passed. Damit **D-5 bestätigt im getesteten Raum** (`docs/claims.md` nachgezogen; R-6-Zeile: #513 eingetragen). Merge-Zug für #510/#511/#513 steht aus (`docs/runs/d5-seed1.md`, `r6-seed1.md` noch nicht auf master). 642 (#515, Review M3) und 643 (#514, R-6 Seed 2) noch im Check. Die offenen Nachrichten 71 und 72 sind meine eigenen Fragen an die Visionärin / den Visionär, nichts zu beantworten. Ruling aus Zyklus 76 bleibt: kein neuer Schnitt bis zur Antwort auf Nachricht 72 (M4) — 0 aktive Agenten, Kosten bei Irrtum: kein Leerlauf, nur späterer Start von M4. 443, 531, 533, 538 weiter im Peer-Review-Stau (eigene Abgaben, ältester ≈ 75 h). Nachricht 57: Issue-Nummern für T-3/P-6 stehen noch aus.
+
 Zyklus 76 (Anlass: Nachricht 71 offen, 0 freie Aufgaben bei 2 aktiven Agenten). Nichts zu prüfen: 640 (#511) und 642 (#515) noch im Check; 443, 531, 533, 538 weiter im Peer-Review-Stau (eigene Person, ältester ≈ 75 h). **R-4-Bericht:** Abschnitt „Reproduction on upstream master“ gefüllt (upstream-master unverändert `261e291`, heute erneut reproduziert für `ZoneInfo`, `tz.gettz`, `tz.UTC`), Reproducer-Variable umbenannt, R-4-Zeile in `docs/claims.md` verweist auf den Bericht. Duplikatsuche geht aus der Sandbox nicht (kein GitHub-API-Zugang). **Nachricht 72** an die Visionärin / den Visionär: Q1 Duplikatsuche R-4, Q2 Vorschlag M4 „rrule gegen Brute-Force-Referenz“ (Claim R-7, ~6 Aufgaben, ohne BYSETPOS/BYWEEKNO). Ruling: bis zur Antwort kein Schnitt — Kosten bei Irrtum: Leerlauf der Agenten bis zur Antwort. Nachricht 71 (RFC-Text) und 57 (Issue-Nummern T-3/P-6) weiter offen.
 
 Zyklus 75 (Anlass: Abgabe 641, Nachricht 71 offen, 0 freie Aufgaben bei 2 aktiven Agenten). **641 (#513, R-6 Seed 1) angenommen:** sha256 `e8557d63…` = Testdatei am Basis-Commit `0f2b9e6` und auf master, kein `max_examples` in der Datei, 20 000 passing, 0 failing (3 542 invalid), `Findings: none`; Lead-Gegenprobe Seed 1, 300 Beispiele, `-W error`: 1 passed. 640 (#511, D-5 Seed 2) wartet noch auf die Pipeline. Die beiden aktiven Agenten (`simulation`, `review`) arbeiten an #514 und #515; frei ist nichts, blockiert nur #425/#426 (hinter der eigenen Abgabe 443). Ruling: kein neuer Schnitt — der einzige offene M3-Rest ist R-1 und hängt an Nachricht 71; ein neuer Meilenstein (z. B. Brute-Force-Referenz für rrule) braucht erst ein kleines Interview mit der Visionärin / dem Visionär — Kosten bei Irrtum: Leerlauf eines Agenten bis zur Antwort. Nachricht 71 bleibt die eigene offene Frage. 443, 531, 533, 538 weiter im Peer-Review-Stau (eigene Abgaben, ältester ≈ 75 h). Nachricht 57: Issue-Nummern für T-3/P-6 stehen noch aus.
@@ -184,14 +186,15 @@ Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis:
 - Ruling: SPDX `Apache-2.0 AND BSD-3-Clause` nur in neuen Dateien außerhalb von `src/` und `tests/`. Grund: upstream führt keine Header. Kosten, falls falsch: Header ergänzen.
 
 ## Offene Freigaben
+- Nachricht 72 (2026-11-19, Frage): Q1 Duplikatsuche R-4, Q2 Meilenstein M4 (Brute-Force-Referenz für rrule, Claim R-7).
 - Nachricht 71 (2026-11-18, Frage): RFC-5545-Text und Errata-Auszug nach `docs/sources/` einchecken (R-1).
 - Nachricht 57 (2026-11-17): Upstream-Berichte T-3 und P-6 einreichen (höchstens 2 offen); danach Reihenfolge T-2a, T-2b, Z-1+Z-1w als ein Issue, T-1 als Kommentar an #1432.
 
 ## Nächste Schritte
-0. R-4-Bericht: Reproduktion erledigt (Zyklus 76); Duplikatsuche liegt als Nachricht 72 Q1 bei der Visionärin / dem Visionär — Treffer in den Abschnitt „Duplicate search“ eintragen. Nachricht 72 Q2 (M4): bei Ja M4 interviewen/schneiden (Referenzmodul C, Orakel B, 2 lange Läufe A, Review A; Claim R-7 in `docs/claims.md`). 615 (#491) prüfen; nach #491/#497: R-3 in `docs/claims.md` nachziehen.
+0. R-4-Bericht: Reproduktion erledigt (Zyklus 76); Duplikatsuche liegt als Nachricht 72 Q1 bei der Visionärin / dem Visionär — Treffer in den Abschnitt „Duplicate search“ eintragen. Nachricht 72 Q2 (M4): bei Ja M4 interviewen/schneiden (Referenzmodul C, Orakel B, 2 lange Läufe A, Review A; Claim R-7 in `docs/claims.md`).
 1. Nachricht 71 (RFC-Text): sobald `docs/sources/rfc5545.txt` auf master liegt, #458 neu schneiden (Quelle = lokale Datei im Kontext, kein Netz nötig) und #459 danach; danach eigenes kleines Review R-1 (`docs/reviews/m3-r1-review.md`, nach #459). Bei „R-1 raus“: `docs/out-of-scope.md`.
-2. M3-Abgaben prüfen: #510, #513 angenommen; offen #511 (D-5 Seed 2, Abgabe 640 im Check) und #514 (R-6 Seed 2); danach D-5 und R-6 in `docs/claims.md` auf 2 × Lauf nachziehen. #515 (Review M3) läuft.
+2. M3-Abgaben prüfen: #510, #511, #513 angenommen (D-5 bestätigt); offen 643 (#514, R-6 Seed 2, im Check) → danach R-6 in `docs/claims.md` auf 2 × Lauf nachziehen. 642 (#515, Review M3) im Check: Befunde lesen, Folgeaufgaben schneiden.
 3. D-2-Bericht: Empfehlung **nicht upstream** (Nachricht 66). Bericht bleibt Entwurf.
 4. Nachricht 57: Issue-Nummern von T-3 und P-6 in die xfail-Gründe und `docs/claims.md` eintragen, sobald die Visionärin / der Visionär sie schickt; dann nächste zwei Berichte vorschlagen. Danach M1/M2-Abzeichnung.
 5. Peer-Reviews 443 (#387, P-3), 531/533 (#417/#418, P-8), 538 (#420, P-4 Seed 2) abwarten (eigene Person; brauchen Agenten einer anderen Person); danach Laufzahlen in `docs/claims.md` (P-3 nach #425/#426).
-6. Meilenstein-Review M3: #515 (ohne R-1) wird nach den Merges von #509/#512 frei; Abgabe 636 (#512) im nächsten Zyklus annehmen, sobald der Check durch ist.
+6. Merge-Zug beobachten: `docs/runs/d5-seed1.md`, `d5-seed2.md`, `r6-seed1.md` müssen auf master ankommen; fehlen sie nach dem nächsten Zyklus noch, `metrics` → `waiting_for_merge` prüfen.
