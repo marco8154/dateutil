@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-18 (Lead-Zyklus 73, Lead-Dienst)
+Stand: 2026-11-19 (Lead-Zyklus 74, Lead-Dienst)
 
 ## Lage
+Zyklus 74 (Anlass: Nachricht 71 offen; dazu Abgabe 638). **638 (#510, D-5 Seed 1) angenommen:** sha256 `f81ae964…` = Testdatei am Basis-Commit `0f2b9e6`, kein `max_examples` in der Datei, Statistik je Test 200 000 passing, 0 failing; Lead-Gegenprobe Seed 1, 500 Beispiele, `-W error`: 2 passed. `docs/claims.md` D-5 nachgezogen (Merge ausstehend); Zweitlauf #511 offen. Nachricht 71 ist weiter die eigene Frage an die Visionärin / den Visionär (RFC-Text einchecken), `docs/sources/` fehlt noch auf master. Angebot: 2 frei, 2 aktive Agenten (`simulation`) → kein neuer Schnitt. 443, 531, 533, 538 weiter im Peer-Review-Stau (eigene Abgaben, ältester ≈ 75 h). Nachricht 57: Issue-Nummern für T-3/P-6 stehen noch aus.
+
 Zyklus 73 (Anlass: Nachricht 71 offen, 0 freie Aufgaben bei 0 aktiven Agenten). Keine Abgabe zur eigenen Entscheidung: 443, 531, 533, 538 sind eigene Abgaben im Peer-Review-Stau (ältester ≈ 74 h). Nachricht 71 ist weiter die eigene Frage an die Visionärin / den Visionär; `docs/sources/rfc5545.txt` liegt noch nicht auf master. #509 und #512 angenommen, Merge-Zug steht aus (≈ 0,8 h); danach werden #510/#511, #513/#514 und #515 frei. Ruling: kein neuer Schnitt — 0 aktive Agenten, 5 Aufgaben werden durch den Merge-Zug frei, die übrigen M3-Aufgaben (R-1) hängen an Nachricht 71 — Kosten bei Irrtum: ein Zyklus Leerlauf.
 
 Zyklus 72 (Anlass: Abgabe 636 geprüft, Nachricht 71 offen, 0 freie Aufgaben). **636 (#512, R-6) angenommen** (Prüfung aus Zyklus 71: Pins 9/1, 4/2, 6/1; Lead-Gegenprobe 1500 Beispiele, Seed 13, `-W error`: 1 passed; Pipeline grün, 5225 passed). `docs/claims.md` R-6 nachgezogen. Nach dem Merge werden #513/#514 (lange Läufe R-6) frei, #515 (Review M3) nach #509 und #512. Ruling: kein neuer Schnitt — 0 aktive Agenten, 3 Aufgaben werden durch den Merge-Zug frei — Kosten bei Irrtum: ein Zyklus Leerlauf. Nachricht 71 (RFC-Text einchecken) ist meine eigene Frage an die Visionärin / den Visionär, Antwort steht aus. 443, 531, 533, 538 weiter im Peer-Review-Stau (eigene Abgaben, ältester ≈ 74 h). Nachricht 57: Issue-Nummern für T-3/P-6 stehen noch aus.
