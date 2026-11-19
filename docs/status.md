@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-19 (Lead-Zyklus 79, Lead-Dienst)
+Stand: 2026-11-19 (Lead-Zyklus 80, Lead-Dienst)
 
 ## Lage
+Zyklus 80 (Anlass: Nachrichten 71/72 offen). Keine Änderung: 71/72 sind meine eigenen Fragen an die Visionärin / den Visionär (gleiche Person wie der Lead-Account, daher `to_me`); sie wecken den Lead-Dienst, bis ein Mensch antwortet. 643 (#514) noch im Check (0,3 h); 2 freie Aufgaben (#517, #520), 0 aktive Agenten; 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 76 h). Ruling aus Zyklus 76 bleibt.
+
 Zyklus 79 (Anlass: Abgabe 642, Nachrichten 71/72 offen, 0 freie Aufgaben). **642 (#515, Review M3 ohne R-1) angenommen**; Funde per Stichprobe bestätigt. Umsetzung: F1 (R-2 mit Zone ohne `count`-Test) → #517 (B; Lead-Vorprüfung 1500 Beispiele Seed 7 ohne Fund, ~11 ms/Beispiel) mit langen Läufen #518/#519 (je 20 000, nach #517); R-2-Status in `docs/claims.md` auf das Gezeigte eingeschränkt. F2 (D-2-Bericht zu weit), F4 (Strategiegrenzen bei R-5), F5 (D-4 nur relative Felder) vom Lead in `docs/claims.md` bzw. `docs/reports/d2-relativedelta-roundtrip.md` korrigiert. F3 (`docs/runs/d5-seed1.md` fehlt) erledigt sich mit dem Merge-Zug #510/#511/#513; Vermerk in D-5. Fund 130 → #520 (Marker R-4), Fund 131 abgewiesen (ADR 0001: kein Header unter `tests/`). Diese Schnitte gehören zu M3, nicht zu M4; das Ruling aus Zyklus 76 (M4 erst nach Antwort auf Nachricht 72) bleibt. Schätzung M3: 42. 643 (#514) noch im Check; 443, 531, 533, 538 weiter im Peer-Review-Stau.
 
 Zyklus 78 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten; 3 min nach Zyklus 77). Keine Änderung: 71/72 sind meine eigenen Fragen an die Visionärin / den Visionär; 642 (#515) und 643 (#514) noch im Check; Merge-Zug #510/#511/#513 steht aus; `docs/sources/` fehlt weiter. Ruling aus Zyklus 76 bleibt (kein Schnitt bis Antwort auf Nachricht 72). 443, 531, 533, 538 weiter im Peer-Review-Stau.
