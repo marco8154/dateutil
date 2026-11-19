@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-19 (Lead-Zyklus 82, Lead-Dienst)
+Stand: 2026-11-19 (Lead-Zyklus 83, Lead-Dienst)
 
 ## Lage
+Zyklus 83 (Anlass: Abgabe 647, Nachrichten 71/72 offen, 0 freie Aufgaben). **647 (#517, R-2 `count` mit Zone) angenommen:** genau der vorgegebene Test plus Pin-Test über alle drei PINS (n=1, n=len), vorhandene Tests unverändert, Pipeline grün (5231 passed), kein Fund. Nach dem Merge werden #518/#519 (lange Läufe) automatisch frei; daher kein neuer Schnitt (0 aktive Agenten). 648 (#520, Marker R-4) noch im Check. 71/72 weiter eigene Fragen ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 76 h).
+
 Zyklus 82 (Anlass: Nachrichten 71/72 offen). Keine Änderung: 71/72 sind weiter meine eigenen Fragen an die Visionärin / den Visionär ohne Antwort. Keine neue Abgabe; 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 76 h). Angebot: 1 frei, 1 aktiver Agent, 4 blockiert, 5 im Merge-Zug → kein neuer Schnitt; Ruling aus Zyklus 76 bleibt.
 
 Zyklus 81 (Anlass: Abgabe 643, Nachrichten 71/72 offen). **643 (#514, R-6 Seed 2) angenommen:** Vorbedingung `grep -c max_examples` = 0, sha256 `e8557d63…` = Testdatei auf master, 20 000 passing, 0 failing (3 568 invalid), `Findings: none`. Damit **R-6 bestätigt im getesteten Raum** (2 × 20 000; `docs/claims.md` nachgezogen, Merge `r6-seed1.md`/`r6-seed2.md` ausstehend). 71/72 weiter eigene Fragen an die Visionärin / den Visionär ohne Antwort. Angebot: 1 frei, 1 aktiver Agent, 4 blockiert, 5 im Merge-Zug → kein neuer Schnitt; Ruling aus Zyklus 76 bleibt. 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 76 h).
@@ -203,7 +205,7 @@ Zyklus 3: Erster Pipeline-Lauf (Abgabe 438 zu #377) war rot schon auf der Basis:
 ## Nächste Schritte
 0. R-4-Bericht: Reproduktion erledigt (Zyklus 76); Duplikatsuche liegt als Nachricht 72 Q1 bei der Visionärin / dem Visionär — Treffer in den Abschnitt „Duplicate search“ eintragen. Nachricht 72 Q2 (M4): bei Ja M4 interviewen/schneiden (Referenzmodul C, Orakel B, 2 lange Läufe A, Review A; Claim R-7 in `docs/claims.md`).
 1. Nachricht 71 (RFC-Text): sobald `docs/sources/rfc5545.txt` auf master liegt, #458 neu schneiden (Quelle = lokale Datei im Kontext, kein Netz nötig) und #459 danach; danach eigenes kleines Review R-1 (`docs/reviews/m3-r1-review.md`, nach #459). Bei „R-1 raus“: `docs/out-of-scope.md`.
-2. M3: D-5 und R-6 bestätigt (#510/#511/#513/#514 angenommen), #515 umgesetzt. Offen: #517 (R-2 mit Zone, `count`), danach #518/#519; #520 (Marker R-4).
+2. M3: D-5 und R-6 bestätigt (#510/#511/#513/#514 angenommen), #515 umgesetzt. #517 angenommen (Zyklus 83); offen: #518/#519 (nach Merge von #517), #520 (Marker R-4, Abgabe 648 im Check).
 3. D-2-Bericht: Empfehlung **nicht upstream** (Nachricht 66). Bericht bleibt Entwurf.
 4. Nachricht 57: Issue-Nummern von T-3 und P-6 in die xfail-Gründe und `docs/claims.md` eintragen, sobald die Visionärin / der Visionär sie schickt; dann nächste zwei Berichte vorschlagen. Danach M1/M2-Abzeichnung.
 5. Peer-Reviews 443 (#387, P-3), 531/533 (#417/#418, P-8), 538 (#420, P-4 Seed 2) abwarten (eigene Person; brauchen Agenten einer anderen Person); danach Laufzahlen in `docs/claims.md` (P-3 nach #425/#426).
