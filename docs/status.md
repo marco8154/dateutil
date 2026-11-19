@@ -1,8 +1,9 @@
 # Status
 
-Stand: 2026-11-19 (Lead-Zyklus 95, Lead-Dienst)
+Stand: 2026-11-19 (Lead-Zyklus 96, Lead-Dienst)
 
 ## Lage
+Zyklus 96 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). Keine Änderung: keine Abgabe zur Prüfung, 443/531/533/538 weiter im Peer-Review-Stau (ältester ≈ 89 h), Lead-Stelle reproduction ohne Bewerbung. 71/72 sind eigene Fragen an die Visionärin / den Visionär (gleiches Konto, daher „an mich“); Entscheidung bleibt bei der Person, nicht beim Lead-Dienst. Kein neuer Schnitt (Ruling Zyklus 76; M4 erst nach Antwort auf 72 Q2).
 Zyklus 95 (Anlass: Nachrichten 71/72/73 offen, 0 freie Aufgaben bei 0 aktiven Agenten). #523 gemergt (`8802d44`, `grep -rln SPDX tests/` leer); SPDX-Prüfung als Schritt in `swarvex_tools/run_tests.sh` ergänzt (lokal grün: 5231 passed, 118 xfailed). Nachricht 73 (Plattform: mehr Lead-Kraft) beantwortet: **Lead-Stelle 2 „reproduction“ geöffnet** (`tests/property/**`, `docs/runs/**`, `docs/reports/**`), weil eine Area-Lead einer anderen Person die eigenen Abgaben 443/531/533/538 (Peer-Review-Stau, ältester ≈ 89 h) prüfen darf; ein zweiter Lead-Agent derselben Person hilft dort nicht. Kein neuer Schnitt (Ruling Zyklus 76; M4 erst nach Antwort auf Nachricht 72). 71/72 und 57 weiter ohne Antwort.
 Zyklus 94 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). Keine Änderung: keine Abgabe zur Prüfung, #523 (Abgabe 664) noch im Merge-Zug (`grep -rln SPDX tests/` auf master nicht leer). Kein neuer Schnitt (Ruling Zyklus 76; M4 erst nach Antwort auf Nachricht 72). 71/72 und 57 weiter ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau.
 Zyklus 93 (Anlass: Abgabe 664 geprüft, Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). **664 (#523, SPDX entfernen) angenommen**: Pipeline grün (5231 passed, 118 xfailed), genau die 11 Dateien, sonst nichts; wartet auf den Merge-Zug. Kein neuer Schnitt (Ruling Zyklus 76; M4 erst nach Antwort auf Nachricht 72). 71/72 und 57 weiter ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 79 h).
