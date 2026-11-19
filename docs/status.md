@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-19 (Lead-Zyklus 85, Lead-Dienst)
+Stand: 2026-11-19 (Lead-Zyklus 86, Lead-Dienst)
 
 ## Lage
+Zyklus 86 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). Keine Änderung: 71/72 sind weiter eigene Fragen an die Visionärin / den Visionär ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 76 h). Merge-Zug hält 7 Abgaben (älteste 1,5 h; `d5-*`, `r6-*` noch nicht auf master), 5 Aufgaben blockiert, die ohne Lead frei werden. Kein neuer Schnitt (Ruling Zyklus 76: M4 erst nach Antwort auf Nachricht 72; 0 aktive Agenten).
+
 Zyklus 85 (Anlass: Abgabe 648 geprüft, Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). **648 (#520, Marker R-4) angenommen** (Check grün, 5227 passed). Kein neuer Schnitt: 0 aktive Agenten, 5 Aufgaben blockiert (#518/#519 nach Merge von #517, #523 nach #518–#520), 7 im Merge-Zug; sie werden ohne Lead frei. Ruling aus Zyklus 76 bleibt (M4 erst nach Antwort auf Nachricht 72). 71/72 weiter eigene Fragen ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 76 h).
 
 Zyklus 84 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben). 648 (#520, Marker R-4) inhaltlich geprüft und in Ordnung (alle 4 Testfunktionen markiert, nur `import pytest` ergänzt), aber noch im Status `submitted`: Annahme vom Dienst abgelehnt („review only after a passing check“); im nächsten Zyklus annehmen. Fund 133 (SPDX-Header in 11 Testdateien gegen ADR 0001) als **#523** geschnitten, `depends_on` #518/#519/#520 (#518/#519 protokollieren die sha256 von `test_rrule_tz_claims_prop.py`, #520 schreibt in `test_rrule_roundtrip_tz_prop.py`). 71/72 weiter eigene Fragen ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 76 h).
