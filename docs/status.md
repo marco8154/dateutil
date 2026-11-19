@@ -1,8 +1,9 @@
 # Status
 
-Stand: 2026-11-19 (Lead-Zyklus 92, Lead-Dienst)
+Stand: 2026-11-19 (Lead-Zyklus 93, Lead-Dienst)
 
 ## Lage
+Zyklus 93 (Anlass: Abgabe 664 geprüft, Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). **664 (#523, SPDX entfernen) angenommen**: Pipeline grün (5231 passed, 118 xfailed), genau die 11 Dateien, sonst nichts; wartet auf den Merge-Zug. Kein neuer Schnitt (Ruling Zyklus 76; M4 erst nach Antwort auf Nachricht 72). 71/72 und 57 weiter ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 79 h).
 Zyklus 92 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). Merge-Zug hat #518/#519 geliefert (`50293b4`, `d3c7b69`): R-2 count mit Zone doppelt bestätigt. **Abgabe 664 (#523, SPDX entfernen)** inhaltlich geprüft: entfernt die Zeile aus genau den 11 Dateien, die `grep -rln SPDX tests/` auf master liefert, sonst nichts; erster Pipeline-Bericht grün (5231 passed). Annahme abgelehnt, weil die Prüfung noch läuft („checking“) → nächster Zyklus annehmen. Kein neuer Schnitt (Ruling Zyklus 76). 71/72 und 57 weiter ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 79 h).
 
 Zyklus 91 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). Keine Änderung: keine Abgabe zur Prüfung, 2 Abgaben im Merge-Zug (u. a. #519), 3 Aufgaben blockiert (werden ohne Lead frei, #523 nach dem Merge). Kein neuer Schnitt (Ruling Zyklus 76; bei 0 aktiven Agenten würde ein Schnitt nur liegen). 71/72 und 57 weiter ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 78 h).
@@ -10,8 +11,6 @@ Zyklus 91 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agent
 Zyklus 90 (Anlass: Abgabe 657 geprüft, Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). **657 (#519, Seed 2) angenommen**: 20 000 passing, 0 failing, sha256 stimmt mit master; R-2 count mit Zone damit doppelt bestätigt, sobald der Merge-Zug beide Protokolle liefert. #523 (SPDX) wird danach von selbst frei. Kein neuer Schnitt (Ruling Zyklus 76). 71/72 und 57 weiter ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau.
 
 Zyklus 89 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). Abgabe 657 (#519, R-2 count mit Zone, Seed 2) inhaltlich geprüft: 20 000 passing, 0 failing, sha256 stimmt mit master; Annahme noch nicht möglich (Pipeline-Prüfung läuft), folgt im nächsten Zyklus. Keine Funde offen. Kein neuer Schnitt (Ruling Zyklus 76). 71/72 und 57 weiter ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau.
-
-Zyklus 88 (Anlass: Abgabe 654 geprüft, Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). **654 (#518, langer Lauf R-2 count mit Zone, Seed 1) angenommen**: 20 000 passing, 0 failing, keine Funde; sha256 der Testdatei stimmt mit master. #519 (Seed 2) liegt als Abgabe 657 in der Pipeline; #523 folgt nach #518–#520 von selbst. `docs/claims.md` R-2: #517 gemergt, r2r5tz-Läufe gemergt. Kein neuer Schnitt (Ruling Zyklus 76: M4 erst nach Antwort auf Nachricht 72; 0 aktive Agenten). 71/72 und 57 brauchen Handgriffe der Person außerhalb der Sandbox (GitHub-Suche, RFC-Text einchecken). 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 78 h). Lage-Abschnitt gekürzt: ältere Zyklen stehen in `git log -p docs/status.md`.
 
 ## Risiken
 - Abgaben 440–444, 446 haben Pipeline-Berichte vom alten, kaputten Test-Schritt (Gegenprobe „Basis rot“). Peer-Reviewer:innen sollten das wissen; der Merge-Zug prüft sie mit `run_tests.sh` neu.
@@ -51,7 +50,7 @@ Zyklus 88 (Anlass: Abgabe 654 geprüft, Nachrichten 71/72 offen, 0 freie Aufgabe
 ## Nächste Schritte
 0. R-4-Bericht: Reproduktion erledigt (Zyklus 76); Duplikatsuche liegt als Nachricht 72 Q1 bei der Visionärin / dem Visionär — Treffer in den Abschnitt „Duplicate search“ eintragen. Nachricht 72 Q2 (M4): bei Ja M4 interviewen/schneiden (Referenzmodul C, Orakel B, 2 lange Läufe A, Review A; Claim R-7 in `docs/claims.md`).
 1. Nachricht 71 (RFC-Text): sobald `docs/sources/rfc5545.txt` auf master liegt, #458 neu schneiden (Quelle = lokale Datei im Kontext, kein Netz nötig) und #459 danach; danach eigenes kleines Review R-1 (`docs/reviews/m3-r1-review.md`, nach #459). Bei „R-1 raus“: `docs/out-of-scope.md`.
-2. M3: D-5 und R-6 bestätigt (#510/#511/#513/#514 angenommen), #515 umgesetzt. #517 angenommen (Zyklus 83); offen: #518 angenommen (Zyklus 88), #519 angenommen (Zyklus 90, Abgabe 657), #520 angenommen (Zyklus 85), #523 (SPDX entfernen) als Abgabe 664 geprüft, Annahme nach Pipeline-Ende. Nach Merge von #523: Prüfung `grep -rln SPDX tests/` leer als Schritt in `swarvex_tools/run_tests.sh` (eigene Arbeit, geschützt).
+2. M3: D-5 und R-6 bestätigt (#510/#511/#513/#514 angenommen), #515 umgesetzt. #517 angenommen (Zyklus 83); offen: #518 angenommen (Zyklus 88), #519 angenommen (Zyklus 90, Abgabe 657), #520 angenommen (Zyklus 85), #523 (SPDX entfernen) als Abgabe 664 angenommen (Zyklus 93), wartet auf Merge-Zug. Nach Merge von #523: Prüfung `grep -rln SPDX tests/` leer als Schritt in `swarvex_tools/run_tests.sh` (eigene Arbeit, geschützt).
 3. D-2-Bericht: Empfehlung **nicht upstream** (Nachricht 66). Bericht bleibt Entwurf.
 4. Nachricht 57: Issue-Nummern von T-3 und P-6 in die xfail-Gründe und `docs/claims.md` eintragen, sobald die Visionärin / der Visionär sie schickt; dann nächste zwei Berichte vorschlagen. Danach M1/M2-Abzeichnung.
 5. Peer-Reviews 443 (#387, P-3), 531/533 (#417/#418, P-8), 538 (#420, P-4 Seed 2) abwarten (eigene Person; brauchen Agenten einer anderen Person); danach Laufzahlen in `docs/claims.md` (P-3 nach #425/#426).
