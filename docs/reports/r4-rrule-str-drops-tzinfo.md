@@ -25,7 +25,7 @@ print(list(rrulestr(str(r))))
 # [datetime(2021, 3, 27, 2, 30), datetime(2021, 3, 28, 2, 30), datetime(2021, 3, 29, 2, 30)]
 
 list(rrulestr(str(r))) == list(r)          # False
-[r.tzinfo for r in rrulestr(str(r))][0]    # None
+[o.tzinfo for o in rrulestr(str(r))][0]    # None
 ```
 
 `r` yields occurrences with `tzinfo=ZoneInfo("Europe/Berlin")`; the round trip
@@ -64,4 +64,8 @@ TODO (lead)
 
 ## Reproduction on upstream master
 
-TODO (lead)
+Reproduced on upstream `master` at `261e291` (checked 2026-11-17 and again
+2026-11-19) with `dtstart` in `zoneinfo.ZoneInfo("Europe/Berlin")`,
+`dateutil.tz.gettz("Europe/Berlin")` and `dateutil.tz.UTC`: in all three cases
+`str(r)` starts with `DTSTART:20210327T023000` (no `TZID`, no `Z`) and the
+occurrences of `rrulestr(str(r))` have `tzinfo=None`.
