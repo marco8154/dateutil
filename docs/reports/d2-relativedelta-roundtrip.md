@@ -1,7 +1,8 @@
 # `relativedelta` is not round-trip stable across a month boundary
 
-`(dt + rd) - rd == dt` does not hold for `relativedelta` once the added time
-units cross a month boundary. Claim D-2 is an expectation (not a contract), so
+`(dt + rd) - rd == dt` does not always hold for `relativedelta` when a
+`months`/`years` component is combined with time units that cross a month
+boundary. Claim D-2 is an expectation (not a contract), so
 this is a finding reported against the documentation, not a contract breach.
 
 **Reproducer**
