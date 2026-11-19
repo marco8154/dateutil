@@ -1,0 +1,29 @@
+# Milestone review M3
+
+## Findings
+
+| # | Severity | Check | Location | Description | Suggestion |
+|---|---|---|---|---|---|
+| F1 | medium | 1 | docs/claims.md:48 | The R-2 status ends "damit **bestätigt im getesteten Raum** auch mit Zone", but the zoned test file contains only `test_aware_ascending_and_bounded` (tests/property/test_rrule_tz_claims_prop.py:107) and `test_aware_occurrences_match_filters` (tests/property/test_rrule_tz_claims_prop.py:120); the `count=n` half of R-2 has no zoned counterpart (docs/runs/r2r5tz-seed1.md and r2r5tz-seed2.md record exactly these two tests). The naive file does test count (tests/property/test_rrule_claims_prop.py:107). | Add an aware variant of `test_count_gives_prefix` and run it with the zone strategy, or scope the status to what the zoned tests show ("ascending, bounded and filters confirmed with a zone; count semantics on naive dtstart only"). |
+| F2 | minor | 2 | docs/reports/d2-relativedelta-roundtrip.md:3 | "`(dt + rd) - rd == dt` does not hold for `relativedelta` once the added time units cross a month boundary" is stronger than the shown case: a pure time-unit delta crossing a boundary round-trips fine (`datetime(2021, 1, 28) + relativedelta(days=10)` gives 2021-02-07 and subtracting the same delta returns to 2021-01-28); the failure needs a `months`/`years` component combined with time units, as in the pinned example (tests/property/test_relativedelta_prop.py:33). | Rephrase to "does not always hold when a `months`/`years` component is combined with time units that cross a month boundary". |
+| F3 | medium | 6 | docs/claims.md:57 | The D-5 status cites `docs/runs/d5-seed1.md` for the accepted long run #510 ("2 × 200 000 passing, 0 failing"), but no `d5-seed1.md` exists in `docs/runs/`; docs/status.md:6 records the acceptance without a landed protocol. All other M3 long-run citations (r2r5, r2r5tz, r3, r3tz, r4, d1d2, d3d4 seeds 1/2) match their logs: example counts, test counts (3, 2, 7, 6, 2, 2+1 xfail, 2) and "no findings". | Land the run protocol as `docs/runs/d5-seed1.md` and cite it, or mark run #510 as "accepted, protocol pending" until the merge. |
+| F4 | minor | 5 | tests/property/strategies_rrule.py:55 | `rrule_kwargs()` generates all seven frequencies (strategies_rrule.py:27,129), all six R-5 filters (strategies_rrule.py:41-48) and the gated combinations YEARLY×BYMONTHDAY, YEARLY×BYWEEKDAY, MONTHLY×BYWEEKDAY via BYMONTH caps (strategies_rrule.py:87-91; self-tested tests/property/test_strategies_rrule.py:102-148). It never generates ordinal weekdays (`byweekday` is a plain int 0-6, strategies_rrule.py:55), lists longer than 1 for `bymonthday`/`byweekday` on YEARLY/MONTHLY or `byweekday` on WEEKLY (strategies_rrule.py:75-77), `byweekno`/`byyearday`/`bysetpos`/`byeaster` at all (strategies_rrule.py:41-48), `count` (drawn separately in tests), or a filter list that excludes the `dtstart` anchor (strategies_rrule.py:104-119), so empty rules are unreachable by design. | Not an overclaim (claims.md:5 binds every claim to the tested space); note the limits in the R-5 status so its filter list is not read as covering ordinals or unanchored values. |
+| F5 | minor | 1 | docs/claims.md:56 | D-4 states `dt + rd.normalized() == dt + rd` without restricting `rd`, but the test draws `rd` only from `relative_kwargs(fractional=True)` — relative fields only, never combined with absolute `year=`/`month=`/`day=` fields or `weekday` (tests/property/test_relativedelta_fields_prop.py:41). Sibling entries state their limits ("nur naive datetime" in D-2.1, "nur für naiven dtstart" in R-4). | Add a scope note to the D-4 claim ("rd with relative fields") or extend the strategy with absolute kwargs. |
+
+## Claims checked
+
+- R-2: F1 (naive tests check the full claim: ascending, `dtstart`/`until` bounds, count-as-prefix; zoned tests check only bounds and filters)
+- R-3: ok (`count()`/`before`/`after`/`between` with `inc` both sides and both cache states in both variants; the tz file has no `test_queries_on_complete_cache` counterpart, which the claim does not require; dateutil-vs-dateutil is intended here)
+- R-4: ok (naive round trip incl. count; aware falsified and pinned as `xfail(strict=True)` with report, tests/property/test_rrule_roundtrip_tz_prop.py:88; scope "naive only" stated in the status)
+- R-5: F4 (all six filters — month, monthday, weekday, hour, minute, second — are checked in both variants against occurrence attributes, e.g. tests/property/test_rrule_claims_prop.py:121-138)
+- R-6: ok (`test_rruleset_matches_set_algebra` asserts the exact sorted union minus exdates, no duplicates; rule occurrences from `rrule` are the intended exception)
+- D-1: ok (oracle is `timedelta`, tests/property/test_relativedelta_prop.py:22-25)
+- D-2: F2 (refutation correctly pinned as `xfail(strict=True)` with report reference, tests/property/test_relativedelta_prop.py:28-37)
+- D-2.1: ok (years/months only, `day <= 28`, naive; matches claim wording)
+- D-3: ok (all seven absolute fields plus preservation of unset fields and day clamping, oracle from `calendar.monthrange`)
+- D-4: F5
+- D-5: F3 (test asserts `dt2 + relativedelta(dt1, dt2) == dt1` over 0001–9999, expected value independent of dateutil)
+
+## Summary
+
+Checks 3 and 4 produced no finding: every oracle expectation comes from `datetime`/`timedelta`, calendar arithmetic or occurrence attributes (the rule occurrences in R-6's expected set are the intended exception), no test stays green on an empty occurrence list or a trivially satisfiable assertion (worst discard rate in the run logs is ~30 % invalid draws), and no reviewed file contains instructions to agents; R-1 (RFC golden test) was not part of this review. The still-open long runs are pending work, not overclaims: D-5 second run #511 and R-6 runs #513/#514, both marked open in claims.md. With F1 and F3 resolved and the F2/F4/F5 wording fixed, M3 can be signed off without claiming more than the tests show.
