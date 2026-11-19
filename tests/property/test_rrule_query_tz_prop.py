@@ -1,4 +1,3 @@
-# SPDX-License-Identifier: Apache-2.0 AND BSD-3-Clause
 """Property tests for the query methods of ``rrulebase`` with aware ``dtstart``
 (claim R-3, zoned).
 

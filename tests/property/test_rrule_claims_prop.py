@@ -1,4 +1,3 @@
-# SPDX-License-Identifier: Apache-2.0 AND BSD-3-Clause
 """Property tests for claims R-2 and R-5 of ``dateutil.rrule``.
 
 R-2: occurrences are strictly ascending, bounded by ``dtstart``/``until``,

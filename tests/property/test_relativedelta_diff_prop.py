@@ -1,4 +1,3 @@
-# SPDX-License-Identifier: Apache-2.0 AND BSD-3-Clause
 """Property test for claim D-5: for naive ``dt1``/``dt2`` anywhere in
 0001-9999, ``dt2 + relativedelta(dt1, dt2) == dt1``, including sub-second
 fractions and negative differences.

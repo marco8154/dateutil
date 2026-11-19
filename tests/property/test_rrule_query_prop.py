@@ -1,4 +1,3 @@
-# SPDX-License-Identifier: Apache-2.0 AND BSD-3-Clause
 """Property tests for the query methods of ``rrulebase`` (claim R-3).
 
 ``count()``, ``before``, ``after`` and ``between`` are compared against the

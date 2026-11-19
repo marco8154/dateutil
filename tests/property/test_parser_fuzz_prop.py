@@ -1,4 +1,3 @@
-# SPDX-License-Identifier: Apache-2.0 AND BSD-3-Clause
 """Fuzz target for claim P-7: ``parse(s)`` only raises the documented errors."""
 from datetime import datetime
 

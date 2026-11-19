@@ -1,4 +1,3 @@
-# SPDX-License-Identifier: Apache-2.0 AND BSD-3-Clause
 """Oracle tests for ``isoparse`` against the standard library.
 
 - Claim P-2: on strings that ``datetime.fromisoformat`` (Python 3.11+) also

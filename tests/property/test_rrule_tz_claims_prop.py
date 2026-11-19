@@ -1,4 +1,3 @@
-# SPDX-License-Identifier: Apache-2.0 AND BSD-3-Clause
 """Property tests for claims R-2 and R-5 of ``dateutil.rrule`` with a
 time-zone-aware ``dtstart``.
 

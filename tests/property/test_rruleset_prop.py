@@ -1,4 +1,3 @@
-# SPDX-License-Identifier: Apache-2.0 AND BSD-3-Clause
 """Property test for claim R-6 of ``dateutil.rrule``.
 
 An ``rruleset`` built from rules, ``rdate`` and ``exdate`` yields exactly the

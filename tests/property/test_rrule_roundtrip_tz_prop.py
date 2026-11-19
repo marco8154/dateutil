@@ -1,4 +1,3 @@
-# SPDX-License-Identifier: Apache-2.0 AND BSD-3-Clause
 """Property test for claim R-4 with an aware ``dtstart`` (``docs/claims.md``).
 
 ``rrulestr(str(r))`` reproduces ``r`` for a naive ``dtstart`` (see

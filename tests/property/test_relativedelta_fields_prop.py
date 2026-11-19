@@ -1,4 +1,3 @@
-# SPDX-License-Identifier: Apache-2.0 AND BSD-3-Clause
 """Property tests for claims D-3 and D-4 on ``relativedelta``.
 
 D-3 (docstring lines 37-41): absolute fields replace the corresponding
