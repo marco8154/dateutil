@@ -10,6 +10,11 @@ if grep -rn --include='*.py' 'max_examples' tests/property; then
   echo "tests/property must not set max_examples; the profile sets it" >&2
   exit 1
 fi
+# Upstream files carry no license headers; tests must stay submittable as is.
+if grep -rln 'SPDX' tests; then
+  echo "tests must not carry SPDX headers (docs/decisions/0001-lizenz.md)" >&2
+  exit 1
+fi
 exec .venv/bin/python -m pytest -p no:cacheprovider -p swarvex_tools.hypothesis_profile -n auto tests docs \
   --deselect 'tests/test_tz.py::test_gettz_link[tzpath-Europe/Monaco-Europe/Paris]' \
   --deselect 'tests/test_tzpath_data.py::test_dst_matches_tzdata_zi[tzpath]' \
