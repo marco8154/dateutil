@@ -1,8 +1,10 @@
 # Status
 
-Stand: 2026-11-19 (Lead-Zyklus 90, Lead-Dienst)
+Stand: 2026-11-19 (Lead-Zyklus 91, Lead-Dienst)
 
 ## Lage
+Zyklus 91 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). Keine Änderung: keine Abgabe zur Prüfung, 2 Abgaben im Merge-Zug (u. a. #519), 3 Aufgaben blockiert (werden ohne Lead frei, #523 nach dem Merge). Kein neuer Schnitt (Ruling Zyklus 76; bei 0 aktiven Agenten würde ein Schnitt nur liegen). 71/72 und 57 weiter ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 78 h).
+
 Zyklus 90 (Anlass: Abgabe 657 geprüft, Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). **657 (#519, Seed 2) angenommen**: 20 000 passing, 0 failing, sha256 stimmt mit master; R-2 count mit Zone damit doppelt bestätigt, sobald der Merge-Zug beide Protokolle liefert. #523 (SPDX) wird danach von selbst frei. Kein neuer Schnitt (Ruling Zyklus 76). 71/72 und 57 weiter ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau.
 
 Zyklus 89 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). Abgabe 657 (#519, R-2 count mit Zone, Seed 2) inhaltlich geprüft: 20 000 passing, 0 failing, sha256 stimmt mit master; Annahme noch nicht möglich (Pipeline-Prüfung läuft), folgt im nächsten Zyklus. Keine Funde offen. Kein neuer Schnitt (Ruling Zyklus 76). 71/72 und 57 weiter ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau.
@@ -10,8 +12,6 @@ Zyklus 89 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agent
 Zyklus 88 (Anlass: Abgabe 654 geprüft, Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). **654 (#518, langer Lauf R-2 count mit Zone, Seed 1) angenommen**: 20 000 passing, 0 failing, keine Funde; sha256 der Testdatei stimmt mit master. #519 (Seed 2) liegt als Abgabe 657 in der Pipeline; #523 folgt nach #518–#520 von selbst. `docs/claims.md` R-2: #517 gemergt, r2r5tz-Läufe gemergt. Kein neuer Schnitt (Ruling Zyklus 76: M4 erst nach Antwort auf Nachricht 72; 0 aktive Agenten). 71/72 und 57 brauchen Handgriffe der Person außerhalb der Sandbox (GitHub-Suche, RFC-Text einchecken). 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 78 h). Lage-Abschnitt gekürzt: ältere Zyklen stehen in `git log -p docs/status.md`.
 
 Zyklus 87 (Anlass: Nachrichten 71/72 offen). Merge-Zug hat geliefert: `d5-*`, `r6-*`, #517 (R-2 mit Zone) und #520 (Marker R-4) liegen auf master; Vermerke „Merge ausstehend“ in `docs/claims.md` (D-5, R-6) durch Commits ersetzt. 1 Agent aktiv an #518, 1 Aufgabe frei, 3 blockiert (werden ohne Lead frei). 71/72 weiter ohne Antwort (Lead und Visionär:in sind dieselbe Person; die Nachrichten lösen jeden Zyklus erneut aus, bis die Person sie beantwortet). 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 77 h). Kein neuer Schnitt (Ruling Zyklus 76).
-
-Zyklus 86 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). Keine Änderung: 71/72 sind weiter eigene Fragen an die Visionärin / den Visionär ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau (ältester ≈ 76 h). Merge-Zug hält 7 Abgaben (älteste 1,5 h; `d5-*`, `r6-*` noch nicht auf master), 5 Aufgaben blockiert, die ohne Lead frei werden. Kein neuer Schnitt (Ruling Zyklus 76: M4 erst nach Antwort auf Nachricht 72; 0 aktive Agenten).
 
 ## Risiken
 - Abgaben 440–444, 446 haben Pipeline-Berichte vom alten, kaputten Test-Schritt (Gegenprobe „Basis rot“). Peer-Reviewer:innen sollten das wissen; der Merge-Zug prüft sie mit `run_tests.sh` neu.
