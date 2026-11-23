@@ -6,7 +6,7 @@ Claims: P-3 (`docs/claims.md`), test
 
 ## Command
 
-Run in the project folder, verbatim (wrapped in the shell's `time`):
+Run in the project folder, verbatim:
 
 ```
 SWARVEX_MAX_EXAMPLES=200000 TZ=America/New_York SETUPTOOLS_SCM_PRETEND_VERSION=4.0.0 .venv/bin/python -m pytest -p no:cacheprovider -p swarvex_tools.hypothesis_profile tests/property/test_isoparse_tz_prop.py --hypothesis-seed=1 -v
@@ -25,7 +25,7 @@ SWARVEX_MAX_EXAMPLES=200000 TZ=America/New_York SETUPTOOLS_SCM_PRETEND_VERSION=4
 
 ## Result
 
-- Runtime: `real 8m04.240s` (shell `time`; pytest reported 484.24s (0:08:04)).
+- Runtime: pytest reported 484.24s (0:08:04); the command ran without a `time` wrapper.
 - Exit code: 0
 - pytest summary line, verbatim:
 
