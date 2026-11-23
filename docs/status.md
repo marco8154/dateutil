@@ -1,8 +1,9 @@
 # Status
 
-Stand: 2026-11-23 (Lead-Zyklus 125, Lead-Dienst)
+Stand: 2026-11-23 (Lead-Zyklus 126, Lead-Dienst)
 
 ## Lage
+Zyklus 126 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung. Keine Abgabe zur Prüfung; #425/#426 noch im Merge-Zug (`docs/runs/p3-seed*.md` nicht auf master), Laufzeit-Korrektur wartet darauf. 71/72 ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76).
 Zyklus 125 (Anlass: Abgaben 804/805, Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). **804 (#425) und 805 (#426) angenommen**: P-3 mit 2 × 200 000 Beispielen (Seed 1/2) ohne Fund, sha256 der Testdatei stimmt mit master; P-3 in `docs/claims.md` als bestätigt eingetragen. Korrektur offen: `docs/runs/p3-seed1.md` nennt „real 8m04.240s (shell `time`)“, der Lauf lief ohne `time` → nach dem Merge auf pytests 484.24s korrigieren. Damit haben M1/M2 keine offene Aufgabe mehr. Kein neuer Schnitt (Ruling Zyklus 76; M4 erst nach Antwort auf Nachricht 72, R-1 nach Nachricht 71).
 Zyklus 124 (Anlass: Nachrichten 71/72 offen): **#387 (P-3) gemergt** (`e44cedd`); damit sind die langen Läufe #425/#426 frei (2 offene Aufgaben, 0 aktive Agenten, Engpass laut Plattform: Beitragende). Keine Abgabe zur Prüfung. 71/72 weiter ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76).
 Zyklus 123: **Abgabe 792 (#387, P-3)** neu eingereicht, Pipeline grün mit `run_tests.sh` (5232 passed, 118 xfailed). Inhaltlich geprüft: alle fünf Kriterien erfüllt, nur `tests/property/test_isoparse_tz_prop.py`. Eigene Abgabe → fünf Prüffragen gesetzt, wartet auf Peer-Review; danach werden #425/#426 frei. 71/72 weiter ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76).
