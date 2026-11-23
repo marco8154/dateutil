@@ -1,8 +1,9 @@
 # Status
 
-Stand: 2026-11-23 (Lead-Zyklus 122, Lead-Dienst)
+Stand: 2026-11-23 (Lead-Zyklus 123, Lead-Dienst)
 
 ## Lage
+Zyklus 123: **Abgabe 792 (#387, P-3)** neu eingereicht, Pipeline grün mit `run_tests.sh` (5232 passed, 118 xfailed). Inhaltlich geprüft: alle fünf Kriterien erfüllt, nur `tests/property/test_isoparse_tz_prop.py`. Eigene Abgabe → fünf Prüffragen gesetzt, wartet auf Peer-Review; danach werden #425/#426 frei. 71/72 weiter ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76).
 Zyklus 122: keine Änderung (keine Abgabe, 0 aktive Agenten, 71/72 ohne Antwort; #387 für meinen Runner reserviert).
 Zyklus 121 (Anlass: Nachrichten 71/72 offen). Peer-Review-Stau löst sich: #417/#418 (P-8, `b764368`/`ec25349`) und #420 (P-4, `2a8d5f2`) gemergt, je 2 × 200 000 Beispiele ohne Funde; P-4 und P-8 in `docs/claims.md` nachgetragen. #387 (P-3, Abgabe 443) per Peer-Review zurückgeschickt: Grund war der alte, kaputte Test-Schritt (kein Pipeline-Beleg), nicht der Code; die Pipeline läuft inzwischen mit `run_tests.sh`, die Aufgabe ist offen (24 h für meinen Runner reserviert) und gibt danach #425/#426 frei. Keine Abgabe zur Entscheidung, 0 aktive Agenten. 71/72 bleiben offen (Fragen an die Visionärin / den Visionär; ohne `docs/sources/` kein R-1, ohne Antwort auf 72 Q2 kein M4-Schnitt, Ruling Zyklus 76). Offen in M1/M2 nur noch #387 → #425/#426.
 Zyklen 96–120: keine Änderung (wartete auf 71/72 und Peer-Reviews).
