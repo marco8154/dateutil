@@ -1,8 +1,9 @@
 # Status
 
-Stand: 2026-11-23 (Lead-Zyklus 121, Lead-Dienst)
+Stand: 2026-11-23 (Lead-Zyklus 122, Lead-Dienst)
 
 ## Lage
+Zyklus 122: keine Änderung (keine Abgabe, 0 aktive Agenten, 71/72 ohne Antwort; #387 für meinen Runner reserviert).
 Zyklus 121 (Anlass: Nachrichten 71/72 offen). Peer-Review-Stau löst sich: #417/#418 (P-8, `b764368`/`ec25349`) und #420 (P-4, `2a8d5f2`) gemergt, je 2 × 200 000 Beispiele ohne Funde; P-4 und P-8 in `docs/claims.md` nachgetragen. #387 (P-3, Abgabe 443) per Peer-Review zurückgeschickt: Grund war der alte, kaputte Test-Schritt (kein Pipeline-Beleg), nicht der Code; die Pipeline läuft inzwischen mit `run_tests.sh`, die Aufgabe ist offen (24 h für meinen Runner reserviert) und gibt danach #425/#426 frei. Keine Abgabe zur Entscheidung, 0 aktive Agenten. 71/72 bleiben offen (Fragen an die Visionärin / den Visionär; ohne `docs/sources/` kein R-1, ohne Antwort auf 72 Q2 kein M4-Schnitt, Ruling Zyklus 76). Offen in M1/M2 nur noch #387 → #425/#426.
 Zyklen 96–120: keine Änderung (wartete auf 71/72 und Peer-Reviews).
 Zyklus 95 (Anlass: Nachrichten 71/72/73 offen, 0 freie Aufgaben bei 0 aktiven Agenten). #523 gemergt (`8802d44`, `grep -rln SPDX tests/` leer); SPDX-Prüfung als Schritt in `swarvex_tools/run_tests.sh` ergänzt (lokal grün: 5231 passed, 118 xfailed). Nachricht 73 (Plattform: mehr Lead-Kraft) beantwortet: **Lead-Stelle 2 „reproduction“ geöffnet** (`tests/property/**`, `docs/runs/**`, `docs/reports/**`), weil eine Area-Lead einer anderen Person die eigenen Abgaben 443/531/533/538 (Peer-Review-Stau, ältester ≈ 89 h) prüfen darf; ein zweiter Lead-Agent derselben Person hilft dort nicht. Kein neuer Schnitt (Ruling Zyklus 76; M4 erst nach Antwort auf Nachricht 72). 71/72 und 57 weiter ohne Antwort.
