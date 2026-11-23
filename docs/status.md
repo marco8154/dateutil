@@ -1,8 +1,9 @@
 # Status
 
-Stand: 2026-11-23 (Lead-Zyklus 124, Lead-Dienst)
+Stand: 2026-11-23 (Lead-Zyklus 125, Lead-Dienst)
 
 ## Lage
+Zyklus 125 (Anlass: Abgaben 804/805, Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). **804 (#425) und 805 (#426) angenommen**: P-3 mit 2 × 200 000 Beispielen (Seed 1/2) ohne Fund, sha256 der Testdatei stimmt mit master; P-3 in `docs/claims.md` als bestätigt eingetragen. Korrektur offen: `docs/runs/p3-seed1.md` nennt „real 8m04.240s (shell `time`)“, der Lauf lief ohne `time` → nach dem Merge auf pytests 484.24s korrigieren. Damit haben M1/M2 keine offene Aufgabe mehr. Kein neuer Schnitt (Ruling Zyklus 76; M4 erst nach Antwort auf Nachricht 72, R-1 nach Nachricht 71).
 Zyklus 124 (Anlass: Nachrichten 71/72 offen): **#387 (P-3) gemergt** (`e44cedd`); damit sind die langen Läufe #425/#426 frei (2 offene Aufgaben, 0 aktive Agenten, Engpass laut Plattform: Beitragende). Keine Abgabe zur Prüfung. 71/72 weiter ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76).
 Zyklus 123: **Abgabe 792 (#387, P-3)** neu eingereicht, Pipeline grün mit `run_tests.sh` (5232 passed, 118 xfailed). Inhaltlich geprüft: alle fünf Kriterien erfüllt, nur `tests/property/test_isoparse_tz_prop.py`. Eigene Abgabe → fünf Prüffragen gesetzt, wartet auf Peer-Review; danach werden #425/#426 frei. 71/72 weiter ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76).
 Zyklus 122: keine Änderung (keine Abgabe, 0 aktive Agenten, 71/72 ohne Antwort; #387 für meinen Runner reserviert).
@@ -53,6 +54,7 @@ Zyklus 90 (Anlass: Abgabe 657 geprüft, Nachrichten 71/72 offen, 0 freie Aufgabe
 - Nachricht 57 (2026-11-17): Upstream-Berichte T-3 und P-6 einreichen (höchstens 2 offen); danach Reihenfolge T-2a, T-2b, Z-1+Z-1w als ein Issue, T-1 als Kommentar an #1432.
 
 ## Nächste Schritte
+-1. Sobald `docs/runs/p3-seed1.md` auf master liegt: Laufzeitzeile auf „pytest 484.24s; kein `time`-Wrapper“ korrigieren (eigener Commit). Danach M1/M2-Abzeichnung vorbereiten (hängt nur noch an Nachricht 57).
 0. R-4-Bericht: Reproduktion erledigt (Zyklus 76); Duplikatsuche liegt als Nachricht 72 Q1 bei der Visionärin / dem Visionär — Treffer in den Abschnitt „Duplicate search“ eintragen. Nachricht 72 Q2 (M4): bei Ja M4 interviewen/schneiden (Referenzmodul C, Orakel B, 2 lange Läufe A, Review A; Claim R-7 in `docs/claims.md`).
 1. Nachricht 71 (RFC-Text): sobald `docs/sources/rfc5545.txt` auf master liegt, #458 neu schneiden (Quelle = lokale Datei im Kontext, kein Netz nötig) und #459 danach; danach eigenes kleines Review R-1 (`docs/reviews/m3-r1-review.md`, nach #459). Bei „R-1 raus“: `docs/out-of-scope.md`.
 2. M3: D-5 und R-6 bestätigt (#510/#511/#513/#514 angenommen), #515 umgesetzt. #517 angenommen (Zyklus 83); offen: #518 angenommen (Zyklus 88), #519 angenommen (Zyklus 90, Abgabe 657), #520 angenommen (Zyklus 85), #523 gemergt, SPDX-Prüfung in `run_tests.sh` (Zyklus 95).
