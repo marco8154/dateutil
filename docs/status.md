@@ -1,8 +1,9 @@
 # Status
 
-Stand: 2026-11-23 (Lead-Zyklus 123, Lead-Dienst)
+Stand: 2026-11-23 (Lead-Zyklus 124, Lead-Dienst)
 
 ## Lage
+Zyklus 124 (Anlass: Nachrichten 71/72 offen): **#387 (P-3) gemergt** (`e44cedd`); damit sind die langen Läufe #425/#426 frei (2 offene Aufgaben, 0 aktive Agenten, Engpass laut Plattform: Beitragende). Keine Abgabe zur Prüfung. 71/72 weiter ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76).
 Zyklus 123: **Abgabe 792 (#387, P-3)** neu eingereicht, Pipeline grün mit `run_tests.sh` (5232 passed, 118 xfailed). Inhaltlich geprüft: alle fünf Kriterien erfüllt, nur `tests/property/test_isoparse_tz_prop.py`. Eigene Abgabe → fünf Prüffragen gesetzt, wartet auf Peer-Review; danach werden #425/#426 frei. 71/72 weiter ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76).
 Zyklus 122: keine Änderung (keine Abgabe, 0 aktive Agenten, 71/72 ohne Antwort; #387 für meinen Runner reserviert).
 Zyklus 121 (Anlass: Nachrichten 71/72 offen). Peer-Review-Stau löst sich: #417/#418 (P-8, `b764368`/`ec25349`) und #420 (P-4, `2a8d5f2`) gemergt, je 2 × 200 000 Beispiele ohne Funde; P-4 und P-8 in `docs/claims.md` nachgetragen. #387 (P-3, Abgabe 443) per Peer-Review zurückgeschickt: Grund war der alte, kaputte Test-Schritt (kein Pipeline-Beleg), nicht der Code; die Pipeline läuft inzwischen mit `run_tests.sh`, die Aufgabe ist offen (24 h für meinen Runner reserviert) und gibt danach #425/#426 frei. Keine Abgabe zur Entscheidung, 0 aktive Agenten. 71/72 bleiben offen (Fragen an die Visionärin / den Visionär; ohne `docs/sources/` kein R-1, ohne Antwort auf 72 Q2 kein M4-Schnitt, Ruling Zyklus 76). Offen in M1/M2 nur noch #387 → #425/#426.
@@ -57,5 +58,5 @@ Zyklus 90 (Anlass: Abgabe 657 geprüft, Nachrichten 71/72 offen, 0 freie Aufgabe
 2. M3: D-5 und R-6 bestätigt (#510/#511/#513/#514 angenommen), #515 umgesetzt. #517 angenommen (Zyklus 83); offen: #518 angenommen (Zyklus 88), #519 angenommen (Zyklus 90, Abgabe 657), #520 angenommen (Zyklus 85), #523 gemergt, SPDX-Prüfung in `run_tests.sh` (Zyklus 95).
 3. D-2-Bericht: Empfehlung **nicht upstream** (Nachricht 66). Bericht bleibt Entwurf.
 4. Nachricht 57: Issue-Nummern von T-3 und P-6 in die xfail-Gründe und `docs/claims.md` eintragen, sobald die Visionärin / der Visionär sie schickt; dann nächste zwei Berichte vorschlagen. Danach M1/M2-Abzeichnung.
-5. Lead-Stelle 2 (reproduction) offen: Bewerbungen entscheidet die Visionärin / der Visionär; eine ernannte Area-Lead kann 443/531/533/538 prüfen. Peer-Reviews 443 (#387, P-3), 531/533 (#417/#418, P-8), 538 (#420, P-4 Seed 2) abwarten (eigene Person; brauchen Agenten einer anderen Person); danach Laufzahlen in `docs/claims.md` (P-3 nach #425/#426).
+5. Lead-Stelle 2 (reproduction) offen: Bewerbungen entscheidet die Visionärin / der Visionär; eine ernannte Area-Lead kann 443/531/533/538 prüfen. Peer-Reviews erledigt: #387 (P-3, `e44cedd`), 531/533 (#417/#418, P-8), 538 (#420, P-4 Seed 2) abwarten (eigene Person; brauchen Agenten einer anderen Person); danach Laufzahlen in `docs/claims.md` (P-3 nach #425/#426).
 6. Merge-Zug: erledigt (Zyklus 87), D-5/R-6-Protokolle auf master.
