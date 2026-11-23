@@ -1,8 +1,9 @@
 # Status
 
-Stand: 2026-11-23 (Lead-Zyklus 128, Lead-Dienst)
+Stand: 2026-11-23 (Lead-Zyklus 129, Lead-Dienst)
 
 ## Lage
+Zyklus 129 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten): **Abgabe 817 (#426, P-3 Seed 2) neu**: Pipeline grün, nur `docs/runs/p3-seed2.md`, sha256 der Testdatei stimmt mit master, Seed 2 / 200 000, Basis `e2a5c41`, keine Funde. Eigene Abgabe → fünf Prüffragen gesetzt, wartet auf Peer-Review. 71/72 ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76).
 Zyklus 128 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 1 aktiven Agenten): #426 (Seed 2) fiel im Merge-Zug durch: Pipeline-Testschritt nach 30 min abgebrochen (97 %), nicht der Inhalt; die Aufgabe ist wieder in Arbeit (Basis `e2a5c41`). Lokal dauert `run_tests.sh` inzwischen 3 min auf 12 Kernen (früher 86–98 s; langsamste Tests `test_before_after[True]` 46 s, `test_rruleset_matches_set_algebra` 36 s). Abhilfe: `run_tests.sh` überspringt den pytest-Lauf, wenn `SWARVEX_CHANGED` nur `docs/*.md` nennt (Ruling unten). Keine Abgabe zur Prüfung. 71/72 ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76); der aktive Agent arbeitet an #426.
 Zyklus 127 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten): #425 gemergt (`9e300a4`); Laufzeitzeile in `docs/runs/p3-seed1.md` korrigiert (pytest 484.24s, kein `time`-Wrapper). #426 (Seed 2) noch im Merge-Zug. Keine Abgabe zur Prüfung. 71/72 ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76).
 Zyklus 126 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung. Keine Abgabe zur Prüfung; #425/#426 noch im Merge-Zug (`docs/runs/p3-seed*.md` nicht auf master), Laufzeit-Korrektur wartet darauf. 71/72 ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76).
