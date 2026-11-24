@@ -86,7 +86,13 @@ PIN_AWARE_UTC = {
 
 @pytest.mark.rrule
 @pytest.mark.rrulestr
-@pytest.mark.xfail(strict=True, reason="docs/reports/r4-rrule-str-drops-tzinfo.md")
+# Known upstream (#348, #637). No ``raises=``: with PR #1631 merged, ``str(r)``
+# writes ``UNTIL`` in UTC while ``DTSTART`` stays naive, and ``rrulestr`` then
+# raises ``ValueError``; that is the same known issue and must stay an xfail.
+@pytest.mark.xfail(
+    strict=True,
+    reason="dateutil/dateutil#637, #348; docs/reports/r4-rrule-str-drops-tzinfo.md",
+)
 @example(kw=PIN_AWARE_ZONEINFO)
 @example(kw=PIN_AWARE_GETTZ)
 @example(kw=PIN_AWARE_UTC)

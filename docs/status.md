@@ -1,8 +1,13 @@
 # Status
 
-Stand: 2026-11-24 (Lead-Zyklus 144, Lead-Dienst)
+Stand: 2026-11-24 (Lead-Zyklus 145, Lead-Dienst)
 
 ## Lage
+Zyklus 145 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten; Antworten auf 71/72 und Nachricht 100 neu). **Alle offenen Fragen beantwortet, neue Arbeit geschnitten.**
+- Nachricht 100: T-3 = dateutil/dateutil#1683, P-6 = #1684 (upstream eingereicht 2026-11-24). Nummern in xfail-Gründen (`test_tzical_fuzz_prop.py`, `test_isoparse_fuzz_prop.py`), Berichten und `docs/claims.md`. Beide auf upstream `261e291` (aktueller Kopf) nachgestellt: gleiche `OverflowError`, in den Berichten vermerkt. **2 Berichte offen → T-2a erst, wenn einer erledigt ist.**
+- Nachricht 72 Q1: R-4 upstream bekannt (#348, #637, #603/#604, #806/#1631) → kein Bericht, Duplikatsuche im Bericht, `docs/out-of-scope.md`. xfail-Marker bleibt ohne `raises=`, damit der Merge von #1631 (Rundweg wirft dann `ValueError`) keinen neuen Fehler anzeigt; Kommentar im Test.
+- Nachricht 72 Q2: **M4 geschnitten** (#662 Referenz C, #663 Referenz gegen RFC-Daten B, #664 Orakeltest B, #665/#666 lange Läufe A, #667 Review A), Claim R-7 im Register, BYSETPOS/BYWEEKNO in `docs/out-of-scope.md`. Schätzung M4: 7.
+- Nachricht 71: `docs/sources/` liegt auf master (`81bc726`) → **R-1 neu geschnitten**: #659/#660 (Daten in zwei Hälften, `id` = RRULE-Zeile, Erratum 3883 in #660), #661 (Golden-Test über beide). Frei sofort: #659, #660, #662. Schätzung M3: 43.
 Zyklen 131–144 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung. Keine Abgabe, keine Funde, `docs/sources/` fehlt weiter, 71/72 ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76: M4 ist Umfang der Visionärin / des Visionärs, R-1 braucht `docs/sources/`).
 Zyklus 130 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten): **#426 gemergt** (`fe80505`), `docs/runs/p3-seed2.md` gegengelesen: Seed 2, 200 000, sha256 wie Seed 1, Basis `e2a5c41`, 330 s, keine Funde. Beide P-3-Protokolle nennen keine ausgeführte Beispielzahl (Statistik nicht ausgegeben) → Zeile P-3 in `docs/claims.md` sagt jetzt `max_examples=200 000`, Anzahl nicht protokolliert. M1/M2 haben keine offene Aufgabe; Abzeichnung hängt nur an Nachricht 57. Keine Abgabe zur Prüfung, 71/72 ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76).
 Zyklus 129 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten): **Abgabe 817 (#426, P-3 Seed 2) neu**: Pipeline grün, nur `docs/runs/p3-seed2.md`, sha256 der Testdatei stimmt mit master, Seed 2 / 200 000, Basis `e2a5c41`, keine Funde. Eigene Abgabe → fünf Prüffragen gesetzt, wartet auf Peer-Review. 71/72 ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76).
@@ -35,6 +40,9 @@ Zyklus 90 (Anlass: Abgabe 657 geprüft, Nachrichten 71/72 offen, 0 freie Aufgabe
 - GitHub Actions im Fork: `tests/test_tzpath_data.py::test_dst_matches_tzdata_zi[tzpath]` rot auf macOS (Casablanca, El_Aaiun, 2100/2400). Upstream `dateutil/dateutil` ist seit 2026-11-10 auf macOS ebenfalls rot (PR-Läufe 43319539839, 43319500377, 43247862099; Jobs 3.14 und 3.15 macos-latest), `a78cbd8` war am 2026-11-01 grün. Also Änderung der Runner-Daten (vermutlich Marokko-Änderung in tzdata 2026e/f), nicht unsere Commits. Lokal mit 2026f ist dateutil konsistent. Duplikatsuche (2026-11-15, Visionär:in): offener PR dateutil/dateutil#1667 „Fix dst() for zones that end in permanent DST“ (Maintainer, 2026-11-07), einziger Treffer für Africa/Casablanca und Africa/El_Aaiun. **Kein Bericht von uns.** Als bekannter Fall bei Z-1 in `docs/claims.md` und in Aufgabe #381 vermerkt. Der rote macOS-Job im Fork verschwindet, sobald #1667 upstream gemergt und von uns übernommen ist.
 
 ## Rulings
+- Ruling: R-1-Daten in zwei Dateien (`rfc5545_rrule_examples_1.json`/`_2.json`, Schnitt an RFC-Zeile 7119) mit `id` = Zeilennummer der RRULE-Zeile. Grund: 500-Zeilen-Grenze je Patch; Zeilennummern machen jede Stichprobe direkt prüfbar. Kosten, falls falsch: Golden-Test liest einen Glob statt einer Datei.
+- Ruling: M4-Referenz ohne `BYYEARDAY`/`BYEASTER`, nur DAILY–YEARLY, naiv (zusätzlich zu BYSETPOS/BYWEEKNO aus Nachricht 72). Grund: `rrule_kwargs()` erzeugt diese Teile nicht, kleinere Referenz = weniger Irrtum. Kosten, falls falsch: ein späterer Ausbau der Referenz.
+- Ruling: R-4-xfail ohne `raises=`. Grund: Mit upstream-PR #1631 wirft der Rundweg `ValueError` statt Termine ohne Zone zu liefern; beides ist dasselbe bekannte Problem (Nachricht 72 Q1). Kosten, falls falsch: ein anderer Fehler im Rundweg mit Zone bliebe als xfail verdeckt; der naive Rundweg (R-4) prüft weiter streng.
 - Ruling: `run_tests.sh` lässt pytest aus, wenn `SWARVEX_CHANGED` gesetzt ist und nur `docs/*.md` nennt (Lauf-Protokolle, Berichte); Versions-, `max_examples`- und SPDX-Prüfung laufen weiter. Grund: #426 scheiterte am 30-min-Limit der Pipeline, Markdown unter `docs/` ändert kein Testergebnis (pytest sammelt dort nur `docs/exercises/**/*.py`). Kosten, falls falsch: eine reine Doku-Abgabe läuft ohne Testlauf durch; ohne `SWARVEX_CHANGED` (z. B. Merge-Zug) läuft alles.
 - Ruling: Claims R-2/R-4/R-5 auch mit zeitzonenbehaftetem `dtstart` prüfen (#493/#494), ohne neue Claims: gleicher Claim, größerer getesteter Raum (wie #414 für Z-1). Grund: Freigabe M3 deckt die Claims, nicht nur naive Zeiten. Kosten, falls falsch: Visionär:in stuft den R-4-Fund als außerhalb des Claims ein; dann bleibt er Berichtsentwurf.
 - Ruling: M3-Testdateien je Claim-Gruppe getrennt (R-3 → `test_rrule_query_prop.py`, D-3/D-4 → `test_relativedelta_fields_prop.py`), Register angepasst. Grund: parallele Aufgaben schreiben nie in dieselbe Datei. Kosten, falls falsch: zwei Dateien mehr.
@@ -56,16 +64,13 @@ Zyklus 90 (Anlass: Abgabe 657 geprüft, Nachrichten 71/72 offen, 0 freie Aufgabe
 - Ruling: SPDX `Apache-2.0 AND BSD-3-Clause` nur in neuen Dateien außerhalb von `src/` und `tests/`. Grund: upstream führt keine Header. Kosten, falls falsch: Header ergänzen.
 
 ## Offene Freigaben
-- Nachricht 72 (2026-11-19, Frage): Q1 Duplikatsuche R-4, Q2 Meilenstein M4 (Brute-Force-Referenz für rrule, Claim R-7).
-- Nachricht 71 (2026-11-18, Frage): RFC-5545-Text und Errata-Auszug nach `docs/sources/` einchecken (R-1).
-- Nachricht 57 (2026-11-17): Upstream-Berichte T-3 und P-6 einreichen (höchstens 2 offen); danach Reihenfolge T-2a, T-2b, Z-1+Z-1w als ein Issue, T-1 als Kommentar an #1432.
+- keine. Upstream offen: #1683 (T-3), #1684 (P-6); höchstens 2 offen, also nächster Bericht (T-2a) erst nach Erledigung eines davon. Danach T-2b, Z-1+Z-1w als ein Issue, T-1 als Kommentar an #1432 (Reihenfolge aus Nachricht 57).
+- M1/M2-Abzeichnung: Issue-Nummern liegen vor; Abzeichnung bei der Visionärin / dem Visionär anfragen, wenn M3 abgeschlossen ist (zusammen).
 
 ## Nächste Schritte
--1. P-3-Protokolle erledigt (Zyklus 130). M1/M2-Abzeichnung hängt nur noch an Nachricht 57. Künftige Lauf-Aufgaben: `--hypothesis-show-statistics` im Befehl verlangen, damit die ausgeführte Beispielzahl im Protokoll steht.
-0. R-4-Bericht: Reproduktion erledigt (Zyklus 76); Duplikatsuche liegt als Nachricht 72 Q1 bei der Visionärin / dem Visionär — Treffer in den Abschnitt „Duplicate search“ eintragen. Nachricht 72 Q2 (M4): bei Ja M4 interviewen/schneiden (Referenzmodul C, Orakel B, 2 lange Läufe A, Review A; Claim R-7 in `docs/claims.md`).
-1. Nachricht 71 (RFC-Text): sobald `docs/sources/rfc5545.txt` auf master liegt, #458 neu schneiden (Quelle = lokale Datei im Kontext, kein Netz nötig) und #459 danach; danach eigenes kleines Review R-1 (`docs/reviews/m3-r1-review.md`, nach #459). Bei „R-1 raus“: `docs/out-of-scope.md`.
-2. M3: D-5 und R-6 bestätigt (#510/#511/#513/#514 angenommen), #515 umgesetzt. #517 angenommen (Zyklus 83); offen: #518 angenommen (Zyklus 88), #519 angenommen (Zyklus 90, Abgabe 657), #520 angenommen (Zyklus 85), #523 gemergt, SPDX-Prüfung in `run_tests.sh` (Zyklus 95).
-3. D-2-Bericht: Empfehlung **nicht upstream** (Nachricht 66). Bericht bleibt Entwurf.
-4. Nachricht 57: Issue-Nummern von T-3 und P-6 in die xfail-Gründe und `docs/claims.md` eintragen, sobald die Visionärin / der Visionär sie schickt; dann nächste zwei Berichte vorschlagen. Danach M1/M2-Abzeichnung.
-5. Lead-Stelle 2 (reproduction) offen: Bewerbungen entscheidet die Visionärin / der Visionär; eine ernannte Area-Lead kann 443/531/533/538 prüfen. Peer-Reviews erledigt: #387 (P-3, `e44cedd`), 531/533 (#417/#418, P-8), 538 (#420, P-4 Seed 2) abwarten (eigene Person; brauchen Agenten einer anderen Person); danach Laufzahlen in `docs/claims.md` (P-3 nach #425/#426).
-6. Merge-Zug: erledigt (Zyklus 87), D-5/R-6-Protokolle auf master.
+1. Abgaben zu #659/#660/#661 (R-1) und #662–#667 (M4) zügig prüfen. Bei #659/#660: Stichprobe von 5 Einträgen gegen `docs/sources/rfc5545.txt` selbst, Selbstorakel-Verdacht (Termine mit dateutil erzeugt) ablehnen.
+2. #662 (Stufe C, Probe für Stufe-B-Agenten): Unabhängigkeit prüfen (`grep dateutil` leer, keine Struktur aus `rrule.py`), Selbsttests von Hand nachrechnen. Eigene Abgabe → Prüffragen setzen.
+3. Nach #661: eigenes Review R-1 (`docs/reviews/m3-r1-review.md`), dann R-1-Status in `docs/claims.md`; R-1-Funde: Duplikatsuche bei der Visionärin / dem Visionär anfragen, Reproduktion auf upstream selbst (der Lead-Dienst kann upstream klonen: `git clone --filter=blob:none https://github.com/dateutil/dateutil`).
+4. Abweichungen aus #663 (Referenz ≠ RFC) → Korrekturaufgabe an #662; Funde aus #664 → Reproduktion upstream, Duplikatsuche anfragen.
+5. Upstream-Issues #1683/#1684 im Blick: sobald eines erledigt ist, T-2a vorschlagen.
+6. Lead-Stelle 2 (reproduction) bleibt offen.

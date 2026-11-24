@@ -106,7 +106,7 @@ def test_tzical_raises_only_valueerror(s):
 @pytest.mark.xfail(
     strict=True,
     raises=OverflowError,
-    reason="docs/reports/t3-tzical-overflowerror.md",
+    reason="dateutil/dateutil#1683, docs/reports/t3-tzical-overflowerror.md",
 )
 def test_tzical_dtstart_overflow():
     try:

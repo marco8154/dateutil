@@ -1,5 +1,7 @@
 # `str(rrule)` drops the `dtstart` time zone, so `rrulestr(str(r))` returns naive occurrences
 
+**Status:** known upstream; no new issue and no report candidate (visionary, 2026-11-24). A comment on #637 only on the visionary's explicit instruction.
+
 `rrule.__str__` writes `DTSTART:` (and `UNTIL=`) as a bare local date-time: no
 `TZID` parameter and no `Z` suffix, even when `dtstart` is time-zone aware.
 Passing the result back to `rrulestr` therefore yields naive occurrences, so
@@ -60,7 +62,12 @@ list(rrulestr("DTSTART;TZID=Europe/Berlin:20210327T023000\n"
 
 ## Duplicate search
 
-TODO (lead)
+Searched dateutil/dateutil issues and pull requests (all states) on 2026-11-24 (by the visionary) for `rrule str tzinfo`, `rrule __str__ TZID`, `rrulestr DTSTART timezone`, `rrule str timezone`, `rrulestr str round trip`, `DTSTART TZID str`, `rrule str UTC Z`, `UNTIL UTC str rrule`, `rrule serialize timezone`, `rrule string DTSTART naive`. Duplicate:
+
+- #348 (open, 2017): `rrulestr(str(r))` loses the zone of `_dtstart`; same case with `tzutc()`.
+- #637 (open, 2018): `str()` of a rule with `DTSTART;TZID=America/New_York` writes `DTSTART` without `TZID` and `UNTIL` without `Z`.
+- #603 (closed) with PR #604 (closed, not merged): `DTSTART:...Z` loses the `Z`.
+- #806 (open) with PR #1631 (open, 2026-10-22, "Closes #806"): writes only `UNTIL` in UTC with `Z` for an aware rule; `DTSTART`/`TZID` is explicitly left to #637. With #1631, `rrulestr(str(r))` for an aware rule with `UNTIL` raises `ValueError` instead of silently dropping the zone.
 
 ## Reproduction on upstream master
 

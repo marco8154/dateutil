@@ -1,5 +1,7 @@
 # `tz.tzical` raises `OverflowError` for a malformed `DTSTART` in VTIMEZONE
 
+**Status:** submitted upstream as dateutil/dateutil#1683 on 2026-11-24 (by the visionary; the issue text cites `a78cbd8` and notes the affected code is unchanged on `261e291`).
+
 `tzical` parses any invalid iCalendar input as `ValueError`, but a `DTSTART`
 value in a `VTIMEZONE` component that is a long digit string escapes as
 `OverflowError` instead. Found while fuzzing "any string yields an object or
@@ -66,3 +68,5 @@ Searched dateutil/dateutil issues and pull requests (all states, title and body)
 ## Reproduced on upstream master
 
 Reproduced on 2026-11-17 against upstream `master` at commit `a78cbd81d5d03b5f126eb36edb92bca78972c804` (2026-11-01, the current head), Python 3.13.18: the call raises `OverflowError: Python int too large to convert to C int`.
+
+Reproduced again on 2026-11-24 against upstream `master` at `261e291` (current head), Python 3.13.18, with the same input: same `OverflowError`.

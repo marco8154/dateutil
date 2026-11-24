@@ -1,5 +1,7 @@
 # `isoparse` raises `OverflowError` instead of `ValueError` at the end of year 9999
 
+**Status:** submitted upstream as dateutil/dateutil#1684 on 2026-11-24 (by the visionary; the issue text cites `a78cbd8` and notes the affected code is unchanged on `261e291`).
+
 `isoparse` raises `OverflowError: date value out of range` for strings
 that denote a date after `date.max` (9999-12-31). The `isoparse` docstring
 only names `ValueError` for invalid input, and every other out-of-range
@@ -54,3 +56,5 @@ Searched dateutil/dateutil issues and pull requests (all states, title and body)
 ## Reproduced on upstream master
 
 Reproduced on 2026-11-17 against upstream `master` at commit `a78cbd81d5d03b5f126eb36edb92bca78972c804` (2026-11-01, the current head), Python 3.13.18: all four calls in the reproducer raise `OverflowError: date value out of range`.
+
+Reproduced again on 2026-11-24 against upstream `master` at `261e291` (current head), Python 3.13.18: `9999-W53-1` and `9999-12-31T24:00` raise the same `OverflowError`.

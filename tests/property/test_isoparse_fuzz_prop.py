@@ -12,7 +12,7 @@ from strategies_iso import iso_dates, iso_datetimes
 
 ISO_ALPHABET = "0123456789-:T.,+Z W"
 
-OVERFLOW_REPORT = "docs/reports/p6-isoparse-overflowerror.md"
+OVERFLOW_REPORT = "dateutil/dateutil#1684, docs/reports/p6-isoparse-overflowerror.md"
 
 # The two forms of the known finding: a week date after 9999-12-31, and hour
 # 24 on 9999-12-31 in any of its calendar, ordinal or week date spellings.
