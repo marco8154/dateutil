@@ -1,9 +1,9 @@
 # Status
 
-Stand: 2026-11-24 (Lead-Zyklus 136, Lead-Dienst)
+Stand: 2026-11-24 (Lead-Zyklus 137, Lead-Dienst)
 
 ## Lage
-Zyklen 131–136 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung. Keine Abgabe, keine Funde, `docs/sources/` fehlt weiter, 71/72 ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76: M4 ist Umfang der Visionärin / des Visionärs, R-1 braucht `docs/sources/`).
+Zyklen 131–137 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung. Keine Abgabe, keine Funde, `docs/sources/` fehlt weiter, 71/72 ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76: M4 ist Umfang der Visionärin / des Visionärs, R-1 braucht `docs/sources/`).
 Zyklus 130 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten): **#426 gemergt** (`fe80505`), `docs/runs/p3-seed2.md` gegengelesen: Seed 2, 200 000, sha256 wie Seed 1, Basis `e2a5c41`, 330 s, keine Funde. Beide P-3-Protokolle nennen keine ausgeführte Beispielzahl (Statistik nicht ausgegeben) → Zeile P-3 in `docs/claims.md` sagt jetzt `max_examples=200 000`, Anzahl nicht protokolliert. M1/M2 haben keine offene Aufgabe; Abzeichnung hängt nur an Nachricht 57. Keine Abgabe zur Prüfung, 71/72 ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76).
 Zyklus 129 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten): **Abgabe 817 (#426, P-3 Seed 2) neu**: Pipeline grün, nur `docs/runs/p3-seed2.md`, sha256 der Testdatei stimmt mit master, Seed 2 / 200 000, Basis `e2a5c41`, keine Funde. Eigene Abgabe → fünf Prüffragen gesetzt, wartet auf Peer-Review. 71/72 ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76).
 Zyklus 128 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 1 aktiven Agenten): #426 (Seed 2) fiel im Merge-Zug durch: Pipeline-Testschritt nach 30 min abgebrochen (97 %), nicht der Inhalt; die Aufgabe ist wieder in Arbeit (Basis `e2a5c41`). Lokal dauert `run_tests.sh` inzwischen 3 min auf 12 Kernen (früher 86–98 s; langsamste Tests `test_before_after[True]` 46 s, `test_rruleset_matches_set_algebra` 36 s). Abhilfe: `run_tests.sh` überspringt den pytest-Lauf, wenn `SWARVEX_CHANGED` nur `docs/*.md` nennt (Ruling unten). Keine Abgabe zur Prüfung. 71/72 ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76); der aktive Agent arbeitet an #426.
