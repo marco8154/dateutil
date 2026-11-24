@@ -1,8 +1,9 @@
 # Status
 
-Stand: 2026-11-23 (Lead-Zyklus 129, Lead-Dienst)
+Stand: 2026-11-24 (Lead-Zyklus 130, Lead-Dienst)
 
 ## Lage
+Zyklus 130 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten): **#426 gemergt** (`fe80505`), `docs/runs/p3-seed2.md` gegengelesen: Seed 2, 200 000, sha256 wie Seed 1, Basis `e2a5c41`, 330 s, keine Funde. Beide P-3-Protokolle nennen keine ausgeführte Beispielzahl (Statistik nicht ausgegeben) → Zeile P-3 in `docs/claims.md` sagt jetzt `max_examples=200 000`, Anzahl nicht protokolliert. M1/M2 haben keine offene Aufgabe; Abzeichnung hängt nur an Nachricht 57. Keine Abgabe zur Prüfung, 71/72 ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76).
 Zyklus 129 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten): **Abgabe 817 (#426, P-3 Seed 2) neu**: Pipeline grün, nur `docs/runs/p3-seed2.md`, sha256 der Testdatei stimmt mit master, Seed 2 / 200 000, Basis `e2a5c41`, keine Funde. Eigene Abgabe → fünf Prüffragen gesetzt, wartet auf Peer-Review. 71/72 ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76).
 Zyklus 128 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 1 aktiven Agenten): #426 (Seed 2) fiel im Merge-Zug durch: Pipeline-Testschritt nach 30 min abgebrochen (97 %), nicht der Inhalt; die Aufgabe ist wieder in Arbeit (Basis `e2a5c41`). Lokal dauert `run_tests.sh` inzwischen 3 min auf 12 Kernen (früher 86–98 s; langsamste Tests `test_before_after[True]` 46 s, `test_rruleset_matches_set_algebra` 36 s). Abhilfe: `run_tests.sh` überspringt den pytest-Lauf, wenn `SWARVEX_CHANGED` nur `docs/*.md` nennt (Ruling unten). Keine Abgabe zur Prüfung. 71/72 ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76); der aktive Agent arbeitet an #426.
 Zyklus 127 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten): #425 gemergt (`9e300a4`); Laufzeitzeile in `docs/runs/p3-seed1.md` korrigiert (pytest 484.24s, kein `time`-Wrapper). #426 (Seed 2) noch im Merge-Zug. Keine Abgabe zur Prüfung. 71/72 ohne Antwort, kein neuer Schnitt (Ruling Zyklus 76).
@@ -59,7 +60,7 @@ Zyklus 90 (Anlass: Abgabe 657 geprüft, Nachrichten 71/72 offen, 0 freie Aufgabe
 - Nachricht 57 (2026-11-17): Upstream-Berichte T-3 und P-6 einreichen (höchstens 2 offen); danach Reihenfolge T-2a, T-2b, Z-1+Z-1w als ein Issue, T-1 als Kommentar an #1432.
 
 ## Nächste Schritte
--1. Laufzeitkorrektur `p3-seed1.md` erledigt (Zyklus 127). Nach Merge von #426 `docs/runs/p3-seed2.md` kurz gegenlesen; danach M1/M2-Abzeichnung vorbereiten (hängt nur noch an Nachricht 57).
+-1. P-3-Protokolle erledigt (Zyklus 130). M1/M2-Abzeichnung hängt nur noch an Nachricht 57. Künftige Lauf-Aufgaben: `--hypothesis-show-statistics` im Befehl verlangen, damit die ausgeführte Beispielzahl im Protokoll steht.
 0. R-4-Bericht: Reproduktion erledigt (Zyklus 76); Duplikatsuche liegt als Nachricht 72 Q1 bei der Visionärin / dem Visionär — Treffer in den Abschnitt „Duplicate search“ eintragen. Nachricht 72 Q2 (M4): bei Ja M4 interviewen/schneiden (Referenzmodul C, Orakel B, 2 lange Läufe A, Review A; Claim R-7 in `docs/claims.md`).
 1. Nachricht 71 (RFC-Text): sobald `docs/sources/rfc5545.txt` auf master liegt, #458 neu schneiden (Quelle = lokale Datei im Kontext, kein Netz nötig) und #459 danach; danach eigenes kleines Review R-1 (`docs/reviews/m3-r1-review.md`, nach #459). Bei „R-1 raus“: `docs/out-of-scope.md`.
 2. M3: D-5 und R-6 bestätigt (#510/#511/#513/#514 angenommen), #515 umgesetzt. #517 angenommen (Zyklus 83); offen: #518 angenommen (Zyklus 88), #519 angenommen (Zyklus 90, Abgabe 657), #520 angenommen (Zyklus 85), #523 gemergt, SPDX-Prüfung in `run_tests.sh` (Zyklus 95).
