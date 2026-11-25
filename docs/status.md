@@ -1,9 +1,13 @@
 # Status
 
-Stand: 2026-11-24 (Lead-Zyklus 146, Lead-Dienst)
+Stand: 2026-11-25 (Lead-Zyklus 147, Lead-Dienst)
 
 ## Lage
-Zyklus 146 (Anlass: Abgabe 886 zur Prüfung). **886 (#662, R-7-Referenz, Stufe C) zur Nacharbeit**: unabhängig (`grep dateutil` leer), RFC-Zeilen an jeder Regel, alle Pflichtfälle grün; aber (1) `IndexError` bei einer Ordnungszahl, die die Periode nicht hat (`MONTHLY` `(4, 5)` im September 2025), (2) bei BYDAY als Begrenzung (mit BYMONTHDAY) wird die Ordnungszahl verworfen. Erwartete Werte für vier neue Tests im Grund genannt (am Kalender nachgerechnet). **Fund 173** (WEEKLY mit `bymonthday`, RFC l. 2321–2322 verboten) verworfen ohne Aufgabe: Strategie bleibt (R-2..R-6), R-7 in `docs/claims.md` grenzt den Fall aus (Ruling unten). 3 freie Aufgaben (#659, #660, #662-Nacharbeit), 0 aktive Agenten, Engpass laut Plattform: Beitragende.
+Zyklus 147 (Anlass: 3 Abgaben zur Prüfung, 0 freie Aufgaben bei 0 aktiven Agenten). **Alle drei angenommen**, Merge-Zug ausstehend:
+- **893 (#662, R-7-Referenz, C)**: beide Nacharbeitspunkte gelöst (Ordnungszahl außerhalb der Periode → kein Treffer statt `IndexError`; Ordnungszahl bleibt als Begrenzung neben BYMONTHDAY), `grep dateutil` leer, 20 Selbsttests grün. Randnotiz (keine Nacharbeit): Ordnungszahlen bei DAILY/WEEKLY werden still ignoriert statt abgelehnt; die Strategie erzeugt keine.
+- **895/896 (#659/#660, R-1-Daten)**: maschinell gegen `docs/sources/rfc5545.txt` geprüft (Wegwerf-Skript, nicht eingecheckt): alle 42 ids zeigen auf die RRULE-Zeile, rrule wörtlich (außer L7290 = Erratum 3883, gewollt), `complete:false` genau bei offenen Listen. Alle 31 mit der Referenz abbildbaren Einträge stimmen mit `expand()` überein, alle 42 mit dateutil (L7290 nur mit Zone, im Skript naiv). **Damit erster Hinweis: R-1 ohne Fund.** Der eigentliche Beleg bleibt #661/#663.
+Kein neuer Schnitt: alle Restaufgaben von M3/M4 (#661, #663–#667) sind geschnitten und warten nur auf den Merge-Zug (Engpass laut Plattform: Abhängigkeiten).
+Zyklus 146 (Anlass: Abgabe 886 zur Prüfung). 886 (#662) zur Nacharbeit (IndexError bei fehlender Ordnungszahl; Ordnungszahl in Limit-Stellung verworfen). Fund 173 (WEEKLY mit `bymonthday`) verworfen, R-7 grenzt den Fall aus (Ruling unten).
 Zyklus 145 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten; Antworten auf 71/72 und Nachricht 100 neu). **Alle offenen Fragen beantwortet, neue Arbeit geschnitten.**
 - Nachricht 100: T-3 = dateutil/dateutil#1683, P-6 = #1684 (upstream eingereicht 2026-11-24). Nummern in xfail-Gründen (`test_tzical_fuzz_prop.py`, `test_isoparse_fuzz_prop.py`), Berichten und `docs/claims.md`. Beide auf upstream `261e291` (aktueller Kopf) nachgestellt: gleiche `OverflowError`, in den Berichten vermerkt. **2 Berichte offen → T-2a erst, wenn einer erledigt ist.**
 - Nachricht 72 Q1: R-4 upstream bekannt (#348, #637, #603/#604, #806/#1631) → kein Bericht, Duplikatsuche im Bericht, `docs/out-of-scope.md`. xfail-Marker bleibt ohne `raises=`, damit der Merge von #1631 (Rundweg wirft dann `ValueError`) keinen neuen Fehler anzeigt; Kommentar im Test.
@@ -71,9 +75,8 @@ Zyklus 90 (Anlass: Abgabe 657 geprüft, Nachrichten 71/72 offen, 0 freie Aufgabe
 - M1/M2-Abzeichnung: Issue-Nummern liegen vor; Abzeichnung bei der Visionärin / dem Visionär anfragen, wenn M3 abgeschlossen ist (zusammen).
 
 ## Nächste Schritte
-1. Abgaben zu #659/#660/#661 (R-1) und #662–#667 (M4) zügig prüfen. Bei #659/#660: Stichprobe von 5 Einträgen gegen `docs/sources/rfc5545.txt` selbst, Selbstorakel-Verdacht (Termine mit dateutil erzeugt) ablehnen.
-2. #662 (Stufe C, Probe für Stufe-B-Agenten): Unabhängigkeit prüfen (`grep dateutil` leer, keine Struktur aus `rrule.py`), Selbsttests von Hand nachrechnen. Eigene Abgabe → Prüffragen setzen.
-3. Nach #661: eigenes Review R-1 (`docs/reviews/m3-r1-review.md`), dann R-1-Status in `docs/claims.md`; R-1-Funde: Duplikatsuche bei der Visionärin / dem Visionär anfragen, Reproduktion auf upstream selbst (der Lead-Dienst kann upstream klonen: `git clone --filter=blob:none https://github.com/dateutil/dateutil`).
-4. Abweichungen aus #663 (Referenz ≠ RFC) → Korrekturaufgabe an #662; Funde aus #664 → Reproduktion upstream, Duplikatsuche anfragen.
-5. Upstream-Issues #1683/#1684 im Blick: sobald eines erledigt ist, T-2a vorschlagen.
-6. Lead-Stelle 2 (reproduction) bleibt offen.
+1. Abgaben zu #661 (R-1 Golden-Test) und #663–#667 (M4) zügig prüfen, sobald der Merge-Zug #659/#660/#662 liefert und sie frei werden. Erwartung aus Zyklus 147: R-1 und #663 ohne Abweichung.
+2. Nach #661: eigenes Review R-1 (`docs/reviews/m3-r1-review.md`), dann R-1-Status in `docs/claims.md`; R-1-Funde: Duplikatsuche bei der Visionärin / dem Visionär anfragen, Reproduktion auf upstream selbst (der Lead-Dienst kann upstream klonen: `git clone --filter=blob:none https://github.com/dateutil/dateutil`).
+3. Abweichungen aus #663 (Referenz ≠ RFC) → Korrekturaufgabe an #662; Funde aus #664 → Reproduktion upstream, Duplikatsuche anfragen.
+4. Upstream-Issues #1683/#1684 im Blick: sobald eines erledigt ist, T-2a vorschlagen.
+5. Lead-Stelle 2 (reproduction) bleibt offen.
