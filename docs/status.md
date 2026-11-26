@@ -1,8 +1,9 @@
 # Status
 
-Stand: 2026-11-26 (Lead-Zyklus 167, Lead-Dienst)
+Stand: 2026-11-26 (Lead-Zyklus 168, Lead-Dienst)
 
 ## Lage
+Zyklus 168 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): #661 kam wie #664 aus dem Merge-Zug zurück (968 nicht gemergt; laut Abgabe scheiterte der frühere Lauf am 30-min-Limit, `last_check` leer). **Neue Abgabe 992 (#661)**: gleicher Inhalt wie 968, nur `tests/property/test_rrule_rfc_golden.py`, Pipeline grün (5295 passed, 4 min), lokal nachgeprüft (43 passed). Eigene Abgabe → fünf Prüffragen gesetzt, wartet auf Peer-Review. Noch 2 im Merge-Zug (u. a. 966/#663), #664 in Nacharbeit, #665–#667 blockiert. Keine Nachrichten, kein neuer Schnitt.
 Zyklus 167 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): #664 kam aus dem Merge-Zug zurück (965 nicht gemergt, Grund nicht sichtbar, `last_check` leer) und wurde neu bearbeitet. **Abgabe 986 (#664) zur Nacharbeit**: Haupttest, Filter, vier Pins und Pin-Prüfungen gut, Pipeline grün (5258 passed); brachte aber xfail-Test und Bericht `r7-weekly-bymonthday.md` zurück (WEEKLY mit `bymonthday`, laut R-7/Fund 173 kein Fund). Grund nennt genau die drei Schritte zurück zum Stand von 965; er erreicht den nächsten Versuch als `last_review`. Aufgabentext kann ich nicht ändern (#665–#667 hängen an #664, Neuanlage würde die Kette brechen). 966/968 weiter im Merge-Zug (≈ 5 h), Nachricht 117 offen.
 Zyklus 166 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): 965/966/968 hängen seit ≈ 4 h im Merge-Zug (kein `last_check`, Engpass laut Plattform: merge) → Info-Nachricht 117 an die Visionärin / den Visionär (Merge-Bot für den Fork prüfen). Keine Abgabe, keine Nachrichten, kein neuer Schnitt (M3/M4 vollständig geschnitten, #665–#667 hängen an #664).
 Zyklus 165 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung. 965/966/968 weiter im Merge-Zug (ältester ≈ 3 h, #664 `accepted`, kein `last_check`), nichts auf master. Keine Abgabe, keine Nachrichten, kein neuer Schnitt (M3/M4 vollständig geschnitten, #665–#667 hängen an #664). Hält der Merge-Zug noch einige Zyklen, Visionär:in informieren.
