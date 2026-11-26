@@ -1,8 +1,9 @@
 # Status
 
-Stand: 2026-11-26 (Lead-Zyklus 148, Lead-Dienst)
+Stand: 2026-11-26 (Lead-Zyklus 149, Lead-Dienst)
 
 ## Lage
+Zyklus 149 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten). **Drei eigene Abgaben im Peer-Review, je fünf Prüffragen gesetzt**: 965 (#664 Nacharbeit, R-7-Orakeltest: xfail und Bericht entfernt, Filter mit Verweis auf `docs/claims.md`, vier Pins mit 4/4/3/4 Terminen, WKST SU→5/17/19/31 vs. MO→5/10/19/24), 966 (#663, Referenz gegen RFC: 34 grün, 8 außerhalb der Reichweite übersprungen, keine Abweichung, kein dateutil-Import), 968 (#661, R-1-Golden-Test: alle 42 RFC-Beispiele grün, kein Fund, kein Bericht). Alle drei lokal nachgeprüft (77 passed, 8 skipped). **Damit: R-1 ohne Fund, Referenz an der RFC bestätigt, R-7 im Normallauf ohne Abweichung.** #665–#667 werden nach dem Merge von #664 frei. Kein neuer Schnitt: M3/M4 vollständig geschnitten, Engpass Peer-Review und Abhängigkeiten.
 Zyklus 148 (Routinezyklus). Merge-Zug hat #659/#660/#662 geliefert (`cf6aca4`, `970bb8a`, `c8c45ef`); #661 und #663 sind frei, #665–#667 warten auf #664. **Abgabe 957 (#664, R-7-Orakeltest) zur Nacharbeit**: Haupttest, Filter und vier Pins gut, Pipeline grün (5253 passed). Die einzige Abweichung ist WEEKLY mit `bymonthday` ohne `byweekday`, laut Register R-7 (Fund 173) kein Fund; die Abgabe pinnte sie trotzdem als xfail mit Berichtsentwurf, weil meine Aufgabe das Ruling nicht wiederholte (Schnittfehler, im Grund gesagt). Nacharbeit: xfail-Test und Bericht weg, Filter bleibt mit Verweis auf `docs/claims.md`. **Damit zweiter Hinweis: R-7 im RFC-gültigen Raum ohne Abweichung** (Beleg erst mit #665/#666). 0 aktive Agenten, keine Nachrichten, kein neuer Schnitt nötig.
 Zyklus 147 (Anlass: 3 Abgaben zur Prüfung, 0 freie Aufgaben bei 0 aktiven Agenten). **Alle drei angenommen**, Merge-Zug ausstehend:
 - **893 (#662, R-7-Referenz, C)**: beide Nacharbeitspunkte gelöst (Ordnungszahl außerhalb der Periode → kein Treffer statt `IndexError`; Ordnungszahl bleibt als Begrenzung neben BYMONTHDAY), `grep dateutil` leer, 20 Selbsttests grün. Randnotiz (keine Nacharbeit): Ordnungszahlen bei DAILY/WEEKLY werden still ignoriert statt abgelehnt; die Strategie erzeugt keine.
@@ -76,7 +77,7 @@ Zyklus 90 (Anlass: Abgabe 657 geprüft, Nachrichten 71/72 offen, 0 freie Aufgabe
 - M1/M2-Abzeichnung: Issue-Nummern liegen vor; Abzeichnung bei der Visionärin / dem Visionär anfragen, wenn M3 abgeschlossen ist (zusammen).
 
 ## Nächste Schritte
-1. Abgaben zu #661 (R-1 Golden-Test) und #663–#667 (M4) zügig prüfen, sobald der Merge-Zug #659/#660/#662 liefert und sie frei werden. Erwartung aus Zyklus 147: R-1 und #663 ohne Abweichung.
+1. Peer-Reviews von 965/966/968 abwarten; danach #665/#666 (lange Läufe R-7) und #667 (Review) zügig prüfen. Bleibt Peer-Review > 24 h aus: Visionär:in bitten, Prüfer:innen zu werben.
 2. Nach #661: eigenes Review R-1 (`docs/reviews/m3-r1-review.md`), dann R-1-Status in `docs/claims.md`; R-1-Funde: Duplikatsuche bei der Visionärin / dem Visionär anfragen, Reproduktion auf upstream selbst (der Lead-Dienst kann upstream klonen: `git clone --filter=blob:none https://github.com/dateutil/dateutil`).
 3. Abweichungen aus #663 (Referenz ≠ RFC) → Korrekturaufgabe an #662; Funde aus #664 → Reproduktion upstream, Duplikatsuche anfragen.
 4. Upstream-Issues #1683/#1684 im Blick: sobald eines erledigt ist, T-2a vorschlagen.
