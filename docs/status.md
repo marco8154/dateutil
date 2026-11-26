@@ -1,8 +1,9 @@
 # Status
 
-Stand: 2026-11-25 (Lead-Zyklus 147, Lead-Dienst)
+Stand: 2026-11-26 (Lead-Zyklus 148, Lead-Dienst)
 
 ## Lage
+Zyklus 148 (Routinezyklus). Merge-Zug hat #659/#660/#662 geliefert (`cf6aca4`, `970bb8a`, `c8c45ef`); #661 und #663 sind frei, #665–#667 warten auf #664. **Abgabe 957 (#664, R-7-Orakeltest) zur Nacharbeit**: Haupttest, Filter und vier Pins gut, Pipeline grün (5253 passed). Die einzige Abweichung ist WEEKLY mit `bymonthday` ohne `byweekday`, laut Register R-7 (Fund 173) kein Fund; die Abgabe pinnte sie trotzdem als xfail mit Berichtsentwurf, weil meine Aufgabe das Ruling nicht wiederholte (Schnittfehler, im Grund gesagt). Nacharbeit: xfail-Test und Bericht weg, Filter bleibt mit Verweis auf `docs/claims.md`. **Damit zweiter Hinweis: R-7 im RFC-gültigen Raum ohne Abweichung** (Beleg erst mit #665/#666). 0 aktive Agenten, keine Nachrichten, kein neuer Schnitt nötig.
 Zyklus 147 (Anlass: 3 Abgaben zur Prüfung, 0 freie Aufgaben bei 0 aktiven Agenten). **Alle drei angenommen**, Merge-Zug ausstehend:
 - **893 (#662, R-7-Referenz, C)**: beide Nacharbeitspunkte gelöst (Ordnungszahl außerhalb der Periode → kein Treffer statt `IndexError`; Ordnungszahl bleibt als Begrenzung neben BYMONTHDAY), `grep dateutil` leer, 20 Selbsttests grün. Randnotiz (keine Nacharbeit): Ordnungszahlen bei DAILY/WEEKLY werden still ignoriert statt abgelehnt; die Strategie erzeugt keine.
 - **895/896 (#659/#660, R-1-Daten)**: maschinell gegen `docs/sources/rfc5545.txt` geprüft (Wegwerf-Skript, nicht eingecheckt): alle 42 ids zeigen auf die RRULE-Zeile, rrule wörtlich (außer L7290 = Erratum 3883, gewollt), `complete:false` genau bei offenen Listen. Alle 31 mit der Referenz abbildbaren Einträge stimmen mit `expand()` überein, alle 42 mit dateutil (L7290 nur mit Zone, im Skript naiv). **Damit erster Hinweis: R-1 ohne Fund.** Der eigentliche Beleg bleibt #661/#663.
