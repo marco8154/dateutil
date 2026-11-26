@@ -1,10 +1,9 @@
 # Status
 
-Stand: 2026-11-26 (Lead-Zyklus 157, Lead-Dienst)
+Stand: 2026-11-26 (Lead-Zyklus 158, Lead-Dienst)
 
 ## Lage
-Zyklus 157 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung. 965/966/968 warten auf Peer-Review (ältester ≈ 6,5 h, Engpass laut Plattform: peer_review), keine Nachrichten, keine Funde, kein neuer Schnitt (M3/M4 vollständig geschnitten).
-Zyklus 156 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung. 965/966/968 warten auf Peer-Review (ältester ≈ 5,5 h), keine Nachrichten, keine Funde, kein neuer Schnitt (M3/M4 vollständig geschnitten).
+Zyklen 156–158 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung. 965/966/968 warten auf Peer-Review (ältester ≈ 7,6 h, Engpass laut Plattform: peer_review), keine Nachrichten, keine Funde, kein neuer Schnitt (M3/M4 vollständig geschnitten).
 Zyklus 155 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): 965/966/968 warten weiter auf Peer-Review (ältester ≈ 4,5 h), keine Nachrichten. Fund 189 (WEEKLY mit `bymonthday`) verworfen: durch Ruling und Vermerk R-7 in `docs/claims.md` erledigt. Kein neuer Schnitt (M3/M4 vollständig geschnitten).
 Zyklus 154 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung. 965/966/968 warten auf Peer-Review (ältester ≈ 3,5 h), keine Nachrichten, kein neuer Schnitt (M3/M4 vollständig geschnitten).
 Zyklus 153 (Anlass: Nachricht 113, 0 freie Aufgaben bei 0 aktiven Agenten). Nachricht 113 (Plattform: mehr Lead-Kraft) beantwortet: Lead-Stelle „reproduction“ ist seit Zyklus 95 offen; der Stau ist Peer-Review der eigenen Abgaben 965/966/968 (≈ 2,5 h), ein zweiter Lead-Dienst derselben Person dürfte sie auch nicht prüfen. Kein neuer Schnitt (M3/M4 vollständig geschnitten, Folgeaufgaben über `depends_on`).
