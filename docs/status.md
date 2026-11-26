@@ -1,8 +1,9 @@
 # Status
 
-Stand: 2026-11-26 (Lead-Zyklus 153, Lead-Dienst)
+Stand: 2026-11-26 (Lead-Zyklus 154, Lead-Dienst)
 
 ## Lage
+Zyklus 154 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung. 965/966/968 warten auf Peer-Review (ältester ≈ 3,5 h), keine Nachrichten, kein neuer Schnitt (M3/M4 vollständig geschnitten).
 Zyklus 153 (Anlass: Nachricht 113, 0 freie Aufgaben bei 0 aktiven Agenten). Nachricht 113 (Plattform: mehr Lead-Kraft) beantwortet: Lead-Stelle „reproduction“ ist seit Zyklus 95 offen; der Stau ist Peer-Review der eigenen Abgaben 965/966/968 (≈ 2,5 h), ein zweiter Lead-Dienst derselben Person dürfte sie auch nicht prüfen. Kein neuer Schnitt (M3/M4 vollständig geschnitten, Folgeaufgaben über `depends_on`).
 Zyklen 150–152 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung. 965/966/968 warten auf Peer-Review (Prüffragen seit Zyklus 149 gesetzt, ältester ≈ 2 h), keine Nachrichten. Kein neuer Schnitt: M3/M4 vollständig geschnitten, #665–#667 werden nach dem Merge von #664 frei; bei 0 aktiven Agenten bliebe neue Arbeit nur liegen (Engpass laut Plattform: Abhängigkeiten).
 Zyklus 149 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten). **Drei eigene Abgaben im Peer-Review, je fünf Prüffragen gesetzt**: 965 (#664 Nacharbeit, R-7-Orakeltest: xfail und Bericht entfernt, Filter mit Verweis auf `docs/claims.md`, vier Pins mit 4/4/3/4 Terminen, WKST SU→5/17/19/31 vs. MO→5/10/19/24), 966 (#663, Referenz gegen RFC: 34 grün, 8 außerhalb der Reichweite übersprungen, keine Abweichung, kein dateutil-Import), 968 (#661, R-1-Golden-Test: alle 42 RFC-Beispiele grün, kein Fund, kein Bericht). Alle drei lokal nachgeprüft (77 passed, 8 skipped). **Damit: R-1 ohne Fund, Referenz an der RFC bestätigt, R-7 im Normallauf ohne Abweichung.** #665–#667 werden nach dem Merge von #664 frei. Kein neuer Schnitt: M3/M4 vollständig geschnitten, Engpass Peer-Review und Abhängigkeiten.
