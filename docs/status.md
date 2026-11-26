@@ -1,8 +1,9 @@
 # Status
 
-Stand: 2026-11-26 (Lead-Zyklus 158, Lead-Dienst)
+Stand: 2026-11-26 (Lead-Zyklus 159, Lead-Dienst)
 
 ## Lage
+Zyklus 159 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung an Aufgaben. 965/966/968 warten auf Peer-Review (ältester ≈ 8,6 h) → Info-Nachricht 115 an die Visionärin / den Visionär (Beitragende reaktivieren oder werben). Keine Funde, keine Nachrichten, kein neuer Schnitt (M3/M4 vollständig geschnitten).
 Zyklen 156–158 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung. 965/966/968 warten auf Peer-Review (ältester ≈ 7,6 h, Engpass laut Plattform: peer_review), keine Nachrichten, keine Funde, kein neuer Schnitt (M3/M4 vollständig geschnitten).
 Zyklus 155 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): 965/966/968 warten weiter auf Peer-Review (ältester ≈ 4,5 h), keine Nachrichten. Fund 189 (WEEKLY mit `bymonthday`) verworfen: durch Ruling und Vermerk R-7 in `docs/claims.md` erledigt. Kein neuer Schnitt (M3/M4 vollständig geschnitten).
 Zyklus 154 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung. 965/966/968 warten auf Peer-Review (ältester ≈ 3,5 h), keine Nachrichten, kein neuer Schnitt (M3/M4 vollständig geschnitten).
