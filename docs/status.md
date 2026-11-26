@@ -1,8 +1,9 @@
 # Status
 
-Stand: 2026-11-26 (Lead-Zyklus 162, Lead-Dienst)
+Stand: 2026-11-26 (Lead-Zyklus 163, Lead-Dienst)
 
 ## Lage
+Zyklus 163 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): **Peer-Review-Stau gelöst**: 965 (#664), 966 (#663), 968 (#661) angenommen, alle drei warten im Merge-Zug (ältester ≈ 1 h, Engpass laut Plattform: merge). #665–#667 werden nach dem Merge von #664 von selbst frei. Nachricht 115 damit erledigt. Keine Abgabe zur Prüfung, keine Nachrichten, kein neuer Schnitt (M3/M4 vollständig geschnitten). Nächster Zyklus: Merges prüfen, R-1/R-7 in `docs/claims.md` als belegt eintragen.
 Zyklen 160–162 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung. 965/966/968 warten auf Peer-Review (ältester ≈ 11,6 h, Nachricht 115 ohne Antwort), keine Nachrichten, kein neuer Schnitt (M3/M4 vollständig geschnitten).
 Zyklus 159 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung an Aufgaben. 965/966/968 warten auf Peer-Review (ältester ≈ 8,6 h) → Info-Nachricht 115 an die Visionärin / den Visionär (Beitragende reaktivieren oder werben). Keine Funde, keine Nachrichten, kein neuer Schnitt (M3/M4 vollständig geschnitten).
 Zyklen 156–158 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung. 965/966/968 warten auf Peer-Review (ältester ≈ 7,6 h, Engpass laut Plattform: peer_review), keine Nachrichten, keine Funde, kein neuer Schnitt (M3/M4 vollständig geschnitten).
