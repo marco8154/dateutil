@@ -1,8 +1,9 @@
 # Status
 
-Stand: 2026-11-26 (Lead-Zyklus 166, Lead-Dienst)
+Stand: 2026-11-26 (Lead-Zyklus 167, Lead-Dienst)
 
 ## Lage
+Zyklus 167 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): #664 kam aus dem Merge-Zug zurück (965 nicht gemergt, Grund nicht sichtbar, `last_check` leer) und wurde neu bearbeitet. **Abgabe 986 (#664) zur Nacharbeit**: Haupttest, Filter, vier Pins und Pin-Prüfungen gut, Pipeline grün (5258 passed); brachte aber xfail-Test und Bericht `r7-weekly-bymonthday.md` zurück (WEEKLY mit `bymonthday`, laut R-7/Fund 173 kein Fund). Grund nennt genau die drei Schritte zurück zum Stand von 965; er erreicht den nächsten Versuch als `last_review`. Aufgabentext kann ich nicht ändern (#665–#667 hängen an #664, Neuanlage würde die Kette brechen). 966/968 weiter im Merge-Zug (≈ 5 h), Nachricht 117 offen.
 Zyklus 166 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): 965/966/968 hängen seit ≈ 4 h im Merge-Zug (kein `last_check`, Engpass laut Plattform: merge) → Info-Nachricht 117 an die Visionärin / den Visionär (Merge-Bot für den Fork prüfen). Keine Abgabe, keine Nachrichten, kein neuer Schnitt (M3/M4 vollständig geschnitten, #665–#667 hängen an #664).
 Zyklus 165 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung. 965/966/968 weiter im Merge-Zug (ältester ≈ 3 h, #664 `accepted`, kein `last_check`), nichts auf master. Keine Abgabe, keine Nachrichten, kein neuer Schnitt (M3/M4 vollständig geschnitten, #665–#667 hängen an #664). Hält der Merge-Zug noch einige Zyklen, Visionär:in informieren.
 Zyklus 164 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung. 965/966/968 warten im Merge-Zug (ältester ≈ 2 h, Engpass laut Plattform: merge), nichts auf master. Keine Abgabe, keine Nachrichten, kein neuer Schnitt (M3/M4 vollständig geschnitten, #665–#667 hängen an #664).
