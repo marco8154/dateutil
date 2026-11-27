@@ -1,8 +1,9 @@
 # Status
 
-Stand: 2026-11-27 (Lead-Zyklus 170, Lead-Dienst)
+Stand: 2026-11-27 (Lead-Zyklus 171, Lead-Dienst)
 
 ## Lage
+Zyklus 171 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): Merge-Zug hat **#661 (`56b630d`), #665 (`b6c3268`), #666 (`bcc2f7c`)** geliefert. #663 kam aus dem Merge-Zug zurück (Konflikt laut Plattform auf `test_rrule_reference_rfc.py`) und wurde neu abgegeben: **Abgabe 1027**, gleicher Inhalt wie 966, Pipeline-Bericht grün (5292 passed), lokal 34 passed / 8 skipped, `grep dateutil` leer. Annahme vom Werkzeug abgelehnt, weil die Aufgabe noch auf „checking“ steht → nächster Zyklus annehmen (oder Peer-Review, falls eigene Abgabe). **R-1 bestätigt**: eigenes Review `docs/reviews/m3-r1-review.md` (42/42 grün, kein Fund), Register nachgezogen; R-7-Protokolle im Register verlinkt. **M3 abgeschlossen** (Schätzung 42/42), M4-Schätzung 6 (Puffer gestrichen). Abzeichnung M1–M3 angefragt (Nachricht 121, approval). Nachricht 117 (Merge-Zug) damit erledigt. Keine Nachrichten, kein neuer Schnitt (#667 wird nach dem Merge von #663 frei).
 Zyklus 170 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung. 4 Abgaben im Merge-Zug (#661, #663, #665, #666; älteste ≈ 6,8 h, Engpass laut Plattform: merge), nichts davon auf master. #667 wartet auf #663. Keine Abgabe, keine Nachrichten, kein neuer Schnitt (M3/M4 vollständig geschnitten). Nachfassen zu Nachricht 117 ab 12 h.
 Zyklus 169 (Anlass: 2 Abgaben zur Prüfung, 0 freie Aufgaben bei 0 aktiven Agenten): **#664 gemergt** (`1c872bd`, Orakeltest R-7). **1005 (#665) und 1006 (#666) angenommen**: R-7 lange Läufe je 20 000 Beispiele, Seed 1/2, 0 failing (2492/2399 invalid), sha256 beider Dateien stimmt mit master, Peer-Review je approve; Seed 1 lokal reproduziert mit gleicher Statistik (2 min). Laufzeit ≈ 1 min statt geschätzter 10–30 min (Fenster ≤ 731 Tage). R-7-Zeile in `docs/claims.md` ergänzt. #661/#663 weiter im Merge-Zug (≈ 6 h, Nachricht 117 bereits gesendet), #667 (Review M4) wird nach #663 frei. Kein neuer Schnitt (M3/M4 vollständig geschnitten). Keine Nachrichten.
 Zyklus 168 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): #661 kam wie #664 aus dem Merge-Zug zurück (968 nicht gemergt; laut Abgabe scheiterte der frühere Lauf am 30-min-Limit, `last_check` leer). **Neue Abgabe 992 (#661)**: gleicher Inhalt wie 968, nur `tests/property/test_rrule_rfc_golden.py`, Pipeline grün (5295 passed, 4 min), lokal nachgeprüft (43 passed). Eigene Abgabe → fünf Prüffragen gesetzt, wartet auf Peer-Review. Noch 2 im Merge-Zug (u. a. 966/#663), #664 in Nacharbeit, #665–#667 blockiert. Keine Nachrichten, kein neuer Schnitt.
@@ -88,12 +89,13 @@ Zyklus 90 (Anlass: Abgabe 657 geprüft, Nachrichten 71/72 offen, 0 freie Aufgabe
 - Ruling: SPDX `Apache-2.0 AND BSD-3-Clause` nur in neuen Dateien außerhalb von `src/` und `tests/`. Grund: upstream führt keine Header. Kosten, falls falsch: Header ergänzen.
 
 ## Offene Freigaben
-- keine. Upstream offen: #1683 (T-3), #1684 (P-6); höchstens 2 offen, also nächster Bericht (T-2a) erst nach Erledigung eines davon. Danach T-2b, Z-1+Z-1w als ein Issue, T-1 als Kommentar an #1432 (Reihenfolge aus Nachricht 57).
-- M1/M2-Abzeichnung: Issue-Nummern liegen vor; Abzeichnung bei der Visionärin / dem Visionär anfragen, wenn M3 abgeschlossen ist (zusammen).
+- Nachricht 121: Abzeichnung M1, M2, M3 (approval an die Visionärin / den Visionär).
+- Upstream offen: #1683 (T-3), #1684 (P-6); höchstens 2 offen, also nächster Bericht (T-2a) erst nach Erledigung eines davon. Danach T-2b, Z-1+Z-1w als ein Issue, T-1 als Kommentar an #1432 (Reihenfolge aus Nachricht 57).
 
 ## Nächste Schritte
-1. Merge von #661/#663/#665/#666 abwarten; dann #667 (Review M4) zügig prüfen und R-7 in `docs/claims.md` als belegt eintragen (nach Merge der Protokolle). Hängt der Merge-Zug weiter > 12 h: Nachricht 117 nachfassen.
-2. Nach #661: eigenes Review R-1 (`docs/reviews/m3-r1-review.md`), dann R-1-Status in `docs/claims.md`; R-1-Funde: Duplikatsuche bei der Visionärin / dem Visionär anfragen, Reproduktion auf upstream selbst (der Lead-Dienst kann upstream klonen: `git clone --filter=blob:none https://github.com/dateutil/dateutil`).
-3. Abweichungen aus #663 (Referenz ≠ RFC) → Korrekturaufgabe an #662; Funde aus #664 → Reproduktion upstream, Duplikatsuche anfragen.
+1. Abgabe 1027 (#663) annehmen, sobald die Prüfung abgeschlossen ist (bei eigener Abgabe: Prüffragen setzen wie bei 966). Nach dem Merge wird #667 (Review M4) frei; zügig prüfen.
+2. Nach #667: R-7 in `docs/claims.md` als bestätigt eintragen (Läufe gemergt, Referenz an der RFC bestätigt), M4 abschließen und Abzeichnung anfragen.
+3. Antwort auf Nachricht 121 einarbeiten.
 4. Upstream-Issues #1683/#1684 im Blick: sobald eines erledigt ist, T-2a vorschlagen.
-5. Lead-Stelle 2 (reproduction) bleibt offen.
+5. Danach: mit der Visionärin / dem Visionär klären, ob ein M5 folgt (Projektziel laut Brief erreicht, sobald die Berichte upstream liegen).
+6. Lead-Stelle 2 (reproduction) bleibt offen.
