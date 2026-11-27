@@ -1,8 +1,9 @@
 # Status
 
-Stand: 2026-11-27 (Lead-Zyklus 172, Lead-Dienst)
+Stand: 2026-11-27 (Lead-Zyklus 173, Lead-Dienst)
 
 ## Lage
+Zyklus 173 (Anlass: Abgabe 1027 geprüft, Nachricht 121 offen, 0 freie Aufgaben bei 0 aktiven Agenten): **1027 (#663) angenommen** (Inhalt wie 966, Pipeline grün: 5292 passed), wartet im Merge-Zug; danach wird #667 (Review M4) frei. Auffällig: der Pipeline-Lauf dauerte 26 min 23 s (Bericht 1583 s), nahe am 30-min-Limit (Risiko unten). Nachricht 121 ist die eigene Abzeichnungs-Anfrage, wartet auf die Visionärin / den Visionär. Kein neuer Schnitt (M4 vollständig geschnitten, Engpass laut Plattform: Abhängigkeiten).
 Zyklus 172 (Anlass: Nachricht 121 offen, 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung. Abgabe 1027 (#663) steht weiter auf „checking“ (≈ 0,5 h), Annahme vom Werkzeug erneut abgelehnt → nächster Zyklus annehmen (Inhalt geprüft, Begründung steht). Nachricht 121 ist die eigene Abzeichnungs-Anfrage an die Visionärin / den Visionär, wartet auf deren Entscheidung. Kein neuer Schnitt: M4 vollständig geschnitten, #667 wird nach dem Merge von #663 frei (Engpass laut Plattform: Abhängigkeiten).
 Zyklus 171 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): Merge-Zug hat **#661 (`56b630d`), #665 (`b6c3268`), #666 (`bcc2f7c`)** geliefert. #663 kam aus dem Merge-Zug zurück (Konflikt laut Plattform auf `test_rrule_reference_rfc.py`) und wurde neu abgegeben: **Abgabe 1027**, gleicher Inhalt wie 966, Pipeline-Bericht grün (5292 passed), lokal 34 passed / 8 skipped, `grep dateutil` leer. Annahme vom Werkzeug abgelehnt, weil die Aufgabe noch auf „checking“ steht → nächster Zyklus annehmen (oder Peer-Review, falls eigene Abgabe). **R-1 bestätigt**: eigenes Review `docs/reviews/m3-r1-review.md` (42/42 grün, kein Fund), Register nachgezogen; R-7-Protokolle im Register verlinkt. **M3 abgeschlossen** (Schätzung 42/42), M4-Schätzung 6 (Puffer gestrichen). Abzeichnung M1–M3 angefragt (Nachricht 121, approval). Nachricht 117 (Merge-Zug) damit erledigt. Keine Nachrichten, kein neuer Schnitt (#667 wird nach dem Merge von #663 frei).
 Zyklus 170 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung. 4 Abgaben im Merge-Zug (#661, #663, #665, #666; älteste ≈ 6,8 h, Engpass laut Plattform: merge), nichts davon auf master. #667 wartet auf #663. Keine Abgabe, keine Nachrichten, kein neuer Schnitt (M3/M4 vollständig geschnitten). Nachfassen zu Nachricht 117 ab 12 h.
@@ -54,6 +55,7 @@ Zyklus 91 (Anlass: Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agent
 Zyklus 90 (Anlass: Abgabe 657 geprüft, Nachrichten 71/72 offen, 0 freie Aufgaben bei 0 aktiven Agenten). **657 (#519, Seed 2) angenommen**: 20 000 passing, 0 failing, sha256 stimmt mit master; R-2 count mit Zone damit doppelt bestätigt, sobald der Merge-Zug beide Protokolle liefert. #523 (SPDX) wird danach von selbst frei. Kein neuer Schnitt (Ruling Zyklus 76). 71/72 und 57 weiter ohne Antwort; 443, 531, 533, 538 weiter im Peer-Review-Stau.
 
 ## Risiken
+- Pipeline-Testlauf für 1027 dauerte 26 min 23 s (4 Worker), das Limit ist 30 min; lokal und früher 2–4 min. Fällt ein Merge-Zug-Lauf deshalb durch, langsamste Tests messen (`--durations`) und als Aufgabe beschleunigen bzw. im Normallauf verkleinern.
 - Abgaben 440–444, 446 hatten Pipeline-Berichte vom alten, kaputten Test-Schritt (443/#387 deshalb zurückgeschickt) (Gegenprobe „Basis rot“). Peer-Reviewer:innen sollten das wissen; der Merge-Zug prüft sie mit `run_tests.sh` neu.
 - Peer-Review hängt an Agenten anderer Personen; ohne sie stauen sich eigene Abgaben. Falls das anhält: Visionär:in fragen, ob weitere Beitragende geworben werden können.
 - Abgabe 446: mit `-n auto` ~55 s für eine Datei, weil jeder Worker `transitions()` neu rechnet; Gesamtlauf lokal 86–98 s, unkritisch.
@@ -94,7 +96,7 @@ Zyklus 90 (Anlass: Abgabe 657 geprüft, Nachrichten 71/72 offen, 0 freie Aufgabe
 - Upstream offen: #1683 (T-3), #1684 (P-6); höchstens 2 offen, also nächster Bericht (T-2a) erst nach Erledigung eines davon. Danach T-2b, Z-1+Z-1w als ein Issue, T-1 als Kommentar an #1432 (Reihenfolge aus Nachricht 57).
 
 ## Nächste Schritte
-1. Abgabe 1027 (#663) annehmen, sobald die Prüfung abgeschlossen ist (bei eigener Abgabe: Prüffragen setzen wie bei 966). Nach dem Merge wird #667 (Review M4) frei; zügig prüfen.
+1. Merge von #663 (Abgabe 1027, angenommen) abwarten; danach wird #667 (Review M4) frei, zügig prüfen. Schlägt der Merge-Zug am 30-min-Limit fehl: Laufzeit-Aufgabe schneiden (Risiko oben).
 2. Nach #667: R-7 in `docs/claims.md` als bestätigt eintragen (Läufe gemergt, Referenz an der RFC bestätigt), M4 abschließen und Abzeichnung anfragen.
 3. Antwort auf Nachricht 121 einarbeiten.
 4. Upstream-Issues #1683/#1684 im Blick: sobald eines erledigt ist, T-2a vorschlagen.
