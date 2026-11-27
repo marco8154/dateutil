@@ -53,10 +53,10 @@ def expand(freq: str, dtstart: datetime, *, interval: int = 1,
             continue
         if freq in ("DAILY", "WEEKLY"):
             # BYDAY MUST NOT have a numeric value unless FREQ is MONTHLY or
-            # YEARLY. RFC 5545 3.3.10, l. 2314-2316.
+            # YEARLY. RFC 5545 3.3.10, l. 2312-2314.
             raise ValueError(f"ordinal BYDAY {term!r} is not allowed for {freq}")
         if n == 0 or abs(n) > 53:
-            # The ordinal is +/-(1..53). RFC 5545 3.3.10, l. 2310-2313.
+            # The ordinal is +/-(1..53). RFC 5545 3.3.10, l. 2178 (ordwk).
             raise ValueError(f"BYDAY ordinal must be +/-1..53, got {n!r}")
 
     plain_wd, nth_wd = _split_weekdays(byweekday)
@@ -189,8 +189,9 @@ def _is_selected_day(freq, dtstart, day, months, bymonthday, plain_wd, nth_wd):
         # RFC 5545 3.3.10, l. 2382, 2388-2393.
         return day.day == dtstart.day
 
-    # YEARLY (l. 2442 Note 2, erratum 3779/1913): ordinal is within the month
-    # when BYMONTH is present, otherwise within the year.
+    # YEARLY (l. 2442 Note 2, errata 3779/1913 in docs/sources/rfc5545-errata.md):
+    # ordinal is within the month when BYMONTH is present, otherwise within the
+    # year.
     scope = "month" if months else "year"
     if bymonthday:
         if not _monthday_matches(day, bymonthday):
