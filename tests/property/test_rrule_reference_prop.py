@@ -23,6 +23,8 @@ def _cap_until(kw):
 
 
 # RFC 5545 forbids BYMONTHDAY with FREQ=WEEKLY (l. 2321-2322); outside claim R-7, see docs/claims.md.
+# WEEKLY with BYMONTHDAY and BYWEEKDAY stays in the comparison on purpose: a match there means
+# same behavior, not RFC conformance (docs/claims.md, R-7).
 def _weekly_bymonthday_only(kw):
     return (kw["freq"] == WEEKLY and kw["bymonthday"] is not None
             and kw["byweekday"] is None)
