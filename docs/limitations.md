@@ -1,6 +1,6 @@
 # Grenzen der Ergebnisse
 
-Stand: 1421f9b47787c97c8795d87d93b27c8189b49774
+Stand: 439d2560939138263f004b762c45c21d3fdf5b08
 
 Grundlage ist `docs/claims.md`; bei Widerspruch gilt das Register.
 
@@ -40,7 +40,7 @@ Grundlage ist `docs/claims.md`; bei Widerspruch gilt das Register.
 | R-4 | bestätigt im getesteten Raum, nur für naiven `dtstart`; mit Zone widerlegt | Pipeline-Profil; 2 × 20 000 (naiv) | mit Zone: `str(r)` verliert die Zone; upstream bekannt, kein Bericht | `tests/property/test_rrule_roundtrip_prop.py`, `docs/runs/r4-seed1.md`, `docs/runs/r4-seed2.md`, `docs/reports/r4-rrule-str-drops-tzinfo.md` |
 | R-5 | bestätigt im getesteten Raum | Pipeline-Profil; 2 × 20 000 mit R-2 | nur einfache Wochentage ohne Ordinalzahl; `bymonthday`/`byweekday` bei YEARLY/MONTHLY und `byweekday` bei WEEKLY nur einwertig; kein `byweekno`/`byyearday`/`bysetpos`/`byeaster`; Filter enthalten immer den `dtstart`-Anker | `tests/property/test_rrule_claims_prop.py`, `docs/runs/r2r5-seed1.md`, `docs/runs/r2r5-seed2.md` |
 | R-6 | bestätigt im getesteten Raum | 2 × 20 000 Beispiele; Lead-Vorprüfungen | nur naiver `dtstart`; Grenzen der Strategie `rrule_kwargs()` | `tests/property/test_rruleset_prop.py`, `docs/runs/r6-seed1.md`, `docs/runs/r6-seed2.md` |
-| R-7 | offen (das Register nennt kein „bestätigt“; Läufe ohne Fund) | `rrule_kwargs()`, YEARLY/MONTHLY/WEEKLY/DAILY, `until` ≤ `dtstart` + 731 Tage; 2 × 20 000 | Zeitfilter nur mit `dtstart`-Wert (keine Expansion); `byweekday` nur einfache Wochentage, außer DAILY nur `dtstart`-Wochentag; kein `count`; `dtstart` 1990–2030; YEARLY `bymonthday`/`byweekday` nur mit `bymonth`; YEARLY `interval` 3–4 nur im ersten Jahr; BYSETPOS, BYWEEKNO, BYYEARDAY, BYEASTER, HOURLY/MINUTELY/SECONDLY, Zonen; WEEKLY mit `bymonthday` ist keine RFC-Konformität | `tests/property/test_rrule_reference_prop.py`, `tests/property/rrule_reference.py`, `docs/runs/r7-seed1.md`, `docs/runs/r7-seed2.md`, `docs/reviews/m4-review.md`, `docs/out-of-scope.md` |
+| R-7 | widerlegt für gemischte BYDAY-Listen; sonst bestätigt im getesteten Raum | eng: `rrule_kwargs()`, YEARLY/MONTHLY/WEEKLY/DAILY, `until` ≤ `dtstart` + 731 Tage, 2 × 20 000; weit: `count` 1–50, `interval` 1–4, `wkst`, `dtstart` 1890–2210, mehrere Werte je Filter, ordinale BYDAY (rein ordinal), YEARLY ohne BYMONTH, 2 × 5 000 | Filter enthalten immer den `dtstart`-Anker; gemischte BYDAY-Listen (einfach + ordinal) liefern `[]` (Fund, xfail strict); BYSETPOS, BYWEEKNO, BYYEARDAY, BYEASTER, HOURLY/MINUTELY/SECONDLY, Zonen; WEEKLY mit `bymonthday` ist keine RFC-Konformität | `tests/property/test_rrule_reference_prop.py`, `tests/property/test_rrule_reference_wide_prop.py`, `tests/property/rrule_reference.py`, `docs/runs/r7-seed1.md`, `docs/runs/r7-seed2.md`, `docs/runs/r7wide-seed1.md`, `docs/runs/r7wide-seed2.md`, `docs/reviews/m4-review.md`, `docs/reports/r7-wide-mixed-byday.md`, `docs/out-of-scope.md` |
 | D-1 | bestätigt im getesteten Raum | Pipeline-Profil; 2 × 200 000 | keine Grenze im Register genannt | `tests/property/test_relativedelta_prop.py`, `docs/runs/d1d2-seed1.md`, `docs/runs/d1d2-seed2.md` |
 | D-2 | widerlegt | `datetime(2021, 1, 28) + relativedelta(months=1, days=3)` und Rückweg | Erwartung war zu weit gefasst; engere Fassung D-2.1; Lead-Empfehlung: nicht upstream melden | `tests/property/test_relativedelta_prop.py`, `docs/reports/d2-relativedelta-roundtrip.md` |
 | D-2.1 | bestätigt im getesteten Raum | nur `years`/`months`, `dt.day <= 28`; 2 × 200 000 | nur naive `datetime` | `tests/property/test_relativedelta_prop.py`, `docs/runs/d1d2-seed1.md`, `docs/runs/d1d2-seed2.md` |
@@ -56,6 +56,7 @@ Grundlage ist `docs/claims.md`; bei Widerspruch gilt das Register.
 - T-2: `tzstr(s, posix_offset=True)` lehnt Fuß-Strings mit `<…>` ab und weicht bei Beirut, Gaza/Hebron, Jerusalem, Dublin ab. Berichte `docs/reports/t2-tzstr-angle-brackets.md`, `docs/reports/t2-tzstr-transition-times.md`; bekannter Upstream-Fall Beirut: #1289, PR #1596.
 - T-3: `tzical` wirft `OverflowError` für `DTSTART:1970102503000`. Bericht `docs/reports/t3-tzical-overflowerror.md`, upstream eingereicht als dateutil/dateutil#1683.
 - R-4 (mit Zone): `str(rrule)` schreibt `DTSTART` ohne Zone, der Rundweg liefert naive Termine. Bericht `docs/reports/r4-rrule-str-drops-tzinfo.md`; upstream bekannt: #348, #637, #603/#604, #806 mit PR #1631; kein Bericht.
+- R-7 (gemischte BYDAY-Liste): `rrule(MONTHLY, byweekday=[MO, FR(-1)], …)` liefert `[]`. Berichtsentwurf `docs/reports/r7-wide-mixed-byday.md`; Duplikatsuche upstream offen.
 - D-2: `(dt + rd) - rd` kehrt bei Tagen über eine Monatsgrenze nicht zurück. Bericht `docs/reports/d2-relativedelta-roundtrip.md`; Erwartung zu weit, Ersatz D-2.1.
 
 ## Nicht untersucht

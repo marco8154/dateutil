@@ -1,8 +1,9 @@
 # Status
 
-Stand: 2026-11-27 (Lead-Zyklus 182, Lead-Dienst)
+Stand: 2026-11-27 (Lead-Zyklus 183, Lead-Dienst)
 
 ## Lage
+Zyklus 183 (Anlass: Abgabe 1052 geprüft, Nachrichten 121/123 offen, 0 freie Aufgaben): **1052 (#706) und 1053 (#707) angenommen**, lange Läufe des erweiterten R-7-Orakels je 5 000 Beispiele (Seed 1/2), 0 failing; Seed 1 vom Lead reproduziert (identische Statistik), sha256 beider Dateien = master. Beide im Merge-Zug. **R-7 nachgezogen** in `docs/claims.md` und `docs/limitations.md`: widerlegt für gemischte BYDAY-Listen (Fund aus #705), sonst bestätigt im getesteten Raum (eng 2 × 20 000, weit 2 × 5 000). M4 damit ohne offene Aufgabe; Abzeichnung M4 und Frage M5 (A: BYSETPOS, B: ruhen) per Nachricht 124. Ruling: leerer Meilenstein „M4“ (Versehen Zyklus 175) auf Schätzung 1 gesetzt, damit er den Fortschritt kaum verzerrt — löschen kann nur die Plattform; falsch wäre es nur kosmetisch. Kein neuer Schnitt bis zur Antwort auf 124.
 Zyklus 182 (Anlass: Nachrichten 121/123 offen, 0 freie Aufgaben bei 0 aktiven Agenten): keine Abgabe, keine Änderung. #705 weiter im Merge-Zug; #706/#707 danach automatisch frei. Beide offenen Nachrichten sind eigene an die Visionärin / den Visionär (121 Abzeichnung, 123 Duplikatsuche R-7) und warten. Kein neuer Schnitt: M4 vollständig geschnitten, ein M5 entscheidet die Visionärin / der Visionär (Nächste Schritte 5).
 Zyklus 181 (Anlass: Abgabe 1050 geprüft, Nachricht 121 offen, 0 freie Aufgaben bei 0 aktiven Agenten): **1050 (#705, erweiterter Orakeltest R-7) angenommen**, wartet im Merge-Zug; #706/#707 werden danach von selbst frei. Pipeline grün (5368 passed), Testlaufzeit 0,93 s, Pins a–d korrekt, F7 nur Kommentar. **Neuer Fund R-7**: MONTHLY/YEARLY mit `byweekday=[MO, FR(-1)]` (einfacher und ordinaler Wochentag in einer Liste, RFC-gültig) liefert `[]` statt jedem Montag plus letztem Freitag; Ursache UND statt ODER von `wdaymask`/`nwdaymask` in `rrule.py:850–851`. Vom Lead auf master nachgestellt. Strict-xfail `test_rrule_mixed_plain_and_ordinal_byday`, Bericht `docs/reports/r7-wide-mixed-byday.md`. Die Strategie erzeugt deshalb nur rein einfache oder rein ordinale Listen (vermerkt). Duplikatsuche und Nachstellung auf upstream master per Nachricht 123 an die Visionärin / den Visionär (Sandbox ohne `gh`/Web). Nach dem Merge: Fund in `docs/claims.md` (R-7) und `docs/limitations.md` eintragen; Bericht erst nach Antwort auf 123 fertigstellen. Kein neuer Schnitt (M4 vollständig geschnitten). Nachricht 121 (Abzeichnung M1–M3) wartet weiter.
 Zyklus 180 (Anlass: Nachricht 121 offen, 0 freie Aufgaben bei 0 aktiven Agenten): keine Abgabe. #705 angenommen und im Merge-Zug (≈ 0,8 h, noch nicht auf master); #706/#707 werden danach automatisch frei. Kein neuer Schnitt (M4 vollständig geschnitten, Engpass laut Plattform: Abhängigkeiten; F9 gehört der Visionärin / dem Visionär). Nachricht 121 (Abzeichnung M1–M3) wartet weiter auf die Visionärin / den Visionär. Leerer Plattform-Meilenstein „M4“ (Schätzung 10) besteht weiter, siehe Zyklus 175.
@@ -108,9 +109,9 @@ Zyklus 90 (Anlass: Abgabe 657 geprüft, Nachrichten 71/72 offen, 0 freie Aufgabe
 - Upstream offen: #1683 (T-3), #1684 (P-6); höchstens 2 offen, also nächster Bericht (T-2a) erst nach Erledigung eines davon. Danach T-2b, Z-1+Z-1w als ein Issue, T-1 als Kommentar an #1432 (Reihenfolge aus Nachricht 57).
 
 ## Nächste Schritte
-1. Abgabe von #705 (erweiterter Orakeltest R-7) zügig prüfen: Pins a–d ändern das Ergebnis, Laufzeit ≤ 60 s, in `test_rrule_reference_prop.py` nur der F7-Kommentar; bei Fund erst gegen die RFC prüfen. Danach werden #706/#707 frei.
-2. Nach #706/#707: R-7 in `docs/claims.md` und `docs/limitations.md` nachziehen (bestätigt im getesteten Raum nur, wenn beide Läufe ohne Fund), M4 abschließen und Abzeichnung anfragen.
-3. Antwort auf Nachricht 121 einarbeiten.
-4. Upstream-Issues #1683/#1684 im Blick: sobald eines erledigt ist, T-2a vorschlagen.
-5. Danach: mit der Visionärin / dem Visionär klären, ob ein M5 folgt (Projektziel laut Brief erreicht, sobald die Berichte upstream liegen).
+1. Antwort auf Nachricht 123 (Duplikatsuche R-7): kein Duplikat → Bericht `docs/reports/r7-wide-mixed-byday.md` fertigstellen und zur Einreichung übergeben; Duplikat → in `docs/claims.md`/`docs/out-of-scope.md` als bekannt vermerken (wie R-4).
+2. Antwort auf Nachricht 124 (Abzeichnung M4, M5 A/B): bei A M5 (R-7-Referenz mit BYSETPOS) interviewen und schneiden.
+3. Antwort auf Nachricht 121 (Abzeichnung M1–M3) einarbeiten.
+4. Merge von #706/#707 prüfen (Protokolle `docs/runs/r7wide-seed*.md` auf master).
+5. Upstream-Issues #1683/#1684 im Blick: sobald eines erledigt ist, T-2a vorschlagen.
 6. Lead-Stelle 2 (reproduction) bleibt offen.
