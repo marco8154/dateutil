@@ -9,6 +9,11 @@ must not be able to repeat its mistakes, so only the standard library
 Weekdays are ``int`` with Monday = 0 (``datetime.weekday()``); ``wkst`` uses
 the same convention (the RFC default ``MO`` is 0). An occurrence set is
 always bounded by ``count`` or ``until`` so the enumeration terminates.
+
+``expand`` emits ``dtstart`` only if ``dtstart`` itself matches the rule (as
+the library under test does). This deviates from the literal reading of RFC 5545
+3.3.10, l. 2272-2274 ("DTSTART always counts as the first occurrence") and is
+intended.
 """
 
 import calendar
@@ -40,6 +45,20 @@ def expand(freq: str, dtstart: datetime, *, interval: int = 1,
         # keep the rule finite. RFC 5545 3.3.10, l. 2124-2125, 2270.
         raise ValueError("exactly one of count/until must be set")
 
+    for term in byweekday or ():
+        wd, n = term if isinstance(term, tuple) else (term, None)
+        if not 0 <= wd <= 6:
+            raise ValueError(f"weekday must be in 0..6, got {wd!r}")
+        if n is None:
+            continue
+        if freq in ("DAILY", "WEEKLY"):
+            # BYDAY MUST NOT have a numeric value unless FREQ is MONTHLY or
+            # YEARLY. RFC 5545 3.3.10, l. 2314-2316.
+            raise ValueError(f"ordinal BYDAY {term!r} is not allowed for {freq}")
+        if n == 0 or abs(n) > 53:
+            # The ordinal is +/-(1..53). RFC 5545 3.3.10, l. 2310-2313.
+            raise ValueError(f"BYDAY ordinal must be +/-1..53, got {n!r}")
+
     plain_wd, nth_wd = _split_weekdays(byweekday)
     months = set(bymonth) if bymonth is not None else None
     # Missing BYHOUR/BYMINUTE/BYSECOND are taken from DTSTART.
@@ -63,7 +82,9 @@ def expand(freq: str, dtstart: datetime, *, interval: int = 1,
                             occ = datetime(day.year, day.month, day.day,
                                            hour, minute, second)
                             if occ < dtstart:
-                                continue  # RFC 5545 3.3.10, l. 2272-2274
+                                # Occurrences before DTSTART are never emitted;
+                                # see the module docstring.
+                                continue
                             if until is not None and occ > until:
                                 continue  # UNTIL is inclusive, l. 2255-2258
                             occurrences.append(occ)
@@ -74,7 +95,8 @@ def expand(freq: str, dtstart: datetime, *, interval: int = 1,
         day += timedelta(days=1)
 
     if count is not None:
-        occurrences = occurrences[:count]  # RFC 5545 3.3.10, l. 2272-2274
+        # COUNT is evaluated after the BYxxx parts. RFC 5545 3.3.10, l. 2418-2420.
+        occurrences = occurrences[:count]
     return occurrences
 
 

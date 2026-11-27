@@ -190,3 +190,195 @@ def test_no_bound_raises():
 def test_both_bounds_raise():
     with pytest.raises(ValueError):
         expand("DAILY", datetime(2025, 1, 1), count=2, until=datetime(2025, 2, 1))
+
+
+def test_unmatched_dtstart_is_not_emitted():
+    # Jan 2025: Wed 1, Mon 6, Mon 13. DTSTART (a Wednesday) does not match
+    # BYDAY=MO, so it is skipped (module docstring of rrule_reference).
+    assert expand(
+        "WEEKLY", datetime(2025, 1, 1, 8), byweekday=[0], count=2
+    ) == [
+        datetime(2025, 1, 6, 8),
+        datetime(2025, 1, 13, 8),
+    ]
+
+
+def test_yearly_bymonthday_without_bymonth_expands_all_months():
+    # BYMONTHDAY=15 at YEARLY expands over every month (RFC l. 2440).
+    assert expand(
+        "YEARLY", datetime(2025, 1, 1, 8), bymonthday=[15], count=3
+    ) == [
+        datetime(2025, 1, 15, 8),
+        datetime(2025, 2, 15, 8),
+        datetime(2025, 3, 15, 8),
+    ]
+
+
+def test_yearly_byweekday_without_bymonth_is_every_such_weekday():
+    # Jan 1 2025 is a Wednesday (calendar), so Wednesdays are Jan 1, 8, 15.
+    assert expand(
+        "YEARLY", datetime(2025, 1, 1, 8), byweekday=[2], count=3
+    ) == [
+        datetime(2025, 1, 1, 8),
+        datetime(2025, 1, 8, 8),
+        datetime(2025, 1, 15, 8),
+    ]
+
+
+def test_yearly_last_sunday_of_march_uses_month_scope():
+    # Sundays: Mar 2025 ... 30; Mar 2026 1, 8, 15, 22, 29; Mar 2027 7, ... 28.
+    assert expand(
+        "YEARLY", datetime(2025, 1, 1, 8), bymonth=[3], byweekday=[(6, -1)],
+        count=3,
+    ) == [
+        datetime(2025, 3, 30, 8),
+        datetime(2026, 3, 29, 8),
+        datetime(2027, 3, 28, 8),
+    ]
+
+
+def test_yearly_twentieth_monday_skips_year_before_dtstart():
+    # 20th Monday: May 19 2025 (before DTSTART 2025-06-01, so dropped),
+    # May 18 2026; 2027 starts on a Friday, first Monday Jan 4, 20th is May 17.
+    assert expand(
+        "YEARLY", datetime(2025, 6, 1, 8), byweekday=[(0, 20)], count=2
+    ) == [
+        datetime(2026, 5, 18, 8),
+        datetime(2027, 5, 17, 8),
+    ]
+
+
+def test_yearly_last_monday_of_year_uses_year_scope():
+    # Dec 2025 ends on Wed 31, so the last Monday is the 29th; Dec 2026 ends
+    # on Thu 31, so it is the 28th.
+    assert expand(
+        "YEARLY", datetime(2025, 1, 1, 8), byweekday=[(0, -1)], count=2
+    ) == [
+        datetime(2025, 12, 29, 8),
+        datetime(2026, 12, 28, 8),
+    ]
+
+
+def test_monthly_interval_three():
+    assert expand("MONTHLY", datetime(2025, 1, 15, 8), interval=3, count=3) == [
+        datetime(2025, 1, 15, 8),
+        datetime(2025, 4, 15, 8),
+        datetime(2025, 7, 15, 8),
+    ]
+
+
+def test_yearly_interval_two():
+    assert expand("YEARLY", datetime(2025, 3, 15, 8), interval=2, count=3) == [
+        datetime(2025, 3, 15, 8),
+        datetime(2027, 3, 15, 8),
+        datetime(2029, 3, 15, 8),
+    ]
+
+
+def test_weekly_interval_two_without_byweekday_uses_dtstart_weekday():
+    # Jan 1 2025 is a Wednesday; every second week is Jan 1, 15, 29.
+    assert expand("WEEKLY", datetime(2025, 1, 1, 8), interval=2, count=3) == [
+        datetime(2025, 1, 1, 8),
+        datetime(2025, 1, 15, 8),
+        datetime(2025, 1, 29, 8),
+    ]
+
+
+def test_bymonth_limits_monthly():
+    assert expand(
+        "MONTHLY", datetime(2025, 1, 10, 8), bymonth=[1, 4], count=3
+    ) == [
+        datetime(2025, 1, 10, 8),
+        datetime(2025, 4, 10, 8),
+        datetime(2026, 1, 10, 8),
+    ]
+
+
+def test_bymonth_limits_weekly():
+    # Wednesdays in Feb 2025 (calendar): 5, 12, 19; Jan 29 is outside BYMONTH.
+    assert expand(
+        "WEEKLY", datetime(2025, 1, 29, 8), bymonth=[2], count=3
+    ) == [
+        datetime(2025, 2, 5, 8),
+        datetime(2025, 2, 12, 8),
+        datetime(2025, 2, 19, 8),
+    ]
+
+
+def test_bymonth_limits_daily():
+    assert expand(
+        "DAILY", datetime(2025, 1, 30, 8), bymonth=[2], count=3
+    ) == [
+        datetime(2025, 2, 1, 8),
+        datetime(2025, 2, 2, 8),
+        datetime(2025, 2, 3, 8),
+    ]
+
+
+def test_daily_bymonthday_limits():
+    assert expand(
+        "DAILY", datetime(2025, 1, 1, 8), bymonthday=[1, 15], count=4
+    ) == [
+        datetime(2025, 1, 1, 8),
+        datetime(2025, 1, 15, 8),
+        datetime(2025, 2, 1, 8),
+        datetime(2025, 2, 15, 8),
+    ]
+
+
+def test_daily_byweekday_limits():
+    # Jan 2025: Fri 3, Mon 6, Fri 10, Mon 13.
+    assert expand(
+        "DAILY", datetime(2025, 1, 1, 8), byweekday=[0, 4], count=4
+    ) == [
+        datetime(2025, 1, 3, 8),
+        datetime(2025, 1, 6, 8),
+        datetime(2025, 1, 10, 8),
+        datetime(2025, 1, 13, 8),
+    ]
+
+
+def test_byminute_and_bysecond_expand():
+    # 2 minutes x 2 seconds = 4 times per day (RFC l. 2445-2446).
+    assert expand(
+        "DAILY", datetime(2025, 1, 1, 8, 15), byminute=[45, 15],
+        bysecond=[30, 0], count=5,
+    ) == [
+        datetime(2025, 1, 1, 8, 15, 0),
+        datetime(2025, 1, 1, 8, 15, 30),
+        datetime(2025, 1, 1, 8, 45, 0),
+        datetime(2025, 1, 1, 8, 45, 30),
+        datetime(2025, 1, 2, 8, 15, 0),
+    ]
+
+
+def test_until_before_last_time_of_final_day():
+    # Jan 3 12:00 keeps 08:00 but drops 20:00 on the final day.
+    assert expand(
+        "DAILY", datetime(2025, 1, 1, 8), byhour=[8, 20],
+        until=datetime(2025, 1, 3, 12),
+    ) == [
+        datetime(2025, 1, 1, 8),
+        datetime(2025, 1, 1, 20),
+        datetime(2025, 1, 2, 8),
+        datetime(2025, 1, 2, 20),
+        datetime(2025, 1, 3, 8),
+    ]
+
+
+@pytest.mark.parametrize("freq", ["DAILY", "WEEKLY"])
+def test_ordinal_byweekday_raises_for_daily_and_weekly(freq):
+    with pytest.raises(ValueError, match="ordinal"):
+        expand(freq, datetime(2025, 1, 1), byweekday=[(0, 1)], count=1)
+
+
+@pytest.mark.parametrize("n", [0, 54, -54])
+def test_ordinal_out_of_range_raises(n):
+    with pytest.raises(ValueError, match="ordinal"):
+        expand("MONTHLY", datetime(2025, 1, 1), byweekday=[(0, n)], count=1)
+
+
+@pytest.mark.parametrize("term", [7, -1, (7, 1), (-1, 1)])
+def test_weekday_out_of_range_raises(term):
+    with pytest.raises(ValueError, match="weekday"):
+        expand("MONTHLY", datetime(2025, 1, 1), byweekday=[term], count=1)
