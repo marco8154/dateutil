@@ -1,8 +1,9 @@
 # Status
 
-Stand: 2026-11-26 (Lead-Zyklus 168, Lead-Dienst)
+Stand: 2026-11-27 (Lead-Zyklus 169, Lead-Dienst)
 
 ## Lage
+Zyklus 169 (Anlass: 2 Abgaben zur Prüfung, 0 freie Aufgaben bei 0 aktiven Agenten): **#664 gemergt** (`1c872bd`, Orakeltest R-7). **1005 (#665) und 1006 (#666) angenommen**: R-7 lange Läufe je 20 000 Beispiele, Seed 1/2, 0 failing (2492/2399 invalid), sha256 beider Dateien stimmt mit master, Peer-Review je approve; Seed 1 lokal reproduziert mit gleicher Statistik (2 min). Laufzeit ≈ 1 min statt geschätzter 10–30 min (Fenster ≤ 731 Tage). R-7-Zeile in `docs/claims.md` ergänzt. #661/#663 weiter im Merge-Zug (≈ 6 h, Nachricht 117 bereits gesendet), #667 (Review M4) wird nach #663 frei. Kein neuer Schnitt (M3/M4 vollständig geschnitten). Keine Nachrichten.
 Zyklus 168 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): #661 kam wie #664 aus dem Merge-Zug zurück (968 nicht gemergt; laut Abgabe scheiterte der frühere Lauf am 30-min-Limit, `last_check` leer). **Neue Abgabe 992 (#661)**: gleicher Inhalt wie 968, nur `tests/property/test_rrule_rfc_golden.py`, Pipeline grün (5295 passed, 4 min), lokal nachgeprüft (43 passed). Eigene Abgabe → fünf Prüffragen gesetzt, wartet auf Peer-Review. Noch 2 im Merge-Zug (u. a. 966/#663), #664 in Nacharbeit, #665–#667 blockiert. Keine Nachrichten, kein neuer Schnitt.
 Zyklus 167 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): #664 kam aus dem Merge-Zug zurück (965 nicht gemergt, Grund nicht sichtbar, `last_check` leer) und wurde neu bearbeitet. **Abgabe 986 (#664) zur Nacharbeit**: Haupttest, Filter, vier Pins und Pin-Prüfungen gut, Pipeline grün (5258 passed); brachte aber xfail-Test und Bericht `r7-weekly-bymonthday.md` zurück (WEEKLY mit `bymonthday`, laut R-7/Fund 173 kein Fund). Grund nennt genau die drei Schritte zurück zum Stand von 965; er erreicht den nächsten Versuch als `last_review`. Aufgabentext kann ich nicht ändern (#665–#667 hängen an #664, Neuanlage würde die Kette brechen). 966/968 weiter im Merge-Zug (≈ 5 h), Nachricht 117 offen.
 Zyklus 166 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): 965/966/968 hängen seit ≈ 4 h im Merge-Zug (kein `last_check`, Engpass laut Plattform: merge) → Info-Nachricht 117 an die Visionärin / den Visionär (Merge-Bot für den Fork prüfen). Keine Abgabe, keine Nachrichten, kein neuer Schnitt (M3/M4 vollständig geschnitten, #665–#667 hängen an #664).
@@ -90,7 +91,7 @@ Zyklus 90 (Anlass: Abgabe 657 geprüft, Nachrichten 71/72 offen, 0 freie Aufgabe
 - M1/M2-Abzeichnung: Issue-Nummern liegen vor; Abzeichnung bei der Visionärin / dem Visionär anfragen, wenn M3 abgeschlossen ist (zusammen).
 
 ## Nächste Schritte
-1. Peer-Reviews von 965/966/968 abwarten; danach #665/#666 (lange Läufe R-7) und #667 (Review) zügig prüfen. Bleibt Peer-Review > 24 h aus: Visionär:in bitten, Prüfer:innen zu werben.
+1. Merge von #661/#663/#665/#666 abwarten; dann #667 (Review M4) zügig prüfen und R-7 in `docs/claims.md` als belegt eintragen (nach Merge der Protokolle). Hängt der Merge-Zug weiter > 12 h: Nachricht 117 nachfassen.
 2. Nach #661: eigenes Review R-1 (`docs/reviews/m3-r1-review.md`), dann R-1-Status in `docs/claims.md`; R-1-Funde: Duplikatsuche bei der Visionärin / dem Visionär anfragen, Reproduktion auf upstream selbst (der Lead-Dienst kann upstream klonen: `git clone --filter=blob:none https://github.com/dateutil/dateutil`).
 3. Abweichungen aus #663 (Referenz ≠ RFC) → Korrekturaufgabe an #662; Funde aus #664 → Reproduktion upstream, Duplikatsuche anfragen.
 4. Upstream-Issues #1683/#1684 im Blick: sobald eines erledigt ist, T-2a vorschlagen.
