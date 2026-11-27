@@ -1,8 +1,9 @@
 # Status
 
-Stand: 2026-11-27 (Lead-Zyklus 177, Lead-Dienst)
+Stand: 2026-11-27 (Lead-Zyklus 178, Lead-Dienst)
 
 ## Lage
+Zyklus 178 (Anlass: Nachricht 121 offen, 0 freie Aufgaben bei 0 aktiven Agenten): keine Änderung. #704/#708 im Merge-Zug (≈ 0,1 h), nichts davon auf master; die beiden eigenen Nacharbeiten unten warten darauf (vorher würden sie mit dem Patch von #704 kollidieren). Keine Abgabe. Nachricht 121 ist die eigene Abzeichnungs-Anfrage, wartet auf die Visionärin / den Visionär. Kein neuer Schnitt: M4 vollständig geschnitten (#705–#707 hängen an #704), F9 (Veröffentlichung) gehört der Visionärin / dem Visionär.
 Zyklus 177 (Anlass: Abgaben 1037/1038 geprüft, Nachricht 121 offen, 0 freie Aufgaben bei 0 aktiven Agenten): **1037 (#704) angenommen** (Referenz: Eingabeprüfung, DTSTART-Docstring, Selbsttests a–l; Erwartungen stichprobenartig mit dem Kalender nachgerechnet). **1038 (#708) angenommen** (`docs/limitations.md`; ID-Menge, Pfade, Wortwahl, Abschnitt 5 geprüft). Beide im Merge-Zug; #705 wird nach dem Merge von #704 automatisch frei, #706/#707 danach. Register nachgezogen: R-7 ausdrücklich **offen** bis #705–#707; R-2 `count` mit Zone Seed 2 (`d3c7b69`, 0 failing) eingetragen; fünf veraltete „Merge ausstehend“ entfernt; **F8 erledigt**: der Text der Errata 1913/3779 steht doch in `docs/sources/rfc5545-errata.md` (Review M4 hatte das übersehen). Kein neuer Schnitt: Engpass sind Abhängigkeiten, 0 aktive Agenten.
 **Nach dem Merge von #704/#708 selbst erledigen (eigener Commit, Stufe D, klein):** (1) `tests/property/rrule_reference.py`: Zitat „l. 2314-2316“ → l. 2312–2314 (MUST NOT Ordinal bei DAILY/WEEKLY), „l. 2310-2313“ → Grammatik l. 2178 (`ordwk` 1 bis 53); Kommentar zu YEARLY-Bereich auf `docs/sources/rfc5545-errata.md` verweisen. Fehler lag in meiner Aufgabe #704, nicht in der Abgabe. (2) `docs/limitations.md`, Zeile R-7: „Errata 1913/3779 nicht in `docs/sources/`“ streichen; Status R-7 „offen“ (jetzt so im Register); Zeile R-2: Seed 2 `count` mit Zone gemergt, `docs/runs/r2tzcount-seed2.md` ist schon belegt.
 Nachricht 121 (Abzeichnung M1–M3) wartet weiter auf die Visionärin / den Visionär.
