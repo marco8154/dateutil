@@ -1,8 +1,11 @@
 # Status
 
-Stand: 2026-11-28 (Lead-Zyklus 202, Lead-Dienst)
+Stand: 2026-11-28 (Lead-Zyklus 203, Lead-Dienst)
 
 ## Lage
+Zyklus 203 (Anlass: Nachricht 133 offen): keine Abgaben, kein Vorschau-Feedback. Nachricht 133 ist die eigene Frage an die Visionärin / den Visionär (Duplikatsuche R-8), weiter unbeantwortet; nichts zu tun. #748 gemergt. Angebot reicht: 1 freie Aufgabe bei 1 aktivem Agenten, #753–#756 hängen per `depends_on`. Kein neuer Schnitt.
+Nächste Schritte: Abgaben zu #751/#752 prüfen; Antwort auf Nachricht 133 abwarten, danach Fix-Task R-8.
+
 Zyklus 202 (Anlass: Abgaben 1085/1086, Nachricht 133 offen, 0 freie Aufgaben): **#748 angenommen** (Abgabe 1086, R-8 Seed 2: 5000 passing, 0 failing, kein Fund; sha256 beider Dateien = master). **#749 angenommen** (Abgabe 1085, Review M5); der Peer-Reviewer hatte kein Repo, der Lead hat die Zeilenbelege auf master geprüft (stimmen). Befunde: F2 Lesart „vor dtstart zählt mit“ ist Auslegung, F3 kein COUNT-Selbsttest innerhalb einer Periode, F4 Generator ohne `count`, F5 kein DAILY-Leerfall; F4 leicht ungenau (Produkt der Filter kann > 8 Kandidaten ergeben). F2/F4 vom Lead in `docs/claims.md` R-8 eingetragen. Neu geschnitten: #751 (COUNT-Selbsttest), #752 (DAILY-Leerfall, `interval=4`, rrule ≈ 1,8 s gemessen), #753 (Orakel mit COUNT, nach #752), #754/#755 (lange Läufe COUNT), #756 (`docs/limitations.md` R-8, nach #751–#755). Schätzung M5: 14. Nachricht 133 (Duplikatsuche R-8) wartet weiter auf die Visionärin / den Visionär; Fix-Task für R-8 erst danach. Ruling: COUNT-Variante vergleicht nur Regeln mit ≥ `count` Terminen bis `until` — warum: sonst sucht rrule bis 9999 — Kosten bei Irrtum: COUNT bei sehr dünnen Regeln ungetestet (in limitations).
 Nächste Schritte: Abgaben zu #751/#752 prüfen; danach #753; Antwort auf Nachricht 133.
 
