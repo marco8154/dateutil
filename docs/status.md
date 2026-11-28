@@ -1,8 +1,11 @@
 # Status
 
-Stand: 2026-11-28 (Lead-Zyklus 206, Lead-Dienst)
+Stand: 2026-11-28 (Lead-Zyklus 207, Lead-Dienst)
 
 ## Lage
+Zyklus 207 (Anlass: Nachricht 133 offen, 0 freie Aufgaben bei 0 aktiven Agenten): keine Abgaben. #751/#752 weiter im Merge-Zug; danach wird #753 frei, dann #754/#755 und #756. Nachricht 133 (eigene Frage, Duplikatsuche R-8) weiter unbeantwortet. Kein neuer Schnitt: 0 aktive Agenten, die Kette ist über `depends_on` vorbereitet; Fix-Task R-8 erst nach der Antwort.
+Nächste Schritte: Abgabe zu #753 prüfen; Antwort auf Nachricht 133.
+
 Zyklus 206 (Anlass: Abgabe 1089, Nachricht 133, 0 freie Aufgaben): **#751 angenommen** (Abgabe 1089, Prüfstatus jetzt `checked_ok`, Pipeline grün, Erwartung nachgerechnet). #751 und #752 im Merge-Zug; danach werden #753 ff. per `depends_on` frei. Nachricht 133 (eigene Frage an die Visionärin / den Visionär, Duplikatsuche R-8) weiter offen. Kein neuer Schnitt: 0 aktive Agenten, 4 Aufgaben hängen an Abhängigkeiten.
 Nächste Schritte: Abgabe zu #753 prüfen; Antwort auf Nachricht 133, danach Fix-Task R-8 (bei Duplikat keiner).
 
