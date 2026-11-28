@@ -382,3 +382,146 @@ def test_ordinal_out_of_range_raises(n):
 def test_weekday_out_of_range_raises(term):
     with pytest.raises(ValueError, match="weekday"):
         expand("MONTHLY", datetime(2025, 1, 1), byweekday=[term], count=1)
+
+
+WORKDAYS = [0, 1, 2, 3, 4]
+
+
+def test_bysetpos_third_weekday_of_month():
+    # RFC 5545 3.8.5.3, l. 7259: Sep 4, Oct 7, Nov 6 1997.
+    assert expand(
+        "MONTHLY", datetime(1997, 9, 4, 9), count=3, byweekday=[1, 2, 3],
+        bysetpos=[3],
+    ) == [
+        datetime(1997, 9, 4, 9),
+        datetime(1997, 10, 7, 9),
+        datetime(1997, 11, 6, 9),
+    ]
+
+
+def test_bysetpos_second_to_last_workday_of_month():
+    # RFC 5545 3.8.5.3, l. 7267.
+    assert expand(
+        "MONTHLY", datetime(1997, 9, 29, 9), byweekday=WORKDAYS, bysetpos=[-2],
+        until=datetime(1998, 3, 30, 9),
+    ) == [
+        datetime(1997, 9, 29, 9),
+        datetime(1997, 10, 30, 9),
+        datetime(1997, 11, 27, 9),
+        datetime(1997, 12, 30, 9),
+        datetime(1998, 1, 29, 9),
+        datetime(1998, 2, 26, 9),
+        datetime(1998, 3, 30, 9),
+    ]
+
+
+def test_bysetpos_last_workday_of_month():
+    # RFC 5545 3.3.10, l. 2375.
+    assert expand(
+        "MONTHLY", datetime(2025, 1, 1, 9), byweekday=WORKDAYS, bysetpos=[-1],
+        count=3,
+    ) == [
+        datetime(2025, 1, 31, 9),
+        datetime(2025, 2, 28, 9),
+        datetime(2025, 3, 31, 9),
+    ]
+
+
+def test_bysetpos_counts_candidates_before_dtstart():
+    # Jan 1 2025 is position 1 but precedes DTSTART, so January yields nothing.
+    assert expand(
+        "MONTHLY", datetime(2025, 1, 15, 9), byweekday=WORKDAYS, bysetpos=[1],
+        count=2,
+    ) == [
+        datetime(2025, 2, 3, 9),
+        datetime(2025, 3, 3, 9),
+    ]
+
+
+def test_bysetpos_weekly_wkst():
+    # Mon Jan 6 2025. wkst=MO: week Mon 6..Sun 12, first of Tue 7 / Sun 12 is
+    # the 7th. wkst=SU: week Sun 5..Sat 11, position 1 is Sun 5 (before
+    # DTSTART); next weeks give Sun 12 and Sun 19.
+    kw = dict(dtstart=datetime(2025, 1, 6, 9), byweekday=[6, 1], bysetpos=[1],
+              count=2)
+    assert expand("WEEKLY", wkst=0, **kw) == [
+        datetime(2025, 1, 7, 9),
+        datetime(2025, 1, 14, 9),
+    ]
+    assert expand("WEEKLY", wkst=6, **kw) == [
+        datetime(2025, 1, 12, 9),
+        datetime(2025, 1, 19, 9),
+    ]
+
+
+def test_bysetpos_daily_last_hour():
+    assert expand(
+        "DAILY", datetime(2025, 1, 1, 9), byhour=[9, 12, 17], bysetpos=[-1],
+        count=2,
+    ) == [
+        datetime(2025, 1, 1, 17),
+        datetime(2025, 1, 2, 17),
+    ]
+
+
+def test_bysetpos_yearly_second_candidate():
+    assert expand(
+        "YEARLY", datetime(2025, 1, 1, 9), bymonth=[1, 7], bymonthday=[1],
+        bysetpos=[2], count=2,
+    ) == [
+        datetime(2025, 7, 1, 9),
+        datetime(2026, 7, 1, 9),
+    ]
+
+
+def test_bysetpos_outside_set_selects_nothing():
+    assert expand(
+        "MONTHLY", datetime(2025, 1, 1, 9), bymonthday=[1, 15], bysetpos=[3],
+        until=datetime(2025, 6, 30, 9),
+    ) == []
+
+
+def test_bysetpos_same_element_twice_appears_once():
+    assert expand(
+        "MONTHLY", datetime(2025, 1, 1, 9), bymonthday=[1, 15],
+        bysetpos=[1, -2], count=2,
+    ) == [
+        datetime(2025, 1, 1, 9),
+        datetime(2025, 2, 1, 9),
+    ]
+
+
+def test_bysetpos_several_positions_sorted():
+    assert expand(
+        "MONTHLY", datetime(2025, 1, 1, 9), bymonthday=[1, 15, 28],
+        bysetpos=[-1, 1], count=4,
+    ) == [
+        datetime(2025, 1, 1, 9),
+        datetime(2025, 1, 28, 9),
+        datetime(2025, 2, 1, 9),
+        datetime(2025, 2, 28, 9),
+    ]
+
+
+def test_bysetpos_until_inside_period():
+    # March's last workday (Mar 31) is selected from the full March set, but
+    # lies after UNTIL.
+    assert expand(
+        "MONTHLY", datetime(2025, 1, 1, 9), byweekday=WORKDAYS, bysetpos=[-1],
+        until=datetime(2025, 3, 15, 9),
+    ) == [
+        datetime(2025, 1, 31, 9),
+        datetime(2025, 2, 28, 9),
+    ]
+
+
+@pytest.mark.parametrize("pos", [0, 367, -367])
+def test_bysetpos_out_of_range_raises(pos):
+    with pytest.raises(ValueError, match="BYSETPOS"):
+        expand("MONTHLY", datetime(2025, 1, 1), bymonthday=[1], bysetpos=[pos],
+               count=1)
+
+
+def test_bysetpos_without_other_byxxx_raises():
+    with pytest.raises(ValueError, match="BYSETPOS"):
+        expand("MONTHLY", datetime(2025, 1, 1), bysetpos=[1], count=1)

@@ -29,7 +29,8 @@ _MAX_SCAN_DAYS = 400 * 366
 def expand(freq: str, dtstart: datetime, *, interval: int = 1,
            count: int | None = None, until: datetime | None = None,
            wkst: int = 0, bymonth=None, bymonthday=None, byweekday=None,
-           byhour=None, byminute=None, bysecond=None) -> list[datetime]:
+           byhour=None, byminute=None, bysecond=None,
+           bysetpos=None) -> list[datetime]:
     """Return the occurrences of one simple recurrence rule, ascending.
 
     ``freq`` is ``"YEARLY"``, ``"MONTHLY"``, ``"WEEKLY"`` or ``"DAILY"``.
@@ -37,6 +38,12 @@ def expand(freq: str, dtstart: datetime, *, interval: int = 1,
     are an ``int`` weekday or a ``(weekday, n)`` ordinal pair (``n`` in
     +/-1..53). Invalid dates such as February 30 never occur because only real
     calendar days are counted (RFC 5545 3.3.10, l. 2382).
+
+    ``bysetpos`` is ``None`` or a list of ``int`` in 1..366 / -366..-1. It
+    selects from the sorted candidates of one FREQ period (year, month, week
+    from ``wkst``, day), counted from the start of the period, so candidates
+    before ``dtstart`` take part in the positions. Only then are occurrences
+    before ``dtstart`` dropped, followed by ``until`` and ``count``.
     """
     if freq not in _FREQS:
         raise ValueError(f"unsupported FREQ {freq!r}")  # RFC 5545 3.3.10, l. 2153
@@ -59,6 +66,17 @@ def expand(freq: str, dtstart: datetime, *, interval: int = 1,
             # The ordinal is +/-(1..53). RFC 5545 3.3.10, l. 2178 (ordwk).
             raise ValueError(f"BYDAY ordinal must be +/-1..53, got {n!r}")
 
+    if bysetpos:
+        for pos in bysetpos:
+            if pos == 0 or abs(pos) > 366:
+                # Valid values are 1 to 366 or -366 to -1.
+                # RFC 5545 3.3.10, l. 2211-2213, 2376.
+                raise ValueError(f"BYSETPOS must be +/-1..366, got {pos!r}")
+        if not any((bymonth, bymonthday, byweekday, byhour, byminute,
+                    bysecond)):
+            # RFC 5545 3.3.10, l. 2372-2373.
+            raise ValueError("BYSETPOS needs another BYxxx rule part")
+
     plain_wd, nth_wd = _split_weekdays(byweekday)
     months = set(bymonth) if bymonth is not None else None
     # Missing BYHOUR/BYMINUTE/BYSECOND are taken from DTSTART.
@@ -69,10 +87,29 @@ def expand(freq: str, dtstart: datetime, *, interval: int = 1,
 
     occurrences: list[datetime] = []
     day = dtstart.date()
+    if bysetpos:
+        # The first set starts at the beginning of its period, which may lie
+        # before DTSTART. RFC 5545 3.3.10, l. 2368-2369.
+        day = _period_start(freq, day, wkst)
+    pending: list[datetime] = []
+    period = _period_start(freq, day, wkst)
     last_day = day + timedelta(days=_MAX_SCAN_DAYS)
     while True:
         if day > last_day:
             raise ValueError("rule did not terminate within 400 years")
+        if bysetpos and _period_start(freq, day, wkst) != period:
+            # The period just ended: select from its set (l. 2364-2367), drop
+            # what precedes DTSTART, then apply UNTIL and COUNT
+            # (l. 2418-2420). UNTIL is inclusive, l. 2255-2258.
+            for occ in _select_positions(pending, bysetpos):
+                if occ >= dtstart and (until is None or occ <= until):
+                    occurrences.append(occ)
+            pending = []
+            period = _period_start(freq, day, wkst)
+            if until is not None and day > until.date():
+                break
+            if count is not None and len(occurrences) >= count:
+                break
         if _is_active_day(freq, dtstart, interval, wkst, day):
             if _is_selected_day(freq, dtstart, day, months, bymonthday,
                                 plain_wd, nth_wd):
@@ -81,6 +118,9 @@ def expand(freq: str, dtstart: datetime, *, interval: int = 1,
                         for second in seconds:
                             occ = datetime(day.year, day.month, day.day,
                                            hour, minute, second)
+                            if bysetpos:
+                                pending.append(occ)
+                                continue
                             if occ < dtstart:
                                 # Occurrences before DTSTART are never emitted;
                                 # see the module docstring.
@@ -88,16 +128,45 @@ def expand(freq: str, dtstart: datetime, *, interval: int = 1,
                             if until is not None and occ > until:
                                 continue  # UNTIL is inclusive, l. 2255-2258
                             occurrences.append(occ)
-        if until is not None and day >= until.date():
-            break  # every later day exceeds an inclusive UNTIL
-        if count is not None and len(occurrences) >= count:
-            break
+        if not bysetpos:
+            if until is not None and day >= until.date():
+                break  # every later day exceeds an inclusive UNTIL
+            if count is not None and len(occurrences) >= count:
+                break
         day += timedelta(days=1)
 
     if count is not None:
         # COUNT is evaluated after the BYxxx parts. RFC 5545 3.3.10, l. 2418-2420.
         occurrences = occurrences[:count]
     return occurrences
+
+
+def _period_start(freq, day, wkst):
+    """First day of the FREQ period containing ``day``.
+
+    RFC 5545 3.3.10, l. 2366-2369 (the set is one interval of the rule).
+    """
+    if freq == "YEARLY":
+        return date(day.year, 1, 1)
+    if freq == "MONTHLY":
+        return date(day.year, day.month, 1)
+    if freq == "WEEKLY":
+        return _week_start(day, wkst)
+    return day
+
+
+def _select_positions(candidates, bysetpos):
+    """The ``bysetpos``-th elements of ``candidates``, ascending, once each.
+
+    A negative position counts from the end; one outside the set selects
+    nothing. RFC 5545 3.3.10, l. 2377-2380.
+    """
+    chosen = set()
+    for pos in bysetpos:
+        index = pos - 1 if pos > 0 else len(candidates) + pos
+        if 0 <= index < len(candidates):
+            chosen.add(index)
+    return [candidates[i] for i in sorted(chosen)]
 
 
 def _split_weekdays(byweekday):
