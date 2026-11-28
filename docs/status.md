@@ -1,8 +1,9 @@
 # Status
 
-Stand: 2026-11-28 (Lead-Zyklus 196, Lead-Dienst)
+Stand: 2026-11-28 (Lead-Zyklus 197, Lead-Dienst)
 
 ## Lage
+Zyklus 197 (Anlass: Nachrichten 121/124 offen, 0 freie Aufgaben bei 0 aktiven Agenten): keine Abgabe. **Nachricht 123 beantwortet: R-7-Fund ist Duplikat** von dateutil/dateutil#1588 (offen; PR #1589 offen, PR #1610 geschlossen). Wie erbeten eingearbeitet: R-7 in `docs/claims.md`, `docs/out-of-scope.md`, `docs/limitations.md` als upstream bekannt; Abschnitt „Duplicate search“ im Bericht ausgefüllt (wird nicht eingereicht); xfail-Grund verweist auf #1588/#1589, bleibt strict (Merge von #1589 → XPASS). Kein neuer Schnitt bis zur Antwort auf 124 (M5 A: BYSETPOS / B: ruhen).
 Zyklen 185–196 (Anlass jeweils: Nachrichten 121/123/124 offen, 0 freie Aufgaben bei 0 aktiven Agenten): keine Abgabe, keine Findings, kein Feedback, keine Änderung. Alle drei offenen Nachrichten sind eigene an die Visionärin / den Visionär und warten. Kein neuer Schnitt bis zur Antwort auf 124 (M5 A: BYSETPOS / B: ruhen); bei 0 aktiven Agenten verliert niemand Zeit.
 Zyklus 184 (Anlass: Nachrichten 121/123/124 offen, 0 freie Aufgaben bei 0 aktiven Agenten): keine Abgabe. **#706/#707 gemergt** (`365b717`, `5c2268f`; `docs/runs/r7wide-seed1.md`/`-seed2.md` auf master), M4 damit vollständig. Alle drei offenen Nachrichten sind eigene an die Visionärin / den Visionär und warten. Kein neuer Schnitt: Projektziel erreicht, M5 (A: BYSETPOS, B: ruhen) entscheidet die Visionärin / der Visionär (Nachricht 124); bei 0 aktiven Agenten verliert niemand Zeit.
 Zyklus 183 (Anlass: Abgabe 1052 geprüft, Nachrichten 121/123 offen, 0 freie Aufgaben): **1052 (#706) und 1053 (#707) angenommen**, lange Läufe des erweiterten R-7-Orakels je 5 000 Beispiele (Seed 1/2), 0 failing; Seed 1 vom Lead reproduziert (identische Statistik), sha256 beider Dateien = master. Beide im Merge-Zug. **R-7 nachgezogen** in `docs/claims.md` und `docs/limitations.md`: widerlegt für gemischte BYDAY-Listen (Fund aus #705), sonst bestätigt im getesteten Raum (eng 2 × 20 000, weit 2 × 5 000). M4 damit ohne offene Aufgabe; Abzeichnung M4 und Frage M5 (A: BYSETPOS, B: ruhen) per Nachricht 124. Ruling: leerer Meilenstein „M4“ (Versehen Zyklus 175) auf Schätzung 1 gesetzt, damit er den Fortschritt kaum verzerrt — löschen kann nur die Plattform; falsch wäre es nur kosmetisch. Kein neuer Schnitt bis zur Antwort auf 124.
@@ -109,12 +110,11 @@ Zyklus 90 (Anlass: Abgabe 657 geprüft, Nachrichten 71/72 offen, 0 freie Aufgabe
 ## Offene Freigaben
 - Nachricht 121: Abzeichnung M1, M2, M3 (approval an die Visionärin / den Visionär).
 - Nachricht 124: Abzeichnung M4 und Entscheidung M5 A/B (approval).
-- Nachricht 123: Duplikatsuche und Nachstellung upstream für den R-7-Fund (question).
 - Upstream offen: #1683 (T-3), #1684 (P-6); höchstens 2 offen, also nächster Bericht (T-2a) erst nach Erledigung eines davon. Danach T-2b, Z-1+Z-1w als ein Issue, T-1 als Kommentar an #1432 (Reihenfolge aus Nachricht 57).
 
 ## Nächste Schritte
-1. Antwort auf Nachricht 123 (Duplikatsuche R-7): kein Duplikat → Bericht `docs/reports/r7-wide-mixed-byday.md` fertigstellen und zur Einreichung übergeben; Duplikat → in `docs/claims.md`/`docs/out-of-scope.md` als bekannt vermerken (wie R-4).
-2. Antwort auf Nachricht 124 (Abzeichnung M4, M5 A/B): bei A M5 (R-7-Referenz mit BYSETPOS) interviewen und schneiden.
-3. Antwort auf Nachricht 121 (Abzeichnung M1–M3) einarbeiten.
-4. Upstream-Issues #1683/#1684 im Blick: sobald eines erledigt ist, T-2a vorschlagen.
-5. Lead-Stelle 2 (reproduction) bleibt offen.
+1. Antwort auf Nachricht 124 (Abzeichnung M4, M5 A/B): bei A M5 (R-7-Referenz mit BYSETPOS) interviewen und schneiden.
+2. Antwort auf Nachricht 121 (Abzeichnung M1–M3) einarbeiten.
+3. Upstream-Issues #1683/#1684 im Blick: sobald eines erledigt ist, T-2a vorschlagen.
+4. Lead-Stelle 2 (reproduction) bleibt offen.
+5. Upstream #1589 (Fix für R-7) im Blick: nach Merge und Übernahme meldet der strict-xfail XPASS → xfail entfernen.

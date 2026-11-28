@@ -56,7 +56,7 @@ Grundlage ist `docs/claims.md`; bei Widerspruch gilt das Register.
 - T-2: `tzstr(s, posix_offset=True)` lehnt Fuß-Strings mit `<…>` ab und weicht bei Beirut, Gaza/Hebron, Jerusalem, Dublin ab. Berichte `docs/reports/t2-tzstr-angle-brackets.md`, `docs/reports/t2-tzstr-transition-times.md`; bekannter Upstream-Fall Beirut: #1289, PR #1596.
 - T-3: `tzical` wirft `OverflowError` für `DTSTART:1970102503000`. Bericht `docs/reports/t3-tzical-overflowerror.md`, upstream eingereicht als dateutil/dateutil#1683.
 - R-4 (mit Zone): `str(rrule)` schreibt `DTSTART` ohne Zone, der Rundweg liefert naive Termine. Bericht `docs/reports/r4-rrule-str-drops-tzinfo.md`; upstream bekannt: #348, #637, #603/#604, #806 mit PR #1631; kein Bericht.
-- R-7 (gemischte BYDAY-Liste): `rrule(MONTHLY, byweekday=[MO, FR(-1)], …)` liefert `[]`. Berichtsentwurf `docs/reports/r7-wide-mixed-byday.md`; Duplikatsuche upstream offen.
+- R-7 (gemischte BYDAY-Liste): `rrule(MONTHLY, byweekday=[MO, FR(-1)], …)` liefert `[]`. Upstream bekannt: dateutil/dateutil#1588 (offen), PR #1589 (offen), PR #1610 (geschlossen); kein Bericht (Nachricht 123, 2026-11-28).
 - D-2: `(dt + rd) - rd` kehrt bei Tagen über eine Monatsgrenze nicht zurück. Bericht `docs/reports/d2-relativedelta-roundtrip.md`; Erwartung zu weit, Ersatz D-2.1.
 
 ## Nicht untersucht

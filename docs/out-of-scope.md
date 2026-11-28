@@ -9,3 +9,4 @@ Bewusst nicht gemacht, mit Grund, damit es niemand erneut vorschlägt. „Späte
 | R-7-Referenz mit `BYYEARDAY`, `BYEASTER`, HOURLY/MINUTELY/SECONDLY, Zeitzonen | später | `rrule_kwargs()` erzeugt `BYYEARDAY`/`BYEASTER` nicht; M4 ist auf kleine naive Regeln DAILY bis YEARLY begrenzt (Ruling Zyklus 145) | Lead, 2026-11-24 |
 | Upstream-Bericht D-2 (`(dt + rd) - rd`) | nicht | kein Fehler in dateutil, die Erwartung war zu weit (Nachricht 66) | Lead-Empfehlung, 2026-11-18 |
 | Upstream-Bericht R-4 (`str(rrule)` verliert die Zone) | nicht | upstream bekannt: #348, #637, #806/#1631; ein Kommentar auf #637 nur auf ausdrückliche Anweisung | Nachricht 72 Q1, 2026-11-24 |
+| Upstream-Bericht R-7 (gemischte `BYDAY`-Liste liefert Schnittmenge) | nicht | upstream bekannt: #1588 (offen), PR #1589 (offen), PR #1610 (geschlossen); strict-xfail meldet einen Merge von #1589 als XPASS | Nachricht 123, 2026-11-28 |

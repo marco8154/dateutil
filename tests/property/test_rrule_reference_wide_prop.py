@@ -168,7 +168,10 @@ def test_pin_feb_29_dates():
 
 
 @pytest.mark.rrule
-@pytest.mark.xfail(strict=True, reason="docs/reports/r7-wide-mixed-byday.md")
+@pytest.mark.xfail(
+    strict=True,
+    reason="docs/reports/r7-wide-mixed-byday.md; upstream dateutil/dateutil#1588, PR #1589",
+)
 def test_rrule_mixed_plain_and_ordinal_byday():
     kw = PIN_MONTHLY_MIXED_BYDAY
     assert len(_expected(kw)) >= 2

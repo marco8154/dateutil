@@ -1,6 +1,6 @@
 # `rrule` with plain and ordinal `byweekday` terms in one list yields too few occurrences
 
-**Status:** draft; duplicate search and reproduction on upstream `master` still to be done by the lead (sandbox has no network).
+**Status:** not submitted: duplicate of dateutil/dateutil#1588 (duplicate search 2026-11-28 by the visionary).
 
 With `freq=MONTHLY` (and `YEARLY`), a `byweekday` list that mixes a plain
 weekday and an ordinal one (`[MO, FR(-1)]`) selects only days matching both,
@@ -41,8 +41,21 @@ Test: `tests/property/test_rrule_reference_wide_prop.py::test_rrule_mixed_plain_
 
 ## Duplicate search
 
-Not done (no network); the lead searches upstream before the report is sent.
+Searched 2026-11-28 in dateutil/dateutil, issues and pull requests in all
+states (terms included "byweekday nth", "BYDAY ordinal", "byweekday mixed",
+"FR(-1)", "nwdaymask", "bynweekday byweekday").
+
+- #1588 (open, 2026-09-30): a `BYDAY` of plain and ordinal weekdays is
+  treated as an intersection instead of a union (`MO,1FR` gives `[]`,
+  `FR,1FR` only the first Friday; MONTHLY and YEARLY). Same cause.
+- PR #1589 (open, "Fixes #1588"): drops a day only if it matches neither
+  list, citing RFC 5545 3.3.10.
+- PR #1610 (closed 2026-10-14, not merged): a second fix for #1588.
+
+Result: duplicate, no new issue. The xfail stays strict so a merge of #1589
+shows up as XPASS.
 
 ## Reproduction on upstream master
 
-Not done; the lead reproduces it.
+Not needed: according to #1588, `rrule.py` is unchanged since 2021, and it
+did not change between `a78cbd8` and `261e291`.
