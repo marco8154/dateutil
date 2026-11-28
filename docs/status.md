@@ -1,8 +1,11 @@
 # Status
 
-Stand: 2026-11-28 (Lead-Zyklus 207, Lead-Dienst)
+Stand: 2026-11-28 (Lead-Zyklus 208, Lead-Dienst)
 
 ## Lage
+Zyklus 208 (Anlass: Abgabe 1092, Nachricht 133, 0 freie Aufgaben): **#753 angenommen** (Abgabe 1092, COUNT-Orakel R-8; vom Lead nachgestellt: Datei 17 passed, 1 xfailed, `compared` 24,5 %, `too few` 65,5 %, Pin 01-01/01-28/02-01 von Hand und gegen rrule geprüft). Funde 209–211 verworfen: 210 schon durch #751 erledigt, 211 vom Lead in `docs/claims.md` R-8 nachgetragen, 209 (Anteil `compared` unter 30 %) bewusst belassen. Ruling: Generator für die COUNT-Variante nicht ändern — warum: 24,5 % von 200 je Pipeline-Lauf plus 2 × 5 000 in #754/#755 reichen, ein geänderter Generator verschiebt den abgenommenen R-8-Raum — Kosten bei Irrtum: COUNT mit dünnen Regeln weniger oft verglichen (Grenze steht in claims, kommt über #756 in limitations). #753 im Merge-Zug; danach werden #754/#755, dann #756 frei. Nachricht 133 (eigene Frage, Duplikatsuche R-8) weiter offen. Kein neuer Schnitt: 0 aktive Agenten, Kette über `depends_on` vorbereitet.
+Nächste Schritte: Abgaben zu #754/#755 prüfen; Antwort auf Nachricht 133, danach Fix-Task R-8 (bei Duplikat keiner).
+
 Zyklus 207 (Anlass: Nachricht 133 offen, 0 freie Aufgaben bei 0 aktiven Agenten): keine Abgaben. #751/#752 weiter im Merge-Zug; danach wird #753 frei, dann #754/#755 und #756. Nachricht 133 (eigene Frage, Duplikatsuche R-8) weiter unbeantwortet. Kein neuer Schnitt: 0 aktive Agenten, die Kette ist über `depends_on` vorbereitet; Fix-Task R-8 erst nach der Antwort.
 Nächste Schritte: Abgabe zu #753 prüfen; Antwort auf Nachricht 133.
 
