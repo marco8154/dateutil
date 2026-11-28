@@ -1,8 +1,9 @@
 # Status
 
-Stand: 2026-11-28 (Lead-Zyklus 197, Lead-Dienst)
+Stand: 2026-11-28 (Lead-Zyklus 198, Lead-Dienst)
 
 ## Lage
+Zyklus 198 (Anlass: 0 freie Aufgaben bei 0 aktiven Agenten): **Nachricht 121 und 124 abgezeichnet (M1–M4), Nachricht 129: M5 = Option A (BYSETPOS).** Claim R-8 in `docs/claims.md` angelegt, `docs/out-of-scope.md` nachgezogen, M5 geschnitten: #736 (Referenz, C) → #737 (RFC-Beispiele, B), #738 (Orakel, B) → #739/#740 (lange Läufe), #741 (Review). Selbsttest-Erwartungen in #736 vom Lead mit dem Kalender nachgerechnet. Schätzung M5: 8. Keine offene Nachricht.
 Zyklus 197 (Anlass: Nachrichten 121/124 offen, 0 freie Aufgaben bei 0 aktiven Agenten): keine Abgabe. **Nachricht 123 beantwortet: R-7-Fund ist Duplikat** von dateutil/dateutil#1588 (offen; PR #1589 offen, PR #1610 geschlossen). Wie erbeten eingearbeitet: R-7 in `docs/claims.md`, `docs/out-of-scope.md`, `docs/limitations.md` als upstream bekannt; Abschnitt „Duplicate search“ im Bericht ausgefüllt (wird nicht eingereicht); xfail-Grund verweist auf #1588/#1589, bleibt strict (Merge von #1589 → XPASS). Kein neuer Schnitt bis zur Antwort auf 124 (M5 A: BYSETPOS / B: ruhen).
 Zyklen 185–196 (Anlass jeweils: Nachrichten 121/123/124 offen, 0 freie Aufgaben bei 0 aktiven Agenten): keine Abgabe, keine Findings, kein Feedback, keine Änderung. Alle drei offenen Nachrichten sind eigene an die Visionärin / den Visionär und warten. Kein neuer Schnitt bis zur Antwort auf 124 (M5 A: BYSETPOS / B: ruhen); bei 0 aktiven Agenten verliert niemand Zeit.
 Zyklus 184 (Anlass: Nachrichten 121/123/124 offen, 0 freie Aufgaben bei 0 aktiven Agenten): keine Abgabe. **#706/#707 gemergt** (`365b717`, `5c2268f`; `docs/runs/r7wide-seed1.md`/`-seed2.md` auf master), M4 damit vollständig. Alle drei offenen Nachrichten sind eigene an die Visionärin / den Visionär und warten. Kein neuer Schnitt: Projektziel erreicht, M5 (A: BYSETPOS, B: ruhen) entscheidet die Visionärin / der Visionär (Nachricht 124); bei 0 aktiven Agenten verliert niemand Zeit.
@@ -82,6 +83,8 @@ Zyklus 90 (Anlass: Abgabe 657 geprüft, Nachrichten 71/72 offen, 0 freie Aufgabe
 - GitHub Actions im Fork: `tests/test_tzpath_data.py::test_dst_matches_tzdata_zi[tzpath]` rot auf macOS (Casablanca, El_Aaiun, 2100/2400). Upstream `dateutil/dateutil` ist seit 2026-11-10 auf macOS ebenfalls rot (PR-Läufe 43319539839, 43319500377, 43247862099; Jobs 3.14 und 3.15 macos-latest), `a78cbd8` war am 2026-11-01 grün. Also Änderung der Runner-Daten (vermutlich Marokko-Änderung in tzdata 2026e/f), nicht unsere Commits. Lokal mit 2026f ist dateutil konsistent. Duplikatsuche (2026-11-15, Visionär:in): offener PR dateutil/dateutil#1667 „Fix dst() for zones that end in permanent DST“ (Maintainer, 2026-11-07), einziger Treffer für Africa/Casablanca und Africa/El_Aaiun. **Kein Bericht von uns.** Als bekannter Fall bei Z-1 in `docs/claims.md` und in Aufgabe #381 vermerkt. Der rote macOS-Job im Fork verschwindet, sobald #1667 upstream gemergt und von uns übernommen ist.
 
 ## Rulings
+- Ruling: BYSETPOS zählt Positionen über die ganze FREQ-Periode, auch Kandidaten vor `dtstart`; erst danach fallen Termine vor `dtstart` weg — warum: RFC l. 2368–2369 („starts at the beginning of the interval“) — Kosten falls falsch: Referenz-Selbsttest d und Orakel-Erwartung ändern (eine C-Nacharbeit); das Review #741 prüft die Lesart ausdrücklich.
+- Ruling: Orakel R-8 endet über `until` (≤ 731 Tage) statt `count` — warum: leere BYSETPOS-Regeln ließen die Referenz mit `count` 400 Jahre abzählen — Kosten falls falsch: `count` mit BYSETPOS bleibt ungetestet (Grenze in R-8, RFC-Beispiel L7259 deckt einen Fall).
 - Ruling: WEEKLY mit `bymonthday` bleibt in `rrule_kwargs()`; R-7 wertet Übereinstimmung dort nicht als RFC-Konformität und Abweichung dort nicht als RFC-Fund (Vermerk in `docs/claims.md`). Grund: die Strategie dient auch R-2..R-6 (Selbstkonsistenz von dateutil); #664 umzuschneiden kostet mehr als der Vermerk. Kosten, falls falsch: ein Teil der R-7-Beispiele prüft nur Verhalten außerhalb der RFC.
 - Ruling: In der R-7-Referenz begrenzt eine BYDAY-Ordnungszahl auch in Limit-Stellung (mit BYMONTHDAY): `1FR` heißt erster Freitag (l. 2303–2309), Limit behält nur passende Tage (Note 1, Erratum 3747). Kosten, falls falsch: ein Scheinfund bei MONTHLY/YEARLY mit BYMONTHDAY und Ordnungszahl; die Strategie erzeugt bisher keine Ordnungszahlen.
 - Ruling: R-1-Daten in zwei Dateien (`rfc5545_rrule_examples_1.json`/`_2.json`, Schnitt an RFC-Zeile 7119) mit `id` = Zeilennummer der RRULE-Zeile. Grund: 500-Zeilen-Grenze je Patch; Zeilennummern machen jede Stichprobe direkt prüfbar. Kosten, falls falsch: Golden-Test liest einen Glob statt einer Datei.
@@ -108,13 +111,12 @@ Zyklus 90 (Anlass: Abgabe 657 geprüft, Nachrichten 71/72 offen, 0 freie Aufgabe
 - Ruling: SPDX `Apache-2.0 AND BSD-3-Clause` nur in neuen Dateien außerhalb von `src/` und `tests/`. Grund: upstream führt keine Header. Kosten, falls falsch: Header ergänzen.
 
 ## Offene Freigaben
-- Nachricht 121: Abzeichnung M1, M2, M3 (approval an die Visionärin / den Visionär).
-- Nachricht 124: Abzeichnung M4 und Entscheidung M5 A/B (approval).
+- Keine offene Nachricht (121 und 124 abgezeichnet 2026-11-28, M5 = A per Nachricht 129).
 - Upstream offen: #1683 (T-3), #1684 (P-6); höchstens 2 offen, also nächster Bericht (T-2a) erst nach Erledigung eines davon. Danach T-2b, Z-1+Z-1w als ein Issue, T-1 als Kommentar an #1432 (Reihenfolge aus Nachricht 57).
 
 ## Nächste Schritte
-1. Antwort auf Nachricht 124 (Abzeichnung M4, M5 A/B): bei A M5 (R-7-Referenz mit BYSETPOS) interviewen und schneiden.
-2. Antwort auf Nachricht 121 (Abzeichnung M1–M3) einarbeiten.
+1. M5: Abgaben zu #736–#741 prüfen; nach #739–#741 die Aufgabe `docs/limitations.md` (R-8) schneiden, Befunde aus #741 als Aufgaben.
+2. Ein BYSETPOS-Fund: Duplikatsuche bei der Visionärin / dem Visionär anfragen; Bericht bleibt Entwurf, solange #1683 und #1684 offen sind.
 3. Upstream-Issues #1683/#1684 im Blick: sobald eines erledigt ist, T-2a vorschlagen.
 4. Lead-Stelle 2 (reproduction) bleibt offen.
 5. Upstream #1589 (Fix für R-7) im Blick: nach Merge und Übernahme meldet der strict-xfail XPASS → xfail entfernen.
