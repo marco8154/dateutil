@@ -17,7 +17,7 @@ from rrule_reference import expand
 DATA = Path(__file__).parent / "data"
 WEEKDAYS = {"MO": 0, "TU": 1, "WE": 2, "TH": 3, "FR": 4, "SA": 5, "SU": 6}
 IN_SCOPE_FREQS = ("YEARLY", "MONTHLY", "WEEKLY", "DAILY")
-OUT_OF_SCOPE_PARTS = ("BYSETPOS", "BYWEEKNO", "BYYEARDAY")
+OUT_OF_SCOPE_PARTS = ("BYWEEKNO", "BYYEARDAY")
 
 
 def _load():
@@ -74,6 +74,8 @@ def parse_rule(text, tzid="UTC"):
         kwargs["byminute"] = _ints(parts["BYMINUTE"])
     if "BYSECOND" in parts:
         kwargs["bysecond"] = _ints(parts["BYSECOND"])
+    if "BYSETPOS" in parts:
+        kwargs["bysetpos"] = _ints(parts["BYSETPOS"])
     return kwargs
 
 
