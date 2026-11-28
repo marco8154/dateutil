@@ -4,7 +4,7 @@ Bewusst nicht gemacht, mit Grund, damit es niemand erneut vorschlägt. „Späte
 
 | Was | Status | Grund | Entschieden |
 |---|---|---|---|
-| R-7-Referenz mit `BYSETPOS` | später | Die Brute-Force-Referenz irrt hier am ehesten; erst den Kern (Expand/Limit) prüfen | Nachricht 72 Q2, 2026-11-24 |
+| R-7-Referenz mit `BYSETPOS` | jetzt M5 (Claim R-8) | war „später“ (Nachricht 72 Q2); freigegeben als M5 | Nachricht 129, 2026-11-28 |
 | R-7-Referenz mit `BYWEEKNO` | später | wie `BYSETPOS`: ISO-Wochenzählung mit `WKST` ist fehleranfällig in der Referenz | Nachricht 72 Q2, 2026-11-24 |
 | R-7-Referenz mit `BYYEARDAY`, `BYEASTER`, HOURLY/MINUTELY/SECONDLY, Zeitzonen | später | `rrule_kwargs()` erzeugt `BYYEARDAY`/`BYEASTER` nicht; M4 ist auf kleine naive Regeln DAILY bis YEARLY begrenzt (Ruling Zyklus 145) | Lead, 2026-11-24 |
 | Upstream-Bericht D-2 (`(dt + rd) - rd`) | nicht | kein Fehler in dateutil, die Erwartung war zu weit (Nachricht 66) | Lead-Empfehlung, 2026-11-18 |
