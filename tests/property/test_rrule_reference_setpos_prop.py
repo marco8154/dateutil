@@ -5,13 +5,17 @@ expected result is empty are not compared by the property test: ``rrule``
 does not stop at ``until`` when no period selects anything and searches up
 to the year 9999. Four fixed cases in ``test_rrule_empty_setpos_cases``
 cover them instead.
+
+The COUNT variant ``test_rrule_matches_reference_setpos_count`` compares
+only rules with at least ``count`` occurrences until ``until``: with
+``count`` and fewer occurrences ``rrule`` searches up to the year 9999 too.
 """
 import calendar
 from datetime import date, datetime, timedelta
 
 import hypothesis
 import pytest
-from hypothesis import example, given
+from hypothesis import HealthCheck, example, given, settings
 from hypothesis import strategies as st
 
 from dateutil.rrule import DAILY, MONTHLY, WEEKLY, YEARLY, rrule, weekday
@@ -166,6 +170,12 @@ PINS = {
     "yearly_second_of_jan_jul": PIN_YEARLY_SECOND_OF_JAN_JUL,
 }
 
+# COUNT=3 keeps 2025-01-01, 01-28 and 02-01, i.e. it cuts inside the set of
+# February, which selects the 1st (position 1) and the 28th (position -1).
+PIN_MONTHLY_FIRST_LAST_OF_THREE = _rule(
+    MONTHLY, datetime(2025, 1, 1, 9), datetime(2025, 6, 30, 9), [-1, 1],
+    bymonthday=[1, 15, 28])
+
 
 @pytest.mark.rrule
 @example(kw=PIN_MONTHLY_LAST_WORKDAY)
@@ -184,6 +194,27 @@ def test_rrule_matches_reference_setpos(kw):
         hypothesis.assume(False)
     hypothesis.event("non-empty")
     assert list(rrule(**_rrule_kw(kw))) == expected
+
+
+@pytest.mark.rrule
+# Most rules have fewer occurrences until ``until`` than the drawn ``count``,
+# so the assume() below discards most draws by design.
+@settings(suppress_health_check=[HealthCheck.too_slow, HealthCheck.filter_too_much])
+@example(kw=PIN_MONTHLY_FIRST_LAST_OF_THREE, count=3)
+@given(kw=setpos_rrule_kwargs(), count=st.integers(1, 20))
+def test_rrule_matches_reference_setpos_count(kw, count):
+    try:
+        expected = _expected(kw)
+    except ValueError:
+        hypothesis.assume(False)
+    if len(expected) < count:
+        # With COUNT and fewer occurrences rrule searches up to the year 9999.
+        hypothesis.event("too few")
+        hypothesis.assume(False)
+    hypothesis.event("compared")
+    kw_count = dict(kw, count=count, until=None)
+    assert _expected(kw_count) == expected[:count]
+    assert list(rrule(**_rrule_kw(kw_count))) == expected[:count]
 
 
 @pytest.mark.rrule
