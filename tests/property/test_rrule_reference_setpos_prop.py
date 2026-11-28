@@ -3,7 +3,7 @@
 Rules end with ``until`` (``dtstart`` plus up to 731 days). Rules whose
 expected result is empty are not compared by the property test: ``rrule``
 does not stop at ``until`` when no period selects anything and searches up
-to the year 9999. Three fixed cases in ``test_rrule_empty_setpos_cases``
+to the year 9999. Four fixed cases in ``test_rrule_empty_setpos_cases``
 cover them instead.
 """
 import calendar
@@ -213,6 +213,8 @@ def test_setpos_pin_depends_on_wkst():
                        [-2], byweekday=[3]), id="weekly"),
     pytest.param(_rule(YEARLY, datetime(2025, 1, 1, 9), datetime(2027, 1, 1, 9),
                        [2], bymonth=[1], bymonthday=[1]), id="yearly"),
+    pytest.param(_rule(DAILY, datetime(2025, 1, 1, 9), datetime(2025, 3, 1, 9),
+                       [3], interval=4, byhour=[9, 12]), id="daily"),
 ])
 def test_rrule_empty_setpos_cases(kw):
     assert _expected(kw) == []
