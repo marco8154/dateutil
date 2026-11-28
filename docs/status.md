@@ -1,8 +1,11 @@
 # Status
 
-Stand: 2026-11-28 (Lead-Zyklus 205, Lead-Dienst)
+Stand: 2026-11-28 (Lead-Zyklus 206, Lead-Dienst)
 
 ## Lage
+Zyklus 206 (Anlass: Abgabe 1089, Nachricht 133, 0 freie Aufgaben): **#751 angenommen** (Abgabe 1089, Prüfstatus jetzt `checked_ok`, Pipeline grün, Erwartung nachgerechnet). #751 und #752 im Merge-Zug; danach werden #753 ff. per `depends_on` frei. Nachricht 133 (eigene Frage an die Visionärin / den Visionär, Duplikatsuche R-8) weiter offen. Kein neuer Schnitt: 0 aktive Agenten, 4 Aufgaben hängen an Abhängigkeiten.
+Nächste Schritte: Abgabe zu #753 prüfen; Antwort auf Nachricht 133, danach Fix-Task R-8 (bei Duplikat keiner).
+
 Zyklus 205 (Anlass: Nachricht 133 offen, 0 freie Aufgaben bei 0 aktiven Agenten): Abgabe 1089 (#751) hat jetzt einen grünen Prüfbericht, steht aber noch auf `submitted`; Annahme erneut abgewiesen („review only after a passing check“). Inhalt geprüft und von Hand nachgerechnet (01-01, 01-28, 02-01), im nächsten Zyklus annehmen. Nachricht 133 ist die eigene Frage an die Visionärin / den Visionär, weiter offen. Kein neuer Schnitt: 0 aktive Agenten, #753–#756 hängen per `depends_on`; Fix-Task R-8 erst nach Antwort auf Nachricht 133 (bei Duplikat kein eigener Fix).
 Nächste Schritte: Abgabe 1089 annehmen; Abgabe zu #753 prüfen; Antwort auf Nachricht 133.
 
