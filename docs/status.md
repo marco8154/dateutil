@@ -1,8 +1,11 @@
 # Status
 
-Stand: 2026-11-28 (Lead-Zyklus 209, Lead-Dienst)
+Stand: 2026-11-28 (Lead-Zyklus 210, Lead-Dienst)
 
 ## Lage
+Zyklus 210 (Anlass: Abgaben 1094/1095, Nachricht 133, 0 freie Aufgaben): **#754 und #755 angenommen** (lange Läufe R-8 COUNT, je 5 000, Seed 1/2: beide grün, `compared` 21,7 % / 20,9 %, sha256 beider Dateien gleich master `e710e13`). Damit wird #756 (`docs/limitations.md` Zeile R-8) nach dem Merge frei. Nachricht 133 (eigene Frage, Duplikatsuche R-8) weiter unbeantwortet. Kein neuer Schnitt: 0 aktive Agenten; Fix-Task R-8 erst nach der Antwort.
+Nächste Schritte: Abgabe zu #756 prüfen; Antwort auf Nachricht 133, danach Fix-Task R-8 (bei Duplikat keiner) und Abzeichnung M5.
+
 Zyklus 209 (Anlass: Nachricht 133 offen, 0 freie Aufgaben bei 0 aktiven Agenten): keine Abgaben. #753 weiter im Merge-Zug; danach werden #754/#755, dann #756 frei. Nachricht 133 (eigene Frage, Duplikatsuche R-8) weiter unbeantwortet. Kein neuer Schnitt: 0 aktive Agenten, Kette über `depends_on` vorbereitet; Fix-Task R-8 erst nach der Antwort.
 Nächste Schritte: Abgaben zu #754/#755 prüfen; Antwort auf Nachricht 133.
 
