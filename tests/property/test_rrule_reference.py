@@ -503,6 +503,17 @@ def test_bysetpos_several_positions_sorted():
     ]
 
 
+def test_bysetpos_count_cuts_inside_period():
+    assert expand(
+        "MONTHLY", datetime(2025, 1, 1, 9), bymonthday=[1, 15, 28],
+        bysetpos=[-1, 1], count=3,
+    ) == [
+        datetime(2025, 1, 1, 9),
+        datetime(2025, 1, 28, 9),
+        datetime(2025, 2, 1, 9),
+    ]
+
+
 def test_bysetpos_until_inside_period():
     # March's last workday (Mar 31) is selected from the full March set, but
     # lies after UNTIL.
